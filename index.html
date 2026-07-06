@@ -63,6 +63,14 @@ header.solid{background:rgba(10,14,15,.82);backdrop-filter:blur(12px);border-col
 .btn-ghost{border:1px solid var(--line2);color:var(--ink);}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
 @media(max-width:860px){.nav-links{display:none;}}
+@media(max-width:520px){
+  header{padding-left:16px;padding-right:16px;}
+  .head-right{gap:10px;}
+  .logo{font-size:18px;}
+  .logo .t{display:none;}
+  .btn{padding:11px 16px;white-space:nowrap;}
+  .langtog{padding:6px 11px;}
+}
 
 /* reveal */
 .rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform 1s var(--ease);}
