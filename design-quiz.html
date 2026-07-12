@@ -3,309 +3,322 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>디자인 취향 진단 · Career Atelier</title>
+<title>디자인 컨셉 빌더 · Career Atelier</title>
 <!--
-  Career Atelier "05 디자인 컨셉" 도구 v1.
-  취향(영화·음악·무드) 10문답 → 6개 디자인 축 점수 → 8개 디자인 시스템 패밀리로 역산.
-  각 패밀리에 Drive의 포트폴리오 템플릿 라이브러리(130+)를 이름 기준으로 매칭(휴리스틱, 프리뷰 후 정교화 가능).
-  질문·가중치·패밀리는 전부 아래 JS 데이터에서 수정.
+  Career Atelier "05 디자인 컨셉" 빌더.
+  ① 취향 10문답 → 6개 디자인 축 → 8개 패밀리
+  ② 팔레트: 33개 Pantone 조합, 카테고리 탭 + 취향 적합도 정렬
+  ③ 아웃라인: 히어로·내비·구조·작업배치·모션·형태 6개를 골라가며
+  ④ 브리프: 패밀리+팔레트(팬톤)+레이아웃+매칭 템플릿
+  데이터(질문/팔레트/패밀리/아웃라인)는 전부 아래 JS에서 수정.
 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg:#F1EBDF; --panel:#FBF7EF; --panel2:#F3ECDF; --ink:#2A2620; --ink2:#3A352C;
-  --muted:#867C6E; --faint:#A99E8D; --gold:#A8823E; --gold2:#C9A96A;
-  --line:rgba(42,38,32,.14); --line2:rgba(42,38,32,.24); --ease:cubic-bezier(.19,1,.22,1);
-}
+:root{--bg:#F1EBDF;--panel:#FBF7EF;--panel2:#F3ECDF;--ink:#2A2620;--ink2:#3A352C;--muted:#867C6E;--faint:#A99E8D;--gold:#A8823E;--gold2:#C9A96A;--line:rgba(42,38,32,.14);--line2:rgba(42,38,32,.26);--ease:cubic-bezier(.19,1,.22,1);}
 *{box-sizing:border-box;margin:0;padding:0;}
-body{background:var(--bg);color:var(--ink);font-family:"Outfit",-apple-system,"Apple SD Gothic Neo",sans-serif;
-  font-weight:400;line-height:1.6;min-height:100vh;word-break:keep-all;overflow-wrap:break-word;}
+body{background:var(--bg);color:var(--ink);font-family:"Outfit",-apple-system,"Apple SD Gothic Neo",sans-serif;line-height:1.6;min-height:100vh;word-break:keep-all;overflow-wrap:break-word;}
 .serif{font-family:"Fraunces",Georgia,serif;}
 button{font-family:inherit;cursor:pointer;color:inherit;background:none;border:0;}
-.wrap{max-width:820px;margin:0 auto;padding:clamp(28px,6vw,64px) clamp(20px,5vw,40px);min-height:100vh;display:flex;flex-direction:column;justify-content:center;}
+.wrap{max-width:860px;margin:0 auto;padding:clamp(26px,6vw,60px) clamp(18px,5vw,40px);min-height:100vh;display:flex;flex-direction:column;justify-content:center;}
 .kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:600;display:flex;align-items:center;gap:11px;justify-content:center;}
 .kicker::before,.kicker::after{content:"";width:24px;height:1px;background:var(--gold);opacity:.6;}
+.btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:14px 28px;border-radius:100px;background:var(--gold);color:#FBF7EF;transition:background .25s,transform .15s;}
+.btn:hover{background:var(--ink);}.btn:active{transform:scale(.97);}
+.btn.ghost{background:none;border:1px solid var(--line2);color:var(--ink);}.btn.ghost:hover{border-color:var(--gold);color:var(--gold);}
+.hidden{display:none;}
+.phasebar{display:flex;gap:8px;justify-content:center;margin-bottom:30px;font-size:11px;letter-spacing:.06em;color:var(--faint);text-transform:uppercase;font-weight:600;flex-wrap:wrap;}
+.phasebar span{opacity:.5;}.phasebar span.on{color:var(--gold);opacity:1;}.phasebar span.done{color:var(--muted);opacity:1;}
 
 /* intro */
 .intro{text-align:center;}
-.intro h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(34px,6vw,62px);line-height:1.08;letter-spacing:-.02em;margin:22px 0 0;}
+.intro h1{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(34px,6vw,60px);line-height:1.08;letter-spacing:-.02em;margin:22px 0 0;}
 .intro h1 em{font-style:italic;color:var(--gold);}
-.intro p{margin:22px auto 0;max-width:44ch;color:var(--muted);font-weight:300;font-size:clamp(15px,1.6vw,18px);}
-.btn{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:600;padding:15px 30px;border-radius:100px;background:var(--gold);color:#FBF7EF;transition:background .25s,transform .15s;}
-.btn:hover{background:var(--ink);}.btn:active{transform:scale(.97);}
-.btn.ghost{background:none;border:1px solid var(--line2);color:var(--ink);}
-.btn.ghost:hover{border-color:var(--gold);color:var(--gold);}
-.intro .btn{margin-top:38px;}
+.intro p{margin:22px auto 0;max-width:46ch;color:var(--muted);font-weight:300;font-size:clamp(15px,1.6vw,18px);}
+.intro .btn{margin-top:36px;}
+.steps{display:flex;gap:16px;justify-content:center;margin-top:34px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);}
+.steps b{color:var(--gold);}
 
-/* progress */
-.prog{display:flex;gap:6px;justify-content:center;margin-bottom:36px;}
-.prog i{width:26px;height:3px;border-radius:3px;background:var(--line);transition:background .3s;}
-.prog i.done{background:var(--gold);}
-.prog i.cur{background:var(--ink);}
+/* progress dots */
+.prog{display:flex;gap:6px;justify-content:center;margin-bottom:32px;flex-wrap:wrap;}
+.prog i{width:22px;height:3px;border-radius:3px;background:var(--line);transition:background .3s;}
+.prog i.done{background:var(--gold);}.prog i.cur{background:var(--ink);}
 
-/* question */
-.q .qn{text-align:center;font-size:12.5px;letter-spacing:.1em;color:var(--faint);font-weight:500;}
-.q h2{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:clamp(23px,3.4vw,36px);line-height:1.25;letter-spacing:-.01em;margin:12px auto 34px;max-width:20ch;}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.opt{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:clamp(22px,3vw,34px) clamp(18px,2.5vw,26px);text-align:left;transition:border-color .2s,transform .12s,box-shadow .25s;min-height:150px;display:flex;flex-direction:column;}
+/* question / choice */
+.qn{text-align:center;font-size:12px;letter-spacing:.1em;color:var(--faint);font-weight:600;}
+h2.qh{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:clamp(22px,3.4vw,34px);line-height:1.25;margin:12px auto 30px;max-width:22ch;}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.opt{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:clamp(20px,3vw,30px);text-align:left;transition:border-color .2s,transform .12s,box-shadow .25s;display:flex;flex-direction:column;min-height:140px;}
 .opt:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 22px 40px -26px rgba(42,38,32,.4);}
-.opt:active{transform:translateY(-1px);}
 .opt .oa{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;}
-.opt .ot{font-family:"Fraunces",serif;font-size:clamp(19px,2.4vw,26px);font-weight:600;letter-spacing:-.01em;margin-top:10px;line-height:1.15;}
-.opt .os{margin-top:10px;font-size:13.5px;color:var(--muted);font-weight:300;flex:1;}
-.vs{position:absolute;left:50%;top:calc(50% + 8px);transform:translate(-50%,-50%);font-family:"Fraunces",serif;font-style:italic;font-size:15px;color:var(--faint);background:var(--bg);padding:5px 8px;border-radius:50%;pointer-events:none;}
-.opts-wrap{position:relative;}
-@media(max-width:600px){.opts{grid-template-columns:1fr;gap:12px;}.opt{min-height:0;}.vs{display:none;}}
+.opt .ot{font-family:"Fraunces",serif;font-size:clamp(18px,2.3vw,25px);font-weight:600;margin-top:9px;line-height:1.15;}
+.opt .os{margin-top:9px;font-size:13px;color:var(--muted);font-weight:300;flex:1;}
+@media(max-width:560px){.opts{grid-template-columns:1fr;}.opt{min-height:0;}}
 
-/* result */
-.res{text-align:center;}
-.res .fam{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(34px,6.5vw,66px);line-height:1.05;letter-spacing:-.02em;margin-top:10px;}
+/* palette phase */
+.tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:8px;justify-content:flex-start;}
+.tab{flex:0 0 auto;font-size:12.5px;font-weight:500;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:7px 15px;background:var(--panel);transition:.2s;white-space:nowrap;}
+.tab:hover{border-color:var(--gold2);}.tab.on{background:var(--gold);color:#FBF7EF;border-color:var(--gold);}
+.palgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:8px;}
+.pc{border:1px solid var(--line);border-radius:12px;padding:9px;background:var(--panel);transition:border-color .2s,transform .12s,box-shadow .2s;text-align:left;}
+.pc:hover{transform:translateY(-3px);}.pc.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold2);}
+.pc .sw{display:flex;height:40px;border-radius:7px;overflow:hidden;border:1px solid var(--line);}
+.pc .sw i{flex:1;display:block;}
+.pc .pn{display:block;font-size:12px;color:var(--ink2);margin-top:8px;font-weight:500;}
+.pc .pnc{font-size:10.5px;color:var(--faint);}
+.pc .rec{font-size:9.5px;color:#FBF7EF;background:var(--gold);padding:2px 7px;border-radius:100px;margin-left:5px;font-weight:600;}
+
+/* outline mockups */
+.mk{width:100%;max-width:154px;height:94px;background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:9px;display:flex;flex-direction:column;gap:5px;overflow:hidden;position:relative;margin:0 auto 12px;}
+.mk .nav{height:6px;background:var(--line2);border-radius:2px;width:100%;}
+.mk .h{height:15px;background:var(--ink);opacity:.7;border-radius:3px;}
+.mk .t{height:6px;background:var(--line2);border-radius:2px;}
+.mk .img{flex:1;background:linear-gradient(135deg,var(--gold2),var(--line2));border-radius:4px;}
+.mk .fill{background:var(--line2);border-radius:3px;}
+.mk .row{display:flex;gap:5px;flex:1;}.mk .row>*{flex:1;border-radius:3px;}
+.mk .g3{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:4px;}
+.mk .g2{flex:1;display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;gap:4px;}
+.mk .g3 i,.mk .g2 i{background:var(--line2);border-radius:2px;display:block;}
+.mk .list{flex:1;display:flex;flex-direction:column;gap:5px;}.mk .list i{height:8px;background:var(--line2);border-radius:2px;display:block;}
+.mk .side{position:absolute;left:0;top:0;bottom:0;width:26px;background:var(--line2);border-right:1px solid var(--line);}
+.mk .burger{width:13px;height:6px;background:var(--gold);border-radius:1px;align-self:flex-end;}
+.mk .dot{width:10px;height:10px;border-radius:50%;background:var(--gold);}
+.oopts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;}
+.oo{border:1px solid var(--line);border-radius:14px;padding:14px 12px 12px;background:var(--panel);transition:border-color .2s,transform .12s,box-shadow .25s;text-align:center;}
+.oo:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 20px 36px -26px rgba(42,38,32,.4);}
+.oo.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold2);}
+.oo .ol{font-size:14px;font-weight:600;}.oo .osb{font-size:11.5px;color:var(--muted);margin-top:3px;font-weight:300;}
+
+/* result / brief */
+.res{text-align:left;}
+.res .fam{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(30px,5.5vw,52px);line-height:1.05;letter-spacing:-.02em;text-align:center;margin-top:8px;}
 .res .famko{color:var(--gold);font-size:.5em;font-style:italic;display:block;margin-top:6px;}
-.res .blurb{margin:20px auto 0;max-width:48ch;color:var(--ink2);font-weight:300;font-size:clamp(15px,1.7vw,19px);}
-.pallab{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:34px 0 14px;}
-.palgal{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x proximity;}
-.palcard{flex:0 0 auto;border:1px solid var(--line);border-radius:12px;padding:9px;background:var(--panel);transition:border-color .2s,transform .12s,box-shadow .2s;scroll-snap-align:start;}
-.palcard:hover{transform:translateY(-3px);}
-.palcard.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold2);}
-.palcard .sw{display:flex;border-radius:7px;overflow:hidden;width:128px;height:38px;border:1px solid var(--line);}
-.palcard .sw i{flex:1;display:block;}
-.palcard .pn{display:block;font-size:11.5px;color:var(--muted);margin-top:8px;text-align:center;white-space:nowrap;}
-.palcard .pn b{color:#FBF7EF;background:var(--gold);font-weight:600;font-size:9.5px;padding:2px 7px;border-radius:100px;margin-left:5px;letter-spacing:.04em;}
-.palsel{margin:6px auto 0;max-width:480px;background:var(--panel);border:1px solid var(--line2);border-radius:14px;padding:16px 18px;}
-.palsel .psw{display:flex;height:48px;border-radius:9px;overflow:hidden;border:1px solid var(--line);}
-.palsel .psw i{flex:1;display:block;}
-.palsel .pmeta{margin-top:13px;font-size:13.5px;color:var(--ink2);}
-.palsel .pmeta b{font-weight:600;}
-.palsel .pcodes{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;justify-content:center;}
-.palsel .pcodes span{font-size:10.5px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:3px 10px;background:var(--bg);}
-.typ{margin:26px auto 0;padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:14px;max-width:460px;}
-.typ .big{font-size:clamp(24px,4vw,34px);letter-spacing:-.01em;}
-.typ .small{margin-top:6px;font-size:13px;color:var(--muted);}
-.typ .lab{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px;}
-.axes{max-width:460px;margin:30px auto 0;text-align:left;}
-.axrow{display:grid;grid-template-columns:70px 1fr 70px;gap:10px;align-items:center;margin:9px 0;font-size:11.5px;color:var(--muted);}
-.axrow .bar{height:6px;background:var(--panel2);border-radius:6px;position:relative;border:1px solid var(--line);}
-.axrow .bar i{position:absolute;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--gold);transform:translateX(-50%);box-shadow:0 0 0 3px var(--bg);}
-.axrow .r{text-align:right;}
-.tmpl{margin:30px auto 0;max-width:520px;}
-.tmpl .lab{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;}
-.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-.chip{font-size:12px;color:var(--ink2);border:1px solid var(--line2);border-radius:100px;padding:6px 13px;background:var(--panel);}
-.res .also{margin-top:24px;font-size:13px;color:var(--faint);}
-.res .also b{color:var(--muted);font-weight:500;}
-.res-cta{margin-top:38px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-.note{margin-top:34px;font-size:11.5px;color:var(--faint);line-height:1.6;border-top:1px solid var(--line);padding-top:16px;}
-.hidden{display:none;}
+.res .blurb{margin:18px auto 30px;max-width:48ch;color:var(--ink2);font-weight:300;font-size:clamp(15px,1.6vw,18px);text-align:center;}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin-bottom:16px;}
+.card .lab{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;}
+.bpal .psw{display:flex;height:46px;border-radius:9px;overflow:hidden;border:1px solid var(--line);}.bpal .psw i{flex:1;}
+.bpal .pmeta{margin-top:12px;font-size:13.5px;}.bpal .pmeta b{font-weight:600;}
+.bpal .pcodes{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}.bpal .pcodes span{font-size:10.5px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:3px 9px;background:var(--bg);}
+.blay{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;}
+.blay .bi{text-align:center;}.blay .bi .k{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:600;margin-bottom:6px;}
+.blay .bi .v{font-size:13px;font-weight:600;margin-top:6px;}
+.chips{display:flex;flex-wrap:wrap;gap:8px;}.chip{font-size:12px;color:var(--ink2);border:1px solid var(--line2);border-radius:100px;padding:6px 13px;background:var(--panel);}
+.axes{margin-top:6px;}.axrow{display:grid;grid-template-columns:60px 1fr 60px;gap:10px;align-items:center;margin:8px 0;font-size:11px;color:var(--muted);}
+.axrow .bar{height:6px;background:var(--panel2);border-radius:6px;position:relative;border:1px solid var(--line);}.axrow .bar i{position:absolute;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--gold);transform:translateX(-50%);box-shadow:0 0 0 3px var(--panel);}.axrow .r{text-align:right;}
+.res-cta{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.navrow{display:flex;justify-content:space-between;align-items:center;margin-top:26px;gap:12px;}
+.link{font-size:13px;color:var(--muted);}.link:hover{color:var(--gold);}
+.note{margin-top:24px;font-size:11.5px;color:var(--faint);line-height:1.6;border-top:1px solid var(--line);padding-top:14px;}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <!-- INTRO -->
+  <div class="phasebar" id="phasebar"></div>
+
   <section id="intro" class="intro">
-    <div class="kicker">Career Atelier · 디자인 컨셉</div>
-    <h1>당신의 <em>취향</em>으로<br>디자인을 짓습니다</h1>
-    <p>색이나 폰트를 묻지 않아요. 좋아하는 영화·음악·무드 열 가지만 고르면, 당신에게 맞는 디자인 시스템을 찾아드려요.</p>
-    <button class="btn" id="start">시작하기 (10문항) →</button>
+    <div class="kicker">Career Atelier · 디자인 컨셉 빌더</div>
+    <h1>당신의 <em>취향</em>으로<br>디자인을 지어갑니다</h1>
+    <p>색·폰트를 직접 묻지 않아요. 좋아하는 것들을 고르며 네 단계를 지나면, 당신만의 디자인 시스템이 완성돼요.</p>
+    <div class="steps"><span><b>①</b> 취향 10문답</span><span><b>②</b> 팔레트</span><span><b>③</b> 레이아웃</span><span><b>④</b> 브리프</span></div>
+    <button class="btn" id="start">시작하기 →</button>
   </section>
 
-  <!-- QUESTION -->
-  <section id="quiz" class="q hidden">
+  <section id="quiz" class="hidden">
     <div class="prog" id="prog"></div>
-    <div class="qn" id="qn"></div>
-    <h2 id="qtext"></h2>
-    <div class="opts-wrap">
-      <div class="opts">
-        <button class="opt" id="optA"></button>
-        <button class="opt" id="optB"></button>
-      </div>
-      <span class="vs serif">vs</span>
-    </div>
+    <div class="qn" id="qnn"></div><h2 class="qh serif" id="qtext"></h2>
+    <div class="opts"><button class="opt" id="optA"></button><button class="opt" id="optB"></button></div>
   </section>
 
-  <!-- RESULT -->
-  <section id="result" class="res hidden">
-    <div class="kicker">당신의 디자인 시스템</div>
+  <section id="palette" class="hidden">
+    <div class="qn">STEP ② · 팔레트</div>
+    <h2 class="qh serif">시작 팔레트를 골라요</h2>
+    <div class="tabs" id="tabs"></div>
+    <div class="palgrid" id="palgrid"></div>
+    <div class="navrow"><button class="link" id="palback">← 진단 다시</button><button class="btn" id="palnext">다음: 레이아웃 →</button></div>
+  </section>
+
+  <section id="outline" class="hidden">
+    <div class="prog" id="oprog"></div>
+    <div class="qn" id="onn"></div><h2 class="qh serif" id="otext"></h2>
+    <div class="oopts" id="oopts"></div>
+    <div class="navrow"><button class="link" id="oback">← 이전</button><span class="link" id="oskip">건너뛰기</span></div>
+  </section>
+
+  <section id="brief" class="hidden res">
+    <div class="kicker">당신의 디자인 브리프</div>
     <div class="fam serif" id="famName"></div>
     <p class="blurb" id="famBlurb"></p>
-    <div class="pallab">시작 팔레트 · 취향에 맞춰 정렬 (전부 실제 Pantone)</div>
-    <div class="palgal" id="palgal"></div>
-    <div class="palsel" id="palsel"></div>
-    <div class="typ">
-      <div class="lab">타이포그래피</div>
-      <div class="big serif" id="typBig">Career Atelier</div>
-      <div class="small" id="typSmall"></div>
-    </div>
-    <div class="axes" id="axes"></div>
-    <div class="tmpl">
-      <div class="lab">이 방향에 맞는 라이브러리 템플릿</div>
-      <div class="chips" id="tmplChips"></div>
-    </div>
-    <div class="also" id="also"></div>
-    <div class="res-cta">
-      <button class="btn" id="again">다시 진단</button>
-      <button class="btn ghost" id="share">결과 요약 복사</button>
-    </div>
-    <p class="note">v1 — 취향→디자인 축 매핑은 튜닝 가능하고, 템플릿 매칭은 이름 기준 휴리스틱이라 실제 프리뷰로 정교화합니다.</p>
+    <div class="card bpal"><div class="lab">팔레트 (Pantone)</div><div id="bpalBody"></div></div>
+    <div class="card"><div class="lab">레이아웃 아웃라인</div><div class="blay" id="blayBody"></div></div>
+    <div class="card"><div class="lab">타이포 · 무드 축</div><div id="typLine" style="font-size:14px;margin-bottom:14px;"></div><div class="axes" id="axes"></div></div>
+    <div class="card"><div class="lab">이 방향에 맞는 라이브러리 템플릿</div><div class="chips" id="tmplChips"></div><div class="link" style="margin-top:12px;" id="also"></div></div>
+    <div class="res-cta"><button class="btn" id="again">처음부터</button><button class="btn ghost" id="copy">브리프 복사</button></div>
+    <p class="note">v2 — 취향→축, 팔레트, 레이아웃 선택은 전부 튜닝 가능. 템플릿 매칭은 이름 휴리스틱이라 실제 프리뷰로 정교화합니다.</p>
   </section>
 </div>
 
 <script>
-/* ---------- 6 design axes (positive pole first) ---------- */
-const AXES=[
-  {k:'mood',   pos:'밝음',    neg:'어두움'},
-  {k:'density',pos:'미니멀',  neg:'풍부함'},
-  {k:'type',   pos:'세리프',  neg:'산세리프'},
-  {k:'temp',   pos:'따뜻함',  neg:'차가움'},
-  {k:'energy', pos:'차분함',  neg:'대담함'},
-  {k:'era',    pos:'클래식',  neg:'실험적'},
-];
-
-/* ---------- 10 projective taste questions ---------- */
+const AXES=[{k:'mood',pos:'밝음',neg:'어두움'},{k:'density',pos:'미니멀',neg:'풍부함'},{k:'type',pos:'세리프',neg:'산세리프'},{k:'temp',pos:'따뜻함',neg:'차가움'},{k:'energy',pos:'차분함',neg:'대담함'},{k:'era',pos:'클래식',neg:'실험적'}];
 const Q=[
- {q:'영화를 고른다면', A:{oa:'A',t:'웨스 앤더슨',s:'대칭, 파스텔, 아기자기한 온기',w:{temp:1,mood:1,era:1,energy:.5}},
-                        B:{oa:'B',t:'크리스토퍼 놀란',s:'차갑고 웅장하고 진지하게',w:{mood:-1,temp:-1,energy:-1}}},
- {q:'플레이리스트는', A:{oa:'A',t:'쳇 베이커',s:'나른한 재즈 발라드',w:{energy:1,temp:1,era:1}},
-                       B:{oa:'B',t:'다프트 펑크',s:'미래적인 일렉트로',w:{energy:-1,era:-1,temp:-1}}},
- {q:'주말의 이상은', A:{oa:'A',t:'미술관과 북카페',s:'조용한 여백 속에서',w:{density:1,energy:1,mood:1}},
-                      B:{oa:'B',t:'페스티벌과 클럽',s:'가득 찬 에너지 속에서',w:{density:-1,energy:-1,mood:-1}}},
- {q:'머물고 싶은 곳', A:{oa:'A',t:'교토의 료칸',s:'자연 소재와 시간이 쌓인 결',w:{temp:1,era:1,density:.5}},
-                       B:{oa:'B',t:'뉴욕의 로프트',s:'노출 콘크리트와 도시의 선',w:{temp:-1,type:-1,era:-.5}}},
- {q:'사진의 감성은', A:{oa:'A',t:'흑백 필름',s:'담백하고 오래가는',w:{density:1,era:1,type:.5}},
-                      B:{oa:'B',t:'비비드 디지털',s:'선명하고 강렬한',w:{density:-1,energy:-1,era:-.5}}},
- {q:'글씨의 취향은', A:{oa:'A',t:'만년필 손편지',s:'획의 온기가 남는',w:{type:1,temp:1,era:1}},
-                      B:{oa:'B',t:'네온 사인',s:'또렷하고 현대적인',w:{type:-1,energy:-1,era:-1}}},
- {q:'옷장을 연다면', A:{oa:'A',t:'톤온톤 베이지 니트',s:'조용한 한 색으로',w:{density:1,temp:1,energy:1}},
-                      B:{oa:'B',t:'레드 컬러 블로킹',s:'대담한 대비로',w:{density:-1,energy:-1,mood:.3}}},
- {q:'하루 중 이 순간', A:{oa:'A',t:'이른 아침의 미색 햇살',s:'밝고 부드러운',w:{mood:1,temp:1,energy:1}},
-                        B:{oa:'B',t:'자정의 네온 도시',s:'어둡고 선명한',w:{mood:-1,temp:-1,era:-1}}},
- {q:'벽을 채운다면', A:{oa:'A',t:'여백이 �upsD 갤러리 벽',s:'한 점만 걸어두고',w:{density:1,energy:1,type:.5}},
-                      B:{oa:'B',t:'가득 채운 콜라주',s:'겹치고 쌓아서',w:{density:-1,energy:-1}}},
- {q:'끌리는 팔레트', A:{oa:'A',t:'크림 · 아이보리 · 골드',s:'따뜻하고 우아하게',w:{mood:1,temp:1,era:1}},
-                      B:{oa:'B',t:'블랙 · 실버 · 일렉트릭',s:'차갑고 미래적으로',w:{mood:-1,temp:-1,era:-1}}},
+ {q:'영화를 고른다면',A:{oa:'A',t:'웨스 앤더슨',s:'대칭, 파스텔, 아기자기한 온기',w:{temp:1,mood:1,era:1,energy:.5}},B:{oa:'B',t:'크리스토퍼 놀란',s:'차갑고 웅장하고 진지하게',w:{mood:-1,temp:-1,energy:-1}}},
+ {q:'플레이리스트는',A:{oa:'A',t:'쳇 베이커',s:'나른한 재즈 발라드',w:{energy:1,temp:1,era:1}},B:{oa:'B',t:'다프트 펑크',s:'미래적인 일렉트로',w:{energy:-1,era:-1,temp:-1}}},
+ {q:'주말의 이상은',A:{oa:'A',t:'미술관과 북카페',s:'조용한 여백 속에서',w:{density:1,energy:1,mood:1}},B:{oa:'B',t:'페스티벌과 클럽',s:'가득 찬 에너지 속에서',w:{density:-1,energy:-1,mood:-1}}},
+ {q:'머물고 싶은 곳',A:{oa:'A',t:'교토의 료칸',s:'자연 소재와 시간이 쌓인 결',w:{temp:1,era:1,density:.5}},B:{oa:'B',t:'뉴욕의 로프트',s:'노출 콘크리트와 도시의 선',w:{temp:-1,type:-1,era:-.5}}},
+ {q:'사진의 감성은',A:{oa:'A',t:'흑백 필름',s:'담백하고 오래가는',w:{density:1,era:1,type:.5}},B:{oa:'B',t:'비비드 디지털',s:'선명하고 강렬한',w:{density:-1,energy:-1,era:-.5}}},
+ {q:'글씨의 취향은',A:{oa:'A',t:'만년필 손편지',s:'획의 온기가 남는',w:{type:1,temp:1,era:1}},B:{oa:'B',t:'네온 사인',s:'또렷하고 현대적인',w:{type:-1,energy:-1,era:-1}}},
+ {q:'옷장을 연다면',A:{oa:'A',t:'톤온톤 베이지 니트',s:'조용한 한 색으로',w:{density:1,temp:1,energy:1}},B:{oa:'B',t:'레드 컬러 블로킹',s:'대담한 대비로',w:{density:-1,energy:-1,mood:.3}}},
+ {q:'하루 중 이 순간',A:{oa:'A',t:'이른 아침의 미색 햇살',s:'밝고 부드러운',w:{mood:1,temp:1,energy:1}},B:{oa:'B',t:'자정의 네온 도시',s:'어둡고 선명한',w:{mood:-1,temp:-1,era:-1}}},
+ {q:'벽을 채운다면',A:{oa:'A',t:'여백이 많은 갤러리 벽',s:'한 점만 걸어두고',w:{density:1,energy:1,type:.5}},B:{oa:'B',t:'가득 채운 콜라주',s:'겹치고 쌓아서',w:{density:-1,energy:-1}}},
+ {q:'끌리는 팔레트',A:{oa:'A',t:'크림 · 아이보리 · 골드',s:'따뜻하고 우아하게',w:{mood:1,temp:1,era:1}},B:{oa:'B',t:'블랙 · 실버 · 일렉트릭',s:'차갑고 미래적으로',w:{mood:-1,temp:-1,era:-1}}},
 ];
-// fix a typo-safe label
-Q[8].A.t='여백이 많은 갤러리 벽';
-
-/* ---------- diverse Pantone palette library (16) ---------- */
-const PAL=[{id:"warm-neutral",en:"Ivory & Gold",ko:"아이보리 골드",m:["bright", "warm", "calm"],c:[["#F1EBDF","7422 C"],["#FBF7EF","7422 C"],["#C9A96A","7407 C"],["#A8823E","7511 C"],["#2A2620","Black 4 C"]]},
-{id:"mono",en:"Ink Monotone",ko:"잉크 모노톤",m:["dark", "cool", "calm"],c:[["#0B0D10","Black 6 C"],["#2A2F36","Black C"],["#5B6470","Cool Gray 10 C"],["#9AA3B0","Cool Gray 6 C"],["#E6EAF0","7541 C"]]},
-{id:"mono-warm",en:"Sepia Monotone",ko:"세피아 모노톤",m:["warm", "calm"],c:[["#2A1B10","Black 4 C"],["#6B4A2E","7518 C"],["#A8823E","7511 C"],["#D8B87A","7502 C"],["#F3E6CE","7422 C"]]},
-{id:"bw",en:"Black & White",ko:"흑백",m:["bright", "calm", "bold"],c:[["#111111","Black 6 C"],["#4A4A4A","7533 C"],["#9B9B9B","Cool Gray 7 C"],["#DDDDDD","Cool Gray 1 C"],["#FFFFFF","7422 C"]]},
-{id:"neon",en:"Neon on Black",ko:"네온 온 블랙",m:["dark", "bold", "experimental"],c:[["#0A0A0F","Black 6 C"],["#13131A","Black 6 C"],["#39FF14","361 C"],["#FF10F0","Rhodamine Red C"],["#00E5FF","306 C"]]},
-{id:"neon-cyber",en:"Cyber Sunset",ko:"사이버 선셋",m:["dark", "bold", "experimental"],c:[["#0D0221","Black 6 C"],["#241734","7547 C"],["#F72585","218 C"],["#7209B7","266 C"],["#4CC9F0","319 C"]]},
-{id:"pastel",en:"Soft Pastel",ko:"소프트 파스텔",m:["bright", "warm", "calm"],c:[["#F7D6E0","7422 C"],["#F2E9E4","7422 C"],["#C9E4DE","317 C"],["#DBCDF0","7443 C"],["#F2C6A0","155 C"]]},
-{id:"earthy",en:"Earthy Muted",ko:"어시 뮤트",m:["warm", "calm"],c:[["#E6D9C9","7428 C"],["#B08968","7504 C"],["#7F5539","147 C"],["#5A6650","Warm Gray 10 C"],["#2E2A26","Black C"]]},
-{id:"jewel",en:"Jewel Tones",ko:"주얼 톤",m:["dark", "bold"],c:[["#0F2A24","7547 C"],["#0B7A6E","328 C"],["#7B1E3B","216 C"],["#1E3A8A","287 C"],["#E9D8A6","7506 C"]]},
-{id:"duotone",en:"Cobalt & Coral",ko:"코발트 코랄",m:["bright", "bold"],c:[["#0A2540","289 C"],["#2563EB","285 C"],["#FF6B5E","170 C"],["#EAF0F6","7541 C"],["#0A2540","289 C"]]},
-{id:"vivid",en:"Vivid Play",ko:"비비드 플레이",m:["bright", "bold", "experimental"],c:[["#111014","Black 6 C"],["#F5F14E","100 C"],["#FF5A3C","171 C"],["#6C4CF1","7442 C"],["#F7F7F5","7422 C"]]},
-{id:"cool-corp",en:"Cool Corporate",ko:"쿨 코퍼릿",m:["bright", "cool", "calm"],c:[["#FFFFFF","7422 C"],["#F1F5F9","7541 C"],["#2563EB","285 C"],["#0F172A","7547 C"],["#64748B","Cool Gray 9 C"]]},
-{id:"sunset",en:"Warm Sunset",ko:"웜 선셋",m:["warm", "bold"],c:[["#2B1B2F","Black C"],["#7A2E4A","7433 C"],["#E0736B","7416 C"],["#F2A65A","7411 C"],["#F6E7CB","7499 C"]]},
-{id:"sage",en:"Forest Sage",ko:"포레스트 세이지",m:["bright", "calm", "warm"],c:[["#F3F1E9","7422 C"],["#A3B18A","7494 C"],["#588157","4485 C"],["#3A5A40","7483 C"],["#344E41","350 C"]]},
-{id:"noir-gold",en:"Champagne Noir",ko:"샴페인 누아르",m:["dark", "warm", "calm"],c:[["#0A0E0F","Black 6 C"],["#12191C","Black 6 C"],["#E6B15E","7508 C"],["#57B7C1","7472 C"],["#ECEFEC","7541 C"]]},
-{id:"mono-blush",en:"Blush Monotone",ko:"블러시 모노톤",m:["bright", "warm", "calm"],c:[["#3A1F2B","Black C"],["#7D3F53","7432 C"],["#C77D91","7430 C"],["#E9BFC9","7435 C"],["#FBEEF1","7422 C"]]}];
-function palFit(p,v){let s=0,m=p.m;
-  if(m.includes('bright'))s+=v.mood; if(m.includes('dark'))s-=v.mood;
-  if(m.includes('warm'))s+=v.temp; if(m.includes('cool'))s-=v.temp;
-  if(m.includes('calm'))s+=v.energy; if(m.includes('bold'))s-=v.energy;
-  if(m.includes('experimental'))s-=v.era; return s;}
-
-/* ---------- 8 design-system families (coords on the 6 axes, -1..1) ---------- */
+const PAL=[{id:"warm-neutral",cat:"neutral",catko:"뉴트럴",en:"Ivory & Gold",ko:"아이보리 골드",m:["bright", "warm", "calm"],c:[["#F1EBDF","7422 C"],["#FBF7EF","7422 C"],["#C9A96A","7407 C"],["#A8823E","7511 C"],["#2A2620","Black 4 C"]]},
+{id:"sand",cat:"neutral",catko:"뉴트럴",en:"Warm Sand",ko:"웜 샌드",m:["bright", "warm", "calm"],c:[["#EDE3D3","7422 C"],["#DCC9AE","7527 C"],["#B79B78","7529 C"],["#7C6A54","7497 C"],["#332B22","Black 2 C"]]},
+{id:"greige",cat:"neutral",catko:"뉴트럴",en:"Greige",ko:"그레이지",m:["bright", "calm"],c:[["#EFEDE8","7422 C"],["#D8D3C8","Warm Gray 1 C"],["#A9A296","Warm Gray 5 C"],["#6E685E","7532 C"],["#2B2925","Black C"]]},
+{id:"mono-ink",cat:"mono",catko:"모노톤",en:"Ink Monotone",ko:"잉크 모노톤",m:["dark", "cool", "calm"],c:[["#0B0D10","Black 6 C"],["#2A2F36","Black C"],["#5B6470","Cool Gray 10 C"],["#9AA3B0","Cool Gray 6 C"],["#E6EAF0","7541 C"]]},
+{id:"mono-sepia",cat:"mono",catko:"모노톤",en:"Sepia Monotone",ko:"세피아 모노톤",m:["warm", "calm"],c:[["#2A1B10","Black 4 C"],["#6B4A2E","7518 C"],["#A8823E","7511 C"],["#D8B87A","7502 C"],["#F3E6CE","7422 C"]]},
+{id:"mono-blush",cat:"mono",catko:"모노톤",en:"Blush Monotone",ko:"블러시 모노톤",m:["bright", "warm", "calm"],c:[["#3A1F2B","Black C"],["#7D3F53","7432 C"],["#C77D91","7430 C"],["#E9BFC9","7435 C"],["#FBEEF1","7422 C"]]},
+{id:"mono-slate",cat:"mono",catko:"모노톤",en:"Slate Monotone",ko:"슬레이트 모노톤",m:["cool", "calm"],c:[["#141A1F","Black 6 C"],["#33414B","Black 5 C"],["#5E727E","4485 C"],["#98A7B0","Cool Gray 6 C"],["#DDE5EA","7541 C"]]},
+{id:"bw-classic",cat:"bw",catko:"흑백",en:"Black & White",ko:"흑백",m:["bright", "calm", "bold"],c:[["#111111","Black 6 C"],["#4A4A4A","7533 C"],["#9B9B9B","Cool Gray 7 C"],["#DDDDDD","Cool Gray 1 C"],["#FFFFFF","7422 C"]]},
+{id:"bw-contrast",cat:"bw",catko:"흑백",en:"High Contrast",ko:"하이 콘트라스트",m:["bold"],c:[["#000000","Black 6 C"],["#1A1A1A","Black 6 C"],["#808080","7540 C"],["#F2F2F2","7541 C"],["#FFFFFF","7422 C"]]},
+{id:"bw-news",cat:"bw",catko:"흑백",en:"Newsprint",ko:"뉴스프린트",m:["warm", "calm"],c:[["#1B1A17","Black 6 C"],["#4B4842","7533 C"],["#8C877C","Warm Gray 7 C"],["#D6D1C4","7537 C"],["#F4F1E9","7422 C"]]},
+{id:"neon-black",cat:"neon",catko:"네온",en:"Neon on Black",ko:"네온 온 블랙",m:["dark", "bold", "experimental"],c:[["#0A0A0F","Black 6 C"],["#13131A","Black 6 C"],["#39FF14","361 C"],["#FF10F0","Rhodamine Red C"],["#00E5FF","306 C"]]},
+{id:"neon-cyber",cat:"neon",catko:"네온",en:"Cyber Sunset",ko:"사이버 선셋",m:["dark", "bold", "experimental"],c:[["#0D0221","Black 6 C"],["#241734","7547 C"],["#F72585","218 C"],["#7209B7","266 C"],["#4CC9F0","319 C"]]},
+{id:"neon-vapor",cat:"neon",catko:"네온",en:"Vaporwave",ko:"베이퍼웨이브",m:["dark", "bold", "experimental"],c:[["#1A1030","7547 C"],["#2D1B4E","276 C"],["#FF6AD5","223 C"],["#8C9EFF","7452 C"],["#26F0F1","319 C"]]},
+{id:"neon-acid",cat:"neon",catko:"네온",en:"Acid",ko:"애시드",m:["dark", "bold", "experimental"],c:[["#0C0F06","Black 6 C"],["#1B2410","Black 3 C"],["#B6FF00","374 C"],["#FF4D00","Orange 021 C"],["#EAFFC7","7485 C"]]},
+{id:"pastel-soft",cat:"pastel",catko:"파스텔",en:"Soft Pastel",ko:"소프트 파스텔",m:["bright", "warm", "calm"],c:[["#F7D6E0","7422 C"],["#F2E9E4","7422 C"],["#C9E4DE","317 C"],["#DBCDF0","7443 C"],["#F2C6A0","155 C"]]},
+{id:"pastel-candy",cat:"pastel",catko:"파스텔",en:"Candy",ko:"캔디",m:["bright", "calm"],c:[["#FFE5EC","7422 C"],["#FFC2D1","7434 C"],["#BDE0FE","7457 C"],["#CDB4DB","256 C"],["#A2D2FF","291 C"]]},
+{id:"pastel-sage",cat:"pastel",catko:"파스텔",en:"Sage Pastel",ko:"세이지 파스텔",m:["bright", "warm", "calm"],c:[["#EEF1E6","7541 C"],["#D8E2C6","7485 C"],["#B7C9A8","7538 C"],["#EAD9C4","7501 C"],["#F6EFE6","7422 C"]]},
+{id:"earthy-muted",cat:"earthy",catko:"어시",en:"Earthy Muted",ko:"어시 뮤트",m:["warm", "calm"],c:[["#E6D9C9","7428 C"],["#B08968","7504 C"],["#7F5539","147 C"],["#5A6650","Warm Gray 10 C"],["#2E2A26","Black C"]]},
+{id:"earthy-terra",cat:"earthy",catko:"어시",en:"Terracotta",ko:"테라코타",m:["warm"],c:[["#F3E4D7","7422 C"],["#E0A06B","7411 C"],["#C1614A","7418 C"],["#7A3B2E","175 C"],["#2E1B15","Black 4 C"]]},
+{id:"earthy-desert",cat:"earthy",catko:"어시",en:"Desert",ko:"데저트",m:["warm", "calm"],c:[["#F1E3CE","7422 C"],["#D9B48F","7502 C"],["#B08046","7511 C"],["#6E5A3A","147 C"],["#33291C","Black 4 C"]]},
+{id:"earthy-forest",cat:"earthy",catko:"어시",en:"Forest Sage",ko:"포레스트 세이지",m:["bright", "calm", "warm"],c:[["#F3F1E9","7422 C"],["#A3B18A","7494 C"],["#588157","4485 C"],["#3A5A40","7483 C"],["#344E41","350 C"]]},
+{id:"jewel-tones",cat:"jewel",catko:"주얼",en:"Jewel Tones",ko:"주얼 톤",m:["dark", "bold"],c:[["#0F2A24","7547 C"],["#0B7A6E","328 C"],["#7B1E3B","216 C"],["#1E3A8A","287 C"],["#E9D8A6","7506 C"]]},
+{id:"jewel-emerald",cat:"jewel",catko:"주얼",en:"Emerald Noir",ko:"에메랄드 누아르",m:["dark", "calm"],c:[["#08110E","Black 6 C"],["#0E3B2E","303 C"],["#1B7A5A","335 C"],["#C9A96A","7407 C"],["#EAF4EE","7541 C"]]},
+{id:"jewel-ruby",cat:"jewel",catko:"주얼",en:"Ruby & Ink",ko:"루비 잉크",m:["dark", "bold"],c:[["#120A0E","Black 6 C"],["#2A1020","Black 6 C"],["#8E1F3C","194 C"],["#D4A15A","7509 C"],["#F1E4D0","7422 C"]]},
+{id:"duo-cobalt",cat:"duotone",catko:"듀오톤",en:"Cobalt & Coral",ko:"코발트 코랄",m:["bright", "bold"],c:[["#0A2540","289 C"],["#2563EB","285 C"],["#FF6B5E","170 C"],["#EAF0F6","7541 C"],["#0A2540","289 C"]]},
+{id:"duo-plum",cat:"duotone",catko:"듀오톤",en:"Plum & Gold",ko:"플럼 골드",m:["dark", "warm"],c:[["#1E1024","Black 6 C"],["#4A1D52","260 C"],["#C9A96A","7407 C"],["#F0E6D2","7422 C"],["#1E1024","Black 6 C"]]},
+{id:"duo-teal",cat:"duotone",catko:"듀오톤",en:"Teal & Orange",ko:"틸 오렌지",m:["bright", "bold"],c:[["#093A3E","309 C"],["#0E7C86","7474 C"],["#FF8C42","157 C"],["#F4EFE6","7422 C"],["#093A3E","309 C"]]},
+{id:"vivid-play",cat:"vivid",catko:"비비드",en:"Vivid Play",ko:"비비드 플레이",m:["bright", "bold", "experimental"],c:[["#111014","Black 6 C"],["#F5F14E","100 C"],["#FF5A3C","171 C"],["#6C4CF1","7442 C"],["#F7F7F5","7422 C"]]},
+{id:"vivid-bauhaus",cat:"vivid",catko:"비비드",en:"Bauhaus",ko:"바우하우스",m:["bright", "bold"],c:[["#F4EDE1","7422 C"],["#E63946","Red 032 C"],["#F4A11E","142 C"],["#1D4E89","301 C"],["#141414","Black 6 C"]]},
+{id:"cool-corp",cat:"cool",catko:"쿨",en:"Cool Corporate",ko:"쿨 코퍼릿",m:["bright", "cool", "calm"],c:[["#FFFFFF","7422 C"],["#F1F5F9","7541 C"],["#2563EB","285 C"],["#0F172A","7547 C"],["#64748B","Cool Gray 9 C"]]},
+{id:"cool-nordic",cat:"cool",catko:"쿨",en:"Nordic",ko:"노르딕",m:["bright", "cool", "calm"],c:[["#F7F9FB","7541 C"],["#E2E8EE","7541 C"],["#9DB2C4","7543 C"],["#4A6076","7545 C"],["#1F2D3A","7546 C"]]},
+{id:"noir-gold",cat:"dark",catko:"다크",en:"Champagne Noir",ko:"샴페인 누아르",m:["dark", "warm", "calm"],c:[["#0A0E0F","Black 6 C"],["#12191C","Black 6 C"],["#E6B15E","7508 C"],["#57B7C1","7472 C"],["#ECEFEC","7541 C"]]},
+{id:"noir-wine",cat:"dark",catko:"다크",en:"Wine & Gold",ko:"와인 골드",m:["dark", "warm"],c:[["#0E0608","Black 6 C"],["#2A0E16","Black 6 C"],["#7A1F35","188 C"],["#C9A96A","7407 C"],["#F0E6D6","7422 C"]]}];
+function palFit(p,v){let s=0,m=p.m;if(m.includes('bright'))s+=v.mood;if(m.includes('dark'))s-=v.mood;if(m.includes('warm'))s+=v.temp;if(m.includes('cool'))s-=v.temp;if(m.includes('calm'))s+=v.energy;if(m.includes('bold'))s-=v.energy;if(m.includes('experimental'))s-=v.era;return s;}
 const FAM=[
- {name:'The Gallery',ko:'갤러리',c:{mood:1,density:1,type:1,temp:1,energy:1,era:1},
-  blurb:'미술관 벽 같은 아이보리 위에 얇은 세리프와 넓은 여백. 조용하지만 깊은, 가장 우아한 방향이에요.',
-  pal:['#F1EBDF','#FBF7EF','#A8823E','#C9A96A','#2A2620'],type:'Fraunces 세리프 + Outfit',
-  t:['opal-minimal','origin-minimal','mountain-minimal','insee','elpis','sonex','alinti']},
- {name:'Atelier Noir',ko:'아틀리에 누아르',c:{mood:-1,density:1,type:1,temp:.6,energy:1,era:1},
-  blurb:'짙은 밤 위에 골드가 스며드는 프리미엄 다크. 절제되고 묵직한 격조를 좋아하는 당신에게.',
-  pal:['#0A0E0F','#12191C','#E6B15E','#57B7C1','#ECEFEC'],type:'Fraunces 세리프 + Outfit',
-  t:['kane','ober','blon','copr','현재 다크 빌드(drmoony)']},
- {name:'The Editorial',ko:'에디토리얼',c:{mood:1,density:0,type:1,temp:-.3,energy:1,era:.7},
-  blurb:'잡지 표지 같은 큰 세리프와 그리드. 이야기를 문장으로 끌고 가는, 지적인 무드예요.',
-  pal:['#FAF7F2','#111111','#B0322A','#8A8378','#1E1E1E'],type:'Fraunces 디스플레이 + Outfit',
-  t:['whitespace','grand','pallas','architecture','credesign']},
- {name:'The Studio',ko:'스튜디오',c:{mood:.3,density:-1,type:-1,temp:.5,energy:-1,era:-1},
-  blurb:'컬러가 튀고 요소가 살아 움직이는 크리에이티브. 대담하고 실험적인 당신을 위한 방향.',
-  pal:['#111014','#F5F14E','#FF5A3C','#6C4CF1','#F7F7F5'],type:'Bold Sans + 굵은 그로테스크',
-  t:['leedo','rebel','arabo','master','scrape','youth','genix']},
- {name:'Neo Tech',ko:'네오 테크',c:{mood:-1,density:.5,type:-1,temp:-1,energy:-.6,era:-1},
-  blurb:'다크 위 모노스페이스와 날카로운 선. 개발자·프로덕트 감성의 미니멀 테크.',
-  pal:['#0B0D10','#151A21','#5EEAD4','#8B93A7','#E6EAF0'],type:'Sans + Mono 악센트',
-  t:['anur(react)','textio(react)','mone(tailwind)','krozo(next)','liam(react)','andle(vue)']},
- {name:'Warm Personal',ko:'웜 퍼스널',c:{mood:1,density:.2,type:-.5,temp:1,energy:.6,era:-.2},
-  blurb:'둥근 산세리프와 살구빛 톤. 다정하고 친근하게, 사람 냄새 나는 페이지.',
-  pal:['#FFF7F0','#FFE3D3','#F2825B','#3B3330','#7A6A62'],type:'Rounded Sans + Outfit',
-  t:['bloom','brilio','naru','kura','alaia','janemon']},
- {name:'The Lens',ko:'렌즈',c:{mood:-.6,density:1,type:-.5,temp:-.3,energy:.7,era:.3},
-  blurb:'이미지가 화면을 가득 채우는 풀블리드. 사진과 비주얼이 주인공인 사람에게.',
-  pal:['#0C0C0C','#171717','#EDEDED','#C9A96A','#8A8A8A'],type:'Light Sans + 큰 여백',
-  t:['smarty','modesto','emily','oblo','wildone','nextex']},
- {name:'Corporate Clean',ko:'코퍼릿 클린',c:{mood:1,density:1,type:-1,temp:-1,energy:1,era:-.2},
-  blurb:'또렷한 산세리프와 정돈된 그리드. 신뢰감 있고 프로페셔널한 이력·CV 톤.',
-  pal:['#FFFFFF','#F3F5F8','#2563EB','#0F172A','#64748B'],type:'Clean Sans (Inter류) + Outfit',
-  t:['metier','bolby','procv','portio','it-s-me','resume-template']},
+ {name:'The Gallery',ko:'갤러리',c:{mood:1,density:1,type:1,temp:1,energy:1,era:1},blurb:'미술관 벽 같은 아이보리 위에 얇은 세리프와 넓은 여백. 조용하지만 깊은, 가장 우아한 방향이에요.',type:'Fraunces 세리프 + Outfit',t:['opal-minimal','origin-minimal','mountain-minimal','insee','elpis','sonex']},
+ {name:'Atelier Noir',ko:'아틀리에 누아르',c:{mood:-1,density:1,type:1,temp:.6,energy:1,era:1},blurb:'짙은 밤 위에 골드가 스며드는 프리미엄 다크. 절제되고 묵직한 격조를 좋아하는 당신에게.',type:'Fraunces 세리프 + Outfit',t:['kane','ober','blon','copr','현재 다크 빌드']},
+ {name:'The Editorial',ko:'에디토리얼',c:{mood:1,density:0,type:1,temp:-.3,energy:1,era:.7},blurb:'잡지 표지 같은 큰 세리프와 그리드. 이야기를 문장으로 끌고 가는 지적인 무드.',type:'Fraunces 디스플레이 + Outfit',t:['whitespace','grand','pallas','architecture','credesign']},
+ {name:'The Studio',ko:'스튜디오',c:{mood:.3,density:-1,type:-1,temp:.5,energy:-1,era:-1},blurb:'컬러가 튀고 요소가 살아 움직이는 크리에이티브. 대담하고 실험적인 당신을 위한 방향.',type:'Bold Sans + 굵은 그로테스크',t:['leedo','rebel','arabo','master','scrape','youth']},
+ {name:'Neo Tech',ko:'네오 테크',c:{mood:-1,density:.5,type:-1,temp:-1,energy:-.6,era:-1},blurb:'다크 위 모노스페이스와 날카로운 선. 개발자·프로덕트 감성의 미니멀 테크.',type:'Sans + Mono 악센트',t:['anur','textio','mone','krozo','liam','andle']},
+ {name:'Warm Personal',ko:'웜 퍼스널',c:{mood:1,density:.2,type:-.5,temp:1,energy:.6,era:-.2},blurb:'둥근 산세리프와 살구빛 톤. 다정하고 친근하게, 사람 냄새 나는 페이지.',type:'Rounded Sans + Outfit',t:['bloom','brilio','naru','kura','alaia','janemon']},
+ {name:'The Lens',ko:'렌즈',c:{mood:-.6,density:1,type:-.5,temp:-.3,energy:.7,era:.3},blurb:'이미지가 화면을 가득 채우는 풀블리드. 사진과 비주얼이 주인공인 사람에게.',type:'Light Sans + 큰 여백',t:['smarty','modesto','emily','oblo','wildone','nextex']},
+ {name:'Corporate Clean',ko:'코퍼릿 클린',c:{mood:1,density:1,type:-1,temp:-1,energy:1,era:-.2},blurb:'또렷한 산세리프와 정돈된 그리드. 신뢰감 있고 프로페셔널한 이력·CV 톤.',type:'Clean Sans + Outfit',t:['metier','bolby','procv','portio','it-s-me','resume']},
+];
+const OUT=[
+ {key:'hero',q:'첫 화면(히어로)은',o:[
+   {id:'type',l:'대형 타이포',s:'큰 문장이 첫 인상',m:'<div class="mk"><div class="nav" style="width:45%"></div><div style="flex:1"></div><div class="h" style="width:88%"></div><div class="h" style="width:60%;height:12px"></div></div>'},
+   {id:'image',l:'이미지 풀블리드',s:'사진이 화면을 채움',m:'<div class="mk"><div class="nav" style="width:45%"></div><div class="img"></div></div>'},
+   {id:'split',l:'좌우 스플릿',s:'글과 이미지 반반',m:'<div class="mk"><div class="row"><div class="fill"></div><div class="img"></div></div></div>'},
+   {id:'center',l:'센터 미니멀',s:'가운데 정렬, 여백',m:'<div class="mk" style="align-items:center;justify-content:center"><div class="h" style="width:70%"></div><div class="t" style="width:45%"></div></div>'}]},
+ {key:'nav',q:'내비게이션은',o:[
+   {id:'top',l:'상단 바',s:'익숙하고 명확',m:'<div class="mk"><div class="nav"></div><div style="flex:1"></div><div class="t" style="width:40%"></div></div>'},
+   {id:'side',l:'사이드 고정',s:'좌측에 늘 보임',m:'<div class="mk"><div class="side"></div><div class="t" style="width:45%;margin-left:32px"></div><div class="t" style="width:30%;margin-left:32px"></div></div>'},
+   {id:'hidden',l:'히든 메뉴',s:'햄버거로 감춤',m:'<div class="mk"><div class="burger"></div><div style="flex:1"></div><div class="h" style="width:60%"></div></div>'}]},
+ {key:'structure',q:'전체 구조는',o:[
+   {id:'scroll',l:'원페이지 스크롤',s:'쭉 내려 읽는',m:'<div class="mk"><div class="list"><i></i><i style="height:14px"></i><i></i><i style="height:14px"></i></div></div>'},
+   {id:'sections',l:'섹션 분할',s:'또렷한 구획',m:'<div class="mk"><div class="fill" style="height:20px"></div><div class="img" style="flex:0 0 24px"></div><div class="fill" style="height:20px"></div></div>'},
+   {id:'sidebar',l:'좌우 분할 고정',s:'한쪽 고정 + 본문',m:'<div class="mk"><div class="side"></div><div class="list" style="margin-left:32px"><i></i><i></i><i></i></div></div>'}]},
+ {key:'work',q:'작업·프로젝트 배치는',o:[
+   {id:'grid',l:'그리드',s:'정갈한 격자',m:'<div class="mk"><div class="g3"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>'},
+   {id:'masonry',l:'메이슨리',s:'벽돌처럼 어긋나게',m:'<div class="mk"><div class="g2"><i style="grid-row:span 2"></i><i></i><i></i><i style="grid-row:span 2"></i></div></div>'},
+   {id:'list',l:'리스트',s:'한 줄씩 크게',m:'<div class="mk"><div class="list"><i style="height:13px"></i><i style="height:13px"></i><i style="height:13px"></i></div></div>'},
+   {id:'carousel',l:'캐러셀',s:'옆으로 넘기는',m:'<div class="mk"><div class="row"><div class="fill" style="flex:0 0 62%"></div><div class="fill" style="opacity:.5"></div></div></div>'}]},
+ {key:'motion',q:'움직임(모션)은',o:[
+   {id:'static',l:'정적 · 차분',s:'움직임 최소',m:'<div class="mk" style="align-items:center;justify-content:center"><div class="t" style="width:55%"></div></div>'},
+   {id:'subtle',l:'은은한 리빌',s:'스크롤에 살짝',m:'<div class="mk" style="align-items:center;justify-content:center"><div class="t" style="width:55%"></div><div class="t" style="width:35%;margin-top:6px;background:var(--gold)"></div></div>'},
+   {id:'rich',l:'풍부한 인터랙션',s:'생동감 있게',m:'<div class="mk" style="align-items:center;justify-content:center;flex-direction:row;gap:6px"><div class="dot"></div><div class="dot" style="opacity:.6"></div><div class="dot" style="opacity:.3"></div></div>'}]},
+ {key:'shape',q:'모서리 · 형태는',o:[
+   {id:'round',l:'부드러운 라운드',s:'둥근 모서리',m:'<div class="mk" style="align-items:center;justify-content:center"><div style="width:46px;height:28px;background:var(--line2);border-radius:14px"></div></div>'},
+   {id:'sharp',l:'샤프한 각',s:'직각, 단정',m:'<div class="mk" style="align-items:center;justify-content:center"><div style="width:46px;height:28px;background:var(--line2)"></div></div>'},
+   {id:'mixed',l:'혼합',s:'상황에 맞게',m:'<div class="mk" style="align-items:center;justify-content:center;flex-direction:row;gap:6px"><div style="width:24px;height:24px;background:var(--line2);border-radius:12px"></div><div style="width:24px;height:24px;background:var(--line2)"></div></div>'}]},
 ];
 
-/* ---------- engine ---------- */
-let cur=0; const score={}; AXES.forEach(a=>score[a.k]=0);
-const maxAbs={}; AXES.forEach(a=>maxAbs[a.k]=0);
-Q.forEach(q=>{const m={};[q.A.w,q.B.w].forEach(w=>{for(const k in w)m[k]=Math.max(m[k]||0,Math.abs(w[k]));});for(const k in m)maxAbs[k]+=m[k];});
-
+/* ---------- state + engine ---------- */
 const $=s=>document.querySelector(s);
-function show(id){['intro','quiz','result'].forEach(x=>$('#'+x).classList.toggle('hidden',x!==id));}
-function renderProg(){$('#prog').innerHTML=Q.map((_,i)=>`<i class="${i<cur?'done':i===cur?'cur':''}"></i>`).join('');}
-function renderQ(){
-  renderProg();
-  const q=Q[cur];
-  $('#qn').textContent=`Q${cur+1} / ${Q.length}`;
-  $('#qtext').textContent=q.q;
-  for(const [id,o] of [['#optA',q.A],['#optB',q.B]]){
-    $(id).innerHTML=`<span class="oa">${o.oa}</span><span class="ot serif">${o.t}</span><span class="os">${o.s}</span>`;
-  }
-}
-function pick(o){for(const k in o.w)score[k]+=o.w[k];cur++;if(cur<Q.length)renderQ();else renderResult();}
+let cur=0, oStep=0, selPalId=null, palTab='추천';
+const score={},maxAbs={}; AXES.forEach(a=>{score[a.k]=0;maxAbs[a.k]=0;});
+Q.forEach(q=>{const m={};[q.A.w,q.B.w].forEach(w=>{for(const k in w)m[k]=Math.max(m[k]||0,Math.abs(w[k]));});for(const k in m)maxAbs[k]+=m[k];});
+const oChoice={}; OUT.forEach(o=>oChoice[o.key]=null);
+let V=null, FAMILY=null;
 
-function nearest(){
-  // normalize user vector to [-1,1] per axis
-  const v={};AXES.forEach(a=>v[a.k]=maxAbs[a.k]?score[a.k]/maxAbs[a.k]:0);
-  let best=null,bd=1e9,second=null,sd=1e9;
-  FAM.forEach(f=>{let d=0;AXES.forEach(a=>{const x=v[a.k]-(f.c[a.k]||0);d+=x*x;});
-    if(d<bd){sd=bd;second=best;bd=d;best=f;}else if(d<sd){sd=d;second=f;}});
-  return {best,second,v};
+const PHASES=[['intro','시작'],['quiz','취향'],['palette','팔레트'],['outline','레이아웃'],['brief','브리프']];
+function go(id){PHASES.forEach(([p])=>$('#'+p).classList.toggle('hidden',p!==id));
+  $('#phasebar').innerHTML=PHASES.slice(1).map(([p,n])=>{const order=['quiz','palette','outline','brief'];const ci=order.indexOf(id),pi=order.indexOf(p);return `<span class="${p===id?'on':pi<ci&&ci>-1?'done':''}">${n}</span>`;}).join('<span style="opacity:.3">›</span>');
+  window.scrollTo(0,0);}
+
+/* taste */
+function vNow(){const v={};AXES.forEach(a=>v[a.k]=maxAbs[a.k]?score[a.k]/maxAbs[a.k]:0);return v;}
+function renderQ(){$('#prog').innerHTML=Q.map((_,i)=>`<i class="${i<cur?'done':i===cur?'cur':''}"></i>`).join('');
+  const q=Q[cur];$('#qnn').textContent=`Q${cur+1} / ${Q.length}`;$('#qtext').textContent=q.q;
+  [['#optA',q.A],['#optB',q.B]].forEach(([id,o])=>$(id).innerHTML=`<span class="oa">${o.oa}</span><span class="ot serif">${o.t}</span><span class="os">${o.s}</span>`);}
+function pick(o){for(const k in o.w)score[k]+=o.w[k];cur++;if(cur<Q.length)renderQ();else{V=vNow();FAMILY=nearest().best;go('palette');renderPalette();}}
+function nearest(){const v=V||vNow();let best=null,bd=1e9,second=null,sd=1e9;FAM.forEach(f=>{let d=0;AXES.forEach(a=>{const x=v[a.k]-(f.c[a.k]||0);d+=x*x;});if(d<bd){sd=bd;second=best;bd=d;best=f;}else if(d<sd){sd=d;second=f;}});return{best,second};}
+
+/* palette */
+function cats(){const seen=[];PAL.forEach(p=>{if(!seen.includes(p.catko))seen.push(p.catko);});return ['추천',...seen];}
+function renderPalette(){
+  $('#tabs').innerHTML=cats().map(c=>`<button class="tab${c===palTab?' on':''}" data-c="${c}">${c}</button>`).join('');
+  $('#tabs').querySelectorAll('.tab').forEach(b=>b.onclick=()=>{palTab=b.dataset.c;renderPalette();});
+  let list;
+  if(palTab==='추천'){list=[...PAL].sort((a,b)=>palFit(b,V)-palFit(a,V));}
+  else{list=PAL.filter(p=>p.catko===palTab);}
+  if(!selPalId)selPalId=([...PAL].sort((a,b)=>palFit(b,V)-palFit(a,V))[0]).id;
+  $('#palgrid').innerHTML=list.map((p,i)=>`<button class="pc${p.id===selPalId?' on':''}" data-id="${p.id}">
+    <span class="sw">${p.c.map(c=>`<i style="background:${c[0]}"></i>`).join('')}</span>
+    <span class="pn">${p.ko}${palTab==='추천'&&i===0?'<span class="rec">추천</span>':''}</span>
+    <span class="pnc">${p.catko} · Pantone ${p.c[2][1]}</span></button>`).join('');
+  $('#palgrid').querySelectorAll('.pc').forEach(b=>b.onclick=()=>{selPalId=b.dataset.id;renderPalette();});
 }
-let RESULT=null;
-function renderResult(){
-  show('result');
-  const {best,second,v}=nearest();RESULT={best,second};
+
+/* outline */
+function renderOut(){$('#oprog').innerHTML=OUT.map((_,i)=>`<i class="${i<oStep?'done':i===oStep?'cur':''}"></i>`).join('');
+  const d=OUT[oStep];$('#onn').textContent=`레이아웃 ${oStep+1} / ${OUT.length}`;$('#otext').textContent=d.q;
+  $('#oopts').innerHTML=d.o.map(o=>`<button class="oo${oChoice[d.key]===o.id?' on':''}" data-id="${o.id}">${o.m}<div class="ol">${o.l}</div><div class="osb">${o.s}</div></button>`).join('');
+  $('#oopts').querySelectorAll('.oo').forEach(b=>b.onclick=()=>{oChoice[d.key]=b.dataset.id;nextOut();});
+  $('#oback').style.visibility=oStep===0?'hidden':'visible';}
+function nextOut(){oStep++;if(oStep<OUT.length)renderOut();else{go('brief');renderBrief();}}
+
+/* brief */
+function renderBrief(){
+  const {best,second}=nearest();
   $('#famName').innerHTML=`${best.name}<span class="famko">${best.ko}</span>`;
   $('#famBlurb').textContent=best.blurb;
-  const ranked=[...PAL].sort((a,b)=>palFit(b,v)-palFit(a,v));
-  $('#palgal').innerHTML=ranked.map((p,i)=>`<button class="palcard" data-pid="${p.id}">
-    <span class="sw">${p.c.map(c=>`<i style="background:${c[0]}"></i>`).join('')}</span>
-    <span class="pn">${p.ko}${i===0?' <b>추천</b>':''}</span></button>`).join('');
-  $('#palgal').querySelectorAll('.palcard').forEach(b=>b.onclick=()=>selectPal(b.dataset.pid));
-  selectPal(ranked[0].id);
-  $('#typBig').style.fontFamily=best.type.includes('세리프')||best.type.includes('디스플레이')?'"Fraunces",serif':'"Outfit",sans-serif';
-  $('#typSmall').textContent=best.type;
-  $('#axes').innerHTML=AXES.map(a=>{const p=(v[a.k]+1)/2*100;
-    return `<div class="axrow"><span>${a.neg}</span><span class="bar"><i style="left:${p}%"></i></span><span class="r">${a.pos}</span></div>`;}).join('');
+  const p=PAL.find(x=>x.id===selPalId);
+  $('#bpalBody').innerHTML=`<div class="psw">${p.c.map(c=>`<i style="background:${c[0]}"></i>`).join('')}</div>
+    <div class="pmeta"><b>${p.en}</b> · ${p.ko} <span style="color:var(--faint)">(${p.catko})</span>
+    <div class="pcodes">${p.c.map(c=>`<span>Pantone ${c[1]}</span>`).join('')}</div></div>`;
+  $('#blayBody').innerHTML=OUT.map(d=>{const o=d.o.find(x=>x.id===oChoice[d.key]);
+    return `<div class="bi"><div class="k">${d.q.replace(/은$|는$/,'')}</div>${o?o.m:'<div class="mk"></div>'}<div class="v">${o?o.l:'—'}</div></div>`;}).join('');
+  $('#typLine').innerHTML=`<b>타이포:</b> ${best.type}`;
+  $('#axes').innerHTML=AXES.map(a=>{const pc=(V[a.k]+1)/2*100;return `<div class="axrow"><span>${a.neg}</span><span class="bar"><i style="left:${pc}%"></i></span><span class="r">${a.pos}</span></div>`;}).join('');
   $('#tmplChips').innerHTML=best.t.map(t=>`<span class="chip">${t}</span>`).join('');
   $('#also').innerHTML=`두 번째로 가까운 방향: <b>${second.name} · ${second.ko}</b>`;
 }
 
-let SELPAL=null;
-function selectPal(id){const p=PAL.find(x=>x.id===id);SELPAL=p;
-  $('#palgal').querySelectorAll('.palcard').forEach(b=>b.classList.toggle('on',b.dataset.pid===id));
-  $('#palsel').innerHTML=`<div class="psw">${p.c.map(c=>`<i style="background:${c[0]}"></i>`).join('')}</div>
-    <div class="pmeta"><b>${p.en}</b> · ${p.ko}<div class="pcodes">${p.c.map(c=>`<span>Pantone ${c[1]}</span>`).join('')}</div></div>`;}
-
-$('#start').onclick=()=>{show('quiz');renderQ();};
-$('#optA').onclick=()=>pick(Q[cur].A);
-$('#optB').onclick=()=>pick(Q[cur].B);
-$('#again').onclick=()=>{cur=0;AXES.forEach(a=>score[a.k]=0);show('intro');};
-$('#share').onclick=()=>{if(!RESULT)return;const t=`[Career Atelier 디자인 진단] ${RESULT.best.name}(${RESULT.best.ko}) · 팔레트: ${SELPAL?SELPAL.ko+' ['+SELPAL.c.map(c=>c[1]).join(', ')+']':''}`;
-  navigator.clipboard.writeText(t).then(()=>{$('#share').textContent='복사됨 ✓';setTimeout(()=>$('#share').textContent='결과 요약 복사',1500);});};
+/* wire */
+$('#start').onclick=()=>{go('quiz');renderQ();};
+$('#optA').onclick=()=>pick(Q[cur].A);$('#optB').onclick=()=>pick(Q[cur].B);
+$('#palback').onclick=()=>{cur=0;AXES.forEach(a=>score[a.k]=0);selPalId=null;go('quiz');renderQ();};
+$('#palnext').onclick=()=>{oStep=0;go('outline');renderOut();};
+$('#oback').onclick=()=>{if(oStep>0){oStep--;renderOut();}};
+$('#oskip').onclick=()=>nextOut();
+$('#again').onclick=()=>{cur=0;oStep=0;selPalId=null;AXES.forEach(a=>score[a.k]=0);OUT.forEach(o=>oChoice[o.key]=null);go('intro');};
+$('#copy').onclick=()=>{const {best}=nearest();const p=PAL.find(x=>x.id===selPalId);
+  const lay=OUT.map(d=>{const o=d.o.find(x=>x.id===oChoice[d.key]);return o?o.l:'—';}).join(' · ');
+  const t=`[Career Atelier 디자인 브리프]\n방향: ${best.name} (${best.ko})\n팔레트: ${p.ko} [${p.c.map(c=>c[1]).join(', ')}]\n레이아웃: ${lay}\n타이포: ${best.type}`;
+  navigator.clipboard.writeText(t).then(()=>{$('#copy').textContent='복사됨 ✓';setTimeout(()=>$('#copy').textContent='브리프 복사',1600);});};
+go('intro');
 </script>
 </body>
 </html>
