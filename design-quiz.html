@@ -153,7 +153,7 @@ h2.qh{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:c
     <div class="card"><div class="lab">타이포 · 무드 축</div><div id="typLine" style="font-size:14px;margin-bottom:14px;"></div><div class="axes" id="axes"></div></div>
     <div class="card"><div class="lab">이 방향에 맞는 라이브러리 템플릿</div><div class="chips" id="tmplChips"></div><div class="link" style="margin-top:12px;" id="also"></div></div>
     <div class="res-cta"><button class="btn" id="again">처음부터</button><button class="btn ghost" id="copy">브리프 복사</button></div>
-    <p class="note">v2 — 취향→축, 팔레트, 레이아웃 선택은 전부 튜닝 가능. 템플릿 매칭은 이름 휴리스틱이라 실제 프리뷰로 정교화합니다.</p>
+    <p class="note">v2 — 취향→축·팔레트·레이아웃은 전부 튜닝 가능. 템플릿 <b>✓</b> = 실제 데모 확인(Sonex·Kane·Leedo 등), 나머지는 이름 휴리스틱으로 계속 검증 중.</p>
   </section>
 </div>
 
@@ -206,14 +206,14 @@ const PAL=[{id:"warm-neutral",cat:"neutral",catko:"뉴트럴",en:"Ivory & Gold",
 {id:"noir-wine",cat:"dark",catko:"다크",en:"Wine & Gold",ko:"와인 골드",m:["dark", "warm"],c:[["#0E0608","Black 6 C"],["#2A0E16","Black 6 C"],["#7A1F35","188 C"],["#C9A96A","7407 C"],["#F0E6D6","7422 C"]]}];
 function palFit(p,v){let s=0,m=p.m;if(m.includes('bright'))s+=v.mood;if(m.includes('dark'))s-=v.mood;if(m.includes('warm'))s+=v.temp;if(m.includes('cool'))s-=v.temp;if(m.includes('calm'))s+=v.energy;if(m.includes('bold'))s-=v.energy;if(m.includes('experimental'))s-=v.era;return s;}
 const FAM=[
- {name:'The Gallery',ko:'갤러리',c:{mood:1,density:1,type:1,temp:1,energy:1,era:1},blurb:'미술관 벽 같은 아이보리 위에 얇은 세리프와 넓은 여백. 조용하지만 깊은, 가장 우아한 방향이에요.',type:'Fraunces 세리프 + Outfit',t:['opal-minimal','origin-minimal','mountain-minimal','insee','elpis','sonex']},
- {name:'Atelier Noir',ko:'아틀리에 누아르',c:{mood:-1,density:1,type:1,temp:.6,energy:1,era:1},blurb:'짙은 밤 위에 골드가 스며드는 프리미엄 다크. 절제되고 묵직한 격조를 좋아하는 당신에게.',type:'Fraunces 세리프 + Outfit',t:['kane','ober','blon','copr','현재 다크 빌드']},
+ {name:'The Gallery',ko:'갤러리',c:{mood:1,density:1,type:1,temp:1,energy:1,era:1},blurb:'미술관 벽 같은 아이보리 위에 얇은 세리프와 넓은 여백. 조용하지만 깊은, 가장 우아한 방향이에요.',type:'Fraunces 세리프 + Outfit',t:['sonex ✓','bloom','origin-minimal','opal-minimal','mountain-minimal','insee']},
+ {name:'Atelier Noir',ko:'아틀리에 누아르',c:{mood:-1,density:1,type:1,temp:.6,energy:1,era:1},blurb:'짙은 밤 위에 골드가 스며드는 프리미엄 다크. 절제되고 묵직한 격조를 좋아하는 당신에게.',type:'Fraunces 세리프 + Outfit',t:['현재 다크 빌드(drmoony) ✓','라이브러리엔 다크 프리미엄이 드묾']},
  {name:'The Editorial',ko:'에디토리얼',c:{mood:1,density:0,type:1,temp:-.3,energy:1,era:.7},blurb:'잡지 표지 같은 큰 세리프와 그리드. 이야기를 문장으로 끌고 가는 지적인 무드.',type:'Fraunces 디스플레이 + Outfit',t:['whitespace','grand','pallas','architecture','credesign']},
- {name:'The Studio',ko:'스튜디오',c:{mood:.3,density:-1,type:-1,temp:.5,energy:-1,era:-1},blurb:'컬러가 튀고 요소가 살아 움직이는 크리에이티브. 대담하고 실험적인 당신을 위한 방향.',type:'Bold Sans + 굵은 그로테스크',t:['leedo','rebel','arabo','master','scrape','youth']},
+ {name:'The Studio',ko:'스튜디오',c:{mood:.3,density:-1,type:-1,temp:.5,energy:-1,era:-1},blurb:'컬러가 튀고 요소가 살아 움직이는 크리에이티브. 대담하고 실험적인 당신을 위한 방향.',type:'Bold Sans + 굵은 그로테스크',t:['leedo ✓','oblo','rebel','arabo','master','scrape']},
  {name:'Neo Tech',ko:'네오 테크',c:{mood:-1,density:.5,type:-1,temp:-1,energy:-.6,era:-1},blurb:'다크 위 모노스페이스와 날카로운 선. 개발자·프로덕트 감성의 미니멀 테크.',type:'Sans + Mono 악센트',t:['anur','textio','mone','krozo','liam','andle']},
  {name:'Warm Personal',ko:'웜 퍼스널',c:{mood:1,density:.2,type:-.5,temp:1,energy:.6,era:-.2},blurb:'둥근 산세리프와 살구빛 톤. 다정하고 친근하게, 사람 냄새 나는 페이지.',type:'Rounded Sans + Outfit',t:['bloom','brilio','naru','kura','alaia','janemon']},
  {name:'The Lens',ko:'렌즈',c:{mood:-.6,density:1,type:-.5,temp:-.3,energy:.7,era:.3},blurb:'이미지가 화면을 가득 채우는 풀블리드. 사진과 비주얼이 주인공인 사람에게.',type:'Light Sans + 큰 여백',t:['smarty','modesto','emily','oblo','wildone','nextex']},
- {name:'Corporate Clean',ko:'코퍼릿 클린',c:{mood:1,density:1,type:-1,temp:-1,energy:1,era:-.2},blurb:'또렷한 산세리프와 정돈된 그리드. 신뢰감 있고 프로페셔널한 이력·CV 톤.',type:'Clean Sans + Outfit',t:['metier','bolby','procv','portio','it-s-me','resume']},
+ {name:'Corporate Clean',ko:'코퍼릿 클린',c:{mood:1,density:1,type:-1,temp:-1,energy:1,era:-.2},blurb:'또렷한 산세리프와 정돈된 그리드. 신뢰감 있고 프로페셔널한 이력·CV 톤.',type:'Clean Sans + Outfit',t:['kane ✓','metier','bolby','procv','portio','resume']},
 ];
 const OUT=[
  {key:'hero',q:'첫 화면(히어로)은',o:[
