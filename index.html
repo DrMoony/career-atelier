@@ -11,8 +11,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Career Atelier — 이중언어 포트폴리오·CV 제작 · built like a launch</title>
-<meta name="description" content="전문가를 위한 프리미엄 이중언어(한/영) 포트폴리오·CV 제작. 인터뷰로 깊이를 캐고, 원어민 수준으로 윤문하고, GitHub Pages에 게시합니다.">
+<title>Career Atelier — 당신의 커리어를 위한 특별전 · 이중언어 포트폴리오·CV</title>
+<meta name="description" content="이중언어(한/영) 포트폴리오·CV를 미술관 특별전처럼. 인터뷰로 진짜 당신을 찾아내고, 당신의 문체를 그대로 담아, 당신 소유의 GitHub 페이지에 겁니다.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,400&display=swap" rel="stylesheet">
@@ -130,6 +130,14 @@ header.solid{background:rgba(10,14,15,.82);backdrop-filter:blur(12px);border-col
 .df p{font-size:14px;color:var(--muted);line-height:1.65;font-weight:300;max-width:48ch;}
 @media(max-width:760px){.diff{grid-template-columns:1fr;}}
 
+/* why-us manifesto */
+.manifesto{margin:clamp(20px,4vw,44px) 0 0;}
+.manifesto p{font-weight:300;font-size:clamp(22px,3.4vw,44px);line-height:1.38;letter-spacing:-.015em;color:#C6CECB;max-width:18ch;}
+.manifesto p + p{margin-top:.9em;}
+.manifesto em{font-family:"Fraunces",serif;font-style:italic;font-weight:400;color:var(--gold);}
+.manifesto b{color:var(--ink);font-weight:500;}
+.manifesto .lead-line{color:var(--muted);font-size:clamp(15px,1.6vw,19px);font-weight:300;line-height:1.7;max-width:52ch;margin-top:clamp(26px,4vw,40px);}
+
 /* sample showcase */
 .sample{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(30px,5vw,64px);align-items:center;
   border:1px solid var(--line2);border-radius:16px;padding:clamp(28px,4vw,56px);background:linear-gradient(160deg,var(--panel),var(--bg));}
@@ -209,14 +217,14 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
 
 <a id="top"></a>
 <section class="hero"><div class="wrap"><div class="hero-in">
-  <div class="eyebrow rv"><span class="lx-en">Bilingual portfolio & CV, done right</span><span class="lx-ko">제대로 만든 이중언어 포트폴리오·CV</span></div>
+  <div class="eyebrow rv"><span class="lx-en">Your career, curated</span><span class="lx-ko">당신의 커리어를 위한 특별전</span></div>
   <h1 class="rv" style="margin-top:22px;">
-    <span class="lx-en">Your career, built like a <em>launch</em>.</span>
-    <span class="lx-ko">당신의 커리어를, <em>런칭</em>처럼.</span>
+    <span class="lx-en">Your career, like a <em>special exhibition</em>.</span>
+    <span class="lx-ko">당신의 커리어를, <em>미술관의 특별전</em>처럼.</span>
   </h1>
   <p class="sub rv">
-    <span class="lx-en">A premium one-page portfolio and CV in <b>Korean and English</b>, built the way a product launch is: interview to find the real story, native-level copy with the machine tells removed, and a live site global HQ would respect, hosted on your own GitHub.</span>
-    <span class="lx-ko"><b>한국어와 영어</b> 두 벌로 만드는 프리미엄 원페이지 포트폴리오·CV. 제품 런칭처럼 만듭니다. 인터뷰로 진짜 이야기를 캐내고, AI 티를 걷어낸 원어민 수준의 문안으로 쓰고, 글로벌 본사가 인정할 만한 사이트를 당신의 GitHub에 게시합니다.</span>
+    <span class="lx-en">A premium one-page portfolio and CV in <b>Korean and English</b>. We interview to find the real you, keep your own voice on every line, and hang it — like a special exhibition — on a GitHub page you own.</span>
+    <span class="lx-ko"><b>한국어와 영어</b>, 두 벌의 프리미엄 원페이지 포트폴리오·CV. 인터뷰로 진짜 당신을 찾아내고, 당신의 문체를 한 줄 한 줄 그대로 담아, 당신 소유의 GitHub 페이지에 특별전처럼 겁니다.</span>
   </p>
   <div class="hero-cta rv">
     <a class="btn btn-fill" href="#contact"><span class="lx-en">Start a project</span><span class="lx-ko">프로젝트 시작</span> →</a>
@@ -225,24 +233,24 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
   <div class="hero-meta rv">
     <div class="hm"><span class="n">2</span><span class="l lx-en">languages, EN + KO, one site</span><span class="l lx-ko">언어, 한 사이트에 한·영 두 벌</span></div>
     <div class="hm"><span class="n">8</span><span class="l lx-en">steps, interview to live site</span><span class="l lx-ko">단계, 인터뷰부터 게시까지</span></div>
-    <div class="hm"><span class="n">0</span><span class="l lx-en">AI tells left in the Korean copy</span><span class="l lx-ko">한글 문안에 남는 AI 티</span></div>
+    <div class="hm"><span class="n">5</span><span class="l lx-en">business days to your first draft</span><span class="l lx-ko">영업일, 인터뷰 후 첫 초안까지</span></div>
   </div>
 </div></div></section>
 
 <!-- WHAT YOU GET -->
 <section class="block" id="make"><div class="wrap">
   <div class="sec-head rv">
-    <div class="eyebrow"><span class="lx-en">The deliverable</span><span class="lx-ko">결과물</span></div>
-    <h2><span class="lx-en">Not a template. <span class="thin">A built thing.</span></span><span class="lx-ko">템플릿이 아니라, <span class="thin">직접 만든 것.</span></span></h2>
-    <p><span class="lx-en">Everything below ships together, yours to keep, on your own account.</span><span class="lx-ko">아래 전부가 함께 나갑니다. 모두 당신 소유, 당신 계정 위에.</span></p>
+    <div class="eyebrow"><span class="lx-en">What you keep</span><span class="lx-ko">결과물</span></div>
+    <h2><span class="lx-en">Your story, <span class="thin">given back to you.</span></span><span class="lx-ko">당신이 하고 싶은 이야기를, <span class="thin">그대로 담아 돌려드립니다.</span></span></h2>
+    <p><span class="lx-en">All of it is yours, on your own account. Here's what ships.</span><span class="lx-ko">모두 당신 소유, 당신 계정 위에서. 아래가 함께 나갑니다.</span></p>
   </div>
   <div class="deliv rv">
-    <div class="dv"><div class="ic">◐</div><h3><span class="lx-en">Bilingual, one toggle</span><span class="lx-ko">이중언어, 토글 하나</span></h3><p><span class="lx-en">Korean and English in a single site, switched with one button, not two separate pages.</span><span class="lx-ko">한 사이트 안에 한·영 두 벌. 버튼 하나로 전환합니다. 페이지 두 개가 아닙니다.</span></p></div>
-    <div class="dv"><div class="ic">✍</div><h3><span class="lx-en">Native-level copy</span><span class="lx-ko">원어민 수준 문안</span></h3><p><span class="lx-en">Korean humanized to read like a person wrote it, no translationese, no AI tells; English that reads clean.</span><span class="lx-ko">사람이 쓴 것처럼 읽히는 한국어. 번역투도, AI 티도 없습니다. 영어도 깔끔하게.</span></p></div>
-    <div class="dv"><div class="ic">◆</div><h3><span class="lx-en">Editorial design</span><span class="lx-ko">에디토리얼 디자인</span></h3><p><span class="lx-en">Infographic-led, McKinsey-clean. Interactions, motion, and a look that carries weight, not a résumé PDF.</span><span class="lx-ko">인포그래픽 중심, 맥킨지처럼 정갈하게. 인터랙션과 모션까지. 이력서 PDF가 아닙니다.</span></p></div>
-    <div class="dv"><div class="ic">⬢</div><h3><span class="lx-en">Live on your GitHub</span><span class="lx-ko">당신의 GitHub에 게시</span></h3><p><span class="lx-en">Published to GitHub Pages under your account, free hosting, a real URL, optional custom domain.</span><span class="lx-ko">당신 계정의 GitHub Pages로 게시. 무료 호스팅, 실제 URL, 원하면 커스텀 도메인까지.</span></p></div>
-    <div class="dv"><div class="ic">▤</div><h3><span class="lx-en">A knowledge base</span><span class="lx-ko">지식 보관소</span></h3><p><span class="lx-en">A private, structured record of your career, the single source every future update draws from.</span><span class="lx-ko">경력을 구조화한 비공개 보관소. 앞으로의 모든 업데이트가 여기서 나옵니다.</span></p></div>
-    <div class="dv"><div class="ic">↻</div><h3><span class="lx-en">Easy to update</span><span class="lx-ko">쉬운 업데이트</span></h3><p><span class="lx-en">A text-editing pipeline so a new award or role goes in cleanly, without breaking the design.</span><span class="lx-ko">문안 편집 파이프라인 제공. 새 수상·경력을 디자인을 깨지 않고 깔끔하게 추가합니다.</span></p></div>
+    <div class="dv"><div class="ic">◐</div><h3><span class="lx-en">One toggle, two languages</span><span class="lx-ko">토글 하나, 한·영 두 벌</span></h3><p><span class="lx-en">Korean and English in one site, switched with a single button — not two separate pages.</span><span class="lx-ko">한 사이트 안에 한국어와 영어. 버튼 하나로 전환합니다. 페이지 두 개가 아닙니다.</span></p></div>
+    <div class="dv"><div class="ic">✍</div><h3><span class="lx-en">Your own voice</span><span class="lx-ko">당신의 문체 그대로</span></h3><p><span class="lx-en">AI drafts it; you lay in your voice with a simple editor we give you. Not translationese, not someone else's tone — yours.</span><span class="lx-ko">AI가 초안을 잡고, 우리가 드리는 간단한 에디터로 당신이 직접 문체를 입힙니다. 번역투도 남의 말투도 아닌, 당신의 글.</span></p></div>
+    <div class="dv"><div class="ic">◆</div><h3><span class="lx-en">Editorial design</span><span class="lx-ko">에디토리얼 디자인</span></h3><p><span class="lx-en">Infographic-led and clean, with real interaction and motion. A site worthy of your career — not a résumé PDF.</span><span class="lx-ko">인포그래픽 중심, 정갈하게. 진짜 인터랙션과 모션까지. 당신의 커리어에 걸맞은 사이트, 이력서 PDF가 아닙니다.</span></p></div>
+    <div class="dv"><div class="ic">⬢</div><h3><span class="lx-en">Live on your GitHub</span><span class="lx-ko">당신의 GitHub에 게시</span></h3><p><span class="lx-en">From first draft to hosting, handled. Free, permanent hosting, a real URL, an optional custom domain.</span><span class="lx-ko">기안부터 호스팅까지 함께합니다. 무료·영구 호스팅, 실제 URL, 원하면 커스텀 도메인까지.</span></p></div>
+    <div class="dv"><div class="ic">▤</div><h3><span class="lx-en">A career wiki</span><span class="lx-ko">커리어 위키</span></h3><p><span class="lx-en">A private wiki of your moments, your stance, your philosophy — the source every future update draws from.</span><span class="lx-ko">인상적인 순간과 당신의 태도·철학을 담는 비공개 위키. 앞으로의 모든 업데이트가 여기서 나옵니다.</span></p></div>
+    <div class="dv"><div class="ic">↻</div><h3><span class="lx-en">Update it like a journal</span><span class="lx-ko">일기장처럼, 쉬운 업데이트</span></h3><p><span class="lx-en">Add a new role or award without breaking the design — with design changes available as an option.</span><span class="lx-ko">새 경력·수상을 디자인을 깨지 않고 더합니다. 원하면 디자인 변경도 (옵션).</span></p></div>
   </div>
 </div></section>
 
@@ -251,16 +259,16 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
   <div class="sec-head rv">
     <div class="eyebrow"><span class="lx-en">How it works</span><span class="lx-ko">진행 방식</span></div>
     <h2><span class="lx-en">Eight steps, <span class="thin">nothing skipped.</span></span><span class="lx-ko">여덟 단계, <span class="thin">건너뛰지 않습니다.</span></span></h2>
-    <p><span class="lx-en">Facts are locked early; only the wording is polished later. You confirm at four gates, marked <span style="color:var(--teal)">◆</span>, before anything moves on.</span><span class="lx-ko">사실은 앞에서 확정하고, 뒤에서는 문체만 다듬습니다. <span style="color:var(--teal)">◆</span> 표시된 네 곳에서 당신이 확인해야 다음으로 넘어갑니다.</span></p>
+    <p><span class="lx-en">Facts locked up front; the voice is yours to add. We check in with you at the four gates marked <span style="color:var(--teal)">◆</span> before anything moves on.</span><span class="lx-ko">사실은 앞에서 함께 고정하고, 문체는 당신이 입힙니다. <span style="color:var(--teal)">◆</span> 표시된 네 곳에서 함께 확인하며 넘어갑니다.</span></p>
   </div>
   <div class="proc rv">
     <div class="ps"><div class="no">01</div><div class="t"><span class="lx-en">Materials</span><span class="lx-ko">자료 수령</span></div><div class="d"><span class="lx-en">Your existing CV, photos, and any writing, gathered as the raw material.</span><span class="lx-ko">기존 이력서·사진·글 등 필요한 자료를 원재료로 모읍니다.</span></div></div>
-    <div class="ps"><div class="no">02</div><div class="t"><span class="lx-en">Interview</span><span class="lx-ko">인터뷰</span></div><div class="d"><span class="lx-en">We dig for what the CV hides, the real judgment and results behind each role.</span><span class="lx-ko">이력서에 안 드러나는 것을 캡니다. 각 경력의 진짜 판단과 성과.</span></div></div>
+    <div class="ps"><div class="no">02</div><div class="t"><span class="lx-en">Interview</span><span class="lx-ko">인터뷰</span></div><div class="d"><span class="lx-en">The stories your CV leaves out — the moments and judgment behind each role.</span><span class="lx-ko">이력서엔 담기지 않은, 경력 순간순간의 이야기를 함께 꺼냅니다.</span></div></div>
     <div class="ps"><div class="no">03</div><div class="t"><span class="lx-en">CV + knowledge base</span><span class="lx-ko">CV 고도화 + 지식 보관소</span><span class="gate">◆ confirm</span></div><div class="d"><span class="lx-en">A results-first CV and a structured knowledge base; you confirm every fact.</span><span class="lx-ko">결과 중심 CV와 구조화된 지식 보관소. 모든 사실을 당신이 확인합니다.</span></div></div>
-    <div class="ps"><div class="no">04</div><div class="t"><span class="lx-en">Final CV + copy polish</span><span class="lx-ko">CV 확정 + 워딩 교정</span></div><div class="d"><span class="lx-en">Locked content, then grammar, notation, and the AI tells removed.</span><span class="lx-ko">내용을 고정한 뒤 문법·표기를 다듬고 AI 티를 걷어냅니다.</span></div></div>
-    <div class="ps"><div class="no">05</div><div class="t"><span class="lx-en">Design concept</span><span class="lx-ko">디자인 컨셉</span><span class="gate">◆ confirm</span></div><div class="d"><span class="lx-en">Color, scroll vs pages, mood, and what to emphasize, agreed up front.</span><span class="lx-ko">색상, 스크롤 대 페이지, 무드, 강조점을 먼저 합의합니다.</span></div></div>
+    <div class="ps"><div class="no">04</div><div class="t"><span class="lx-en">Final CV + your polish</span><span class="lx-ko">CV 확정 + 셀프 윤문</span></div><div class="d"><span class="lx-en">On the frame we build, you lay in your own voice — easily, in a simple editor.</span><span class="lx-ko">저희가 짠 틀 위에, 당신의 문체를 그대로 입힙니다. 간단한 에디터로 쉽게.</span></div></div>
+    <div class="ps"><div class="no">05</div><div class="t"><span class="lx-en">Design concept</span><span class="lx-ko">디자인 컨셉</span><span class="gate">◆ confirm</span></div><div class="d"><span class="lx-en">Pick your direction — a favorite color, a film, a song, a season. Anything that's you.</span><span class="lx-ko">좋아하는 색, 인생 영화, 사랑하는 음악과 계절 — 무엇이든 당신다운 방향을 골라주세요.</span></div></div>
     <div class="ps"><div class="no">06</div><div class="t"><span class="lx-en">Two drafts</span><span class="lx-ko">초안 2안</span><span class="gate">◆ pick</span></div><div class="d"><span class="lx-en">Two distinct directions, so the choice is fast and right, not endless revisions.</span><span class="lx-ko">뚜렷이 다른 두 방향. 끝없는 수정 대신 빠르고 정확한 선택.</span></div></div>
-    <div class="ps"><div class="no">07</div><div class="t"><span class="lx-en">Build + humanize</span><span class="lx-ko">게시용 제작 + 윤문</span></div><div class="d"><span class="lx-en">The chosen direction built into a single site, responsive, with a final copy pass.</span><span class="lx-ko">선택안을 단일 사이트로 완성. 반응형, 마지막 문안 윤문까지.</span></div></div>
+    <div class="ps"><div class="no">07</div><div class="t"><span class="lx-en">Build + your voice</span><span class="lx-ko">게시용 제작 + 셀프 윤문</span></div><div class="d"><span class="lx-en">The chosen direction becomes one responsive site — with the final words in your hand.</span><span class="lx-ko">선택안을 단일 사이트로 완성. 반응형, 마지막 문안까지 당신의 손길로.</span></div></div>
     <div class="ps"><div class="no">08</div><div class="t"><span class="lx-en">Publish</span><span class="lx-ko">게시</span><span class="gate">◆ confirm</span></div><div class="d"><span class="lx-en">Live on your GitHub Pages; final check on the real URL, then it's yours.</span><span class="lx-ko">당신의 GitHub Pages에 게시. 실제 URL에서 최종 확인 후 인수인계.</span></div></div>
   </div>
 </div></section>
@@ -271,11 +279,10 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
     <div class="eyebrow"><span class="lx-en">Why this is different</span><span class="lx-ko">왜 다른가</span></div>
     <h2><span class="lx-en">The parts <span class="thin">others skip.</span></span><span class="lx-ko">남들이 <span class="thin">건너뛰는 것.</span></span></h2>
   </div>
-  <div class="diff rv">
-    <div class="df"><div class="k"><span class="lx-en">Korean that isn't translated</span><span class="lx-ko">번역이 아닌 한국어</span></div><h3><span class="lx-en">No <em>machine tells</em>, on purpose</span><span class="lx-ko"><em>AI 티</em>를 의도적으로 제거</span></h3><p><span class="lx-en">Most bilingual sites read like translated English. A dedicated humanization pass strips translationese, over-hedging, and mechanical rhythm, while preserving every fact and number.</span><span class="lx-ko">대부분의 이중언어 사이트는 번역한 영어처럼 읽힙니다. 전용 윤문 과정으로 번역투·과한 완곡·기계적 리듬을 걷어냅니다. 사실과 수치는 100% 보존하면서.</span></p></div>
-    <div class="df"><div class="k"><span class="lx-en">Depth, not a form fill</span><span class="lx-ko">양식 채우기가 아니라 깊이</span></div><h3><span class="lx-en">An interview, <em>first</em></span><span class="lx-ko">가장 먼저, <em>인터뷰</em></span></h3><p><span class="lx-en">Great portfolios come from the story behind the bullet points, the trade-offs, the judgment calls. We interview to find it, then structure it as problem, decision, result.</span><span class="lx-ko">좋은 포트폴리오는 항목 뒤의 이야기에서 나옵니다. 맞바꾼 것, 내린 판단. 인터뷰로 그것을 찾아 문제·판단·성과로 구조화합니다.</span></p></div>
-    <div class="df"><div class="k"><span class="lx-en">One source of truth</span><span class="lx-ko">단일 출처</span></div><h3><span class="lx-en">A knowledge base <em>underneath</em></span><span class="lx-ko">밑에 깔리는 <em>지식 보관소</em></span></h3><p><span class="lx-en">Your career lives in a structured store that the site, the CV, and every future update all draw from, so nothing drifts out of sync.</span><span class="lx-ko">경력이 구조화된 보관소에 담기고, 사이트·CV·이후 업데이트가 모두 여기서 나옵니다. 서로 어긋나지 않게.</span></p></div>
-    <div class="df"><div class="k"><span class="lx-en">Facts first, style later</span><span class="lx-ko">사실 먼저, 문체는 나중</span></div><h3><span class="lx-en">Confirmed at <em>every gate</em></span><span class="lx-ko"><em>모든 게이트</em>에서 확인</span></h3><p><span class="lx-en">Facts are locked with you before any polishing begins, and you sign off at four points before publish. No surprises on the live site.</span><span class="lx-ko">윤문 전에 사실을 당신과 함께 고정하고, 게시 전 네 곳에서 확인받습니다. 라이브 사이트에 서프라이즈는 없습니다.</span></p></div>
+  <div class="manifesto rv">
+    <p><span class="lx-en">We use AI — but a page with <b>no warmth</b> isn't worth publishing.</span><span class="lx-ko">AI를 쓰되, <b>체온이 없는 페이지</b>엔 의미를 두지 않습니다.</span></p>
+    <p><span class="lx-en">In your words, in your text: an interview becomes a <em>living portfolio</em>, and your own voice is laid over it.</span><span class="lx-ko">당신의 말로, 당신의 텍스트로 — 인터뷰가 <em>살아 있는 포트폴리오</em>가 되고, 그 위에 당신의 문체가 얹힙니다.</span></p>
+    <p class="lead-line"><span class="lx-en">We lock the facts with you first and check in four times before it goes live. Copy made the easy, automatic way gets read the same way — and forgotten.</span><span class="lx-ko">사실은 먼저 함께 고정하고, 게시 전 네 번 확인합니다. 자동으로 쉽게 만든 글은, 읽는 사람도 쉽게 지나치니까요.</span></p>
   </div>
 </div></section>
 
@@ -284,14 +291,14 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
   <div class="sample rv">
     <div>
       <div class="eyebrow" style="margin-bottom:20px"><span class="lx-en">A real build</span><span class="lx-ko">실제 제작 사례</span></div>
-      <div class="st"><span class="lx-en">See the standard, live.</span><span class="lx-ko">기준을, 라이브로 확인하세요.</span></div>
-      <p class="sd"><span class="lx-en">A bilingual medical-affairs portfolio, interview-driven, humanized Korean, editorial design, published on GitHub Pages. This is the level every project is built to.</span><span class="lx-ko">이중언어 메디컬 어페어즈 포트폴리오. 인터뷰 기반, 윤문된 한국어, 에디토리얼 디자인, GitHub Pages 게시. 모든 프로젝트가 이 수준으로 만들어집니다.</span></p>
+      <div class="st"><span class="lx-en">See a real build, live.</span><span class="lx-ko">실제 사례를, 라이브로 확인하세요.</span></div>
+      <p class="sd"><span class="lx-en">A bilingual medical-affairs portfolio: interview-driven, written in its owner's voice, editorial design, published on GitHub Pages. Every project is built to this level.</span><span class="lx-ko">이중언어 메디컬 어페어즈 포트폴리오. 인터뷰 기반, 당신의 문체로 쓴 문안, 에디토리얼 디자인, GitHub Pages 게시. 모든 프로젝트가 이 수준으로 만들어집니다.</span></p>
       <a class="slink" href="https://drmoony.github.io" target="_blank" rel="noopener">drmoony.github.io ↗</a>
     </div>
     <a class="sample-frame" href="https://drmoony.github.io" target="_blank" rel="noopener" aria-label="drmoony.github.io">
       <div class="bar"><i></i><i></i><i></i><span class="url">drmoony.github.io</span></div>
-      <div class="big"><span class="lx-en">Built like a <em>launch</em></span><span class="lx-ko"><em>런칭</em>처럼 만든</span></div>
-      <div class="cap"><span class="lx-en">click to open the live sample</span><span class="lx-ko">클릭하면 실제 사례가 열립니다</span></div>
+      <div class="big"><span class="lx-en">Your story, <em>on exhibition</em></span><span class="lx-ko"><em>특별전</em>이 될 당신의 이야기</span></div>
+      <div class="cap"><span class="lx-en">click to open the live sample</span><span class="lx-ko">클릭하면 실제 사례를 볼 수 있어요</span></div>
     </a>
   </div>
 </div></section>
@@ -353,17 +360,17 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
     <h2><span class="lx-en">Good <span class="thin">to know.</span></span><span class="lx-ko">알아두면 <span class="thin">좋은 것.</span></span></h2>
   </div>
   <div class="faq rv">
-    <div class="fq"><div class="q"><span><span class="lx-en">Do I need to know how to code?</span><span class="lx-ko">개발을 몰라도 되나요?</span></span><span class="pm">+</span></div><div class="a"><p><span class="lx-en">No. You provide materials and answer the interview; we build, publish, and hand over a simple way to update the text yourself.</span><span class="lx-ko">네, 몰라도 됩니다. 자료를 주시고 인터뷰에 답하시면 됩니다. 제작·게시까지 하고, 이후 텍스트만 쉽게 고칠 수 있는 방법을 인계합니다.</span></p></div></div>
-    <div class="fq"><div class="q"><span><span class="lx-en">Whose GitHub account is it on?</span><span class="lx-ko">누구의 GitHub 계정에 올라가나요?</span></span><span class="pm">+</span></div><div class="a"><p><span class="lx-en">Yours. The site lives on your account and domain, fully owned by you, nothing locked to us.</span><span class="lx-ko">당신 것입니다. 사이트는 당신 계정·도메인에 올라가며 완전히 당신 소유입니다. 저희에게 묶이는 것은 없습니다.</span></p></div></div>
-    <div class="fq"><div class="q"><span><span class="lx-en">Is the Korean actually natural?</span><span class="lx-ko">한국어가 정말 자연스러운가요?</span></span><span class="pm">+</span></div><div class="a"><p><span class="lx-en">That's the point. A dedicated humanization pass removes translationese and AI tells while keeping every fact intact, so it reads like a person wrote it, not a translator.</span><span class="lx-ko">그게 핵심입니다. 전용 윤문으로 번역투와 AI 티를 걷어내되 사실은 그대로 둡니다. 번역가가 아니라 사람이 쓴 것처럼 읽힙니다.</span></p></div></div>
-    <div class="fq"><div class="q"><span><span class="lx-en">How long does it take?</span><span class="lx-ko">기간은 얼마나 걸리나요?</span></span><span class="pm">+</span></div><div class="a"><p><span class="lx-en">It depends on scope and how fast the confirmation gates clear. We'll give a timeline after the interview.</span><span class="lx-ko">범위와 확인 게이트 진행 속도에 따라 다릅니다. 인터뷰 후 일정을 드립니다.</span></p></div></div>
+    <div class="fq"><div class="q"><span><span class="lx-en">Do I need to know how to code?</span><span class="lx-ko">개발을 몰라도 되나요?</span></span><span class="pm">+</span></div><div class="a"><p><span class="lx-en">No. Send your materials and answer the interview by voice or text. We hand you a draft, and a simple editor to recast that starter text in your own voice.</span><span class="lx-ko">네, 몰라도 됩니다. 자료를 주시고 인터뷰에 음성이나 텍스트로 답해주시면 됩니다. 저희가 산출물 초안을 전달드리고, 기본 골격으로 제공된 텍스트를 당신의 문체로 쉽게 바꾸도록 도와드립니다.</span></p></div></div>
+    <div class="fq"><div class="q"><span><span class="lx-en">Whose GitHub account is it on?</span><span class="lx-ko">누구의 GitHub 계정에 올라가나요?</span></span><span class="pm">+</span></div><div class="a"><p><span class="lx-en">Yours. The site lives on your account and domain, fully owned by you. If you don't have an account we'll help you make one, and we'll need access to publish.</span><span class="lx-ko">당신의 계정을 이용합니다. 사이트는 당신 계정·도메인에 올라가며 완전히 당신 소유입니다. 계정이 없으면 생성이 필요하고, 게시를 위해 접근 권한이 필요합니다.</span></p></div></div>
+    <div class="fq"><div class="q"><span><span class="lx-en">Do I really have to edit every line myself? Can't you just do it all?</span><span class="lx-ko">문장 하나하나 다 바꿔야 하나요? 그냥 다 해주시면 안 되나요?</span></span><span class="pm">+</span></div><div class="a"><p><span class="lx-en">Copy generated by AI carries no warmth. We make the page easy to build, but we always think about the impression a stranger takes from the atelier we made together. Even briefly, please put your own story into it.</span><span class="lx-ko">AI로 생성한 글엔 체온이 담기지 않아요. 페이지 제작은 쉽게 도와드리지만, 다른 누군가가 '함께 만든 커리어 아틀리에'를 보고 받을 인상을 늘 고민합니다. 짧은 시간이라도 직접 당신의 이야기를 담아주세요.</span></p></div></div>
+    <div class="fq"><div class="q"><span><span class="lx-en">How long does it take?</span><span class="lx-ko">기간은 얼마나 걸리나요?</span></span><span class="pm">+</span></div><div class="a"><p><span class="lx-en">It depends on scope, but a first draft usually reaches you within five business days of the interview.</span><span class="lx-ko">작업량에 따라 다르지만, 인터뷰 후 1차 초안까지 영업일 기준 5일 이내입니다.</span></p></div></div>
   </div>
 </div></section>
 
 <!-- CONTACT / CTA -->
 <section class="cta" id="contact"><div class="wrap">
   <div class="rv">
-    <h2><span class="lx-en">Let's build the <em>real</em> one.</span><span class="lx-ko"><em>제대로</em> 된 걸 만들어봅시다.</span></h2>
+    <h2><span class="lx-en">Let's build the atelier for your <em>brightest work</em>.</span><span class="lx-ko">당신의 <em>반짝이는 커리어</em>를 담아낼 아틀리에를 만들어봅시다.</span></h2>
     <p><span class="lx-en">Send your current CV and a line about what the site is for. We'll reply with next steps.</span><span class="lx-ko">현재 이력서와 사이트의 용도를 한 줄 적어 보내주세요. 다음 단계를 회신드립니다.</span></p>
     <div class="cta-btns">
       <!-- placeholder 이메일 — 실제 주소로 교체하세요 -->
