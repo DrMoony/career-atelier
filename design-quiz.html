@@ -64,8 +64,22 @@ button{font-family:inherit;cursor:pointer;color:inherit;background:none;border:0
 .res .fam{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(34px,6.5vw,66px);line-height:1.05;letter-spacing:-.02em;margin-top:10px;}
 .res .famko{color:var(--gold);font-size:.5em;font-style:italic;display:block;margin-top:6px;}
 .res .blurb{margin:20px auto 0;max-width:48ch;color:var(--ink2);font-weight:300;font-size:clamp(15px,1.7vw,19px);}
-.swatches{display:flex;gap:0;justify-content:center;margin:34px auto 0;border-radius:12px;overflow:hidden;max-width:360px;border:1px solid var(--line);}
-.swatches i{flex:1;height:64px;display:block;}
+.pallab{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:34px 0 14px;}
+.palgal{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x proximity;}
+.palcard{flex:0 0 auto;border:1px solid var(--line);border-radius:12px;padding:9px;background:var(--panel);transition:border-color .2s,transform .12s,box-shadow .2s;scroll-snap-align:start;}
+.palcard:hover{transform:translateY(-3px);}
+.palcard.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold2);}
+.palcard .sw{display:flex;border-radius:7px;overflow:hidden;width:128px;height:38px;border:1px solid var(--line);}
+.palcard .sw i{flex:1;display:block;}
+.palcard .pn{display:block;font-size:11.5px;color:var(--muted);margin-top:8px;text-align:center;white-space:nowrap;}
+.palcard .pn b{color:#FBF7EF;background:var(--gold);font-weight:600;font-size:9.5px;padding:2px 7px;border-radius:100px;margin-left:5px;letter-spacing:.04em;}
+.palsel{margin:6px auto 0;max-width:480px;background:var(--panel);border:1px solid var(--line2);border-radius:14px;padding:16px 18px;}
+.palsel .psw{display:flex;height:48px;border-radius:9px;overflow:hidden;border:1px solid var(--line);}
+.palsel .psw i{flex:1;display:block;}
+.palsel .pmeta{margin-top:13px;font-size:13.5px;color:var(--ink2);}
+.palsel .pmeta b{font-weight:600;}
+.palsel .pcodes{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;justify-content:center;}
+.palsel .pcodes span{font-size:10.5px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:3px 10px;background:var(--bg);}
 .typ{margin:26px auto 0;padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:14px;max-width:460px;}
 .typ .big{font-size:clamp(24px,4vw,34px);letter-spacing:-.01em;}
 .typ .small{margin-top:6px;font-size:13px;color:var(--muted);}
@@ -115,7 +129,9 @@ button{font-family:inherit;cursor:pointer;color:inherit;background:none;border:0
     <div class="kicker">당신의 디자인 시스템</div>
     <div class="fam serif" id="famName"></div>
     <p class="blurb" id="famBlurb"></p>
-    <div class="swatches" id="swatches"></div>
+    <div class="pallab">시작 팔레트 · 취향에 맞춰 정렬 (전부 실제 Pantone)</div>
+    <div class="palgal" id="palgal"></div>
+    <div class="palsel" id="palsel"></div>
     <div class="typ">
       <div class="lab">타이포그래피</div>
       <div class="big serif" id="typBig">Career Atelier</div>
@@ -171,6 +187,29 @@ const Q=[
 ];
 // fix a typo-safe label
 Q[8].A.t='여백이 많은 갤러리 벽';
+
+/* ---------- diverse Pantone palette library (16) ---------- */
+const PAL=[{id:"warm-neutral",en:"Ivory & Gold",ko:"아이보리 골드",m:["bright", "warm", "calm"],c:[["#F1EBDF","7422 C"],["#FBF7EF","7422 C"],["#C9A96A","7407 C"],["#A8823E","7511 C"],["#2A2620","Black 4 C"]]},
+{id:"mono",en:"Ink Monotone",ko:"잉크 모노톤",m:["dark", "cool", "calm"],c:[["#0B0D10","Black 6 C"],["#2A2F36","Black C"],["#5B6470","Cool Gray 10 C"],["#9AA3B0","Cool Gray 6 C"],["#E6EAF0","7541 C"]]},
+{id:"mono-warm",en:"Sepia Monotone",ko:"세피아 모노톤",m:["warm", "calm"],c:[["#2A1B10","Black 4 C"],["#6B4A2E","7518 C"],["#A8823E","7511 C"],["#D8B87A","7502 C"],["#F3E6CE","7422 C"]]},
+{id:"bw",en:"Black & White",ko:"흑백",m:["bright", "calm", "bold"],c:[["#111111","Black 6 C"],["#4A4A4A","7533 C"],["#9B9B9B","Cool Gray 7 C"],["#DDDDDD","Cool Gray 1 C"],["#FFFFFF","7422 C"]]},
+{id:"neon",en:"Neon on Black",ko:"네온 온 블랙",m:["dark", "bold", "experimental"],c:[["#0A0A0F","Black 6 C"],["#13131A","Black 6 C"],["#39FF14","361 C"],["#FF10F0","Rhodamine Red C"],["#00E5FF","306 C"]]},
+{id:"neon-cyber",en:"Cyber Sunset",ko:"사이버 선셋",m:["dark", "bold", "experimental"],c:[["#0D0221","Black 6 C"],["#241734","7547 C"],["#F72585","218 C"],["#7209B7","266 C"],["#4CC9F0","319 C"]]},
+{id:"pastel",en:"Soft Pastel",ko:"소프트 파스텔",m:["bright", "warm", "calm"],c:[["#F7D6E0","7422 C"],["#F2E9E4","7422 C"],["#C9E4DE","317 C"],["#DBCDF0","7443 C"],["#F2C6A0","155 C"]]},
+{id:"earthy",en:"Earthy Muted",ko:"어시 뮤트",m:["warm", "calm"],c:[["#E6D9C9","7428 C"],["#B08968","7504 C"],["#7F5539","147 C"],["#5A6650","Warm Gray 10 C"],["#2E2A26","Black C"]]},
+{id:"jewel",en:"Jewel Tones",ko:"주얼 톤",m:["dark", "bold"],c:[["#0F2A24","7547 C"],["#0B7A6E","328 C"],["#7B1E3B","216 C"],["#1E3A8A","287 C"],["#E9D8A6","7506 C"]]},
+{id:"duotone",en:"Cobalt & Coral",ko:"코발트 코랄",m:["bright", "bold"],c:[["#0A2540","289 C"],["#2563EB","285 C"],["#FF6B5E","170 C"],["#EAF0F6","7541 C"],["#0A2540","289 C"]]},
+{id:"vivid",en:"Vivid Play",ko:"비비드 플레이",m:["bright", "bold", "experimental"],c:[["#111014","Black 6 C"],["#F5F14E","100 C"],["#FF5A3C","171 C"],["#6C4CF1","7442 C"],["#F7F7F5","7422 C"]]},
+{id:"cool-corp",en:"Cool Corporate",ko:"쿨 코퍼릿",m:["bright", "cool", "calm"],c:[["#FFFFFF","7422 C"],["#F1F5F9","7541 C"],["#2563EB","285 C"],["#0F172A","7547 C"],["#64748B","Cool Gray 9 C"]]},
+{id:"sunset",en:"Warm Sunset",ko:"웜 선셋",m:["warm", "bold"],c:[["#2B1B2F","Black C"],["#7A2E4A","7433 C"],["#E0736B","7416 C"],["#F2A65A","7411 C"],["#F6E7CB","7499 C"]]},
+{id:"sage",en:"Forest Sage",ko:"포레스트 세이지",m:["bright", "calm", "warm"],c:[["#F3F1E9","7422 C"],["#A3B18A","7494 C"],["#588157","4485 C"],["#3A5A40","7483 C"],["#344E41","350 C"]]},
+{id:"noir-gold",en:"Champagne Noir",ko:"샴페인 누아르",m:["dark", "warm", "calm"],c:[["#0A0E0F","Black 6 C"],["#12191C","Black 6 C"],["#E6B15E","7508 C"],["#57B7C1","7472 C"],["#ECEFEC","7541 C"]]},
+{id:"mono-blush",en:"Blush Monotone",ko:"블러시 모노톤",m:["bright", "warm", "calm"],c:[["#3A1F2B","Black C"],["#7D3F53","7432 C"],["#C77D91","7430 C"],["#E9BFC9","7435 C"],["#FBEEF1","7422 C"]]}];
+function palFit(p,v){let s=0,m=p.m;
+  if(m.includes('bright'))s+=v.mood; if(m.includes('dark'))s-=v.mood;
+  if(m.includes('warm'))s+=v.temp; if(m.includes('cool'))s-=v.temp;
+  if(m.includes('calm'))s+=v.energy; if(m.includes('bold'))s-=v.energy;
+  if(m.includes('experimental'))s-=v.era; return s;}
 
 /* ---------- 8 design-system families (coords on the 6 axes, -1..1) ---------- */
 const FAM=[
@@ -241,7 +280,12 @@ function renderResult(){
   const {best,second,v}=nearest();RESULT={best,second};
   $('#famName').innerHTML=`${best.name}<span class="famko">${best.ko}</span>`;
   $('#famBlurb').textContent=best.blurb;
-  $('#swatches').innerHTML=best.pal.map(c=>`<i style="background:${c}"></i>`).join('');
+  const ranked=[...PAL].sort((a,b)=>palFit(b,v)-palFit(a,v));
+  $('#palgal').innerHTML=ranked.map((p,i)=>`<button class="palcard" data-pid="${p.id}">
+    <span class="sw">${p.c.map(c=>`<i style="background:${c[0]}"></i>`).join('')}</span>
+    <span class="pn">${p.ko}${i===0?' <b>추천</b>':''}</span></button>`).join('');
+  $('#palgal').querySelectorAll('.palcard').forEach(b=>b.onclick=()=>selectPal(b.dataset.pid));
+  selectPal(ranked[0].id);
   $('#typBig').style.fontFamily=best.type.includes('세리프')||best.type.includes('디스플레이')?'"Fraunces",serif':'"Outfit",sans-serif';
   $('#typSmall').textContent=best.type;
   $('#axes').innerHTML=AXES.map(a=>{const p=(v[a.k]+1)/2*100;
@@ -250,11 +294,17 @@ function renderResult(){
   $('#also').innerHTML=`두 번째로 가까운 방향: <b>${second.name} · ${second.ko}</b>`;
 }
 
+let SELPAL=null;
+function selectPal(id){const p=PAL.find(x=>x.id===id);SELPAL=p;
+  $('#palgal').querySelectorAll('.palcard').forEach(b=>b.classList.toggle('on',b.dataset.pid===id));
+  $('#palsel').innerHTML=`<div class="psw">${p.c.map(c=>`<i style="background:${c[0]}"></i>`).join('')}</div>
+    <div class="pmeta"><b>${p.en}</b> · ${p.ko}<div class="pcodes">${p.c.map(c=>`<span>Pantone ${c[1]}</span>`).join('')}</div></div>`;}
+
 $('#start').onclick=()=>{show('quiz');renderQ();};
 $('#optA').onclick=()=>pick(Q[cur].A);
 $('#optB').onclick=()=>pick(Q[cur].B);
 $('#again').onclick=()=>{cur=0;AXES.forEach(a=>score[a.k]=0);show('intro');};
-$('#share').onclick=()=>{if(!RESULT)return;const t=`[Career Atelier 디자인 진단] 결과: ${RESULT.best.name}(${RESULT.best.ko}) — ${RESULT.best.blurb}`;
+$('#share').onclick=()=>{if(!RESULT)return;const t=`[Career Atelier 디자인 진단] ${RESULT.best.name}(${RESULT.best.ko}) · 팔레트: ${SELPAL?SELPAL.ko+' ['+SELPAL.c.map(c=>c[1]).join(', ')+']':''}`;
   navigator.clipboard.writeText(t).then(()=>{$('#share').textContent='복사됨 ✓';setTimeout(()=>$('#share').textContent='결과 요약 복사',1500);});};
 </script>
 </body>

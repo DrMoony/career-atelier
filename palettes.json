@@ -1,0 +1,509 @@
+[
+ {
+  "id": "warm-neutral",
+  "en": "Ivory & Gold",
+  "ko": "아이보리 골드",
+  "moods": [
+   "bright",
+   "warm",
+   "calm"
+  ],
+  "colors": [
+   {
+    "hex": "#F1EBDF",
+    "pantone": "7422 C"
+   },
+   {
+    "hex": "#FBF7EF",
+    "pantone": "7422 C"
+   },
+   {
+    "hex": "#C9A96A",
+    "pantone": "7407 C"
+   },
+   {
+    "hex": "#A8823E",
+    "pantone": "7511 C"
+   },
+   {
+    "hex": "#2A2620",
+    "pantone": "Black 4 C"
+   }
+  ]
+ },
+ {
+  "id": "mono",
+  "en": "Ink Monotone",
+  "ko": "잉크 모노톤",
+  "moods": [
+   "dark",
+   "cool",
+   "calm"
+  ],
+  "colors": [
+   {
+    "hex": "#0B0D10",
+    "pantone": "Black 6 C"
+   },
+   {
+    "hex": "#2A2F36",
+    "pantone": "Black C"
+   },
+   {
+    "hex": "#5B6470",
+    "pantone": "Cool Gray 10 C"
+   },
+   {
+    "hex": "#9AA3B0",
+    "pantone": "Cool Gray 6 C"
+   },
+   {
+    "hex": "#E6EAF0",
+    "pantone": "7541 C"
+   }
+  ]
+ },
+ {
+  "id": "mono-warm",
+  "en": "Sepia Monotone",
+  "ko": "세피아 모노톤",
+  "moods": [
+   "warm",
+   "calm"
+  ],
+  "colors": [
+   {
+    "hex": "#2A1B10",
+    "pantone": "Black 4 C"
+   },
+   {
+    "hex": "#6B4A2E",
+    "pantone": "7518 C"
+   },
+   {
+    "hex": "#A8823E",
+    "pantone": "7511 C"
+   },
+   {
+    "hex": "#D8B87A",
+    "pantone": "7502 C"
+   },
+   {
+    "hex": "#F3E6CE",
+    "pantone": "7422 C"
+   }
+  ]
+ },
+ {
+  "id": "bw",
+  "en": "Black & White",
+  "ko": "흑백",
+  "moods": [
+   "bright",
+   "calm",
+   "bold"
+  ],
+  "colors": [
+   {
+    "hex": "#111111",
+    "pantone": "Black 6 C"
+   },
+   {
+    "hex": "#4A4A4A",
+    "pantone": "7533 C"
+   },
+   {
+    "hex": "#9B9B9B",
+    "pantone": "Cool Gray 7 C"
+   },
+   {
+    "hex": "#DDDDDD",
+    "pantone": "Cool Gray 1 C"
+   },
+   {
+    "hex": "#FFFFFF",
+    "pantone": "7422 C"
+   }
+  ]
+ },
+ {
+  "id": "neon",
+  "en": "Neon on Black",
+  "ko": "네온 온 블랙",
+  "moods": [
+   "dark",
+   "bold",
+   "experimental"
+  ],
+  "colors": [
+   {
+    "hex": "#0A0A0F",
+    "pantone": "Black 6 C"
+   },
+   {
+    "hex": "#13131A",
+    "pantone": "Black 6 C"
+   },
+   {
+    "hex": "#39FF14",
+    "pantone": "361 C"
+   },
+   {
+    "hex": "#FF10F0",
+    "pantone": "Rhodamine Red C"
+   },
+   {
+    "hex": "#00E5FF",
+    "pantone": "306 C"
+   }
+  ]
+ },
+ {
+  "id": "neon-cyber",
+  "en": "Cyber Sunset",
+  "ko": "사이버 선셋",
+  "moods": [
+   "dark",
+   "bold",
+   "experimental"
+  ],
+  "colors": [
+   {
+    "hex": "#0D0221",
+    "pantone": "Black 6 C"
+   },
+   {
+    "hex": "#241734",
+    "pantone": "7547 C"
+   },
+   {
+    "hex": "#F72585",
+    "pantone": "218 C"
+   },
+   {
+    "hex": "#7209B7",
+    "pantone": "266 C"
+   },
+   {
+    "hex": "#4CC9F0",
+    "pantone": "319 C"
+   }
+  ]
+ },
+ {
+  "id": "pastel",
+  "en": "Soft Pastel",
+  "ko": "소프트 파스텔",
+  "moods": [
+   "bright",
+   "warm",
+   "calm"
+  ],
+  "colors": [
+   {
+    "hex": "#F7D6E0",
+    "pantone": "7422 C"
+   },
+   {
+    "hex": "#F2E9E4",
+    "pantone": "7422 C"
+   },
+   {
+    "hex": "#C9E4DE",
+    "pantone": "317 C"
+   },
+   {
+    "hex": "#DBCDF0",
+    "pantone": "7443 C"
+   },
+   {
+    "hex": "#F2C6A0",
+    "pantone": "155 C"
+   }
+  ]
+ },
+ {
+  "id": "earthy",
+  "en": "Earthy Muted",
+  "ko": "어시 뮤트",
+  "moods": [
+   "warm",
+   "calm"
+  ],
+  "colors": [
+   {
+    "hex": "#E6D9C9",
+    "pantone": "7428 C"
+   },
+   {
+    "hex": "#B08968",
+    "pantone": "7504 C"
+   },
+   {
+    "hex": "#7F5539",
+    "pantone": "147 C"
+   },
+   {
+    "hex": "#5A6650",
+    "pantone": "Warm Gray 10 C"
+   },
+   {
+    "hex": "#2E2A26",
+    "pantone": "Black C"
+   }
+  ]
+ },
+ {
+  "id": "jewel",
+  "en": "Jewel Tones",
+  "ko": "주얼 톤",
+  "moods": [
+   "dark",
+   "bold"
+  ],
+  "colors": [
+   {
+    "hex": "#0F2A24",
+    "pantone": "7547 C"
+   },
+   {
+    "hex": "#0B7A6E",
+    "pantone": "328 C"
+   },
+   {
+    "hex": "#7B1E3B",
+    "pantone": "216 C"
+   },
+   {
+    "hex": "#1E3A8A",
+    "pantone": "287 C"
+   },
+   {
+    "hex": "#E9D8A6",
+    "pantone": "7506 C"
+   }
+  ]
+ },
+ {
+  "id": "duotone",
+  "en": "Cobalt & Coral",
+  "ko": "코발트 코랄",
+  "moods": [
+   "bright",
+   "bold"
+  ],
+  "colors": [
+   {
+    "hex": "#0A2540",
+    "pantone": "289 C"
+   },
+   {
+    "hex": "#2563EB",
+    "pantone": "285 C"
+   },
+   {
+    "hex": "#FF6B5E",
+    "pantone": "170 C"
+   },
+   {
+    "hex": "#EAF0F6",
+    "pantone": "7541 C"
+   },
+   {
+    "hex": "#0A2540",
+    "pantone": "289 C"
+   }
+  ]
+ },
+ {
+  "id": "vivid",
+  "en": "Vivid Play",
+  "ko": "비비드 플레이",
+  "moods": [
+   "bright",
+   "bold",
+   "experimental"
+  ],
+  "colors": [
+   {
+    "hex": "#111014",
+    "pantone": "Black 6 C"
+   },
+   {
+    "hex": "#F5F14E",
+    "pantone": "100 C"
+   },
+   {
+    "hex": "#FF5A3C",
+    "pantone": "171 C"
+   },
+   {
+    "hex": "#6C4CF1",
+    "pantone": "7442 C"
+   },
+   {
+    "hex": "#F7F7F5",
+    "pantone": "7422 C"
+   }
+  ]
+ },
+ {
+  "id": "cool-corp",
+  "en": "Cool Corporate",
+  "ko": "쿨 코퍼릿",
+  "moods": [
+   "bright",
+   "cool",
+   "calm"
+  ],
+  "colors": [
+   {
+    "hex": "#FFFFFF",
+    "pantone": "7422 C"
+   },
+   {
+    "hex": "#F1F5F9",
+    "pantone": "7541 C"
+   },
+   {
+    "hex": "#2563EB",
+    "pantone": "285 C"
+   },
+   {
+    "hex": "#0F172A",
+    "pantone": "7547 C"
+   },
+   {
+    "hex": "#64748B",
+    "pantone": "Cool Gray 9 C"
+   }
+  ]
+ },
+ {
+  "id": "sunset",
+  "en": "Warm Sunset",
+  "ko": "웜 선셋",
+  "moods": [
+   "warm",
+   "bold"
+  ],
+  "colors": [
+   {
+    "hex": "#2B1B2F",
+    "pantone": "Black C"
+   },
+   {
+    "hex": "#7A2E4A",
+    "pantone": "7433 C"
+   },
+   {
+    "hex": "#E0736B",
+    "pantone": "7416 C"
+   },
+   {
+    "hex": "#F2A65A",
+    "pantone": "7411 C"
+   },
+   {
+    "hex": "#F6E7CB",
+    "pantone": "7499 C"
+   }
+  ]
+ },
+ {
+  "id": "sage",
+  "en": "Forest Sage",
+  "ko": "포레스트 세이지",
+  "moods": [
+   "bright",
+   "calm",
+   "warm"
+  ],
+  "colors": [
+   {
+    "hex": "#F3F1E9",
+    "pantone": "7422 C"
+   },
+   {
+    "hex": "#A3B18A",
+    "pantone": "7494 C"
+   },
+   {
+    "hex": "#588157",
+    "pantone": "4485 C"
+   },
+   {
+    "hex": "#3A5A40",
+    "pantone": "7483 C"
+   },
+   {
+    "hex": "#344E41",
+    "pantone": "350 C"
+   }
+  ]
+ },
+ {
+  "id": "noir-gold",
+  "en": "Champagne Noir",
+  "ko": "샴페인 누아르",
+  "moods": [
+   "dark",
+   "warm",
+   "calm"
+  ],
+  "colors": [
+   {
+    "hex": "#0A0E0F",
+    "pantone": "Black 6 C"
+   },
+   {
+    "hex": "#12191C",
+    "pantone": "Black 6 C"
+   },
+   {
+    "hex": "#E6B15E",
+    "pantone": "7508 C"
+   },
+   {
+    "hex": "#57B7C1",
+    "pantone": "7472 C"
+   },
+   {
+    "hex": "#ECEFEC",
+    "pantone": "7541 C"
+   }
+  ]
+ },
+ {
+  "id": "mono-blush",
+  "en": "Blush Monotone",
+  "ko": "블러시 모노톤",
+  "moods": [
+   "bright",
+   "warm",
+   "calm"
+  ],
+  "colors": [
+   {
+    "hex": "#3A1F2B",
+    "pantone": "Black C"
+   },
+   {
+    "hex": "#7D3F53",
+    "pantone": "7432 C"
+   },
+   {
+    "hex": "#C77D91",
+    "pantone": "7430 C"
+   },
+   {
+    "hex": "#E9BFC9",
+    "pantone": "7435 C"
+   },
+   {
+    "hex": "#FBEEF1",
+    "pantone": "7422 C"
+   }
+  ]
+ }
+]
