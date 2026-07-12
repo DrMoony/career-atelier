@@ -1,0 +1,2206 @@
+{
+ "total": 115,
+ "expected": 115,
+ "byFamily": {
+  "corporate": [
+   "adrian-portfolio-template",
+   "alamin-one-page-portfolio",
+   "birva-responsive-portfolio-template",
+   "blayden-portfolio-resume-nextjs-template",
+   "bloom-portfolio-html-template",
+   "brilio-personal-portfolio-html",
+   "cv-portfolio-portfolio-html-template",
+   "fofana-personal-portfolio-template",
+   "it-s-me-personal-resume-and-portfolio",
+   "janemon-personal-portfolio-html-template",
+   "kane-personal-portfolio-html-template",
+   "krozo-personal-portfolio-nextjs-template",
+   "metier-portfolio-resume-bootstrap-5-template",
+   "minimal-folio-responsive-portfolio-template",
+   "mone-tailwind-personal-portfolio-template",
+   "naru-personal-portfolio-template",
+   "portfx-personal-portfolio-html-template",
+   "portivio-personal-portfolio-figma-template",
+   "procv-cv-resume-personal-portfolio-html-template",
+   "rainfo-portfolio-and-agency-template",
+   "resume-template",
+   "ukko-personal-portfolio-html-template",
+   "xorim-personal-portfolio-template"
+  ],
+  "studio": [
+   "alaia-personal-portfolio-template",
+   "alleo-agency-portfolio-html-template",
+   "amoxi-creative-agency-portfolio-html-template",
+   "anur-personal-portfolio-react-template",
+   "arabo-creative-portfolio-template",
+   "ashley-creative-portfolio-template",
+   "bolby-portfolio-cv-resume-htmltemplate",
+   "centrix-agency-portfolio-html-template",
+   "copr-personal-portfolio-html-template",
+   "elito-creative-portfolio-template",
+   "glint-portfolio-template",
+   "hedone-creative-clean-portfolio-agency-templ",
+   "hexafusion-sketch-studio-agency-portfolio",
+   "isti-creative-portfolio-html-template",
+   "jara-tailwind-css-personal-portfolio-template",
+   "kura-personal-portfolio-template",
+   "leedo-colorful-creative-portfolio-template",
+   "liam-personal-portfolio-react-template",
+   "marvio-coming-soon-portfolio-template",
+   "master-creative-portfolio-template",
+   "minifolio-personal-portfolio-html-template",
+   "morex-tailwind-css-personal-portfolio-template",
+   "node-responsive-portfolio-template",
+   "personal-portfolio-html-template-biogi",
+   "portm-personal-portfolio-template",
+   "rebel-creative-portfolio-template",
+   "scrape-creative-portfolio-template",
+   "textio-react-personal-portfolio-template",
+   "unded-creative-portfolio-figma-template",
+   "veltrixo-figma-agency-studio-personal-portfolio",
+   "wext-one-page-portfolio-template",
+   "whitespace-portfolio-agency-website-template",
+   "wythe-creative-portfolio-html-template",
+   "xolio-creative-agency-portfolio-template"
+  ],
+  "gallery": [
+   "alinti-minimal-html-portfolio",
+   "elpis-creative-minimal-portfolio-template",
+   "mountain-the-minimal-portfolio-template-for-insp",
+   "opal-minimal-portfolio-template",
+   "origin-minimal-personal-portfolio-template",
+   "personal-portfolio-html-template-salva",
+   "portf-sketch-personal-portfolio-websitetemplate",
+   "sliim-personal-portfolio",
+   "sonex-minimalistic-portfolio"
+  ],
+  "editorial": [
+   "anchor-freelancer-creative-agency-portfolio",
+   "clarks-personal-portfolio-template",
+   "grand-portfolio-html-template",
+   "rasalina-personal-portfolio-html5-template",
+   "sylor-agency-portfolio-html-template",
+   "upper-modern-comprehensive-portfolio",
+   "wave-agency-freelancer-portfolio"
+  ],
+  "warm": [
+   "andle-vue-portfolio-template",
+   "credesign-personal-portfolio-template",
+   "insta-personal-portfolio-figma-template",
+   "mer-s-personal-portfolio-template",
+   "mosso-personal-portfolio-html-template",
+   "popito-personal-portfolio-html-template",
+   "swiftly-personal-branding-portfolio-template",
+   "uniqeme-personal-portfolio-html-template",
+   "valiser-responsive-portfolio-creative-email"
+  ],
+  "lens": [
+   "architecture-portfolio-design-architect-templ",
+   "deppex-creative-showcase-portfolio-template",
+   "emily-creative-photography-portfolio",
+   "insee-minimal-portfolio-html-template",
+   "modesto-portfolio-photography-html-template",
+   "nextex-one-page-photography-portfolio-template",
+   "oblo-creative-photography-portfolio-template",
+   "pallas-creative-masonry-portfolio-template",
+   "portreto-photography-portfolio-html5-template",
+   "rewall-personal-portfolio-template",
+   "smarty-portfolio-photography-html-template",
+   "wildone-photography-portfolio-template",
+   "yex-one-page-portfolio-template",
+   "youth-creative-portfolio-template"
+  ],
+  "neotech": [
+   "be-portfolio-template-for-creatives",
+   "finley-coming-soon-and-portfolio-template",
+   "flixta-personal-portfolio-html-template",
+   "isak-resume-personal-portfolio-nextjs-template",
+   "jayden-personal-portfolio-html-template",
+   "lieon-personal-portfolio-html-template",
+   "metaverse-nft-portfolio-and-landing-page",
+   "neoto-creative-studio-portfolio-template",
+   "ober-personal-portfolio-template",
+   "portfar-personal-portfolio-react-template",
+   "portio-personal-portfolio-resume-template",
+   "qurifolio-flask-personal-creative-portfolio",
+   "trito-personal-portfolio-template",
+   "unded-creative-agency-portfolio-react-template"
+  ],
+  "noir": [
+   "blon-personal-portfolio-template",
+   "genix-creative-portfolio-html5-template",
+   "olulu-creative-portfolio-html5-template",
+   "perez-personal-portfolio-template",
+   "portfoy-creative-portfolio-html5-template"
+  ]
+ },
+ "lowConfidence": [
+  "arabo-creative-portfolio-template-2023-11-27-05-08-47-utc.zip",
+  "be-portfolio-template-for-creatives-2023-11-27-04-59-53-utc.zip",
+  "birva-responsive-portfolio-template-2023-11-27-05-22-03-utc.zip",
+  "hexafusion-sketch-studio-agency-portfolio-2026-06-18-10-25-14-utc.zip",
+  "insta-personal-portfolio-figma-template-2026-07-10-05-59-24-utc.zip",
+  "minifolio-personal-portfolio-html-template-2025-08-26-05-05-06-utc.zip",
+  "portf-sketch-personal-portfolio-websitetemplate-2026-07-07-13-18-56-utc.zip",
+  "portivio-personal-portfolio-figma-template-2025-10-04-05-48-17-utc.zip",
+  "swiftly-personal-branding-portfolio-template-2026-05-30-10-08-58-utc.zip",
+  "textio-react-personal-portfolio-template-2026-05-01-03-04-20-utc.zip",
+  "ukko-personal-portfolio-html-template-2023-11-27-04-51-17-utc.zip",
+  "unded-creative-portfolio-figma-template-2024-01-19-16-16-30-utc.zip",
+  "veltrixo-figma-agency-studio-personal-portfolio-2026-06-18-10-23-13-utc.zip",
+  "wext-one-page-portfolio-template-2025-11-29-14-12-45-utc.zip"
+ ],
+ "templates": [
+  {
+   "name": "adrian-portfolio-template-2024-08-01-06-35-17-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#f8f9fa",
+    "#212529",
+    "#007bff",
+    "#6c757d",
+    "#343a40"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "bootstrap-based sections, Montserrat/Poppins",
+   "vibe": "clean professional",
+   "tech": "html-bootstrap",
+   "confidence": "med",
+   "note": "default bootstrap palette, neutral sans resume feel"
+  },
+  {
+   "name": "alaia-personal-portfolio-template-2025-07-02-11-50-07-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#232434",
+    "#3f3eed",
+    "#ffe06f",
+    "#f6463e",
+    "#f50079"
+   ],
+   "font": "mixed",
+   "family": "studio",
+   "layout": "dark hero with marquee + owl carousel",
+   "vibe": "bold playful creative",
+   "tech": "html-bootstrap",
+   "confidence": "high",
+   "note": "dark base with vivid multi-color accents, Caveat/Kanit/Zilla Slab"
+  },
+  {
+   "name": "alamin-one-page-portfolio-2023-11-27-05-22-43-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#f8f9fa",
+    "#212529",
+    "#007bff",
+    "#e0a80d",
+    "#6c757d"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "one-page grid with isotope filters",
+   "vibe": "clean professional",
+   "tech": "html-bootstrap",
+   "confidence": "med",
+   "note": "bootstrap defaults, Muli sans, tidy one-page CV"
+  },
+  {
+   "name": "alinti-minimal-html-portfolio-2023-11-27-05-16-27-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#e6ae48",
+    "#333333",
+    "#999999",
+    "#f5f5f5"
+   ],
+   "font": "serif",
+   "family": "gallery",
+   "layout": "minimal full-slide carousel, whitespace",
+   "vibe": "refined minimal",
+   "tech": "html-bootstrap",
+   "confidence": "high",
+   "note": "Droid Serif/Lora serif, light minimal with gold accent"
+  },
+  {
+   "name": "alleo-agency-portfolio-html-template-2025-10-20-22-00-57-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#f50057",
+    "#562fff",
+    "#311b92",
+    "#212121",
+    "#f8f8f8"
+   ],
+   "font": "mixed",
+   "family": "studio",
+   "layout": "irregular grids, multiple hero variants",
+   "vibe": "vivid creative agency",
+   "tech": "html",
+   "confidence": "high",
+   "note": "bold pink/purple, Playfair+Josefin mix, agency energy"
+  },
+  {
+   "name": "amoxi-creative-agency-portfolio-html-template-2026-05-28-07-28-50-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#1a1b1f",
+    "#ff621d",
+    "#d2f96b",
+    "#b2afa6",
+    "#0e0f11"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "reveal-text hero, agency sections",
+   "vibe": "bold edgy creative",
+   "tech": "html",
+   "confidence": "high",
+   "note": "dark with punchy orange + lime accents, DM Sans/Jakarta"
+  },
+  {
+   "name": "anchor-freelancer-creative-agency-portfolio-2023-11-27-05-32-02-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#f50c1a",
+    "#222222",
+    "#333333",
+    "#f5f5f5",
+    "#007bff"
+   ],
+   "font": "mixed",
+   "family": "editorial",
+   "layout": "swiper slides, Playfair display headers",
+   "vibe": "bold text-forward",
+   "tech": "html",
+   "confidence": "med",
+   "note": "Playfair Display + Fjalla One display type, red accent"
+  },
+  {
+   "name": "andle-vue-portfolio-template-2023-11-27-04-55-35-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#89715b",
+    "#f58344",
+    "#da2929",
+    "#090909",
+    "#feae01"
+   ],
+   "font": "mixed",
+   "family": "warm",
+   "layout": "vue single-page, swiper sections",
+   "vibe": "warm earthy personal",
+   "tech": "vue",
+   "confidence": "med",
+   "note": "warm brown/orange tones, Zilla Slab serif + Inter"
+  },
+  {
+   "name": "anur-personal-portfolio-react-template-2026-01-12-10-30-26-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffb100",
+    "#062265",
+    "#ffffff",
+    "#868e96",
+    "#343a40"
+   ],
+   "font": "mixed",
+   "family": "studio",
+   "confidence": "med",
+   "layout": "React SPA, bootstrap grid sections",
+   "vibe": "bright playful creative",
+   "tech": "react",
+   "note": "orange+navy vivid accents, Playfair+Open Sans"
+  },
+  {
+   "name": "arabo-creative-portfolio-template-2023-11-27-05-08-47-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#333333",
+    "#777777",
+    "#428bca",
+    "#f5f5f5"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "confidence": "low",
+   "layout": "bootstrap grid, show-grid",
+   "vibe": "creative but neutral",
+   "tech": "html/bootstrap",
+   "note": "Poppins/Open Sans, mostly bootstrap defaults"
+  },
+  {
+   "name": "architecture-portfolio-design-architect-templ-2023-11-27-05-23-16-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#e7a920",
+    "#333333",
+    "#000000",
+    "#777777"
+   ],
+   "font": "sans",
+   "family": "lens",
+   "confidence": "med",
+   "layout": "full-bleed image grid, architecture showcase",
+   "vibe": "clean architectural, image-first",
+   "tech": "html/bootstrap",
+   "note": "gold accent on white, Montserrat/Roboto Slab"
+  },
+  {
+   "name": "ashley-creative-portfolio-template-2024-01-08-13-05-20-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#fdfdff",
+    "#212529",
+    "#0d6efd",
+    "#6c757d",
+    "#f8f9fa"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "confidence": "med",
+   "layout": "swiper slider, minimal sections",
+   "vibe": "clean modern creative",
+   "tech": "html/scss+swiper",
+   "note": "Outfit geometric sans, near-white bg"
+  },
+  {
+   "name": "be-portfolio-template-for-creatives-2023-11-27-04-59-53-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#31353a",
+    "#f5f5f5",
+    "#428bca",
+    "#8a6d3b",
+    "#a94442"
+   ],
+   "font": "sans",
+   "family": "neotech",
+   "confidence": "low",
+   "layout": "dark sectioned bootstrap",
+   "vibe": "dark utilitarian creative",
+   "tech": "html/bootstrap",
+   "note": "dark grey bg, Roboto Condensed, no gold"
+  },
+  {
+   "name": "birva-responsive-portfolio-template-2023-11-27-05-22-03-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#fefefe",
+    "#444444",
+    "#3f5fbf",
+    "#ff1493",
+    "#dddddd"
+   ],
+   "font": "mixed",
+   "family": "corporate",
+   "confidence": "low",
+   "layout": "simple responsive blocks",
+   "vibe": "basic plain personal",
+   "tech": "html",
+   "note": "minimal old template, Arial/Courier"
+  },
+  {
+   "name": "blayden-portfolio-resume-nextjs-template-2026-07-04-10-59-58-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#41b782",
+    "#1d2746",
+    "#6b707f",
+    "#ffffff",
+    "#e6eeef"
+   ],
+   "font": "mixed",
+   "family": "corporate",
+   "confidence": "med",
+   "layout": "resume/CV sections, next.js",
+   "vibe": "clean professional resume",
+   "tech": "nextjs",
+   "note": "green+navy, Urbanist sans + Great Vibes accent"
+  },
+  {
+   "name": "blon-personal-portfolio-template-2023-11-27-04-54-46-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#1f2229",
+    "#de1d36",
+    "#fa5a00",
+    "#f5f5f5",
+    "#337ab7"
+   ],
+   "font": "sans",
+   "family": "noir",
+   "confidence": "med",
+   "layout": "owl carousel, portfolio grid, dark sections",
+   "vibe": "dark premium warm-accent",
+   "tech": "html/scss",
+   "note": "dark bg with red/orange accents, Raleway/Lato"
+  },
+  {
+   "name": "bloom-portfolio-html-template-2025-10-20-22-00-57-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#009fff",
+    "#007cff",
+    "#121212",
+    "#f1f1f1",
+    "#252525"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "hero sections, clean single-accent personal portfolio",
+   "vibe": "clean modern blue",
+   "tech": "html/css",
+   "confidence": "med",
+   "note": "Montserrat/Poppins, single blue accent on light"
+  },
+  {
+   "name": "bolby-portfolio-cv-resume-htmltemplate-2023-11-27-05-04-54-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffd15c",
+    "#6c6ce5",
+    "#ff4c60",
+    "#353353",
+    "#212529"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "CV/resume with vivid multi-color cards",
+   "vibe": "playful vivid multi-color",
+   "tech": "html/css",
+   "confidence": "high",
+   "note": "Rubik + yellow/purple/red tri-accent"
+  },
+  {
+   "name": "brilio-personal-portfolio-html-2026-07-03-07-49-05-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#dc3545",
+    "#212529",
+    "#f8f9fa",
+    "#0d6efd",
+    "#ffc107"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "hero + bootstrap grid personal portfolio",
+   "vibe": "clean professional",
+   "tech": "html/bootstrap",
+   "confidence": "med",
+   "note": "Gilroy/Urbanist/Poppins, bootstrap defaults dominate"
+  },
+  {
+   "name": "centrix-agency-portfolio-html-template-2024-10-20-11-08-18-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#000000",
+    "#ffffff",
+    "#fffe55",
+    "#fffe22",
+    "#fb7000"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "swiper carousels, bold black/neon-yellow agency",
+   "vibe": "bold high-contrast neon",
+   "tech": "html/swiper",
+   "confidence": "high",
+   "note": "Neue Montreal/Gilroy geometric, black + neon yellow"
+  },
+  {
+   "name": "clarks-personal-portfolio-template-2024-08-01-06-28-15-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#00a3e1",
+    "#007bff",
+    "#212529",
+    "#f8f9fa",
+    "#e1e1e1"
+   ],
+   "font": "mixed",
+   "family": "editorial",
+   "layout": "owl banner slider, serif headings text-forward",
+   "vibe": "refined text-forward",
+   "tech": "html/owl",
+   "confidence": "med",
+   "note": "Source Serif Pro headings + Open Sans/Lato body"
+  },
+  {
+   "name": "copr-personal-portfolio-html-template-2024-07-13-07-03-23-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#0d6efd",
+    "#212529",
+    "#f8f9fa",
+    "#6c757d",
+    "#343a40"
+   ],
+   "font": "mixed",
+   "family": "studio",
+   "layout": "masonry portfolio grid, script accent",
+   "vibe": "modern creative minimal",
+   "tech": "html (nested zip)",
+   "confidence": "med",
+   "note": "Manrope + Mrs Saint Delafield script, masonry portfolio"
+  },
+  {
+   "name": "credesign-personal-portfolio-template-2023-11-27-05-33-10-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffe2d1",
+    "#fff3ea",
+    "#0d6efd",
+    "#212529",
+    "#ffc107"
+   ],
+   "font": "sans",
+   "family": "warm",
+   "layout": "hero areas, peach warm-toned personal portfolio",
+   "vibe": "soft warm peach",
+   "tech": "html/bootstrap",
+   "confidence": "med",
+   "note": "Jost/Urbanist, peach/cream warm accents"
+  },
+  {
+   "name": "cv-portfolio-portfolio-html-template-2024-12-23-12-58-20-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#f6483b",
+    "#212529",
+    "#0d6efd",
+    "#f8f9fa",
+    "#ffc107"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "owl sliders, CV/resume personal portfolio",
+   "vibe": "clean professional CV",
+   "tech": "html/owl",
+   "confidence": "med",
+   "note": "Barlow/Josefin Sans/Montserrat, red-orange accent"
+  },
+  {
+   "name": "deppex-creative-showcase-portfolio-template-2025-05-29-15-19-18-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#5f5f5f",
+    "#444444",
+    "#e0e0e0",
+    "#eeeeee"
+   ],
+   "font": "sans",
+   "family": "lens",
+   "layout": "fullscreen hero + swiper showcase slides",
+   "vibe": "minimal grayscale creative showcase",
+   "tech": "html/css (Montserrat/Raleway)",
+   "confidence": "med",
+   "note": "image-first full-bleed but neutral sans, borders on gallery"
+  },
+  {
+   "name": "elito-creative-portfolio-template-2025-06-03-07-19-11-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#10b3d6",
+    "#1d2746",
+    "#59c378",
+    "#dc3545",
+    "#ffc107"
+   ],
+   "font": "mixed",
+   "family": "studio",
+   "layout": "bootstrap grid, cyan-accented sections",
+   "vibe": "colorful creative, script + Inter accents",
+   "tech": "bootstrap + Inter/Great Vibes",
+   "confidence": "med",
+   "note": "vivid cyan/green/red accents, some are bootstrap defaults"
+  },
+  {
+   "name": "elpis-creative-minimal-portfolio-template-2023-11-27-05-01-13-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#212121",
+    "#007bff",
+    "#f8f9fa",
+    "#dee2e6",
+    "#e9ecef"
+   ],
+   "font": "mixed",
+   "family": "gallery",
+   "layout": "centered hero, minimal whitespace",
+   "vibe": "clean minimal creative",
+   "tech": "Poppins + Crimson Text serif",
+   "confidence": "med",
+   "note": "light minimal with Crimson serif headings + Poppins body"
+  },
+  {
+   "name": "emily-creative-photography-portfolio-2023-11-27-05-35-42-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#337ab7",
+    "#f5f5f5",
+    "#e8e8e8",
+    "#2e6da4",
+    "#8a6d3b"
+   ],
+   "font": "sans",
+   "family": "lens",
+   "layout": "full-bleed home slider, swiper galleries",
+   "vibe": "photography-first, image showcase",
+   "tech": "Open Sans + Yantramanav, swiper",
+   "confidence": "high",
+   "note": "dedicated photography portfolio, image-led"
+  },
+  {
+   "name": "finley-coming-soon-and-portfolio-template-2026-07-08-09-03-18-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#1a1a1a",
+    "#212529",
+    "#e2e2e2",
+    "#f8f9fa",
+    "#0d6efd"
+   ],
+   "font": "mixed",
+   "family": "neotech",
+   "layout": "dark hero, marquee, coming-soon + portfolio",
+   "vibe": "dark modern with serif display accents",
+   "tech": "Plus Jakarta Sans + DM Serif Display",
+   "confidence": "med",
+   "note": "dark geometric sans base, DM Serif display headings"
+  },
+  {
+   "name": "flixta-personal-portfolio-html-template-2025-04-15-20-12-36-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#10171e",
+    "#171e24",
+    "#428dff",
+    "#a4c2f7",
+    "#e8edfc"
+   ],
+   "font": "sans",
+   "family": "neotech",
+   "layout": "dark sections, split-text animations, swiper",
+   "vibe": "sleek dark techy personal portfolio",
+   "tech": "Urbanist, RS split-text/GSAP",
+   "confidence": "high",
+   "note": "dark bg + geometric Urbanist + blue accent, animated"
+  },
+  {
+   "name": "fofana-personal-portfolio-template-2023-11-27-04-59-13-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#212529",
+    "#0d6efd",
+    "#6c757d",
+    "#f8f9fa",
+    "#ff5252"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "bootstrap grid, swiper sections",
+   "vibe": "clean neutral professional personal",
+   "tech": "Montserrat + Roboto, bootstrap",
+   "confidence": "med",
+   "note": "neutral sans on light, professional resume feel"
+  },
+  {
+   "name": "genix-creative-portfolio-html5-template-2023-11-27-04-51-03-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#c7ad88",
+    "#292e31",
+    "#ffd658",
+    "#999999",
+    "#ffffff"
+   ],
+   "font": "mixed",
+   "family": "noir",
+   "layout": "fullscreen rev-slider, elegant sections",
+   "vibe": "premium dark with gold accent",
+   "tech": "Merriweather serif + Poppins, revslider",
+   "confidence": "med",
+   "note": "gold #c7ad88 warm accent + dark #292e31 + serif, refined"
+  },
+  {
+   "name": "glint-portfolio-template-2023-11-27-05-04-46-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#08d665",
+    "#212529",
+    "#999999",
+    "#222222"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "carousel + grid, condensed Oswald headings",
+   "vibe": "energetic agency, vivid green accent",
+   "tech": "html/bootstrap",
+   "confidence": "med",
+   "note": "light bg, single vivid green accent, Oswald/Poppins"
+  },
+  {
+   "name": "grand-portfolio-html-template-2023-11-27-05-25-56-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#222222",
+    "#00a8ff",
+    "#00ffff",
+    "#777777"
+   ],
+   "font": "mixed",
+   "family": "editorial",
+   "layout": "grid post layout + flexslider",
+   "vibe": "multipurpose magazine grid",
+   "tech": "html/scss",
+   "confidence": "med",
+   "note": "Playfair Display serif + Josefin/Karla sans, cyan accents"
+  },
+  {
+   "name": "hedone-creative-clean-portfolio-agency-templ-2023-11-27-05-22-43-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#fcc900",
+    "#ff1493",
+    "#435a5f",
+    "#222222"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "hero + creative agency sections",
+   "vibe": "bold playful multi-color",
+   "tech": "html/bootstrap",
+   "confidence": "med",
+   "note": "Archivo Black display, yellow+pink vivid palette"
+  },
+  {
+   "name": "hexafusion-sketch-studio-agency-portfolio-2026-06-18-10-25-14-utc.zip",
+   "bg": "light",
+   "palette": [],
+   "font": "sans",
+   "family": "studio",
+   "layout": "unknown (design file)",
+   "vibe": "studio/agency creative",
+   "tech": "design-file",
+   "confidence": "low",
+   "note": ".sketch file, no css; classified from filename keywords"
+  },
+  {
+   "name": "insee-minimal-portfolio-html-template-2023-11-27-05-24-06-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#000000",
+    "#0088cc",
+    "#999999",
+    "#f5f5f5"
+   ],
+   "font": "sans",
+   "family": "lens",
+   "layout": "works-grid masonry, parallax dark modules",
+   "vibe": "minimal image-first portfolio",
+   "tech": "html/bootstrap",
+   "confidence": "med",
+   "note": "Montserrat sans, masonry works-grid image-forward"
+  },
+  {
+   "name": "insta-personal-portfolio-figma-template-2026-07-10-05-59-24-utc.zip",
+   "bg": "light",
+   "palette": [],
+   "font": "sans",
+   "family": "warm",
+   "layout": "unknown (design file)",
+   "vibe": "personal friendly portfolio",
+   "tech": "design-file",
+   "confidence": "low",
+   "note": ".fig figma file, no css; personal-portfolio filename keyword"
+  },
+  {
+   "name": "isak-resume-personal-portfolio-nextjs-template-2026-06-18-09-23-01-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#000000",
+    "#ffffff",
+    "#14151a",
+    "#212529",
+    "#6c757d"
+   ],
+   "font": "mixed",
+   "family": "neotech",
+   "layout": "next.js resume/CV, black-and-white minimal",
+   "vibe": "sharp minimal techy resume",
+   "tech": "nextjs/tsx/scss",
+   "confidence": "med",
+   "note": "black-dominant, Inter/Apfel Grotezk geometric sans + EB Garamond serif accent"
+  },
+  {
+   "name": "isti-creative-portfolio-html-template-2024-11-05-02-53-41-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#f8f9fa",
+    "#15160e",
+    "#212529",
+    "#0d6efd",
+    "#6c757d"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "portfolio + testimonial sliders",
+   "vibe": "creative energetic portfolio",
+   "tech": "html/bootstrap",
+   "confidence": "med",
+   "note": "Poppins + Spline Sans geometric, near-black on light, creative sliders"
+  },
+  {
+   "name": "it-s-me-personal-resume-and-portfolio-2023-11-27-05-25-46-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#337ab7",
+    "#f5f5f5",
+    "#ffffff",
+    "#2e6da4",
+    "#000000"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "grid resume/CV blocks",
+   "vibe": "clean professional",
+   "tech": "bootstrap html",
+   "confidence": "high",
+   "note": "classic bootstrap blue resume"
+  },
+  {
+   "name": "janemon-personal-portfolio-html-template-2025-07-02-11-46-05-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#f0bb62",
+    "#212529",
+    "#435a5f",
+    "#0d6efd",
+    "#ffffff"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "single-page sections",
+   "vibe": "clean gold-accented",
+   "tech": "bootstrap html",
+   "confidence": "med",
+   "note": "warm gold accent on neutral"
+  },
+  {
+   "name": "jara-tailwind-css-personal-portfolio-template-2023-11-27-05-34-01-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#dd1c63",
+    "#b16cea",
+    "#ff9d42",
+    "#ff6069",
+    "#161513"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "tailwind creative grid",
+   "vibe": "colorful playful",
+   "tech": "tailwind html",
+   "confidence": "high",
+   "note": "vivid multi-gradient, Syne display"
+  },
+  {
+   "name": "jayden-personal-portfolio-html-template-2025-11-16-15-59-45-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#000000",
+    "#212529",
+    "#dc3545",
+    "#ffc107",
+    "#f8f9fa"
+   ],
+   "font": "sans",
+   "family": "neotech",
+   "layout": "dark grid + marquee",
+   "vibe": "sharp techy",
+   "tech": "html",
+   "confidence": "med",
+   "note": "Rajdhani geometric, dark base"
+  },
+  {
+   "name": "kane-personal-portfolio-html-template-2024-08-02-03-57-08-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#212529",
+    "#0d6efd",
+    "#435a5f",
+    "#ff1493",
+    "#ffaa3e"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "masonry project grid",
+   "vibe": "clean modern",
+   "tech": "bootstrap html",
+   "confidence": "med",
+   "note": "Syne+Inter, neutral bootstrap base"
+  },
+  {
+   "name": "krozo-personal-portfolio-nextjs-template-2026-05-14-10-34-16-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#41b782",
+    "#1d2746",
+    "#6b707f",
+    "#878b99",
+    "#ffffff"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "nextjs sectioned portfolio",
+   "vibe": "fresh professional",
+   "tech": "nextjs react",
+   "confidence": "med",
+   "note": "green accent, navy text, Great Vibes script"
+  },
+  {
+   "name": "kura-personal-portfolio-template-2023-11-27-05-35-50-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ff4522",
+    "#9200ee",
+    "#ff5e94",
+    "#4169e1",
+    "#66b95c"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "swiper hero + grid",
+   "vibe": "vivid energetic",
+   "tech": "html swiper",
+   "confidence": "high",
+   "note": "rainbow multi-color palette"
+  },
+  {
+   "name": "leedo-colorful-creative-portfolio-template-2023-12-14-09-46-39-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#ee3364",
+    "#0b0b0b",
+    "#00bec5",
+    "#fdf4b4",
+    "#ffffff"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "full-bleed sliders, jarallax",
+   "vibe": "bold colorful creative",
+   "tech": "html",
+   "confidence": "high",
+   "note": "dark base with vivid pink/teal accents"
+  },
+  {
+   "name": "liam-personal-portfolio-react-template-2026-02-04-15-39-00-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#fafcfd",
+    "#e6eeef",
+    "#1d2746",
+    "#e8c83e",
+    "#6b707f"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "react single-page, hero + project grid",
+   "vibe": "creative, gold-accented",
+   "tech": "react",
+   "confidence": "med",
+   "note": "Syne display + gold accent on light, creative personal"
+  },
+  {
+   "name": "lieon-personal-portfolio-html-template-2025-12-20-02-05-32-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#0d6efd",
+    "#212529",
+    "#f8f9fa",
+    "#337ab7",
+    "#6c757d"
+   ],
+   "font": "sans",
+   "family": "neotech",
+   "layout": "swiper slides + marquee, dark sections",
+   "vibe": "sharp modern techy",
+   "tech": "html/swiper",
+   "confidence": "med",
+   "note": "Sora geometric sans, dark theme bg + marquee"
+  },
+  {
+   "name": "marvio-coming-soon-portfolio-template-2026-07-08-09-12-20-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#07051c",
+    "#f987d6",
+    "#6a47af",
+    "#ffffff",
+    "#212529"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "coming-soon landing, swiper grid",
+   "vibe": "playful pink/purple neon",
+   "tech": "html/swiper",
+   "confidence": "med",
+   "note": "vivid pink+purple on dark, Ubuntu"
+  },
+  {
+   "name": "master-creative-portfolio-template-2023-11-27-05-09-42-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#0088cc",
+    "#f89406",
+    "#ee5f5b",
+    "#222222"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "creative multi-section, colorful blocks",
+   "vibe": "bold multi-color creative",
+   "tech": "html/bootstrap",
+   "confidence": "med",
+   "note": "multiple vivid accents, Open Sans, older creative kit"
+  },
+  {
+   "name": "mer-s-personal-portfolio-template-2023-11-27-05-34-02-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#fafafa",
+    "#202020",
+    "#988c86",
+    "#ff451b",
+    "#464646"
+   ],
+   "font": "mixed",
+   "family": "warm",
+   "layout": "masonry gallery, owl carousel",
+   "vibe": "warm refined personal",
+   "tech": "html/isotope",
+   "confidence": "med",
+   "note": "Playfair+Poppins, warm taupe + orange accent"
+  },
+  {
+   "name": "metaverse-nft-portfolio-and-landing-page-2025-06-11-11-49-40-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#0b0b0b",
+    "#00d8ff",
+    "#af8b1d",
+    "#ffffff",
+    "#373737"
+   ],
+   "font": "sans",
+   "family": "neotech",
+   "layout": "isotope grid, NFT landing",
+   "vibe": "dark techy neon-cyan",
+   "tech": "html/isotope",
+   "confidence": "med",
+   "note": "dark bg + cyan/gold, Heebo/Raleway, crypto vibe"
+  },
+  {
+   "name": "metier-portfolio-resume-bootstrap-5-template-2025-04-08-06-07-13-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#f94d1d",
+    "#212529",
+    "#030404",
+    "#9fa0a1"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "bootstrap 5 resume/CV, swiper",
+   "vibe": "clean professional",
+   "tech": "html/bootstrap5",
+   "confidence": "high",
+   "note": "neutral resume layout, Inter/Roboto, orange accent"
+  },
+  {
+   "name": "minifolio-personal-portfolio-html-template-2025-08-26-05-05-06-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#f8f9fa",
+    "#212529",
+    "#007bff",
+    "#343a40",
+    "#6c757d"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "minimal personal, marquee sections",
+   "vibe": "bold modern display",
+   "tech": "html",
+   "confidence": "low",
+   "note": "Big Shoulders+Bricolage Grotesque bold display on light"
+  },
+  {
+   "name": "minimal-folio-responsive-portfolio-template-2023-11-27-05-09-13-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#999999",
+    "#dddddd",
+    "#428bca",
+    "#333333"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "minimal grid portfolio with slider",
+   "vibe": "clean minimal",
+   "tech": "code (Bootstrap/Open Sans)",
+   "confidence": "med",
+   "note": "light minimal sans, bootstrap blue accent"
+  },
+  {
+   "name": "modesto-portfolio-photography-html-template-2023-11-27-05-33-23-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#989898",
+    "#006673",
+    "#f5f5f5",
+    "#e3e3e3",
+    "#337ab7"
+   ],
+   "font": "mixed",
+   "family": "lens",
+   "layout": "full-bleed photography with swiper sliders",
+   "vibe": "photographic editorial",
+   "tech": "code (Swiper, Abril/Droid Serif)",
+   "confidence": "high",
+   "note": "photography-first, display serif headings"
+  },
+  {
+   "name": "mone-tailwind-personal-portfolio-template-2025-02-25-18-51-00-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#212529",
+    "#0d6efd",
+    "#6c757d",
+    "#f8f9fa",
+    "#ffc107"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "tailwind personal portfolio sections + swiper",
+   "vibe": "clean professional",
+   "tech": "code (Tailwind, Outfit/Open Sans)",
+   "confidence": "med",
+   "note": "neutral light sans personal CV style"
+  },
+  {
+   "name": "morex-tailwind-css-personal-portfolio-template-2023-11-27-05-24-12-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffce31",
+    "#ee5f38",
+    "#ed38d1",
+    "#a348cd",
+    "#007eff"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "bold hero, colorful multi-accent, dark-mode option",
+   "vibe": "vivid playful creative",
+   "tech": "code (Tailwind, Roboto/Rubik)",
+   "confidence": "med",
+   "note": "vivid yellow + rainbow accents, bold"
+  },
+  {
+   "name": "mosso-personal-portfolio-html-template-2025-06-12-17-09-57-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#f3f3f3",
+    "#ffcddf",
+    "#ffb6c1",
+    "#ffd700",
+    "#3f3f3f"
+   ],
+   "font": "mixed",
+   "family": "warm",
+   "layout": "masonry blog + soft rounded sections",
+   "vibe": "soft friendly personal",
+   "tech": "code (Poppins + Playfair, masonry)",
+   "confidence": "med",
+   "note": "soft pink/gold warm tones, mixed serif/sans"
+  },
+  {
+   "name": "mountain-the-minimal-portfolio-template-for-insp-2023-11-27-05-24-21-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#00c365",
+    "#333333",
+    "#f5f5f5",
+    "#cccccc"
+   ],
+   "font": "sans",
+   "family": "gallery",
+   "layout": "minimal masonry grid, generous whitespace",
+   "vibe": "minimal clean",
+   "tech": "code (Josefin/Oswald, flexslider)",
+   "confidence": "med",
+   "note": "light minimal whitespace but headings are sans"
+  },
+  {
+   "name": "naru-personal-portfolio-template-2024-11-14-13-34-05-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#0d6efd",
+    "#212529",
+    "#f8f9fa",
+    "#6c757d",
+    "#ffc107"
+   ],
+   "font": "mixed",
+   "family": "corporate",
+   "layout": "personal portfolio sections + swiper clients",
+   "vibe": "clean professional",
+   "tech": "code (Poppins/Lora, Swiper)",
+   "confidence": "med",
+   "note": "neutral light, Lora serif accents on sans base"
+  },
+  {
+   "name": "neoto-creative-studio-portfolio-template-2023-11-27-04-49-41-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#141414",
+    "#007bff",
+    "#212529",
+    "#6c757d",
+    "#f8f9fa",
+    "#343a40"
+   ],
+   "font": "sans",
+   "family": "neotech",
+   "layout": "creative studio, glide sliders, geometric sans",
+   "vibe": "sharp modern techy",
+   "tech": "code (Inter var, Lexend Giga, Glide)",
+   "confidence": "med",
+   "note": "dark #141414 + geometric Inter/Lexend"
+  },
+  {
+   "name": "nextex-one-page-photography-portfolio-template-2025-05-29-15-22-19-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#5f5f5f",
+    "#f5f5f5",
+    "#337ab7",
+    "#000000"
+   ],
+   "font": "sans",
+   "family": "lens",
+   "layout": "one-page fullscreen hero + image carousel",
+   "vibe": "clean photography showcase",
+   "tech": "html/bootstrap",
+   "confidence": "med",
+   "note": "Montserrat/Raleway, fullscreen photo hero, image-first one-pager"
+  },
+  {
+   "name": "node-responsive-portfolio-template-2023-11-27-05-21-41-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ff1493",
+    "#ffaa3e",
+    "#009900",
+    "#ffd600",
+    "#435a5f"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "carousel-driven multi-color grid",
+   "vibe": "vivid playful creative",
+   "tech": "html/jquery",
+   "confidence": "high",
+   "note": "bold multi-color palette (pink/green/yellow), Open Sans/Cuprum"
+  },
+  {
+   "name": "ober-personal-portfolio-template-2023-11-27-05-01-25-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#1c2528",
+    "#ff8059",
+    "#3c4649",
+    "#bdc1c7",
+    "#212529"
+   ],
+   "font": "mixed",
+   "family": "neotech",
+   "layout": "dark sections + split text animation",
+   "vibe": "sleek dark personal",
+   "tech": "html/bootstrap",
+   "confidence": "med",
+   "note": "dark charcoal bg, coral accent, Rubik geometric sans + Goudy serif accents"
+  },
+  {
+   "name": "oblo-creative-photography-portfolio-template-2023-11-27-04-55-27-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#21202e",
+    "#eb6165",
+    "#c0c0c7",
+    "#212529",
+    "#f8f9fa"
+   ],
+   "font": "mixed",
+   "family": "lens",
+   "layout": "full-bleed swiper photo slides",
+   "vibe": "moody creative photography",
+   "tech": "html/swiper",
+   "confidence": "med",
+   "note": "dark bg, coral accent, Roboto + Yeseva One serif + script, image-first swiper"
+  },
+  {
+   "name": "olulu-creative-portfolio-html5-template-2024-11-13-06-24-51-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#e3b576",
+    "#070143",
+    "#713735",
+    "#212529",
+    "#f8f9fa"
+   ],
+   "font": "mixed",
+   "family": "noir",
+   "layout": "dark navy sections + gold, masonry grids",
+   "vibe": "premium elegant creative",
+   "tech": "html/bootstrap/owl",
+   "confidence": "med",
+   "note": "gold #e3b576 + dark navy, Cormorant Garamond serif + Futura, refined"
+  },
+  {
+   "name": "opal-minimal-portfolio-template-2023-11-27-04-56-43-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#222222",
+    "#aaaaaa",
+    "#717171",
+    "#000000"
+   ],
+   "font": "mixed",
+   "family": "gallery",
+   "layout": "minimal light grid, generous whitespace",
+   "vibe": "understated minimal",
+   "tech": "html/jquery",
+   "confidence": "med",
+   "note": "white bg, minimal palette, Georgia serif + Oswald/Rokkitt, quiet"
+  },
+  {
+   "name": "origin-minimal-personal-portfolio-template-2023-11-27-05-01-46-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#f5f5f5",
+    "#c5283d",
+    "#337ab7",
+    "#435a5f",
+    "#000000"
+   ],
+   "font": "serif",
+   "family": "gallery",
+   "layout": "split-screen home, minimal personal",
+   "vibe": "elegant minimal personal",
+   "tech": "html/jquery",
+   "confidence": "med",
+   "note": "large Playfair Display serif + Poppins/Lato, light minimal split layout"
+  },
+  {
+   "name": "pallas-creative-masonry-portfolio-template-2023-11-27-05-17-56-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#212121",
+    "#f89406",
+    "#999999",
+    "#111111",
+    "#263b40"
+   ],
+   "font": "mixed",
+   "family": "lens",
+   "layout": "masonry image grid + owl slider",
+   "vibe": "dark creative image showcase",
+   "tech": "html/owl-isotope",
+   "confidence": "med",
+   "note": "dark bg, orange accent, Open Sans + script fonts, masonry image-first"
+  },
+  {
+   "name": "perez-personal-portfolio-template-2024-10-30-14-22-46-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#080808",
+    "#1a1a1a",
+    "#ffb646",
+    "#ff9330",
+    "#ffe9d9"
+   ],
+   "font": "sans",
+   "family": "noir",
+   "layout": "dark hero + swiper slider sections",
+   "vibe": "premium warm-amber dark",
+   "tech": "html/scss (bootstrap)",
+   "confidence": "med",
+   "note": "dark bg with amber/gold accent, DM Sans/Syne"
+  },
+  {
+   "name": "personal-portfolio-html-template-biogi-2024-09-10-13-15-15-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#0f141c",
+    "#ffdb59",
+    "#f8f9fa",
+    "#0d6efd",
+    "#212529"
+   ],
+   "font": "mixed",
+   "family": "studio",
+   "layout": "swiper card grid, multi-font",
+   "vibe": "playful yellow-accent creative",
+   "tech": "html/css (bootstrap)",
+   "confidence": "med",
+   "note": "yellow accent + Elsie Swash decorative serif, many fonts"
+  },
+  {
+   "name": "personal-portfolio-html-template-salva-2023-11-27-04-53-30-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#808080",
+    "#ffffff",
+    "#00bcd4",
+    "#f5f5f5",
+    "#000000"
+   ],
+   "font": "serif",
+   "family": "gallery",
+   "layout": "minimal owl-carousel hero, whitespace",
+   "vibe": "clean minimal serif",
+   "tech": "html/css",
+   "confidence": "med",
+   "note": "gray/white minimal, Crete Round serif + Lato"
+  },
+  {
+   "name": "popito-personal-portfolio-html-template-2025-06-12-17-09-57-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#fff6be",
+    "#f3efeb",
+    "#3f3f3f",
+    "#007aff",
+    "#ffe9ea"
+   ],
+   "font": "sans",
+   "family": "warm",
+   "layout": "vertical slider, soft pastel sections",
+   "vibe": "soft friendly pastel",
+   "tech": "html/css",
+   "confidence": "med",
+   "note": "warm cream/pastel tones, rounded Poppins/Nunito/Mulish"
+  },
+  {
+   "name": "portf-sketch-personal-portfolio-websitetemplate-2026-07-07-13-18-56-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#000000"
+   ],
+   "font": "sans",
+   "family": "gallery",
+   "layout": "unknown (sketch source)",
+   "vibe": "minimal personal portfolio",
+   "tech": "design-file",
+   "confidence": "low",
+   "note": "Sketch file, no css/html extracted; classified from filename"
+  },
+  {
+   "name": "portfar-personal-portfolio-react-template-2024-12-27-17-53-04-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#2a2a2a",
+    "#202020",
+    "#007bff",
+    "#232f4b",
+    "#f8f8f8"
+   ],
+   "font": "sans",
+   "family": "neotech",
+   "layout": "react single-page sections",
+   "vibe": "sharp modern react",
+   "tech": "react",
+   "confidence": "med",
+   "note": "React, dark greys + blue, Open Sans/Roboto; Berkshire Swash accent"
+  },
+  {
+   "name": "portfoy-creative-portfolio-html5-template-2024-11-20-07-16-15-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#161a22",
+    "#070143",
+    "#e3b576",
+    "#2ae480",
+    "#1e232d"
+   ],
+   "font": "mixed",
+   "family": "noir",
+   "layout": "static hero, dark creative sections",
+   "vibe": "premium dark gold + neon",
+   "tech": "html/css (bootstrap)",
+   "confidence": "med",
+   "note": "dark bg with gold accent, Space Grotesk + Cormorant Garamond serif"
+  },
+  {
+   "name": "portfx-personal-portfolio-html-template-2024-05-29-07-53-31-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#0d6efd",
+    "#212529",
+    "#f8f9fa",
+    "#1c3f39",
+    "#ffffff"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "owl-carousel sections, bootstrap grid",
+   "vibe": "clean professional techy",
+   "tech": "html/css (bootstrap)",
+   "confidence": "med",
+   "note": "bootstrap light palette, Rajdhani/Rubik/Roboto Slab"
+  },
+  {
+   "name": "portio-personal-portfolio-resume-template-2024-09-18-11-10-04-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#1b1c1e",
+    "#c4ef17",
+    "#38393c",
+    "#344400",
+    "#f8f9fa"
+   ],
+   "font": "sans",
+   "family": "neotech",
+   "layout": "dark hero slider, blog grid, condensed sans",
+   "vibe": "bold techy dark with neon-lime accent",
+   "tech": "html",
+   "confidence": "high",
+   "note": "neon lime on near-black, sans display"
+  },
+  {
+   "name": "portivio-personal-portfolio-figma-template-2025-10-04-05-48-17-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#111111",
+    "#f5f5f5"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "figma design file",
+   "vibe": "clean personal portfolio",
+   "tech": "design-file",
+   "confidence": "low",
+   "note": "no css/html extracted; classified from filename"
+  },
+  {
+   "name": "portm-personal-portfolio-template-2026-06-03-02-59-54-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#342ead",
+    "#ff6d5a",
+    "#212529",
+    "#ffc107",
+    "#f8f9fa"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "filled-bg heros, big display sans, animated",
+   "vibe": "colorful playful purple/coral creative",
+   "tech": "html",
+   "confidence": "high",
+   "note": "vivid multi-color, Jost/Lexend display"
+  },
+  {
+   "name": "portreto-photography-portfolio-html5-template-2023-11-27-05-29-24-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#333333",
+    "#00a0af",
+    "#ffd658",
+    "#292e31",
+    "#e5e5e5"
+   ],
+   "font": "mixed",
+   "layout": "flexslider/owl carousels, full-bleed photo works",
+   "family": "lens",
+   "vibe": "photography-first, script accents",
+   "tech": "html",
+   "confidence": "high",
+   "note": "image galleries, Dancing Script + Open Sans"
+  },
+  {
+   "name": "procv-cv-resume-personal-portfolio-html-template-2026-01-10-06-49-23-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#007bff",
+    "#6c757d",
+    "#212529",
+    "#28a745",
+    "#f8f9fa"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "bootstrap CV/resume, hero shapes, neutral sans",
+   "vibe": "clean professional resume",
+   "tech": "html",
+   "confidence": "high",
+   "note": "bootstrap default palette, Open Sans, CV-focused"
+  },
+  {
+   "name": "qurifolio-flask-personal-creative-portfolio-2025-08-06-11-59-01-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#181818",
+    "#ff8a00",
+    "#913bff",
+    "#202020",
+    "#ffffff"
+   ],
+   "font": "mixed",
+   "family": "neotech",
+   "layout": "dark hero, flask app, mono accents",
+   "vibe": "dark creative with orange/purple accents",
+   "tech": "flask/html",
+   "confidence": "med",
+   "note": "dark bg, orange accent, mono Consolas usage"
+  },
+  {
+   "name": "rainfo-portfolio-and-agency-template-2024-03-04-18-55-05-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#000000",
+    "#ffffff",
+    "#007bff",
+    "#2e2e2d",
+    "#f8f9fa"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "agency slider, Poppins, big image banners",
+   "vibe": "clean modern agency",
+   "tech": "html",
+   "confidence": "med",
+   "note": "black/white Poppins, agency+portfolio"
+  },
+  {
+   "name": "rasalina-personal-portfolio-html5-template-2023-11-27-04-50-31-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#fcaf17",
+    "#0054ff",
+    "#191b1e",
+    "#ffffff",
+    "#f7f7f7"
+   ],
+   "font": "mixed",
+   "family": "editorial",
+   "layout": "isotope grid portfolio, Playfair serif headings",
+   "vibe": "magazine-style with amber/blue accents",
+   "tech": "html",
+   "confidence": "med",
+   "note": "Playfair Display serif + Roboto, grid portfolio"
+  },
+  {
+   "name": "rebel-creative-portfolio-template-2025-05-29-15-28-20-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#5f5f5f",
+    "#444444",
+    "#db0018",
+    "#a60000"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "full-width carousel hero, creative sections",
+   "vibe": "bold creative",
+   "tech": "html/owl-carousel",
+   "confidence": "med",
+   "note": "white base with punchy red accents, Raleway/Montserrat"
+  },
+  {
+   "name": "resume-template-2026-07-10-15-08-25-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#292929",
+    "#3a79b8",
+    "#fdca11",
+    "#ef3817",
+    "#717171",
+    "#dddddd"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "resume/CV grid (og-grid)",
+   "vibe": "professional resume",
+   "tech": "html/css",
+   "confidence": "high",
+   "note": "resume template, Oswald+Open Sans, blue/yellow accents"
+  },
+  {
+   "name": "rewall-personal-portfolio-template-2024-09-16-08-13-06-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#0044cc",
+    "#0088cc",
+    "#444444",
+    "#ffffff",
+    "#0e090d"
+   ],
+   "font": "sans",
+   "family": "lens",
+   "layout": "masonry gallery with zoom",
+   "vibe": "clean image portfolio",
+   "tech": "html/masonry+owl",
+   "confidence": "med",
+   "note": "Jost sans, blue accent, image masonry-forward"
+  },
+  {
+   "name": "scrape-creative-portfolio-template-2023-11-27-05-22-08-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#007bff",
+    "#dc3545",
+    "#28a745",
+    "#ffc107",
+    "#17a2b8"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "layout": "hero + bootstrap sections",
+   "vibe": "colorful creative",
+   "tech": "html/bootstrap",
+   "confidence": "med",
+   "note": "Poppins, full bootstrap multi-color palette, hero carousel"
+  },
+  {
+   "name": "sliim-personal-portfolio-2024-10-25-12-58-30-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#337ab7",
+    "#f5f5f5",
+    "#6c757d",
+    "#e8e8e8",
+    "#000000"
+   ],
+   "font": "mixed",
+   "family": "gallery",
+   "layout": "hero + responsive grid, generous space",
+   "vibe": "minimal refined",
+   "tech": "html/bootstrap+owl",
+   "confidence": "med",
+   "note": "Playfair Display serif + Lato + IBM Plex Mono, minimalistic"
+  },
+  {
+   "name": "smarty-portfolio-photography-html-template-2023-11-27-04-49-46-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#337ab7",
+    "#01bab0",
+    "#000000",
+    "#f5f5f5",
+    "#898989"
+   ],
+   "font": "sans",
+   "family": "lens",
+   "layout": "master-slider full-bleed + isotope filter grid",
+   "vibe": "photography image-first",
+   "tech": "html/masterslider+isotope",
+   "confidence": "high",
+   "note": "photography template, Fjalla One+Roboto, big sliders"
+  },
+  {
+   "name": "sonex-minimalistic-portfolio-2023-11-27-05-34-58-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#48ba86",
+    "#0e0e0e",
+    "#bfbfbf",
+    "#ffffff",
+    "#6d6d6d"
+   ],
+   "font": "mixed",
+   "family": "gallery",
+   "layout": "minimal sections + carousel",
+   "vibe": "minimal serif elegant",
+   "tech": "html/bootstrap carousel",
+   "confidence": "med",
+   "note": "Lora serif + Roboto, light minimal, green accent"
+  },
+  {
+   "name": "swiftly-personal-branding-portfolio-template-2026-05-30-10-08-58-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#f2f2f2",
+    "#111111"
+   ],
+   "font": "sans",
+   "family": "warm",
+   "layout": "personal branding sections (Sketch source)",
+   "vibe": "friendly personal brand",
+   "tech": "design-file",
+   "confidence": "low",
+   "note": "Sketch file only, classified from 'personal branding' filename"
+  },
+  {
+   "name": "sylor-agency-portfolio-html-template-2023-11-27-05-05-20-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#435a5f",
+    "#ff1493",
+    "#ffaa3e",
+    "#8ac249",
+    "#337ab7"
+   ],
+   "font": "mixed",
+   "family": "editorial",
+   "layout": "owl-carousel sections, agency grid",
+   "vibe": "creative agency, colorful accents",
+   "tech": "html",
+   "confidence": "med",
+   "note": "Lora serif + Montserrat headings, multi-accent",
+   "palette_note": ""
+  },
+  {
+   "name": "textio-react-personal-portfolio-template-2026-05-01-03-04-20-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#da242b",
+    "#1d2746",
+    "#6b707f",
+    "#878b99",
+    "#dee2e6"
+   ],
+   "font": "mixed",
+   "family": "studio",
+   "layout": "react personal, bold hero",
+   "vibe": "bold red + script accent, creative personal",
+   "tech": "react",
+   "confidence": "low",
+   "note": "Syne + Manrope + Great Vibes, strong red accent"
+  },
+  {
+   "name": "trito-personal-portfolio-template-2023-11-27-04-59-08-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#24315e",
+    "#ff4612",
+    "#3d4970",
+    "#c5c8d4",
+    "#f3f3f3"
+   ],
+   "font": "sans",
+   "family": "neotech",
+   "layout": "dark navy hero, grotesk sections",
+   "vibe": "techy sharp, orange accent",
+   "tech": "html",
+   "confidence": "med",
+   "note": "Space Grotesk + Inter, dark navy bg"
+  },
+  {
+   "name": "ukko-personal-portfolio-html-template-2023-11-27-04-51-17-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#f44647",
+    "#000000",
+    "#fff0f0",
+    "#212529",
+    "#0d6efd"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "clean personal, owl image slider",
+   "vibe": "simple clean, red accent",
+   "tech": "html",
+   "confidence": "low",
+   "note": "Poppins throughout, light minimal resume feel"
+  },
+  {
+   "name": "unded-creative-agency-portfolio-react-template-2024-01-15-17-52-05-utc.zip",
+   "bg": "dark",
+   "palette": [
+    "#ff4a3b",
+    "#1f1f1f",
+    "#fdf9f6",
+    "#868e96",
+    "#f2c94c"
+   ],
+   "font": "mixed",
+   "family": "neotech",
+   "layout": "dark react agency, display serif + mono",
+   "vibe": "edgy creative, red accent on charcoal",
+   "tech": "react",
+   "confidence": "med",
+   "note": "Italiana serif + Space Mono + Inter, dark bg"
+  },
+  {
+   "name": "unded-creative-portfolio-figma-template-2024-01-19-16-16-30-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#d12f19",
+    "#529214",
+    "#264409",
+    "#e5ecf9",
+    "#514721"
+   ],
+   "font": "mixed",
+   "family": "studio",
+   "layout": "figma source, creative portfolio",
+   "vibe": "creative colorful",
+   "tech": "design-file",
+   "confidence": "low",
+   "note": "Figma template, classified from filename keywords"
+  },
+  {
+   "name": "uniqeme-personal-portfolio-html-template-2025-12-13-01-10-50-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#29a587",
+    "#5cc7b2",
+    "#2fa75f",
+    "#f5f5f5",
+    "#212529"
+   ],
+   "font": "sans",
+   "family": "warm",
+   "layout": "swiper hero, rounded personal",
+   "vibe": "friendly rounded, teal-green accent",
+   "tech": "html",
+   "confidence": "med",
+   "note": "Outfit + Plus Jakarta Sans rounded, soft light"
+  },
+  {
+   "name": "upper-modern-comprehensive-portfolio-2023-11-27-05-20-50-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#e93951",
+    "#ffd658",
+    "#0084b4",
+    "#337ab7",
+    "#999999"
+   ],
+   "font": "mixed",
+   "family": "editorial",
+   "layout": "rev-slider hero, masonry grid",
+   "vibe": "magazine, large serif display",
+   "tech": "html",
+   "confidence": "med",
+   "note": "Playfair Display + Poppins/Lato, grid layouts"
+  },
+  {
+   "name": "valiser-responsive-portfolio-creative-email-2023-11-27-05-16-25-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#e89134",
+    "#313131",
+    "#222222",
+    "#ababab"
+   ],
+   "font": "sans",
+   "family": "warm",
+   "confidence": "med",
+   "layout": "clean sections, single warm accent",
+   "vibe": "friendly warm creative",
+   "tech": "html/css (Open Sans+Raleway)",
+   "note": "orange accent on white, soft personal feel"
+  },
+  {
+   "name": "veltrixo-figma-agency-studio-personal-portfolio-2026-06-18-10-23-13-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#111111"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "confidence": "low",
+   "layout": "unknown (figma source)",
+   "vibe": "agency studio",
+   "tech": "design-file",
+   "note": "no css/html extracted; classified from filename"
+  },
+  {
+   "name": "wave-agency-freelancer-portfolio-2023-11-27-05-00-54-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#f5f5f5",
+    "#333333",
+    "#222222",
+    "#999999"
+   ],
+   "font": "mixed",
+   "family": "editorial",
+   "confidence": "med",
+   "layout": "masonry portfolio, hero + slider",
+   "vibe": "magazine text-forward",
+   "tech": "html/css (Playfair Display serif + Lato)",
+   "note": "serif display over masonry grid"
+  },
+  {
+   "name": "wext-one-page-portfolio-template-2025-11-29-14-12-45-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#f5f5f5",
+    "#333333",
+    "#337ab7"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "confidence": "low",
+   "layout": "one-page fullscreen hero, owl carousel",
+   "vibe": "bold single-page creative",
+   "tech": "html/css (Montserrat/Oswald/Raleway)",
+   "note": "bootstrap defaults are noise; geometric sans one-pager"
+  },
+  {
+   "name": "whitespace-portfolio-agency-website-template-2024-12-10-12-31-53-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#f5af0c",
+    "#303238",
+    "#515359",
+    "#9da1ad",
+    "#ffffff"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "confidence": "med",
+   "layout": "isotope filter grid, hero section",
+   "vibe": "playful agency, yellow accent",
+   "tech": "html/css (Open Sans + Damion cursive)",
+   "note": "golden-yellow accent + cursive script, energetic"
+  },
+  {
+   "name": "wildone-photography-portfolio-template-2025-06-17-14-27-38-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#ff264a",
+    "#5f5f5f",
+    "#f5f5f5",
+    "#222222"
+   ],
+   "font": "sans",
+   "family": "lens",
+   "confidence": "high",
+   "layout": "full-bleed image carousels, works grid",
+   "vibe": "image-first photography",
+   "tech": "html/css (Oswald/Poppins/Raleway)",
+   "note": "owl image carousels with overlays, photo-centric"
+  },
+  {
+   "name": "wythe-creative-portfolio-html-template-2023-11-27-04-56-29-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#1abc9c",
+    "#34495e",
+    "#e74c3c",
+    "#f1c40f",
+    "#2ecc71"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "confidence": "high",
+   "layout": "project sliders, colorful sections",
+   "vibe": "vivid multi-color creative",
+   "tech": "html/css (Montserrat, flat-UI palette)",
+   "note": "flat vivid multi-color palette, playful"
+  },
+  {
+   "name": "xolio-creative-agency-portfolio-template-2023-11-27-05-10-24-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#212529",
+    "#0d6efd",
+    "#dc3545",
+    "#198754",
+    "#ffc107"
+   ],
+   "font": "sans",
+   "family": "studio",
+   "confidence": "med",
+   "layout": "slider hero, agency sections",
+   "vibe": "bold colorful agency",
+   "tech": "html/css (Bootstrap 5 + Poppins)",
+   "note": "vivid bootstrap-5 accent palette, creative agency"
+  },
+  {
+   "name": "xorim-personal-portfolio-template-2026-06-12-22-37-32-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#212529",
+    "#0d6efd",
+    "#6c757d",
+    "#e7e7e7"
+   ],
+   "font": "sans",
+   "family": "corporate",
+   "layout": "Bootstrap multi-section with swiper carousels",
+   "vibe": "clean professional personal",
+   "tech": "Bootstrap 5",
+   "confidence": "high",
+   "note": "Poppins/Roboto sans, bootstrap blue accent, white bg resume-style"
+  },
+  {
+   "name": "yex-one-page-portfolio-template-2025-01-17-10-57-26-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#337ab7",
+    "#444444",
+    "#f5f5f5",
+    "#31708f"
+   ],
+   "font": "sans",
+   "family": "lens",
+   "layout": "one-page fullscreen hero with dark image overlays",
+   "vibe": "image-first cinematic one-pager",
+   "tech": "Bootstrap + Owl carousel",
+   "confidence": "med",
+   "note": "hero-fullscreen bg-image with overlay-dark, Montserrat/Oswald sans"
+  },
+  {
+   "name": "youth-creative-portfolio-template-2025-05-29-15-28-20-utc.zip",
+   "bg": "light",
+   "palette": [
+    "#ffffff",
+    "#8d8d8d",
+    "#444444",
+    "#eeeeee",
+    "#ececf0"
+   ],
+   "font": "sans",
+   "family": "lens",
+   "layout": "light image carousels, fullscreen hero, creative sections",
+   "vibe": "minimal neutral creative showcase",
+   "tech": "Owl carousel",
+   "confidence": "med",
+   "note": "neutral gray/white palette, Raleway/Montserrat sans, image-carousel heavy"
+  }
+ ]
+}
