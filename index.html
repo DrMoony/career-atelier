@@ -105,8 +105,12 @@ header.solid{background:rgba(10,14,15,.82);backdrop-filter:blur(12px);border-col
 .dv .ic{font-size:22px;margin-bottom:18px;color:var(--gold);}
 .dv h3{font-size:clamp(17px,1.9vw,21px);font-weight:600;letter-spacing:-.01em;margin-bottom:9px;}
 .dv p{font-size:13.5px;color:var(--muted);line-height:1.6;font-weight:300;}
-@media(max-width:900px){.deliv{grid-template-columns:1fr 1fr;}}
-@media(max-width:600px){.deliv{grid-template-columns:1fr;}}
+.deliv.two{grid-template-columns:repeat(2,1fr);}
+a.dv{color:inherit;text-decoration:none;position:relative;}
+a.dv h3{color:var(--gold);transition:color .3s;}
+a.dv:hover h3{color:var(--gold2);}
+@media(max-width:900px){.deliv,.deliv.two{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.deliv,.deliv.two{grid-template-columns:1fr;}}
 
 /* process */
 .proc{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--line);}
@@ -209,6 +213,7 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
       <a href="#process"><span class="lx-en">Process</span><span class="lx-ko">진행</span></a>
       <a href="#why"><span class="lx-en">Why us</span><span class="lx-ko">차별점</span></a>
       <a href="#sample"><span class="lx-en">Sample</span><span class="lx-ko">사례</span></a>
+      <a href="#tools"><span class="lx-en">Design</span><span class="lx-ko">취향·디자인</span></a>
       <a href="#pricing"><span class="lx-en">Pricing</span><span class="lx-ko">가격</span></a>
     </nav>
     <button class="langtog" id="langtog"><b>KO</b> / EN</button>
@@ -304,6 +309,27 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
   </div>
 </div></section>
 
+<!-- TOOLS -->
+<section class="block" id="tools"><div class="wrap">
+  <div class="sec-head rv">
+    <div class="eyebrow"><span class="lx-en">Find your direction</span><span class="lx-ko">방향 찾기</span></div>
+    <h2><span class="lx-en">Your taste, <span class="thin">before we start.</span></span><span class="lx-ko">시작하기 전에, <span class="thin">당신의 취향부터.</span></span></h2>
+    <p><span class="lx-en">The design step begins here. Take the taste quiz to find your direction, then browse the real templates behind it.</span><span class="lx-ko">디자인 컨셉(05단계)은 여기서 시작해요. 취향 진단으로 방향을 찾고, 그 방향의 실제 템플릿을 직접 둘러보세요.</span></p>
+  </div>
+  <div class="deliv two rv">
+    <a class="dv" href="design-quiz.html">
+      <div class="ic">◈</div>
+      <h3><span class="lx-en">Taste quiz →</span><span class="lx-ko">취향 진단 →</span></h3>
+      <p><span class="lx-en">Ten quick either-or questions, a film, a song, a mood, map you to one of eight design families with a palette and a layout.</span><span class="lx-ko">영화·음악·무드 같은 열 개의 양자택일로, 여덟 개 디자인 방향과 팔레트·레이아웃을 찾아드려요.</span></p>
+    </a>
+    <a class="dv" href="library.html">
+      <div class="ic">▦</div>
+      <h3><span class="lx-en">Template library →</span><span class="lx-ko">템플릿 라이브러리 →</span></h3>
+      <p><span class="lx-en">115 templates, each classified from its real code. Filter by family, light or dark, and see every true palette.</span><span class="lx-ko">실제 코드로 분류한 115개 템플릿. 패밀리·라이트/다크로 필터링하고, 각자의 진짜 팔레트를 확인하세요.</span></p>
+    </a>
+  </div>
+</div></section>
+
 <!-- PRICING -->
 <section class="block" id="pricing"><div class="wrap">
   <div class="sec-head rv">
@@ -387,6 +413,8 @@ footer{border-top:1px solid var(--line);padding:40px 0;}
     <a href="#make"><span class="lx-en">What you get</span><span class="lx-ko">결과물</span></a>
     <a href="#process"><span class="lx-en">Process</span><span class="lx-ko">진행</span></a>
     <a href="#pricing"><span class="lx-en">Pricing</span><span class="lx-ko">가격</span></a>
+    <a href="design-quiz.html"><span class="lx-en">Taste quiz</span><span class="lx-ko">취향 진단</span></a>
+    <a href="library.html"><span class="lx-en">Library</span><span class="lx-ko">라이브러리</span></a>
     <a href="https://drmoony.github.io" target="_blank" rel="noopener">Sample ↗</a>
   </div>
 </div></div></footer>
