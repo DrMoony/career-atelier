@@ -208,6 +208,7 @@ fetch('template-classification.json').then(r=>r.json()).then(data=>{
   TPL = root.templates||[];
   const q = new URLSearchParams(location.search);
   if(q.get('fam')&&FAM[q.get('fam')]) state.fam=q.get('fam');
+  if(q.get('q')){ state.q=q.get('q'); const qi=document.getElementById('q'); if(qi) qi.value=state.q; }
   buildFams();
   if(state.fam!=='all'){ const b=document.querySelector(`.chip[data-fam="${state.fam}"]`); if(b){document.querySelector('.chip.on')?.classList.remove('on');b.classList.add('on');} }
   render();
