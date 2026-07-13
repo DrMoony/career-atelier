@@ -41,9 +41,58 @@ P = [
  ("cool","cool-nordic","Nordic","노르딕",["bright","cool","calm"],["#F7F9FB","#E2E8EE","#9DB2C4","#4A6076","#1F2D3A"]),
  ("dark","noir-gold","Champagne Noir","샴페인 누아르",["dark","warm","calm"],["#0A0E0F","#12191C","#E6B15E","#57B7C1","#ECEFEC"]),
  ("dark","noir-wine","Wine & Gold","와인 골드",["dark","warm"],["#0E0608","#2A0E16","#7A1F35","#C9A96A","#F0E6D6"]),
+ # --- 색 모노 (단일 색상 틴트 6종, 색상환 전반) ---
+ ("huemono","mono-azure","Azure Tint","애저 틴트",["bright","cool","calm"],["#0B1F3A","#12467E","#2E7BD6","#7FB2ED","#DCEBFB"]),
+ ("huemono","mono-emerald-t","Emerald Tint","에메랄드 틴트",["bright","cool","calm"],["#06231A","#0B5A3F","#1E9E70","#73CBA6","#D6F0E4"]),
+ ("huemono","mono-ruby-t","Ruby Tint","루비 틴트",["bright","warm","bold"],["#2A0710","#7A1330","#C42A4E","#E87B93","#FBDBE2"]),
+ ("huemono","mono-violet","Violet Tint","바이올렛 틴트",["bright","cool","calm"],["#1C0F33","#43277A","#7B52C9","#B39BE6","#EBE2FA"]),
+ ("huemono","mono-amber-t","Amber Tint","앰버 틴트",["bright","warm","calm"],["#2E1A05","#7A4A0E","#C9861F","#E8BA6B","#FBEBCB"]),
+ ("huemono","mono-teal-t","Teal Tint","틸 틴트",["bright","cool","calm"],["#032826","#0A5C58","#159C95","#69C9C3","#D3F0EE"]),
+ # --- 레트로 ---
+ ("retro","retro-70s","Harvest 70s","하비스트 70s",["warm","bold"],["#5B3A1A","#A8611E","#D99A2B","#8A8B2C","#E9D9B0"]),
+ ("retro","retro-80s","Miami 80s","마이애미 80s",["bright","bold","experimental"],["#0E2A3A","#0BB5C9","#FF5D8F","#FFC24B","#F2F7F6"]),
+ ("retro","retro-90s","Grunge 90s","그런지 90s",["dark","calm"],["#211F1C","#5B4A3A","#8A7B5C","#6E7A55","#C9BFA6"]),
+ # --- 그라데이션 ---
+ ("gradient","grad-sunset","Sunset Fade","선셋 페이드",["warm","bold"],["#2B1055","#7A2C6B","#C43C6E","#F26D52","#FBB03B"]),
+ ("gradient","grad-aurora","Aurora","오로라",["cool","experimental"],["#05121F","#123B5E","#1E8F8F","#4FD1A5","#BFF3D9"]),
+ ("gradient","grad-dusk","Dusk","더스크",["cool","calm"],["#1A1E33","#3B3B6E","#6A5A9E","#B58BB0","#F1C9B8"]),
+ ("gradient","grad-peach","Peach Sky","피치 스카이",["bright","warm","calm"],["#FCE9DE","#F9C6B0","#F2937E","#D96A8A","#8A4C7C"]),
+ # --- 보태니컬 (그린 계열) ---
+ ("botanical","bot-olive","Olive Garden","올리브 가든",["warm","calm"],["#25281B","#4A5230","#7C8A4E","#B7C089","#EDEFDC"]),
+ ("botanical","bot-eucalyptus","Eucalyptus","유칼립투스",["cool","calm"],["#20302B","#3E5A4E","#6E9484","#AEC9BC","#E7F0EB"]),
+ ("botanical","bot-fern","Deep Fern","딥 펀",["dark","calm"],["#0C1A12","#173D28","#2C6B45","#5AA06E","#CDE7D2"]),
+ # --- 아쿠아 (블루 계열) ---
+ ("aqua","aqua-ocean","Deep Ocean","딥 오션",["dark","cool","calm"],["#04141F","#0A3A54","#0E6E92","#3FA9C9","#CDEBF4"]),
+ ("aqua","aqua-lagoon","Lagoon","라군",["bright","cool"],["#053B3B","#0E7C7B","#2BB6A8","#8AD9CE","#E5F6F2"]),
+ ("aqua","aqua-denim","Denim","데님",["cool","calm"],["#1B2A3A","#33506E","#5B7FA6","#9DB8D2","#E4ECF4"]),
+ # --- 베리 (핑크·퍼플) ---
+ ("berry","berry-rasp","Raspberry","라즈베리",["bright","bold"],["#2A0A1B","#7A123F","#C21E63","#E85C93","#F9CFDE"]),
+ ("berry","berry-plum","Plum Wine","플럼 와인",["dark","calm"],["#1C0F1A","#3E1B38","#6E2E5C","#A85A8E","#E7C6DA"]),
+ ("berry","berry-magenta","Magenta Pop","마젠타 팝",["bright","bold","experimental"],["#160A1F","#5A147A","#A31FB0","#E24AE2","#F7CFF3"]),
+ # --- 시트러스 (옐로·오렌지) ---
+ ("citrus","citrus-lime","Lemon Lime","레몬 라임",["bright","bold"],["#1E2A05","#4E6E12","#8FB01E","#C6E24A","#F2F7CF"]),
+ ("citrus","citrus-tang","Tangerine","탠저린",["bright","warm","bold"],["#3A1405","#8A3410","#D9631E","#F29A4B","#FBDFB0"]),
+ ("citrus","citrus-mango","Mango","망고",["bright","warm"],["#3A2205","#9A6410","#E0A21E","#F2C94C","#FBEFC6"]),
+ # --- 비비드 추가 ---
+ ("vivid","vivid-pop","Pop Art","팝 아트",["bright","bold","experimental"],["#FFFFFF","#FF2E63","#08D9D6","#FFD93D","#252A34"]),
+ ("vivid","vivid-tropical","Tropical","트로피컬",["bright","bold"],["#0A3A2A","#12A15A","#F2C94C","#F2664B","#FDF6EC"]),
+ ("vivid","vivid-festival","Festival","페스티벌",["bright","bold","experimental"],["#2B1E5A","#E23FA0","#FF8A3D","#3FD0E2","#FBF3E8"]),
+ # --- 네온 추가 ---
+ ("neon","neon-miami","Miami Neon","마이애미 네온",["dark","bold","experimental"],["#0A0F1F","#1B1035","#F531A0","#31E0F5","#FDE24A"]),
+ ("neon","neon-toxic","Toxic","톡식",["dark","bold","experimental"],["#060A06","#12210F","#7CFF3F","#39FFC2","#E9FFD6"]),
+ # --- 듀오톤 추가 ---
+ ("duotone","duo-navy-gold","Navy & Gold","네이비 골드",["dark","warm"],["#0A1A33","#13294F","#C9A96A","#F0E6D2","#0A1A33"]),
+ ("duotone","duo-forest-cream","Forest & Cream","포레스트 크림",["warm","calm"],["#1E3A2E","#2F5D45","#EAE3D0","#C6B893","#1E3A2E"]),
+ # --- 주얼 추가 ---
+ ("jewel","jewel-sapphire","Sapphire","사파이어",["dark","bold"],["#060E2A","#122A6E","#2E56C9","#C9A96A","#EAF0FB"]),
+ ("jewel","jewel-amethyst","Amethyst","아메시스트",["dark","calm"],["#140A24","#3A1E5C","#6E3FA0","#B18AD6","#EEE4F7"]),
+ # --- 어시 추가 ---
+ ("earthy","earthy-rust","Rust & Clay","러스트 클레이",["warm","bold"],["#2A130B","#7A331A","#B85C34","#D99A6C","#F0DEC9"]),
 ]
 CATNAMES={"neutral":"뉴트럴","mono":"모노톤","bw":"흑백","neon":"네온","pastel":"파스텔",
- "earthy":"어시","jewel":"주얼","duotone":"듀오톤","vivid":"비비드","cool":"쿨","dark":"다크"}
+ "earthy":"어시","jewel":"주얼","duotone":"듀오톤","vivid":"비비드","cool":"쿨","dark":"다크",
+ "huemono":"색 모노","retro":"레트로","gradient":"그라데이션","botanical":"보태니컬",
+ "aqua":"아쿠아","berry":"베리","citrus":"시트러스"}
 
 out=[]
 for cat,cid,en,ko,moods,hexes in P:
