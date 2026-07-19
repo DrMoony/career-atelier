@@ -56,18 +56,18 @@ body[data-nav="side"] nav .cta{margin-top:auto;}
 .hero .meta{margin-top:40px;display:flex;gap:28px;flex-wrap:wrap;font-size:13px;color:var(--mut);}
 .hero .meta b{color:var(--ink);font-weight:600;}
 .hero .scroll{position:absolute;bottom:34px;left:0;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);}
+/* duotone photo treatment — 흑백 사진 위에 생성된 악센트를 입힘 */
+.duo{position:relative;overflow:hidden;background:var(--surf);}
+.duo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06);}
+.duo .tint{position:absolute;inset:0;background:var(--acc);mix-blend-mode:color;opacity:.85;}
+.duo .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,color-mix(in srgb,var(--bg) 55%,transparent));}
 /* hero: fullbleed */
-body[data-hero="fullbleed"] .hero::after{content:"";position:absolute;inset:0;z-index:-1;
-  background:radial-gradient(120% 90% at 78% 12%,color-mix(in srgb,var(--acc) 42%,transparent),transparent 60%),
-             radial-gradient(90% 80% at 12% 92%,color-mix(in srgb,var(--acc2) 34%,transparent),transparent 62%),var(--bg);}
-body[data-hero="fullbleed"] .hero .portrait{position:absolute;inset:0;z-index:-1;opacity:.5;
-  background:linear-gradient(200deg,color-mix(in srgb,var(--acc) 60%,var(--surf)),var(--surf));mix-blend-mode:screen;}
+body[data-hero="fullbleed"] .hero .portrait{position:absolute;inset:0;z-index:-1;}
+body[data-hero="fullbleed"] .hero .portrait img{opacity:.42;}
+body[data-hero="fullbleed"] .hero .portrait .shade{background:linear-gradient(105deg,var(--bg) 8%,color-mix(in srgb,var(--bg) 55%,transparent) 55%,color-mix(in srgb,var(--bg) 78%,transparent));}
 /* hero: split */
 body[data-hero="split"] .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;}
-body[data-hero="split"] .hero .portrait{aspect-ratio:4/5;border-radius:var(--rad);
-  background:linear-gradient(200deg,color-mix(in srgb,var(--acc) 70%,var(--surf)),var(--surf) 70%),var(--surf);
-  border:1px solid var(--line);position:relative;overflow:hidden;}
-body[data-hero="split"] .hero .portrait::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 50% at 50% 20%,color-mix(in srgb,var(--acc2) 50%,transparent),transparent);}
+body[data-hero="split"] .hero .portrait{aspect-ratio:4/5;border-radius:var(--rad);border:1px solid var(--line);}
 body[data-hero="bigtype"] .hero .portrait{display:none;}
 @media(max-width:820px){body[data-hero="split"] .hero{grid-template-columns:1fr;}body[data-hero="split"] .hero .portrait{display:none;}}
 
@@ -90,7 +90,8 @@ body[data-work="mason"] .card:nth-child(3n){grid-row:span 1;}
 .card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--acc) 60%,var(--line));}
 .card .thumb{aspect-ratio:4/3;position:relative;overflow:hidden;}
 body[data-work="mason"] .card:nth-child(2n) .thumb{aspect-ratio:4/5;}
-.card .thumb i{position:absolute;inset:0;}
+.card .thumb img{transition:transform .7s var(--ease);}
+.card:hover .thumb img{transform:scale(1.05);}
 .card .num{position:absolute;top:14px;left:16px;font-family:var(--disp);font-size:13px;color:#fff;mix-blend-mode:difference;z-index:2;}
 .card .body{padding:18px 20px 22px;}
 .card .body .t{font-family:var(--disp);font-weight:600;font-size:19px;}
@@ -132,7 +133,7 @@ body{padding-bottom:40px;}
 <a id="top"></a>
 
 <header class="hero wrap">
-  <div class="portrait"></div>
+  <div class="portrait duo" id="portrait"><img src="assets/img/portrait.jpg" alt="" loading="eager" onerror="this.remove()"><i class="tint"></i><i class="shade"></i></div>
   <div class="heroText">
     <div class="kn" id="heroKn">안녕하세요 — 프로덕트 디자이너</div>
     <h1 class="serif" id="heroH1">서연의 <em>일하는 방식</em>,<br>한 페이지에.</h1>
@@ -200,7 +201,6 @@ const WORKS=[
   {t:"Muse 브랜드 사이트",d:"아트디렉션부터 프론트 구현까지.",tags:["Brand","Web"]},
   {t:"Field 리서치 툴킷",d:"인터뷰·합성 워크플로우 자동화.",tags:["Ops","Internal"]}
 ];
-function grad(a,b,ang){return `linear-gradient(${ang}deg,${a},${b})`;}
 function apply(t){
   const r=document.documentElement.style;
   for(const [k,v] of Object.entries(t.c)) r.setProperty('--'+k,v);
@@ -208,12 +208,17 @@ function apply(t){
   r.setProperty('--rad',(t.l.rad||14)+'px'); r.setProperty('--dens',t.l.dens||1);
   document.body.dataset.hero=t.l.hero; document.body.dataset.nav=t.l.nav;
   document.body.dataset.work=t.l.work; document.body.dataset.motion=t.l.motion;
-  // work cards
+  // 풀블리드 히어로는 분위기 사진, 스플릿은 인물 사진
+  const pImg=document.querySelector('#portrait img');
+  if(pImg) pImg.src = t.l.hero==='fullbleed' ? 'assets/img/scape.jpg' : 'assets/img/portrait.jpg';
+  // work cards — 실사진 + 듀오톤(악센트 교차)
   const c=t.c;
   document.getElementById('workGrid').innerHTML=WORKS.map((w,i)=>{
-    const combos=[grad(c.acc,c.surf,200),grad(c.acc2,c.surf,160),grad(c.acc,c.acc2,135),grad(c.surf,c.acc,320),grad(c.acc2,c.bg,180),grad(c.acc,c.bg,150)];
+    const tint=i%3===1?c.acc2:c.acc; const op=i%3===2?.6:.85;
     return `<a class="card reveal" href="#" style="transition-delay:${i*60}ms">
-      <div class="thumb"><span class="num">0${i+1}</span><i style="background:${combos[i%combos.length]}"></i></div>
+      <div class="thumb duo"><span class="num">0${i+1}</span>
+        <img src="assets/img/w${(i%6)+1}.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <i class="tint" style="background:${tint};opacity:${op}"></i><i class="shade"></i></div>
       <div class="body"><div class="t serif">${w.t}</div><div class="d">${w.d}</div>
       <div class="tags">${w.tags.map(x=>`<span>${x}</span>`).join('')}</div></div></a>`;
   }).join('');

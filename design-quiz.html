@@ -152,7 +152,8 @@ h2.qh{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:c
     <div class="prog" id="oprog"></div>
     <div class="qn" id="onn"></div><h2 class="qh serif" id="otext"></h2>
     <div class="oopts" id="oopts"></div>
-    <div class="navrow"><button class="link" id="oback">← 이전</button><span class="link" id="oskip">건너뛰기</span></div>
+    <div class="navrow"><button class="link" id="oback">← 이전</button>
+      <span><button class="link" id="oskip">건너뛰기</button> · <button class="link" id="ofill" style="color:var(--gold);font-weight:600">남은 건 추천값으로, 바로 결과 →</button></span></div>
   </section>
 
   <section id="brief" class="hidden res">
@@ -461,6 +462,18 @@ $('#palback').onclick=()=>{cur=0;AXES.forEach(a=>score[a.k]=0);selPalId=null;go(
 $('#palnext').onclick=()=>{oStep=0;go('outline');renderOut();};
 $('#oback').onclick=()=>{if(oStep>0){oStep--;renderOut();}};
 $('#oskip').onclick=()=>nextOut();
+/* 패밀리별 추천 레이아웃 기본값 — 남은 항목 채우고 바로 브리프로 */
+const FAMOUT={noir:{hero:'type',nav:'top',structure:'sections',work:'grid',motion:'subtle',shape:'sharp'},
+  gallery:{hero:'center',nav:'top',structure:'scroll',work:'grid',motion:'subtle',shape:'sharp'},
+  editorial:{hero:'type',nav:'top',structure:'sections',work:'list',motion:'subtle',shape:'sharp'},
+  studio:{hero:'split',nav:'top',structure:'scroll',work:'masonry',motion:'rich',shape:'mixed'},
+  neotech:{hero:'type',nav:'top',structure:'sections',work:'grid',motion:'subtle',shape:'sharp'},
+  warm:{hero:'split',nav:'top',structure:'scroll',work:'grid',motion:'subtle',shape:'round'},
+  lens:{hero:'image',nav:'hidden',structure:'scroll',work:'masonry',motion:'subtle',shape:'sharp'},
+  corporate:{hero:'type',nav:'top',structure:'sections',work:'grid',motion:'static',shape:'mixed'}};
+$('#ofill').onclick=()=>{const {best}=nearest();const d=FAMOUT[best.k]||{};
+  OUT.forEach(o=>{if(!oChoice[o.key])oChoice[o.key]=d[o.key]||o.o[0].id;});
+  go('brief');renderBrief();};
 $('#pvRegen').onclick=()=>{genVariant++;renderPreview();};
 $('#again').onclick=()=>{cur=0;oStep=0;selPalId=null;genVariant=0;AXES.forEach(a=>score[a.k]=0);OUT.forEach(o=>oChoice[o.key]=null);go('intro');};
 $('#copy').onclick=()=>{const {best}=nearest();const p=PAL.find(x=>x.id===selPalId);

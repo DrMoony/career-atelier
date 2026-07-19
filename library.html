@@ -133,6 +133,44 @@ function clean(name){
 }
 function slug(name){ return name.replace(/\.zip$/i,''); }
 
+/* --- 템플릿 실측 팔레트 → 렌더러 토큰 (온라인 '이 무드로 미리보기') --- */
+function _rgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+function _hex(r,g,b){const c=v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0');return'#'+c(r)+c(g)+c(b);}
+function _lum(h){const[r,g,b]=_rgb(h);return(0.2126*r+0.7152*g+0.0722*b)/255;}
+function _mix(a,b,t){const A=_rgb(a),B=_rgb(b);return _hex(A[0]+(B[0]-A[0])*t,A[1]+(B[1]-A[1])*t,A[2]+(B[2]-A[2])*t);}
+function _sat(h){const[r,g,b]=_rgb(h);const mx=Math.max(r,g,b),mn=Math.min(r,g,b);return mx===0?0:(mx-mn)/mx;}
+function _chroma(h){const l=_lum(h);return _sat(h)*Math.min(1,l*2)*Math.min(1,(1-l)*2.2);}
+function _hue(h){const[r,g,b]=_rgb(h);const mx=Math.max(r,g,b),mn=Math.min(r,g,b);if(mx===mn)return 0;const d=mx-mn;let H=mx===r?((g-b)/d+(g<b?6:0)):mx===g?((b-r)/d+2):((r-g)/d+4);return H*60;}
+function _hueDist(a,b){let d=Math.abs(_hue(a)-_hue(b))%360;return d>180?360-d:d;}
+const FAMTOK={
+  gallery:{f:['Fraunces','Outfit'],l:{hero:'bigtype',nav:'top',work:'grid2',motion:'calm',rad:10,dens:1.12}},
+  noir:{f:['Fraunces','Outfit'],l:{hero:'bigtype',nav:'top',work:'grid3',motion:'calm',rad:8,dens:1.05}},
+  editorial:{f:['Playfair Display','Inter'],l:{hero:'bigtype',nav:'top',work:'grid2',motion:'calm',rad:6,dens:1}},
+  studio:{f:['Space Grotesk','Space Grotesk'],l:{hero:'split',nav:'top',work:'mason',motion:'bold',rad:16,dens:.92}},
+  neotech:{f:['Space Grotesk','Inter'],l:{hero:'bigtype',nav:'top',work:'grid3',motion:'calm',rad:6,dens:1}},
+  warm:{f:['Fraunces','Manrope'],l:{hero:'split',nav:'top',work:'grid2',motion:'calm',rad:20,dens:1}},
+  lens:{f:['Instrument Serif','Inter'],l:{hero:'fullbleed',nav:'top',work:'mason',motion:'calm',rad:10,dens:1.08}},
+  corporate:{f:['Archivo','Inter'],l:{hero:'bigtype',nav:'top',work:'grid3',motion:'calm',rad:10,dens:1}},
+};
+function tplPreviewUrl(t){
+  const pal=(t.palette||[]).filter(h=>/^#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?$/.test(h));
+  if(!pal.length) return null;
+  const byL=[...pal].sort((a,b)=>_lum(a)-_lum(b)), dark=t.bg==='dark';
+  let bg=dark?_mix(byL[0],'#05080a',.4):_mix(byL[byL.length-1],'#ffffff',.45);
+  let ink=dark?_mix(byL[byL.length-1],'#ffffff',.35):_mix(byL[0],'#101112',.5);
+  if(dark&&_lum(ink)<.7)ink=_mix(ink,'#fff',.5);
+  if(!dark&&_lum(ink)>.35)ink=_mix(ink,'#111',.6);
+  let acc=pal.reduce((m,c)=>_chroma(c)>_chroma(m)?c:m,pal[0]);
+  if(_chroma(acc)<.06)acc=dark?'#C9A96A':'#A8823E';
+  if(dark&&_lum(acc)<.35)acc=_mix(acc,'#fff',.3);
+  const acc2=pal.filter(c=>c!==acc&&_chroma(c)>.1&&_hueDist(c,acc)>30).sort((a,b)=>_chroma(b)-_chroma(a))[0]||_mix(acc,dark?'#8ad':'#358',.55);
+  const F=FAMTOK[t.family]||FAMTOK.gallery;
+  const tok={c:{bg,surf:_mix(bg,ink,dark?.09:.05),ink,mut:_mix(ink,bg,.42),line:dark?'rgba(255,255,255,.12)':'rgba(17,17,17,.13)',acc,acc2},
+    f:{disp:F.f[0],body:F.f[1]},l:F.l,
+    m:{fam:clean(t.name),famko:'',pal:(FAM[t.family]?.ko||t.family)+' 무드'}};
+  return 'preview.html#'+encodeURIComponent(JSON.stringify(tok));
+}
+
 function render(){
   const g = document.getElementById('grid');
   const q = state.q.toLowerCase();
@@ -152,9 +190,9 @@ function render(){
     const f = FAM[t.family]||{ko:t.family,c:'--ink2'};
     const col = `var(${f.c})`;
     const pal = (t.palette||[]).slice(0,5).map(h=>`<span style="background:${h}" data-hex="${h}" title="${h}"></span>`).join('');
-    const demo = LOCAL
-      ? `<a class="demo" href="demo?z=${encodeURIComponent(t.name)}" target="_blank" rel="noopener">데모 열기 ↗</a>`
-      : `<span class="demo off" title="로컬에서 python3 serve.py 실행 시 활성화">데모 (로컬)</span>`;
+    const pv = tplPreviewUrl(t);
+    const demo = (pv?`<a class="demo" href="${pv}" target="_blank" rel="noopener" title="이 템플릿의 실측 색·무드를 우리 렌더러에 입혀 미리보기">이 무드로 미리보기 ↗</a>`:'')
+      + (LOCAL ? ` <a class="demo" href="demo?z=${encodeURIComponent(t.name)}" target="_blank" rel="noopener">원본 데모 ↗</a>` : '');
     const conf = (t.confidence||'med').toLowerCase();
     return `<div class="card">
       <div class="pal">${pal}</div>
@@ -214,7 +252,8 @@ fetch('template-classification.json').then(r=>r.json()).then(data=>{
   render();
   document.getElementById('note').innerHTML =
     `분류 근거: 각 템플릿의 CSS·HTML을 열어 실제 배경·팔레트·폰트·레이아웃을 읽고 8개 디자인 패밀리로 나눴어요 (멀티에이전트 워크플로우, 전수 115개). 팔레트 색을 클릭하면 hex가 복사돼요. `
-    + (LOCAL ? `'데모 열기'는 클릭한 템플릿만 그때그때 외장에 풀어 실제 데모를 띄워요.` : `실제 데모를 로컬에서 열려면 <code>python3 serve.py</code> 실행 후 <code>localhost:8080/library.html</code> 로 접속하세요 (상용 템플릿이라 로컬 전용).`)
+    + `'이 무드로 미리보기'는 각 템플릿의 실측 색·무드를 우리 렌더러에 입혀 <b>실제 포트폴리오 페이지로</b> 보여줘요.`
+    + (LOCAL ? ` '원본 데모'는 로컬에서 zip을 풀어 띄웁니다.` : ` (상용 원본 데모는 로컬 <code>python3 serve.py</code> 전용)`)
     + ` · <a href="design-quiz.html">취향 진단으로 방향 찾기 →</a>`;
 });
 </script>
