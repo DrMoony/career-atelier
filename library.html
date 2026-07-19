@@ -152,6 +152,10 @@ const FAMTOK={
   lens:{f:['Inter','Inter'],l:{hero:'fullbleed',nav:'top',work:'mason',motion:'calm',rad:8,dens:1.08}},
   corporate:{f:['Archivo','Inter'],l:{hero:'bigtype',nav:'top',work:'grid3',motion:'calm',rad:10,dens:1}},
 };
+/* 이름 해시 → 결정론적 변주 (같은 템플릿=항상 같은, 서로는 다른 조합) */
+function _hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+const SERIF_POOL=['Fraunces','Playfair Display','Instrument Serif','Lora','Cormorant Garamond','Marcellus','Prata'];
+const SANS_POOL=['Space Grotesk','Archivo','Inter','Manrope','Outfit','Sora','Syne','DM Sans','Work Sans','Urbanist','Barlow'];
 function tplPreviewUrl(t){
   const pal=(t.palette||[]).filter(h=>/^#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?$/.test(h));
   if(!pal.length) return null;
@@ -165,8 +169,31 @@ function tplPreviewUrl(t){
   if(dark&&_lum(acc)<.35)acc=_mix(acc,'#fff',.3);
   const acc2=pal.filter(c=>c!==acc&&_chroma(c)>.1&&_hueDist(c,acc)>30).sort((a,b)=>_chroma(b)-_chroma(a))[0]||_mix(acc,dark?'#8ad':'#358',.55);
   const F=FAMTOK[t.family]||FAMTOK.gallery;
+  const H=_hash(t.name);
+  /* ① 폰트 — 실측 sans/serif/mixed 타입에 맞는 풀에서 해시로 선택 */
+  let disp,body;
+  if(t.font==='serif'){disp=SERIF_POOL[H%SERIF_POOL.length];body=['Outfit','Inter','Manrope'][(H>>>3)%3];}
+  else if(t.font==='sans'){disp=SANS_POOL[H%SANS_POOL.length];body=SANS_POOL[(H>>>4)%SANS_POOL.length];}
+  else{disp=(H&1)?SERIF_POOL[H%SERIF_POOL.length]:SANS_POOL[H%SANS_POOL.length];body=SANS_POOL[(H>>>4)%SANS_POOL.length];}
+  /* ② 레이아웃 — 실측 layout/vibe 키워드 우선, 나머지는 해시 변주 */
+  const kw=((t.layout||'')+' '+(t.vibe||'')).toLowerCase();
+  const l={...F.l};
+  if(/masonry/.test(kw))l.work='mason';
+  else if(/slider|carousel/.test(kw))l.work='row';
+  else if(/minimal/.test(kw))l.work='grid2';
+  else l.work=['grid3','grid2','mason','row'][(H>>>6)%4];
+  if(/fullscreen|full-screen|fullpage/.test(kw))l.hero='fullbleed';
+  else if(/split/.test(kw))l.hero='split';
+  else l.hero=[F.l.hero,'bigtype','split'][(H>>>8)%3];
+  if(/bold|creative/.test(kw)&&(H>>>10&1))l.motion='bold';
+  l.rad=Math.max(0,Math.min(24,(F.l.rad??10)+((H>>>11)%13-4)));
+  l.dens=+(Math.max(.85,Math.min(1.2,(F.l.dens||1)+((H>>>13)%5-2)*.06))).toFixed(2);
+  l.scale=[0.9,1,1.08,1.18][(H>>>15)%4];
+  l.case=(SANS_POOL.includes(disp)&&(H>>>17&3)===0)?'upper':'';
+  l.imgStart=(H>>>19)%6;
+  l.aspect=['4/3','3/2','4/5'][(H>>>21)%3];
   const tok={c:{bg,surf:_mix(bg,ink,dark?.09:.05),ink,mut:_mix(ink,bg,.42),line:dark?'rgba(255,255,255,.12)':'rgba(17,17,17,.13)',acc,acc2},
-    f:{disp:F.f[0],body:F.f[1]},l:F.l,
+    f:{disp,body},l,
     m:{fam:clean(t.name),famko:'',pal:(FAM[t.family]?.ko||t.family)+' 무드',k:t.family}};
   return 'preview.html#'+encodeURIComponent(JSON.stringify(tok));
 }
