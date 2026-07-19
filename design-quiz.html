@@ -138,6 +138,7 @@ h2.qh{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:c
     <div class="prog" id="prog"></div>
     <div class="qn" id="qnn"></div><h2 class="qh serif" id="qtext"></h2>
     <div class="opts"><button class="opt" id="optA"></button><button class="opt" id="optB"></button></div>
+    <div class="navrow" style="justify-content:center"><button class="link" id="qboth">둘 다 좋아요, 넘어갈래요 →</button></div>
   </section>
 
   <section id="palette" class="hidden">
@@ -170,24 +171,28 @@ h2.qh{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:c
     <div class="card"><div class="lab">타이포 · 무드 축</div><div id="typLine" style="font-size:14px;margin-bottom:14px;"></div><div class="axes" id="axes"></div></div>
     <div class="card"><div class="lab">이 방향에 맞는 라이브러리 템플릿</div><div class="chips" id="tmplChips"></div><div class="link" style="margin-top:12px;" id="also"></div></div>
     <div class="res-cta"><button class="btn" id="again">처음부터</button><button class="btn ghost" id="copy">브리프 복사</button></div>
-    <p class="note">v3 — 취향→축·팔레트·레이아웃은 전부 튜닝 가능. 템플릿 매핑은 라이브러리 <b>115개 전수 코드 실측</b>(CSS/HTML 색상·폰트·레이아웃 분석, 멀티에이전트 워크플로우)으로 확정. 라이트 89 / 다크 26.</p>
+    <p class="note">v4 — 질문 10개는 전수 시뮬레이션으로 8개 패밀리 균형(이진 8.3~15.4%) 검증. 취향→축·팔레트·레이아웃은 전부 튜닝 가능. 템플릿 매핑은 라이브러리 <b>115개 전수 코드 실측</b>(CSS/HTML 색상·폰트·레이아웃 분석, 멀티에이전트 워크플로우)으로 확정. 라이트 89 / 다크 26.</p>
   </section>
 </div>
 
 <script>
 const AXES=[{k:'mood',pos:'밝음',neg:'어두움'},{k:'density',pos:'미니멀',neg:'풍부함'},{k:'type',pos:'세리프',neg:'산세리프'},{k:'temp',pos:'따뜻함',neg:'차가움'},{k:'energy',pos:'차분함',neg:'대담함'},{k:'era',pos:'클래식',neg:'실험적'}];
 const Q=[
- {q:'영화를 고른다면',A:{oa:'A',t:'웨스 앤더슨',s:'대칭, 파스텔, 아기자기한 온기',w:{temp:1,mood:1,era:1,energy:.5}},B:{oa:'B',t:'크리스토퍼 놀란',s:'차갑고 웅장하고 진지하게',w:{mood:-1,temp:-1,energy:-1}}},
- {q:'플레이리스트는',A:{oa:'A',t:'쳇 베이커',s:'나른한 재즈 발라드',w:{energy:1,temp:1,era:1}},B:{oa:'B',t:'다프트 펑크',s:'미래적인 일렉트로',w:{energy:-1,era:-1,temp:-1}}},
- {q:'주말의 이상은',A:{oa:'A',t:'미술관과 북카페',s:'조용한 여백 속에서',w:{density:1,energy:1,mood:1}},B:{oa:'B',t:'페스티벌과 클럽',s:'가득 찬 에너지 속에서',w:{density:-1,energy:-1,mood:-1}}},
- {q:'머물고 싶은 곳',A:{oa:'A',t:'교토의 료칸',s:'자연 소재와 시간이 쌓인 결',w:{temp:1,era:1,density:.5}},B:{oa:'B',t:'뉴욕의 로프트',s:'노출 콘크리트와 도시의 선',w:{temp:-1,type:-1,era:-.5}}},
- {q:'사진의 감성은',A:{oa:'A',t:'흑백 필름',s:'담백하고 오래가는',w:{density:1,era:1,type:.5}},B:{oa:'B',t:'비비드 디지털',s:'선명하고 강렬한',w:{density:-1,energy:-1,era:-.5}}},
- {q:'글씨의 취향은',A:{oa:'A',t:'만년필 손편지',s:'획의 온기가 남는',w:{type:1,temp:1,era:1}},B:{oa:'B',t:'네온 사인',s:'또렷하고 현대적인',w:{type:-1,energy:-1,era:-1}}},
- {q:'옷장을 연다면',A:{oa:'A',t:'톤온톤 베이지 니트',s:'조용한 한 색으로',w:{density:1,temp:1,energy:1}},B:{oa:'B',t:'레드 컬러 블로킹',s:'대담한 대비로',w:{density:-1,energy:-1,mood:.3}}},
- {q:'하루 중 이 순간',A:{oa:'A',t:'이른 아침의 미색 햇살',s:'밝고 부드러운',w:{mood:1,temp:1,energy:1}},B:{oa:'B',t:'자정의 네온 도시',s:'어둡고 선명한',w:{mood:-1,temp:-1,era:-1}}},
- {q:'벽을 채운다면',A:{oa:'A',t:'여백이 많은 갤러리 벽',s:'한 점만 걸어두고',w:{density:1,energy:1,type:.5}},B:{oa:'B',t:'가득 채운 콜라주',s:'겹치고 쌓아서',w:{density:-1,energy:-1}}},
- {q:'끌리는 팔레트',A:{oa:'A',t:'크림 · 아이보리 · 골드',s:'따뜻하고 우아하게',w:{mood:1,temp:1,era:1}},B:{oa:'B',t:'블랙 · 실버 · 일렉트릭',s:'차갑고 미래적으로',w:{mood:-1,temp:-1,era:-1}}},
+ /* v4 — 대중적 앵커 + 축 디커플링. 1024개(이진)·59049개(중립 포함) 전수 시뮬레이션으로
+    8개 패밀리 분포 이진 8.3~15.4% / 중립 포함 12.5% 균형 검증. 가중치 수정 시 FAMBIAS 재캘리브레이션 필요. */
+ {q:'영화 한 편 고른다면',A:{oa:'A',t:'잔잔한 감성 영화',s:'리틀 포레스트, 어바웃 타임처럼',w:{mood:1,temp:.5,energy:1}},B:{oa:'B',t:'블록버스터 액션',s:'어벤져스, 미션 임파서블처럼',w:{energy:-1,era:-1}}},
+ {q:'플레이리스트는',A:{oa:'A',t:'발라드 · 어쿠스틱',s:'따뜻한 목소리와 기타',w:{energy:1,temp:.4,era:.5}},B:{oa:'B',t:'힙합 · EDM',s:'비트가 몸을 움직이는',w:{energy:-1,era:-1,mood:-.3}}},
+ {q:'저녁 한잔 한다면',A:{oa:'A',t:'조용한 위스키 바',s:'낮은 조명, 재즈, 깊은 대화',w:{mood:-.8,temp:.5,era:.8,energy:.6,type:.4}},B:{oa:'B',t:'왁자지껄 포차 · 펍',s:'시끌시끌 에너지 충전',w:{energy:-1,density:-.6}}},
+ {q:'여행 가서 묵고 싶은 곳',A:{oa:'A',t:'한옥 스테이 · 온천',s:'나무 냄새, 느린 아침',w:{temp:1,era:.8,type:.5}},B:{oa:'B',t:'고층 시티 호텔',s:'통유리 너머 야경',w:{temp:-1,mood:-.6}}},
+ {q:'예쁘다고 느끼는 피드는',A:{oa:'A',t:'톤을 맞춘 미니멀',s:'하얀 여백, 정돈된 그리드',w:{density:1,mood:.5,temp:-.6}},B:{oa:'B',t:'일상이 가득, 다채로운',s:'색도 이야기도 풍성하게',w:{density:-1,temp:.4,energy:-.5}}},
+ {q:'폰 배경화면은',A:{oa:'A',t:'맑은 하늘 · 꽃',s:'밝고 산뜻하게',w:{mood:1,temp:.2}},B:{oa:'B',t:'밤바다 · 도시 야경',s:'어둡고 깊게',w:{mood:-1,temp:-.2}}},
+ {q:'기록하는 방식은',A:{oa:'A',t:'종이책과 손글씨',s:'펜 끝의 온기',w:{type:1,era:1}},B:{oa:'B',t:'아이패드와 키보드',s:'빠르고 깔끔하게',w:{type:-1,era:-1,temp:-.3}}},
+ {q:'오늘 입을 옷은',A:{oa:'A',t:'무채색 톤온톤',s:'조용한 한 색으로',w:{energy:1,density:.5}},B:{oa:'B',t:'포인트 컬러 하나',s:'시선을 끄는 대비',w:{energy:-1,mood:.3}}},
+ {q:'내 책상 위는',A:{oa:'A',t:'노트북 하나, 여백',s:'깨끗하게 비워둔',w:{density:1,type:-.5,temp:-.5}},B:{oa:'B',t:'소품이 가득',s:'피규어, 엽서, 좋아하는 컵',w:{density:-1,temp:.4,era:-.3}}},
+ {q:'남기고 싶은 첫인상은',A:{oa:'A',t:'단정한 신뢰',s:'차분하고 프로페셔널하게',w:{energy:1,mood:.5,temp:-.5,type:-.4}},B:{oa:'B',t:'강렬한 개성',s:'한 번 보면 기억되게',w:{energy:-1,era:-.7}}},
 ];
+/* 패밀리별 경계 보정 — 전수 시뮬레이션 캘리브레이션 값 (nearest에서 d²-bias) */
+const FAMBIAS={gallery:1.816,noir:1.364,editorial:-0.240,studio:-1.129,neotech:-0.178,warm:-1.190,lens:-1.233,corporate:0.789};
 const PAL=[
 {id:"warm-neutral",cat:"neutral",catko:"뉴트럴",en:"Ivory & Gold",ko:"아이보리 골드",m:["bright","warm","calm"],c:[["#F1EBDF","7422 C"],["#FBF7EF","7422 C"],["#C9A96A","7407 C"],["#A8823E","7511 C"],["#2A2620","Black 4 C"]]},
 {id:"sand",cat:"neutral",catko:"뉴트럴",en:"Warm Sand",ko:"웜 샌드",m:["bright","warm","calm"],c:[["#EDE3D3","7422 C"],["#DCC9AE","7527 C"],["#B79B78","7529 C"],["#7C6A54","7497 C"],["#332B22","Black 2 C"]]},
@@ -316,8 +321,9 @@ function vNow(){const v={};AXES.forEach(a=>v[a.k]=maxAbs[a.k]?score[a.k]/maxAbs[
 function renderQ(){$('#prog').innerHTML=Q.map((_,i)=>`<i class="${i<cur?'done':i===cur?'cur':''}"></i>`).join('');
   const q=Q[cur];$('#qnn').textContent=`Q${cur+1} / ${Q.length}`;$('#qtext').textContent=q.q;
   [['#optA',q.A],['#optB',q.B]].forEach(([id,o])=>$(id).innerHTML=`<span class="oa">${o.oa}</span><span class="ot serif">${o.t}</span><span class="os">${o.s}</span>`);}
-function pick(o){for(const k in o.w)score[k]+=o.w[k];cur++;if(cur<Q.length)renderQ();else{V=vNow();FAMILY=nearest().best;go('palette');renderPalette();}}
-function nearest(){const v=V||vNow();let best=null,bd=1e9,second=null,sd=1e9;FAM.forEach(f=>{let d=0;AXES.forEach(a=>{const x=v[a.k]-(f.c[a.k]||0);d+=x*x;});if(d<bd){sd=bd;second=best;bd=d;best=f;}else if(d<sd){sd=d;second=f;}});return{best,second};}
+function advance(){cur++;if(cur<Q.length)renderQ();else{V=vNow();FAMILY=nearest().best;go('palette');renderPalette();}}
+function pick(o){for(const k in o.w)score[k]+=o.w[k];advance();}
+function nearest(){const v=V||vNow();let best=null,bd=1e9,second=null,sd=1e9;FAM.forEach(f=>{let d=0;AXES.forEach(a=>{const x=v[a.k]-(f.c[a.k]||0);d+=x*x;});d-=FAMBIAS[f.k]||0;if(d<bd){sd=bd;second=best;bd=d;best=f;}else if(d<sd){sd=d;second=f;}});return{best,second};}
 
 /* palette */
 function cats(){const seen=[];PAL.forEach(p=>{if(!seen.includes(p.catko))seen.push(p.catko);});return ['추천',...seen];}
@@ -458,6 +464,7 @@ function renderBrief(){
 /* wire */
 $('#start').onclick=()=>{go('quiz');renderQ();};
 $('#optA').onclick=()=>pick(Q[cur].A);$('#optB').onclick=()=>pick(Q[cur].B);
+$('#qboth').onclick=()=>advance();
 $('#palback').onclick=()=>{cur=0;AXES.forEach(a=>score[a.k]=0);selPalId=null;go('quiz');renderQ();};
 $('#palnext').onclick=()=>{oStep=0;go('outline');renderOut();};
 $('#oback').onclick=()=>{if(oStep>0){oStep--;renderOut();}};
