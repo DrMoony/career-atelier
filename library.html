@@ -223,11 +223,13 @@ function tplPreviewUrl(t){
   else if(t.family==='lens'&&(H>>>30&1))l.arch='wall';
   else if(/fullpage|full-screen|fullscreen/.test(kw)&&(H>>>30&1))l.arch='deck';
   else l.arch=['onepage','split','vcard','cv','wall','deck','onepage','split'][(H>>>12)%8];
+  /* 아키타입-템플릿 정합: 사진 월은 사진 중심 패밀리에서만, wall이면 페르소나도 사진으로 */
+  if(l.arch==='wall'&&!['lens','studio'].includes(t.family))l.arch=(H>>>15&1)?'onepage':'split';
   const tok={c:{bg,surf:_mix(bg,ink,dark?.09:.05),ink,mut:_mix(ink,bg,.42),line:dark?'rgba(255,255,255,.12)':'rgba(17,17,17,.13)',acc,acc2},
     f:{disp,body,dispKr,bodyKr},l,
-    p:{ind:PACK_KEYS[(H>>>2)%PACK_KEYS.length]},   /* 샘플 페르소나도 로테이션 — 카피·사진·프로젝트가 통째로 달라짐 */
+    p:{ind:l.arch==='wall'?'photo':PACK_KEYS[(H>>>2)%PACK_KEYS.length]},   /* 페르소나 로테이션 — 단 사진 월엔 사진 페르소나 */
     m:{fam:clean(t.name),famko:'',pal:(FAM[t.family]?.ko||t.family)+' 무드',k:t.family}};
-  return 'preview.html?v13#'+encodeURIComponent(JSON.stringify(tok));  /* 쿼리 = 구버전 캐시 무효화 */
+  return 'preview.html?v14#'+encodeURIComponent(JSON.stringify(tok));  /* 쿼리 = 구버전 캐시 무효화 */
 }
 
 function render(){

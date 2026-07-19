@@ -409,6 +409,30 @@ const DEFAULT={
   m:{fam:"Atelier Noir",famko:"아틀리에 누아르",pal:"Champagne Noir",k:"noir"}
 };
 DEFAULT.f.dispKr='Noto Serif KR'; DEFAULT.f.bodyKr='Noto Sans KR';
+/* ---------- 색 호환성 강제: 어떤 팔레트가 와도 역할별 최소 대비 보장 ---------- */
+function _rgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+function _hx(r,g,b){const c=v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0');return'#'+c(r)+c(g)+c(b);}
+function _rl(h){const[r,g,b]=_rgb(h).map(v=>v/255);const f=v=>v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4);return .2126*f(r)+.7152*f(g)+.0722*f(b);}
+function _cr(a,b){const x=_rl(a),y=_rl(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05);}
+function _hsl(h){const[r,g,b]=_rgb(h).map(v=>v/255);const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let H=0,S=0,L=(mx+mn)/2;
+  if(mx!==mn){const d=mx-mn;S=L>.5?d/(2-mx-mn):d/(mx+mn);H=mx===r?((g-b)/d+(g<b?6:0)):mx===g?((b-r)/d+2):((r-g)/d+4);H*=60;}return[H,S,L];}
+function _hex(H,S,L){H/=360;if(S===0){const v=L*255;return _hx(v,v,v);}const q=L<.5?L*(1+S):L+S-L*S,p=2*L-q;
+  const f=t=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p;};
+  return _hx(f(H+1/3)*255,f(H)*255,f(H-1/3)*255);}
+function ensureContrast(col,bg,target){
+  if(!/^#/.test(col)||!/^#/.test(bg))return col;
+  if(_cr(col,bg)>=target)return col;
+  let[H,S,L]=_hsl(col);const darkBg=_rl(bg)<0.3;
+  for(let i=0;i<24&&_cr(_hex(H,S,L),bg)<target;i++)L=Math.max(0.02,Math.min(0.98,L+(darkBg?0.04:-0.04)));
+  return _hex(H,S,L);
+}
+function fixColors(c){
+  c.ink=ensureContrast(c.ink,c.bg,7);
+  c.mut=ensureContrast(c.mut,c.bg,3.4);
+  c.acc=ensureContrast(c.acc,c.bg,3);     // em·아이브로·링크가 읽히는 최소선
+  c.acc2=ensureContrast(c.acc2,c.bg,3);
+  return c;
+}
 function readTokens(){
   try{
     const h=decodeURIComponent(location.hash.slice(1));
@@ -612,6 +636,7 @@ function parseCV(t){
 }
 function apply(t){
   const r=document.documentElement.style;
+  fixColors(t.c);
   for(const [k,v] of Object.entries(t.c)) r.setProperty('--'+k,v);
   r.setProperty('--disp',`'${t.f.disp}','${t.f.dispKr||'Noto Serif KR'}'`);
   r.setProperty('--body',`'${t.f.body}','${t.f.bodyKr||'Noto Sans KR'}'`);
