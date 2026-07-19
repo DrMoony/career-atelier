@@ -446,6 +446,9 @@ body[data-cur="1"] #cur{display:block;}
 #cvDlg #cvClose{background:transparent;color:var(--ink);}
 #cvDlg .cvout{font-size:12.5px;color:var(--mut);margin-top:10px;}
 body{padding-bottom:44px;}
+/* 퀴즈 브리프 iframe 안에서는 하단 샘플 바 숨김 (입력 중복 방지) */
+body.embed .genban{display:none;}
+body.embed{padding-bottom:0;}
 </style>
 </head>
 <body data-hero="bigtype" data-nav="top" data-work="grid3" data-motion="calm">
@@ -965,6 +968,7 @@ function apply(t){
   g('footR').textContent=`${t.m.fam} · ${t.m.pal} · ${pack.label} — Career Atelier 생성`;
   document.title=`미리보기 · ${t.m.fam} · ${pack.label} · Career Atelier`;
 }
+if(window.self!==window.top)document.body.classList.add('embed');
 apply(readTokens());
 window.addEventListener('hashchange',()=>apply(readTokens()));
 
