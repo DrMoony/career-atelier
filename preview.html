@@ -11,7 +11,9 @@
   토큰 스키마: {c:{색상 역할}, f:{폰트}, l:{레이아웃 변형}, m:{메타}, p:{페르소나}}
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Space+Grotesk:wght@400;500;700&family=Archivo:wght@400;600;800&family=Instrument+Serif:ital@0;1&family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Marcellus&family=Prata&family=Sora:wght@300;400;600;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500;700&family=Work+Sans:wght@300;400;600;800&family=Urbanist:wght@300;400;600;800&family=Barlow:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Space+Grotesk:wght@400;500;700&family=Archivo:wght@400;600;800&family=Instrument+Serif:ital@0;1&family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Marcellus&family=Prata&family=Sora:wght@300;400;600;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500;700&family=Work+Sans:wght@300;400;600;800&family=Urbanist:wght@300;400;600;800&family=Barlow:wght@300;400;600;800&family=Noto+Serif+KR:wght@400;600;900&family=Nanum+Myeongjo:wght@400;800&family=Gowun+Batang:wght@400;700&family=Song+Myung&family=Hahmlet:wght@400;600&family=Gothic+A1:wght@400;800;900&family=IBM+Plex+Sans+KR:wght@400;600&family=Black+Han+Sans&family=Do+Hyeon&family=Jua&family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+<!-- 한글 디스플레이 폰트: 라틴 폰트에 한글이 없어 폴백되는 문제 해결 — --disp에 라틴+한글 페어를 함께 넣는다 -->
+
 <!-- 폰트 풀은 @font-face 선언만 먼저 오고, woff2는 실제 사용된 패밀리만 다운로드됨 -->
 
 <style>
@@ -54,6 +56,8 @@ body[data-nav="side"] nav .cta{margin-top:auto;}
 .hero .kn{font-size:clamp(13px,1.5vw,15px);color:var(--mut);letter-spacing:.02em;}
 .hero h1{font-family:var(--disp);font-weight:600;line-height:1.02;letter-spacing:-.02em;font-size:calc(clamp(46px,9vw,116px)*var(--h1s,1));margin:20px 0 0;}
 body[data-case="upper"] .hero h1{text-transform:uppercase;letter-spacing:.005em;line-height:1;}
+body[data-halign="center"] .hero{text-align:center;}
+body[data-halign="center"] .hero .sub,body[data-halign="center"] .hero .meta{margin-left:auto;margin-right:auto;justify-content:center;}
 .hero h1 em{font-style:italic;color:var(--acc);}
 .hero .sub{margin-top:26px;max-width:52ch;font-size:clamp(16px,1.9vw,21px);color:var(--mut);font-weight:300;}
 .hero .meta{margin-top:40px;display:flex;gap:28px;flex-wrap:wrap;font-size:13px;color:var(--mut);}
@@ -336,6 +340,7 @@ const DEFAULT={
   l:{hero:"bigtype",nav:"top",work:"grid3",rad:14,motion:"calm",dens:1},
   m:{fam:"Atelier Noir",famko:"아틀리에 누아르",pal:"Champagne Noir",k:"noir"}
 };
+DEFAULT.f.dispKr='Noto Serif KR'; DEFAULT.f.bodyKr='Noto Sans KR';
 function readTokens(){
   try{
     const h=decodeURIComponent(location.hash.slice(1));
@@ -540,13 +545,14 @@ function parseCV(t){
 function apply(t){
   const r=document.documentElement.style;
   for(const [k,v] of Object.entries(t.c)) r.setProperty('--'+k,v);
-  r.setProperty('--disp',"'"+t.f.disp+"'"); r.setProperty('--body',"'"+t.f.body+"'");
+  r.setProperty('--disp',`'${t.f.disp}','${t.f.dispKr||'Noto Serif KR'}'`);
+  r.setProperty('--body',`'${t.f.body}','${t.f.bodyKr||'Noto Sans KR'}'`);
   r.setProperty('--rad',(t.l.rad??14)+'px'); r.setProperty('--dens',t.l.dens||1);
   r.setProperty('--h1s',t.l.scale||1); r.setProperty('--tar',t.l.aspect||'4/3');
   document.body.dataset.hero=t.l.hero; document.body.dataset.nav=t.l.nav;
   document.body.dataset.work=t.l.work; document.body.dataset.motion=t.l.motion;
   document.body.dataset.fam=(t.m&&t.m.k)||""; document.body.dataset.case=t.l.case||"";
-  document.body.dataset.about=t.l.about||"";
+  document.body.dataset.about=t.l.about||""; document.body.dataset.halign=t.l.halign||"";
   // ---------- 구성 흐름: 섹션 순서·존재 자체를 변주 ----------
   const FLOWS=[
     ['hero','about','work','marq','contact'],          // 0 클래식

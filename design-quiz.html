@@ -399,10 +399,13 @@ function rotateHue(h,deg){const[H,S,L]=hex2hsl(h);return hsl2hex((H+deg+360)%360
 const FAMHUE={noir:44,warm:38,gallery:187,editorial:206,studio:210,neotech:198,lens:204,corporate:209};
 function fontPair(k,typeAxis){
   const map={noir:['Playfair Display','Outfit'],warm:['Manrope','Manrope'],gallery:['Fraunces','Outfit'],editorial:['Instrument Serif','Inter'],studio:['Space Grotesk','Space Grotesk'],neotech:['Space Grotesk','Inter'],lens:['Inter','Inter'],corporate:['Archivo','Inter']};
+  /* 한글 디스플레이 페어 — 라틴 폰트엔 한글이 없어 헤드라인 폰트 차이가 사라지는 문제 해결 */
+  const krMap={noir:'Song Myung',warm:'Gowun Dodum',gallery:'Noto Serif KR',editorial:'Nanum Myeongjo',studio:'Black Han Sans',neotech:'IBM Plex Sans KR',lens:'Gowun Batang',corporate:'Gothic A1'};
   let [d,b]=map[k]||['Fraunces','Outfit'];
-  if(typeAxis<-0.4&&['Fraunces','Playfair Display','Instrument Serif'].includes(d))d=(k==='corporate'?'Archivo':'Space Grotesk');
-  if(typeAxis>0.4&&d==='Space Grotesk'&&k!=='neotech')d='Fraunces';
-  return{disp:d,body:b};
+  let dk=krMap[k]||'Noto Serif KR';
+  if(typeAxis<-0.4&&['Fraunces','Playfair Display','Instrument Serif'].includes(d)){d=(k==='corporate'?'Archivo':'Space Grotesk');dk=(k==='corporate'?'Gothic A1':'IBM Plex Sans KR');}
+  if(typeAxis>0.4&&d==='Space Grotesk'&&k!=='neotech'){d='Fraunces';dk='Noto Serif KR';}
+  return{disp:d,body:b,dispKr:dk,bodyKr:'Noto Sans KR'};
 }
 function layoutTokens(){
   const g=k=>oChoice[k];
