@@ -1,0 +1,6717 @@
+{
+ "generated": "2026-07-19",
+ "method": "per-template sonnet agent, code-grounded",
+ "specs": [
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "custom_cursor": false,
+    "libs": [
+     "isotope",
+     "magnific-popup",
+     "typed",
+     "particles"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "social-only",
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "cta_count": 0,
+    "overlay": true
+   },
+   "name": "adrian-portfolio-template-2024-08-01-06-35-17-utc",
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero(#banner)",
+    "about(#about)",
+    "work(#portfolio)",
+    "services(#services, \"What i Do\")",
+    "blog(#blog, \"Latest News\")",
+    "contact(#contact)",
+    "footer"
+   ],
+   "signature": [
+    "섹션 경계마다 SVG 물결(wave) 디바이더가 배경색을 교대(wave-primary 흰색/wave-secondary 회색/wave-footer 검정)",
+    "스크롤 뷰포트 절반 지점에서 네비게이션이 투명 다크(navbar-dark, absolute)에서 흰 배경+고정(navbar-scroll-fixed, fixed)으로 전환되며 로고 이미지도 logo.png→logo-dark.png로 스와프",
+    "프리로더가 좌우로 갈라져 사라지는 스플릿 커튼 연출(#loader-wrapper .section-left/.section-right가 반대 방향 translateX)",
+    "포트폴리오 그리드는 Isotope 기반 필터(All/Web Design/Applications/Development)+Magnific Popup 라이트박스, 썸네일 hover 시 이미지 scale(1.2)와 검은 반투명 오버레이 동시 발생"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "zoom"
+   }
+  },
+  {
+   "name": "alaia-personal-portfolio-template-2025-07-02-11-50-07-utc",
+   "hero": {
+    "type": "split-image",
+    "media": "illustration",
+    "overlay": false,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": true,
+    "cta_count": 3
+   },
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "marquee",
+    "about",
+    "skills",
+    "experience-timeline",
+    "education-timeline",
+    "marquee",
+    "services(unc-accordion-band)",
+    "work(tabbed-grid)",
+    "cta-band(contact-mini)",
+    "marquee",
+    "testimonials",
+    "clients-marquee",
+    "blog",
+    "footer(contact-form)"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   },
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "aos",
+     "swiper",
+     "wow",
+     "odometer",
+     "magnific-popup",
+     "nice-select"
+    ],
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "preloader": true,
+    "custom_cursor": false
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "columns",
+   "signature": [
+    "섹션마다 손글씨체(Caveat) 이탤릭 스몰캡션 vs 볼드 Kanit 헤드라인의 폰트 대비",
+    "'서비스' 밴드가 5개 세로 패널로 나뉘어 hover 시 대형 아웃라인 넘버(01~05, stroke만 있고 채움 없는 96px 숫자)와 문구가 펼쳐지는 아코디언형 구성, 그 중 하나는 기본값으로 펼쳐진 상태(activecard)",
+    "다크 배경(#0F110F/#232327) + 라임그린(#f1ff9d) 단일 포인트컬러, 헤더는 스크롤 20px 이후 fixed+solid로 전환",
+    "섹션 사이사이 무한 마퀴 텍스트 슬라이더 밴드를 구분선처럼 4회 반복 삽입"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "isotope",
+     "particles",
+     "magnific-popup",
+     "counterup",
+     "waypoints",
+     "stellar-parallax",
+     "animate.css"
+    ],
+    "preloader": false,
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "type": "canvas-particle",
+    "media": "canvas",
+    "headline_align": "center",
+    "headline_scale": "M",
+    "cta_count": 1,
+    "has_portrait": false,
+    "overlay": false
+   },
+   "name": "alamin-one-page-portfolio-2023-11-27-05-22-43-utc",
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "stats",
+    "work",
+    "testimonials",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "hover": "caption-overlay",
+    "cols": 3,
+    "filter_tabs": true
+   },
+   "signature": [
+    "히어로에 particles.js 캔버스 배경(#particles-js) + 로테이션 애니메이션 헤드라인(cd-headline, Alamin Musa/Web Developer/UI·UX Designer 순환) 조합",
+    "Isotope 필터(All/Marketing/Design/Development) 포트폴리오 그리드, hover 시 브랜드 골드(#e0a80d) 풀오버레이+아이콘 노출",
+    "히어로·스탯(Some Facts)·테스티모니얼 3개 섹션에 background-attachment:fixed 동일 패럴랙스 기법 반복",
+    "'light' 테마 폴더명과 달리 실제 배색은 다크 그레이(#2d2e2e/#212222) 배경 + 단일 골드 액센트(#e0a80d)로 전 섹션 통일"
+   ]
+  },
+  {
+   "confidence": "med",
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "bootstrap",
+     "owlCarousel",
+     "isotope",
+     "magnific-popup",
+     "jquery.knob",
+     "jquery.animateNumber",
+     "google-maps-api"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": false,
+    "custom_cursor": false
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": false,
+    "cta_count": 1,
+    "overlay": true
+   },
+   "name": "alinti-minimal-html-portfolio-2023-11-27-05-16-27-utc",
+   "nav": {
+    "type": "topbar-static",
+    "logo_style": "text"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "skills",
+    "team",
+    "services",
+    "video-band",
+    "work",
+    "pricing",
+    "blog",
+    "testimonials",
+    "clients",
+    "contact",
+    "footer"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 4,
+    "filter_tabs": true,
+    "hover": "other"
+   },
+   "signature": [
+    "갤러리 아이템마다 Magnific Popup(mfp-hide)로 전체 포트폴리오 상세 페이지(클라이언트 정보+설명+관련 프로젝트 6개)를 인라인 내장, 별도 페이지 이동 없이 라이트박스로 오픈",
+    "About 섹션에 jQuery Knob+animateNumber 기반 스킬 퍼센트 프로그레스바(Branding/Wordpress/Photography)",
+    "Discover 섹션: 테스티모니얼 캐러셀 / 배경이미지 박스 / CTA 텍스트 3분할이 가로로 나란히 배치되는 구조",
+    "상단 네비게이션에 Home 1/2/3 드롭다운으로 동일 사이트의 홈 배리에이션 3종을 제공"
+   ]
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "none",
+    "preloader": false,
+    "custom_cursor": false,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "libs": [
+     "owl-carousel",
+     "jquery-ui"
+    ]
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "overlay": false,
+    "has_portrait": false,
+    "cta_count": 1
+   },
+   "name": "alleo-agency-portfolio-html-template-2025-10-20-22-00-57-utc",
+   "nav": {
+    "type": "topbar-static",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about (intro statement + CTA)",
+    "services (icon-box x3)",
+    "process/about (text block: what we do)",
+    "work (portfolio metro grid)",
+    "about (text block: principles and values)",
+    "video-band (discover more about us)",
+    "testimonials (owl carousel)",
+    "cta-band (let's make something awesome)",
+    "clients (logo strip)",
+    "footer"
+   ],
+   "signature": [
+    "포트폴리오 메트로 그리드가 isotope/masonry 라이브러리 없이 nth-of-type별 고정 퍼센트 폭(65.82%/31.66% 등)의 수동 float 배치로 구현됨",
+    "히어로는 cover 배경사진 위 중앙정렬, Playfair Display 세리프 5.5rem 타이틀 + 이탤릭 강조 span, 오버레이 틴트 없음",
+    "포트폴리오 아이템은 기본 상태에 캡션이 없고 호버 시 opacity 0→1 오버레이로 제목/카테고리가 나타나는 방식",
+    "섹션 간 여백이 140~150px로 넉넉하고, 헤더는 fixed/sticky 스크롤 전환 JS 없이 히어로 위에 얹힌 정적 투명 헤더"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "serif-elegant",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "masonry",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "gsap",
+     "scrolltrigger",
+     "scrollsmoother",
+     "swiper",
+     "owl-carousel",
+     "isotope",
+     "aos",
+     "matter",
+     "jquery-circleType",
+     "jquery-lettering",
+     "jquery-appear",
+     "jquery-magnific-popup"
+    ],
+    "custom_cursor": true,
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "cta_count": 1,
+    "has_portrait": false,
+    "overlay": false
+   },
+   "name": "amoxi-creative-agency-portfolio-html-template-2026-05-28-07-28-50-utc",
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "stats",
+    "about",
+    "brand-wordmark-band",
+    "services",
+    "marquee-tagline-strip",
+    "work",
+    "team",
+    "video-band",
+    "awards",
+    "process",
+    "blog",
+    "footer"
+   ],
+   "signature": [
+    "섹션마다 SVG text-outline(stroke-only) 대형 타이포 헤더 — .stroke-text-title, Our Portfolio / OUR AWARDS 등",
+    "포트폴리오가 그리드가 아니라 GSAP 무한 마퀴(marquee--gsap)로 가로 자동 스크롤, 카드 hover 시에만 캡션 오버레이 노출",
+    "커스텀 원형 커서(.custom-cursor__cursor) + 이미지 패럴랙스 이동(img-move-wrap/img-move-lr/rl) 전역 적용",
+    "About 섹션에 jQuery circleType 곡선 텍스트 배지('Since 2010 Award Winning Agency')와 37+ 경력 카운터 오버랩"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "carousel",
+    "cols": 1,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "swiper",
+     "isotope",
+     "wow",
+     "odometer",
+     "fancybox",
+     "stellar-parallax"
+    ],
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "overlay": true,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "cta_count": 2,
+    "has_portrait": false
+   },
+   "name": "anchor-freelancer-creative-agency-portfolio-2023-11-27-05-32-02-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "no_html": false,
+   "sections": [
+    "hero (swiper slider, parallax text)",
+    "work (masonry grid, mixed double/single tiles)",
+    "services (3-col icon features)",
+    "about (alternating split image/text, x2 rows)",
+    "stats (awards/counter with odometer)",
+    "footer (fixed big-CTA)"
+   ],
+   "signature": [
+    "hero 슬라이드 텍스트가 스크롤 시 Swiper parallax(data-swiper-parallax)로 레이어별 다른 속도로 움직임",
+    "footer가 position:fixed로 화면 하단에 고정되고 본문이 그 위로 스크롤되며 드러나는 리빌 방식",
+    "좌측 세로 회전(rotate -90deg) 고정 소셜바 + 우측 상단 이퀄라이저 아이콘으로 배경음악 on/off 토글(오디오 앰비언트)",
+    "페이지 이동 시 전체 화면 컬러(#f50c1a) transition-overlay 플래시 + 별도 showcase 페이지엔 isotope 필터(WEB/UI-UX/VIDEO) 그리드"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "masonry",
+    "cols": 4,
+    "hover": "color-shift",
+    "filter_tabs": false
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "custom_cursor": false,
+    "libs": [
+     "swiper",
+     "animate.css",
+     "vue3-autocounter",
+     "bootstrap",
+     "vue-backtotop"
+    ],
+    "noise_or_texture": false,
+    "preloader": false,
+    "shapes_or_lines": true
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "cta_count": 1,
+    "has_portrait": false,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "media": "photo",
+    "overlay": true,
+    "type": "slider"
+   },
+   "nav": {
+    "logo_style": "image",
+    "type": "hamburger-overlay"
+   },
+   "sections": [
+    "hero",
+    "clients",
+    "about",
+    "services",
+    "stats",
+    "work",
+    "awards",
+    "testimonials",
+    "footer"
+   ],
+   "signature": [
+    "히어로에 25%/50%/75% 위치의 세로 가이드라인 3개 + 좌하단 고정 소셜 아이콘, 배경은 다크오버레이(opacity .3) 씌운 풀스크린 포토 스와이퍼",
+    "헤더는 로고+햄버거 버튼만 존재하고 전체 내비 메뉴(서브메뉴 포함)는 우측 오프캔버스 하나로 통합, 스크롤 200px부터 투명→#111 솔리드 배경 전환",
+    "'Works' 섹션이 정적 그리드가 아니라 필터 탭(Design/Architecture/Interior/Landscape)이 4-up Swiper 캐러셀을 전환하는 구조, 호버 시 바닥에서 검정 오버레이가 차오르며 타이틀이 포인트컬러로 바뀜",
+    "컴포넌트명 'BlogArticle'이 실제로는 블로그가 아니라 연도별(2021…) 수상 이력 타임라인을 렌더링 — 이름과 실제 용도 불일치"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "serif-elegant",
+    "size_contrast": "high"
+   },
+   "work": {
+    "cols": 4,
+    "filter_tabs": true,
+    "hover": "caption-overlay",
+    "layout": "carousel"
+   },
+   "name": "andle-vue-portfolio-template-2023-11-27-04-55-35-utc"
+  },
+  {
+   "confidence": "low",
+   "decor": {
+    "animations": "none"
+   },
+   "footer_type": "none",
+   "hero": {
+    "type": "none",
+    "media": "none",
+    "headline_align": "left",
+    "headline_scale": "M"
+   },
+   "name": "anur-personal-portfolio-react-template-2026-01-12-10-30-26-utc",
+   "nav": {
+    "type": "none"
+   },
+   "no_html": true,
+   "sections": [],
+   "signature": [
+    "no_html: zip은 정적 HTML 데모가 아니라 Vite+React 소스 코드(anur-downloadable/anur/src/*.jsx)",
+    "react-documantation 폴더는 문서 HTML만 포함, 실제 페이지 마크업 아님",
+    "HomePage/HomePage2/HomePage3/HomePage4, PortfolioGrid(S2/S3), hero~hero4 등 다수 변형 컴포넌트 존재 확인(코드상 구조는 확인했으나 no_html 규칙에 따라 세부 분석 생략)"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "mixed"
+   },
+   "work": {
+    "layout": "none"
+   }
+  },
+  {
+   "confidence": "med",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "anime.js",
+     "owl.carousel",
+     "slick",
+     "masonry.pkgd",
+     "appear.js",
+     "countTo.js"
+    ],
+    "preloader": false,
+    "custom_cursor": true,
+    "noise_or_texture": false,
+    "shapes_or_lines": false
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "type": "collage",
+    "media": "photo",
+    "headline_align": "center",
+    "headline_scale": "M",
+    "overlay": false,
+    "cta_count": 1,
+    "has_portrait": false
+   },
+   "name": "arabo-creative-portfolio-template-2023-11-27-05-08-47-utc",
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "no_html": false,
+   "sections": [
+    "hero",
+    "work",
+    "footer"
+   ],
+   "signature": [
+    "프로젝트 캡션(제목)이 마우스 커서를 따라다니며 나타나는 호버 효과, 타일마다 다른 액센트 컬러 패널이 함께 와이프인됨",
+    "홈 슬라이더(indexv1) 배리언트에서 대형 아웃라인(스트로크) 프로젝트 타이틀이 슬라이드별 고유 컬러로 서서히 채워짐",
+    "12컬럼 CSS Grid 기반 마소너리: 타일마다 span이 4/7/8열·1/2/4행으로 제각각이라 콜라주처럼 불규칙한 배치",
+    "index.html 자체는 실제 콘텐츠 없이 6개 홈 데모(indexv1~v6)로 분기하는 테마 선택 랜딩 페이지이고, 사이트 전역 nav의 'Work' 링크는 indexv2.html을 가리켜 사실상 그것이 기능적 홈 역할을 함"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "masonry",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   }
+  },
+  {
+   "name": "architecture-portfolio-design-architect-templ-2023-11-27-05-23-16-utc",
+   "no_html": false,
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "overlay": true,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "cta_count": 1,
+    "has_portrait": false
+   },
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about (짧은 인트로 태그라인 + 3개 아이콘, 'our-studio' 섹션)",
+    "work (Intelligent Projects, 2열 col-md-6 4개 프로젝트 하이라이트)",
+    "testimonials (owl.carousel 클라이언트 후기 슬라이더)",
+    "services (탭형 5개 서비스: interior/Concept/Collaborate/Construct/Complete)",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 4,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   },
+   "decor": {
+    "animations": "rich",
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "custom_cursor": false,
+    "preloader": true,
+    "libs": [
+     "revolution-slider",
+     "owl-carousel",
+     "cubeportfolio",
+     "fancybox",
+     "mmenu"
+    ]
+   },
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "med"
+   },
+   "spacing": "airy",
+   "footer_type": "columns",
+   "signature": [
+    "Revolution Slider 풀스크린 히어로 위에 옐로 배경 PNG 레이어가 슬라이드 인/아웃되는 장식 요소",
+    "프로젝트 그리드 각 항목 옆에 큰 회색 넘버링(01,02,03..)이 붙는 리스팅 방식",
+    "work 그리드 호버 시 흰색 반투명 오버레이+플러스 아이콘+타이틀이 18초 슬로우줌 이미지 위로 페이드인(effect-sadie, cubeportfolio caption:zoom)",
+    "데스크톱 상단(header-one 투명)과 스크롤 시 별도 sticky 헤더(header-two, 검정 배경)가 분리된 2단 네비게이션 구조"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": true,
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "libs": [
+     "swiper",
+     "gsap",
+     "scrolltrigger",
+     "fancybox",
+     "swup",
+     "tilt"
+    ]
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "bigtype-text",
+    "media": "gradient",
+    "overlay": true,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "cta_count": 2,
+    "has_portrait": false
+   },
+   "name": "ashley-creative-portfolio-template-2024-01-08-13-05-20-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "text"
+   },
+   "no_html": false,
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "team",
+    "testimonials",
+    "clients",
+    "blog",
+    "footer"
+   ],
+   "signature": [
+    "원형 커스텀 커서가 항목 위에서 \"More\"/\"Choose\" 텍스트로 모핑 (mil-ball + mil-more-text/mil-choose-text)",
+    "비대칭 5/6컬럼 포트폴리오 그리드, 카드마다 GSAP 패럴랙스로 스크롤 시 위아래 어긋나게 이동(data-value-1/2)",
+    "프리로더에 \"Pioneering Creative Excellence\" 문구 리빌 애니메이션 + swup.js 기반 페이지 전환(새로고침 없이 콘텐츠만 교체)",
+    "항상 떠 있는 상단 고정 프레임(로고+햄버거)과 전체화면 오버레이 메뉴, 숨은 장식용 도데카헤드론 SVG/라인 오브젝트 내장"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "grid",
+    "cols": 2,
+    "filter_tabs": false,
+    "hover": "zoom"
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "preloader": true,
+    "custom_cursor": false,
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "libs": [
+     "isotope",
+     "tera-slider (custom, bundled)",
+     "tera-lightbox (custom, bundled)",
+     "waypoints"
+    ]
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "headline_align": "center",
+    "headline_scale": "L",
+    "overlay": true,
+    "cta_count": 3,
+    "has_portrait": false
+   },
+   "name": "be-portfolio-template-for-creatives-2023-11-27-04-59-53-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "text-split-band",
+    "work",
+    "vision-statement",
+    "testimonials",
+    "footer"
+   ],
+   "signature": [
+    "헤더가 히어로 하단에 떠 있다가(body.bottom-nav: position:absolute;bottom:30px) 스크롤 시 상단 고정 다크바로 전환(header.affix: position:fixed;top:0;background:#242a30)",
+    "포트폴리오 아이템 호버 시 검정 90% 오버레이(rgba(0,0,0,.9))가 페이드인되고 타이틀/서브타이틀이 아래에서 15px 올라오며 나타남",
+    "isotope 필터바가 화면 상단에 sticky로 붙어있다가 클릭하면 필터 목록이 max-width:0→100%로 아코디언처럼 펼쳐짐(.filter-container)",
+    "로드 시 상단 얇은 진행률 바 프리로더(60%→100% 애니메이션)가 뜬 뒤 body가 opacity 0→1로 페이드인(loader.js + .container-fluid.loaded)"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   }
+  },
+  {
+   "name": "birva-responsive-portfolio-template-2023-11-27-05-22-03-utc",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "headline_align": "center",
+    "headline_scale": "M",
+    "overlay": false,
+    "cta_count": 1,
+    "has_portrait": false
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "text"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "process",
+    "timeline",
+    "gallery",
+    "skills",
+    "stats",
+    "cta-band",
+    "services",
+    "cta-band",
+    "work",
+    "testimonials",
+    "clients",
+    "twitter-band (자유기술: parallax 배경 위 트위터 라이브 피드)",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 4,
+    "filter_tabs": true,
+    "hover": "zoom"
+   },
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "isotope",
+     "mixitup",
+     "owl-carousel",
+     "flexslider",
+     "prettyphoto",
+     "easypiechart"
+    ],
+    "preloader": true,
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "shapes_or_lines": true
+   },
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "high"
+   },
+   "spacing": "normal",
+   "footer_type": "minimal-line",
+   "signature": [
+    "섹션 경계마다 21-content_header/footer PNG가 음수 마진(-143px)으로 겹쳐 걸리는 지그재그 절단면(cross-section) 구분선 — 실제 압축파일명이 'cross-section'일 정도로 이 템플릿의 핵심 정체성",
+    "about/skill/services/work/blog/contact 헤딩(h1)마다 jquery.shuffleLetters.js로 글자가 무작위로 섞이며 나타나는 타이핑형 등장 효과",
+    "About 섹션의 프로세스 카드가 hover 시 앞뒤로 뒤집히는 원형 flip 카드 4개(Discovery→Design→Develop→Launch)",
+    "포트폴리오 썸네일이 기본 20% 불투명도로 죽어있다가 hover 시 1.2배 확대+불투명도 90%로 살아나면서 하단에 흰색 삼각형 화살표가 솟아오르는 인터랙션"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "med",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": true,
+    "libs": [
+     "gsap",
+     "gsap-scrolltrigger",
+     "lenis",
+     "isotope-layout",
+     "swiper",
+     "typed.js",
+     "split-type"
+    ],
+    "noise_or_texture": false,
+    "preloader": false,
+    "shapes_or_lines": true
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "type": "bigtype-text",
+    "media": "illustration",
+    "overlay": false,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "cta_count": 1
+   },
+   "name": "blayden-portfolio-resume-nextjs-template-2026-07-04-10-59-58-utc",
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "no_html": true,
+   "sections": [
+    "hero",
+    "work",
+    "about",
+    "services",
+    "timeline",
+    "contact"
+   ],
+   "signature": [
+    "원형 호버 커서: 링크마다 <em> 요소를 마우스 좌표로 이동시키는 HoverCursorEffect 컴포넌트를 전역 반복 사용",
+    "GSAP ScrollTrigger 전역 리빌(.animate-in-up/.hero-animate-in-up) + Lenis 스무스 스크롤 조합",
+    "h1 헤드라인이 1600px 이상 뷰포트에서 16rem까지 커지는 초대형 타이포(Urbanist, weight 300)",
+    "좌상단(모바일은 좌하단) 고정, 반투명 블러 배경의 필(pill) 형태 플로팅 내비게이션"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "masonry",
+    "cols": 2,
+    "filter_tabs": false,
+    "hover": "caption-overlay"
+   }
+  },
+  {
+   "name": "blon-personal-portfolio-template-2023-11-27-04-54-46-utc",
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "headline_align": "right",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "overlay": true,
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about (with skills bars + counter stats)",
+    "blog (recent news, carousel)",
+    "services",
+    "work",
+    "contact",
+    "social (icon links, popup)",
+    "footer"
+   ],
+   "work": {
+    "layout": "grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "owlcarousel",
+     "isotope",
+     "jarallax",
+     "swiper",
+     "magnific-popup",
+     "sweetalert2",
+     "animate-css"
+    ],
+    "preloader": true,
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "shapes_or_lines": false
+   },
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "minimal-line",
+   "signature": [
+    "전체가 popup-section 구조: About/Blog/Services/Portfolio/Contact/Social이 실제 페이지 스크롤이 아니라 nav 클릭 시 전체화면 오버레이 팝업(fadeIn/fadeOut)으로 열림",
+    "히어로는 col-md-5 offset-md-7로 텍스트를 화면 우측에 배치하고 owl-carousel로 'I'm Designer' → 'I'm Developer' 롤 텍스트가 자동 전환",
+    "헤더는 position:fixed 원형 프로필 이미지 로고 + 텍스트 로고 조합, 우측 하단 고정 소셜 공유 버튼(#social 팝업 트리거)",
+    "포트폴리오는 필터 탭 없는 순수 3열 그리드, hover 시 하단정렬 오버레이(hover-box-01)로 확대/링크 아이콘 노출, Magnific Popup 라이트박스 연동"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "preloader": false,
+    "custom_cursor": false,
+    "libs": []
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "type": "centered-minimal",
+    "media": "solid",
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "cta_count": 0,
+    "overlay": false
+   },
+   "name": "bloom-portfolio-html-template-2025-10-20-22-00-57-utc",
+   "nav": {
+    "type": "topbar-static",
+    "logo_style": "text"
+   },
+   "no_html": false,
+   "sections": [
+    "hero",
+    "work",
+    "footer"
+   ],
+   "signature": [
+    "히어로가 이미지 없이 단색 배경(#fdc)에 대문자 h1(6.3em)+h2만 얹은 순수 텍스트형 — CTA 버튼 없음",
+    "포트폴리오 그리드 열 수(2/3/4열)가 isotope 필터가 아니라 2-columns.html/3-columns.html/4-columns.html 별도 페이지로 분리돼 있음",
+    "work 아이템 호버 시 흰색 오버레이(opacity 0→1, .3s)가 이미지를 덮으며 제목+카테고리 텍스트가 중앙에 페이드인",
+    "외부 JS 라이브러리 전무 — jQuery/isotope/swiper/gsap 없이 순수 CSS float 레이아웃 + transition, main.js는 nav 토글 2줄뿐"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "grid",
+    "cols": 2,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   }
+  },
+  {
+   "name": "bolby-portfolio-cv-resume-htmltemplate-2023-11-27-05-04-54-utc",
+   "no_html": false,
+   "hero": {
+    "type": "centered-minimal",
+    "media": "illustration",
+    "has_portrait": true,
+    "overlay": false,
+    "headline_align": "center",
+    "headline_scale": "M",
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "sidebar-left",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "skills",
+    "stats",
+    "services",
+    "timeline",
+    "work",
+    "pricing",
+    "testimonials",
+    "clients",
+    "blog",
+    "contact"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   },
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true,
+    "libs": [
+     "isotope",
+     "infinite-scroll",
+     "slick",
+     "wow.js",
+     "morphext",
+     "parallax.js",
+     "magnific-popup",
+     "counterup",
+     "waypoints"
+    ]
+   },
+   "typography": {
+    "display_style": "sans-rounded",
+    "size_contrast": "med"
+   },
+   "spacing": "normal",
+   "footer_type": "minimal-line",
+   "signature": [
+    "고정 세로 사이드바 내비 안에 카피라이트가 내장되어 있고 별도 하단 footer 섹션은 없음",
+    "히어로에 마우스를 따라오는 data-depth 패럴랙스 SVG 도형들 + Morphext 텍스트 로테이터",
+    "About의 스킬바·Services 박스·pricing 배지가 각각 개별 data-color 속성(#FFD15C/#FF4C60/#6C6CE5)으로 강조색 매핑",
+    "Isotope 필터 그리드의 워크 아이템마다 링크 타입이 다름 (이미지 라이트박스, 유튜브 비디오, 사운드클라우드 임베드, 외부링크, 갤러리)"
+   ],
+   "confidence": "high"
+  },
+  {
+   "name": "brilio-personal-portfolio-html-2026-07-03-07-49-05-utc",
+   "hero": {
+    "type": "bigtype-text",
+    "media": "illustration",
+    "overlay": false,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "cta_count": 1,
+    "has_portrait": false
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "text"
+   },
+   "sections": [
+    "hero",
+    "work (Selected Works, sticky-stacking cards)",
+    "services (statement heading + 3-item numbered list)",
+    "marquee (client/brand logos, infinite scroll)",
+    "testimonials (swiper slider)",
+    "awards",
+    "blog (Insights, 3-col cards)",
+    "cta-band (Let's Create Something Together)",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   },
+   "decor": {
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": true,
+    "preloader": true,
+    "animations": "rich",
+    "libs": [
+     "gsap",
+     "scrolltrigger",
+     "lenis",
+     "splittype",
+     "swiper",
+     "shuffle"
+    ]
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "minimal-line",
+   "signature": [
+    "'선택 작업' 섹션이 position:sticky 스택형 카드로 겹겹이 쌓이며 스크롤됨 (stack-wrapper .stack-item)",
+    "GSAP+SplitType로 문장을 단어/글자 단위로 쪼개 스크롤 시 순차 reveal (.reveal-text)",
+    "마우스를 따라다니는 원형 매직 커서, hover 시 사라짐 (#magic-cursor #cursor)",
+    "shuffle.js 기반 필터 그리드에서 col-lg-4/col-lg-8 비대칭 폭이 섞여 리듬을 만듦"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "swiper",
+     "isotope",
+     "packery",
+     "aos",
+     "marquee",
+     "fancybox",
+     "animsition",
+     "pagepiling",
+     "simpleparallax"
+    ],
+    "preloader": false,
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "overlay": false,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "cta_count": 1,
+    "has_portrait": false
+   },
+   "name": "centrix-agency-portfolio-html-template-2024-10-20-11-08-18-utc",
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "text"
+   },
+   "sections": [
+    "hero",
+    "features",
+    "services",
+    "work",
+    "contact",
+    "footer"
+   ],
+   "signature": [
+    "히어로 타이틀 최대 125px, 배경 사진 위 좌하단에 오버레이되며 2번째 줄만 흰색으로 색 분리",
+    "세로형 브랜드 심볼(vertical-logo)이 옐로우/블랙 두 레이어로 겹쳐 히어로·푸터에 반복 등장",
+    "Our Services 섹션이 아코디언 리스트로 펼쳐지며 펼침 시 대형+소형 이미지 조합이 노출",
+    "단일 형광 옐로우(#fffe55) 포인트 컬러 + 포트폴리오 카드 호버 시 이미지 scale(1.15) rotate(-4deg) 틸트"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "masonry",
+    "cols": 3,
+    "hover": "zoom",
+    "filter_tabs": false
+   }
+  },
+  {
+   "name": "clarks-personal-portfolio-template-2024-08-01-06-28-15-utc",
+   "hero": {
+    "type": "card-profile",
+    "media": "photo",
+    "headline_align": "center",
+    "headline_scale": "L",
+    "overlay": true,
+    "has_portrait": true,
+    "cta_count": 0
+   },
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "text"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "testimonials",
+    "clients",
+    "timeline",
+    "skills",
+    "work",
+    "blog",
+    "contact"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   },
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "isotope",
+     "masonry",
+     "owlcarousel",
+     "particlesjs",
+     "magnific-popup",
+     "simplebar",
+     "modernizr"
+    ],
+    "preloader": true,
+    "shapes_or_lines": true,
+    "custom_cursor": false,
+    "noise_or_texture": false
+   },
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "high"
+   },
+   "spacing": "normal",
+   "footer_type": "none",
+   "signature": [
+    "섹션 제목(About/Resume/Portfolio 등)마다 data-shadow 속성으로 렌더된 초대형 반투명 고스트 텍스트(62px, opacity .04, Source Serif Pro)가 :before로 겹쳐지는 워터마크 타이포",
+    "싱글페이지 vCard 구조 — nav 클릭 시 해시 앵커로 pages-stack의 전체화면 섹션이 전환되며, 각 섹션 내부는 SimpleBar 커스텀 스크롤바로 독립 스크롤",
+    "햄버거 오버레이 내비 — 상단 47vh를 덮는 풀스크린 메뉴가 opacity+translate3d(0,150px,0)→(0,0,0) cubic-bezier(0.2,1,0.3,1) 트랜지션으로 슬라이드 다운되며, 열렸을 때만 소셜링크·카피라이트가 뒤늦게(delay .35s) 노출",
+    "동일 스캐폴드에 히어로 배경 연출만 다른 4개 변형이 번들됨: index.html(정적 사진), index-particles1/2.html(particles.js 캔버스), index-slider.html(배경 슬라이더), index-video.html(배경 비디오) — 부품 교체형 히어로"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": false,
+    "libs": [
+     "swiper",
+     "isotope",
+     "masonry",
+     "wow/animate.css"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": true,
+    "overlay": false,
+    "cta_count": 0
+   },
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "services",
+    "work",
+    "about",
+    "stats",
+    "resume(timeline+skills)",
+    "testimonials",
+    "pricing",
+    "blog",
+    "clients",
+    "contact",
+    "footer"
+   ],
+   "signature": [
+    "히어로에서 h1 뒤에 20초 주기로 무한 회전하는 점선 원 스탬프가 겹쳐 있음 (.dtr-rotating-img, @keyframes rotating)",
+    "about 섹션 인물사진 옆에 원형 텍스트 배지(circular-text.png)가 시계처럼 도는 장식 반복 사용(히어로·contact 폼에도 재등장)",
+    "포트폴리오 아이템 호버 시 제목은 오른쪽에서, 부제는 아래에서 각각 슬라이드인 + 이미지 1.1배 줌이 동시에 발생(.dtr-portfolio-item__heading/__subheading translate)",
+    "리쥼 섹션 박스들이 primary/secondary/white 배경색을 번갈아 쓰는 컬러 블록 카드로 구성(work exp=primary, academic=secondary, skills=secondary-light/white)"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 4,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   },
+   "name": "copr-personal-portfolio-html-template-2024-07-13-07-03-23-utc"
+  },
+  {
+   "name": "credesign-personal-portfolio-template-2023-11-27-05-33-10-utc",
+   "no_html": false,
+   "hero": {
+    "type": "split-image",
+    "media": "illustration",
+    "overlay": false,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": true,
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "topbar-static",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "resume/timeline",
+    "testimonials",
+    "work",
+    "clients (partners marquee)",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   },
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "aos",
+     "owl-carousel",
+     "mixitup",
+     "magnific-popup",
+     "meanmenu",
+     "counterup",
+     "lineprogressbar",
+     "waypoints",
+     "animatedheadline"
+    ],
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false,
+    "preloader": true
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "med"
+   },
+   "spacing": "normal",
+   "footer_type": "columns",
+   "signature": [
+    "히어로 헤드라인의 한 단어가 jquery.animatedheadline로 자동 교체 순환(Solutions/Design)",
+    "포트폴리오 섹션이 mixitup 필터 그리드 — CSS grid(3열)에 nth-child로 2열 스팬 아이템을 섞은 비대칭 매소너리",
+    "서비스·리쥬메·테스티모니얼·파트너·블로그 등 모든 섹션 상단에 동일한 오렌지 도트+라벨(sub-heading) 패턴 반복",
+    "리쥬메 섹션이 좌측 세로 stacked 라벨(Education/Skills/Experience) + 우측 3열 카드로 구성된 독자적 그리드"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": false,
+    "libs": [
+     "isotope (filter-grid work)",
+     "swiper (clients logo carousel)",
+     "jquery-magnific-popup (lightbox)",
+     "jquery-jvectormap (contact section world map)",
+     "circle-progress (skills stat circles)",
+     "custom scrollbar.js"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "columns",
+   "hero": {
+    "cta_count": 2,
+    "has_portrait": true,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "media": "photo",
+    "overlay": true,
+    "type": "fullscreen-image"
+   },
+   "name": "cv-portfolio-portfolio-html-template-2024-12-23-12-58-20-utc",
+   "nav": {
+    "logo_style": "image",
+    "type": "dot-side"
+   },
+   "no_html": false,
+   "sections": [
+    "hero",
+    "about (profile card + info-list + social)",
+    "timeline (education, large year numerals)",
+    "skills (circular progress stats)",
+    "experience (timeline, large year numerals)",
+    "services (icon grid)",
+    "work",
+    "testimonials",
+    "blog",
+    "clients (logo marquee/carousel)",
+    "contact (world map + form)",
+    "footer (columns)"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay",
+    "layout": "filter-grid"
+   },
+   "signature": [
+    "고정 아이콘 사이드바 내비(dot-side) — data-scroll 속성으로 스크롤스파이, 활성 섹션에 따라 아이콘 색 반전(첫/둘째 아이콘 스왑)",
+    "히어로 배경은 커버 사진(50s 무한 팬 애니메이션)이고 그 위에 대형 라인아트 인물 SVG 일러스트가 vert-move로 둥실거리며 겹쳐짐, 텍스트는 scale/translate 리빌 트랜지션으로 등장",
+    "학력·경력을 좌측에 초대형 숫자(h1, 연도)를 박은 세로 타임라인으로 배치 — 두 섹션이 동일 패턴 반복",
+    "브랜드 로고를 swiper 캐러셀로 무한 슬라이드시키는 클라이언트 스트립, jvectormap 월드맵을 컨택트 폼 옆에 배치"
+   ]
+  },
+  {
+   "name": "deppex-creative-showcase-portfolio-template-2025-05-29-15-19-18-utc",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "overlay": true,
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero (home page = fullscreen slider only, no other blocks)",
+    "about (separate page: header + testimonial quote + text + FAQ accordion)",
+    "work (separate page 'works.html': repeated project intro block + justified image gallery)",
+    "blog (separate page 'news.html')",
+    "contact (separate page)"
+   ],
+   "work": {
+    "layout": "stacked-showcase",
+    "cols": 1,
+    "filter_tabs": false,
+    "hover": "none"
+   },
+   "decor": {
+    "animations": "subtle",
+    "preloader": true,
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "shapes_or_lines": false,
+    "libs": [
+     "swiper",
+     "owl-carousel",
+     "magnific-popup",
+     "justifiedGallery"
+    ]
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "none",
+   "signature": [
+    "홈은 섹션 나열형 원페이지가 아니라 풀스크린 Swiper 슬라이더 단독 페이지 — About/Works/News/Contact는 전부 별도 페이지로 분리된 멀티페이지 구조",
+    "우측 상단 고정 3-dot 원형 버튼(round-menu)이 화면 75% 폭의 우측 오버레이 패널을 슬라이드로 열며, 중앙 정렬 메뉴 링크만 표시",
+    "h1.main-title이 Montserrat 900 75~85px 대문자 + letter-spacing -0.04em으로 히어로/섹션 타이틀 전부 초대형 처리",
+    "섹션 사이 여백을 CSS padding이 아니라 height:125px의 <div class=\"inner-divider\"> 수동 삽입으로 쌓는 방식, 어떤 페이지에도 footer 요소 자체가 없음(to-top-arrow만 존재)"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "owl-carousel",
+     "isotope",
+     "wow.js",
+     "swiper",
+     "odometer",
+     "magnific-popup"
+    ],
+    "preloader": true,
+    "noise_or_texture": false,
+    "custom_cursor": false,
+    "shapes_or_lines": true
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "overlay": false,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": true,
+    "cta_count": 1
+   },
+   "name": "elito-creative-portfolio-template-2025-06-03-07-19-11-utc",
+   "nav": {
+    "type": "topbar-static",
+    "logo_style": "image"
+   },
+   "no_html": false,
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "work (experience timeline)",
+    "work (project slider)",
+    "testimonials",
+    "pricing",
+    "blog",
+    "footer"
+   ],
+   "signature": [
+    "SVG 가우시안 블러 원형 그라디언트 블롭이 섹션마다 배경 장식으로 반복 삽입됨(shadow-shape)",
+    "서비스 섹션이 탭(Development/Design/Marketing) 전환형 UI로 구성됨",
+    "포트폴리오는 별도 페이지(masonry+isotope 필터)로 분리되고 홈에는 owl-carousel 슬라이더로 노출",
+    "프로젝트 카드 hover 시 반투명 다크 오버레이+캡션이 아래에서 위로 슬라이드업"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 2,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   }
+  },
+  {
+   "name": "elpis-creative-minimal-portfolio-template-2023-11-27-05-01-13-utc",
+   "hero": {
+    "type": "bigtype-text",
+    "media": "none",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "cta_count": 0,
+    "overlay": false
+   },
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "work",
+    "footer"
+   ],
+   "work": {
+    "layout": "grid",
+    "cols": 2,
+    "hover": "tilt",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "rich",
+    "preloader": true,
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "custom_cursor": false,
+    "libs": [
+     "tilt.js (js-tilt / data-tilt-*)",
+     "scrollReveal (data-scroll-reveal)",
+     "uncover.js — Codrops slice-reveal (custom, bundled as sliceRevealer.js)"
+    ]
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "minimal-line",
+   "signature": [
+    "스크롤 진입 시 포트폴리오 이미지가 수직/수평 슬라이스로 쪼개지며 드러나는 uncover.js 리빌 효과(슬라이스 수·방향이 아이템마다 다르게 랜덤 설정됨)",
+    "각 포트폴리오 링크에 3D 틸트(js-tilt, data-tilt-perspective/speed/max) 마우스 반응",
+    "col-md-6 + offset-md-3/offset-md-6 조합으로 만든 지그재그(계단형) 2열 오프셋 그리드, isotope/masonry 미사용",
+    "스크롤 방향에 따라 좌측 고정 소셜 사이드바(social-fixed-left)가 페이드 인/아웃되고, 헤더는 투명→흰색 고정으로 전환"
+   ],
+   "confidence": "high"
+  },
+  {
+   "name": "emily-creative-photography-portfolio-2023-11-27-05-35-42-utc",
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "overlay": true,
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero (index.html: fullscreen swiper slider, 4 slides, parallax, counter pagination)",
+    "albums (albums.html: filter-grid portfolio)",
+    "gallery (gallery.html: justified tile masonry gallery)",
+    "about (about.html: single image + two-column bio text)",
+    "blog (blog.html: post list grid)",
+    "contact (contact.html: info block + validated form)",
+    "footer (all pages: copyright + social icons)"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   },
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "swiper",
+     "filterizr",
+     "anime.js",
+     "unitegallery",
+     "jquery-validate"
+    ],
+    "custom_cursor": false,
+    "preloader": true,
+    "shapes_or_lines": false,
+    "noise_or_texture": false
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "minimal-line",
+   "signature": [
+    "각 페이지가 독립 HTML로 분리(SPA 아님)되어 있으나 클릭 시 anime.js 프리로더가 재생되며 페이지 전환을 연출(data-type=page-transition)",
+    "홈은 스와이퍼 풀스크린 슬라이더+패럴랙스, 앨범/갤러리는 완전히 다른 두 그리드 엔진 사용 — 앨범은 filterizr 필터 그리드(3열, 호버 오버레이 캡션), 갤러리는 unitegallery justified-tile 매스너리",
+    "햄버거 클릭 시 짙은 다크(#151515) 풀스크린 오버레이 내비가 height 트랜지션으로 펼쳐지고, 대형 굵은 대문자 메뉴 항목 옆에 설명 서브라벨이 함께 표시됨",
+    "전 페이지 공통 .ms-page-title 헤더 블록(제목+설명문)이 본문 콘텐츠 위에 반복 배치되는 구조적 관례"
+   ],
+   "confidence": "high"
+  },
+  {
+   "name": "finley-coming-soon-and-portfolio-template-2026-07-08-09-03-18-utc",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "cta_count": 1,
+    "has_portrait": false,
+    "overlay": true
+   },
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero (countdown)",
+    "about",
+    "work",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "grid",
+    "cols": 3,
+    "filter_tabs": false,
+    "hover": "caption-overlay"
+   },
+   "decor": {
+    "animations": "subtle",
+    "custom_cursor": true,
+    "noise_or_texture": true,
+    "preloader": true,
+    "shapes_or_lines": true,
+    "libs": [
+     "jquery",
+     "vegas",
+     "photoswipe",
+     "magnific-popup",
+     "kbw-countdown",
+     "skillbar",
+     "ajaxchimp"
+    ]
+   },
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "minimal-line",
+   "signature": [
+    "커스텀 커서(mix-blend-mode:difference)+캔버스 노이즈 텍스처가 전 페이지에 상시 오버레이",
+    "풀스크린 오버레이 내비 — 01~04 번호 매긴 메뉴, 좌/우 교차 정렬(text-end/text-start), 항목 hover 시 프리뷰 썸네일 노출",
+    "섹션 진입부마다 반복 텍스트 마퀴 밴드(About Us/Projects/Contact 라벨 무한 스크롤)",
+    "히어로에 카운트다운 위젯 내장 — '커밍순'과 포트폴리오(About/Work/Contact)가 공존, 라이트·다크 × 풀스크린·스플릿 × 이미지·비디오·켄번즈 조합 8종 데모 제공"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "preloader": true,
+    "custom_cursor": true,
+    "libs": [
+     "swiper",
+     "isotope",
+     "gsap",
+     "wow",
+     "lenis",
+     "purecounter",
+     "magnific-popup",
+     "jarallax"
+    ]
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": true,
+    "cta_count": 1,
+    "overlay": false
+   },
+   "name": "flixta-personal-portfolio-html-template-2025-04-15-20-12-36-utc",
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "stats",
+    "about",
+    "skills",
+    "services",
+    "timeline",
+    "marquee",
+    "work",
+    "testimonials",
+    "clients",
+    "cta-band",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "signature": [
+    "커스텀 원형 커서(#rs-mouse/#cursor-ball)가 마우스를 따라다님",
+    "하나의 코드베이스에 12개 직업 페르소나(레주메·프리랜서·의사·변호사·요가·포토그래퍼 등)×라이트/다크×RTL 4벌, 수십 개 홈 변형 제공",
+    "히어로 큰 초상 이미지 위에 'Years of Experience' 카운터 배지가 겹쳐 배치됨",
+    "섹션 사이를 gsap 마퀴 텍스트 슬라이드('Selected work' 반복)로 구획 구분"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "grid",
+    "cols": 2,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "custom_cursor": false,
+    "libs": [
+     "jquery",
+     "bootstrap",
+     "swiper",
+     "magnific-popup",
+     "line-awesome"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": false
+   },
+   "footer_type": "social-only",
+   "hero": {
+    "cta_count": 2,
+    "has_portrait": true,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "media": "photo",
+    "overlay": false,
+    "type": "split-image"
+   },
+   "name": "fofana-personal-portfolio-template-2023-11-27-04-59-13-utc",
+   "nav": {
+    "logo_style": "text",
+    "type": "topbar-fixed"
+   },
+   "no_html": false,
+   "sections": [
+    "hero(home/intro)",
+    "features",
+    "services",
+    "portfolio(project)",
+    "pricing",
+    "testimonial",
+    "contact"
+   ],
+   "signature": [
+    "포트폴리오 이미지 위에 흰색 텍스트 카드가 top:-70px, margin-left:153px로 비대칭 오버랩되는 카드 디테일",
+    "dark(#333) features 박스가 intro 섹션 하단에 margin-top:-180px로 파고들며 겹치는 레이아웃",
+    "코랄(#ff5252) 단일 액센트 + 다크 차콜(#333) 보조색의 2-tone 컬러 시스템, 흰색/연핑크(#fff8f8) 섹션 밴딩 교차",
+    "testimonial은 고정 배경(background-attachment: fixed) 위 어두운 오버레이 + swiper 카드 슬라이더"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "cols": 2,
+    "filter_tabs": false,
+    "hover": "none",
+    "layout": "grid"
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "revolution-slider",
+     "isotope",
+     "masonry",
+     "owl",
+     "jquery.countTo",
+     "gmap3"
+    ],
+    "preloader": false,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "footer_type": "none",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "overlay": false,
+    "headline_align": "left",
+    "headline_scale": "M",
+    "cta_count": 0,
+    "has_portrait": false
+   },
+   "name": "genix-creative-portfolio-html5-template-2023-11-27-04-51-03-utc",
+   "nav": {
+    "type": "sidebar-left",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero"
+   ],
+   "signature": [
+    "고정 왼쪽 사이드바 내비게이션(폭 325px, position:fixed, 전체 높이) — 본문 #content는 margin-left:325px로 밀려 시작",
+    "홈페이지(index.html)는 풀스크린 Revolution Slider 하나로만 구성되고 다른 섹션이 전혀 없음 — about/portfolio/blog/contact가 완전히 분리된 별도 페이지 구조",
+    "포트폴리오 그리드는 Isotope+Masonry 4열(width:25%) 필터 그리드, 호버 시 브랜드 컬러(#c7ad88) 반투명 오버레이+카테고리 캡션 노출",
+    "about 페이지에 jquery.countTo 기반 카운트업 통계 섹션(아이콘+숫자, Completed Projects/Hours/Clients 등)"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 4,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "owl.carousel",
+     "isotope",
+     "stellarnav",
+     "wow.js",
+     "easypiechart",
+     "circle-progress",
+     "animatenumber",
+     "jquery.hoverdir",
+     "modal-video",
+     "waypoints"
+    ],
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "overlay": false,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "cta_count": 1,
+    "has_portrait": true
+   },
+   "name": "glint-portfolio-template-2023-11-27-05-04-46-utc",
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero(welcome-area, owl-carousel 2슬라이드)",
+    "about",
+    "skill(경력 4박스+원형 프로그레스 서클 4개)",
+    "service(3카드, hover circle 확산)",
+    "project(포트폴리오 캐러셀, 5썸네일)",
+    "testimonials(owl-carousel)",
+    "pricing(3플랜 카드)",
+    "blog(4카드 캐러셀)",
+    "cta-band(뉴스레터 구독)",
+    "logo-marquee(클라이언트 로고 캐러셀)",
+    "footer"
+   ],
+   "signature": [
+    "섬하마다 제목 뒤에 80~200px 대형 아웃라인(text-stroke) 배경 단어가 겹치는 filltext 패턴(hero는 200px 'gilroy', 각 섹션 heading은 80px)",
+    "헤더 위에 소셜링크+연락단추 owl-carousel 칵션바가 따로 있고, 그 아래 투명 absolute 헤더가 스크롤시 sticky로 전환(main.js stickyNav)",
+    "포트폴리오 필터는 isotope+data-filter 클래스(barnding/agency/design/app-design 중복 태그) 구조",
+    "서비스/프라이싱 카드 hover 시 circles-wrap으로 동심원 4개가 퍼져나가는 장식 효과"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "other"
+   }
+  },
+  {
+   "name": "grand-portfolio-html-template-2023-11-27-05-25-56-utc",
+   "no_html": false,
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "overlay": false,
+    "headline_align": "center",
+    "headline_scale": "M",
+    "cta_count": 0,
+    "has_portrait": false
+   },
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "work",
+    "testimonials",
+    "gallery",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   },
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "revolution-slider",
+     "isotope",
+     "flexslider",
+     "imagesloaded",
+     "simplegmaps",
+     "tooltipster",
+     "ilightbox",
+     "odometer"
+    ],
+    "noise_or_texture": false,
+    "shapes_or_lines": false,
+    "preloader": false,
+    "custom_cursor": false
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "low"
+   },
+   "spacing": "normal",
+   "footer_type": "columns",
+   "signature": [
+    "히어로 Revolution Slider에서 'DESIGN'과 'CREATIVE' 두 단어를 화면 하단 좌우 대칭(hoffset -110px/+110px)으로 벌려 배치하고 ken-burns+parallax 확장을 함께 로드",
+    "포트폴리오 그리드는 isotope.js 기반 3컬럼 filterable 그리드, 카테고리 필터 탭(All/Fashion/Landscape/Lifestyle/Portrait) 상단 우측 정렬",
+    "헤더 로고를 logo_normal(hidden)/logo_transparent(default) 이중 구조로 두어 스크롤 시 투명→불투명 전환되는 고정(top_bar) 메뉴 구현",
+    "회색(#f0f0f0) 풀블리드 배경 섹션에 flexslider 페이드 슬라이드쇼를 넣어 히어로 슬라이더와 별개의 2차 이미지 밴드로 사용"
+   ],
+   "confidence": "med"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "isotope",
+     "owl-carousel",
+     "css3-animate-it (animate.css 기반 스크롤 트리거)",
+     "imagesloaded",
+     "blueimp-gallery",
+     "fitvids",
+     "jquery.background-video"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true,
+    "custom_cursor": false
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "cta_count": 1,
+    "has_portrait": false,
+    "overlay": false
+   },
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "stats",
+    "team",
+    "video-band",
+    "services",
+    "marquee",
+    "work",
+    "skills",
+    "blog",
+    "cta-band",
+    "footer"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   },
+   "name": "hedone-creative-clean-portfolio-agency-templ-2023-11-27-05-22-43-utc",
+   "no_html": false,
+   "signature": [
+    "히어로: 배경사진 위에 140px 고스트 텍스트(투명도 20%, 데스크톱 기준)와 46px 볼드 워드가 겹치는 2단 타이포그래피",
+    "스크롤 300px 지점에서 nav-back이 position absolute→fixed로 전환되며 CSS keyframe 애니메이션(menu-fixed-animation) 재생",
+    "포트폴리오 섹션: Isotope layoutMode:'masonry' + 카테고리 필터 탭(design/web/photo/art/food/branding) 조합, 그리드 아이템 hover 시 제목/부제 오버레이 마스크",
+    "스킬/프로그레스 바 섹션에 mp4/webm 배경 비디오(jquery.background-video)가 깔린 채 progress bar가 슬라이드인"
+   ]
+  },
+  {
+   "name": "hexafusion-sketch-studio-agency-portfolio-2026-06-18-10-25-14-utc",
+   "no_html": true,
+   "hero": {
+    "type": "none",
+    "media": "none",
+    "headline_align": "center",
+    "headline_scale": "M"
+   },
+   "nav": {
+    "type": "none"
+   },
+   "sections": [],
+   "work": {
+    "layout": "none"
+   },
+   "decor": {
+    "animations": "none"
+   },
+   "typography": {
+    "display_style": "mixed"
+   },
+   "spacing": "normal",
+   "footer_type": "none",
+   "signature": [
+    "코드 없음: Sketch 디자인 파일(.sketch)과 PDF 프리뷰만 포함된 UI 키트 형태의 산출물"
+   ],
+   "confidence": "low"
+  },
+  {
+   "name": "insee-minimal-portfolio-html-template-2023-11-27-05-24-06-utc",
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": false,
+    "overlay": true,
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "text"
+   },
+   "sections": [
+    "hero",
+    "work",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   },
+   "decor": {
+    "preloader": true,
+    "animations": "subtle",
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "custom_cursor": false,
+    "libs": [
+     "isotope",
+     "magnific-popup",
+     "flexslider",
+     "simpletextrotator (typed-like)"
+    ]
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "spacing": "normal",
+   "footer_type": "minimal-line",
+   "signature": [
+    "module-parallax·wow 클래스가 마크업에만 남아있고 대응 JS(wow.js)·CSS(background-attachment) 정의가 없어 실제로는 정적 커버 이미지+즉시노출일 뿐 패럴랙스/스크롤애니메이션 미작동",
+    "work-item 호버 시 이미지 1.1배 확대+검정 70~80% 오버레이+캡션이 bottom:100%→50%로 슬라이드업하는 3중 복합 트랜지션",
+    "히어로 캡션이 컨테이너 좌측정렬 그대로 노출되며 44px 킥커 헤드라인과 14px letter-spaced 모노톤 서브텍스트를 함께 배치",
+    "index~index-6(이미지/슬라이더/텍스트로테이터 패럴랙스) 6종 홈 + boxed/wide×gutter/masonry×2~4열×hover-black/gradient 조합의 포트폴리오 41개 변형 페이지로 구성된 '옵션 카탈로그'형 템플릿"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "low",
+   "decor": {
+    "animations": "none",
+    "libs": []
+   },
+   "footer_type": "none",
+   "hero": {
+    "type": "none",
+    "media": "none",
+    "headline_align": "center",
+    "headline_scale": "M"
+   },
+   "name": "insta-personal-portfolio-figma-template-2026-07-10-05-59-24-utc",
+   "nav": {
+    "type": "none"
+   },
+   "no_html": true,
+   "sections": [],
+   "signature": [
+    "zip 내용물이 Figma 소스 파일(.fig)과 Documentation_File.pdf 뿐, HTML/CSS 코드 없음",
+    "코드 구조 해부 불가 — Figma에서 직접 열어야 레이아웃 확인 가능"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "sans-grotesk"
+   },
+   "work": {
+    "layout": "none"
+   }
+  },
+  {
+   "name": "isak-resume-personal-portfolio-nextjs-template-2026-06-18-09-23-01-utc",
+   "no_html": true,
+   "hero": {
+    "type": "card-profile",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": true,
+    "overlay": false,
+    "cta_count": 2
+   },
+   "nav": {
+    "type": "dot-side",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero(intro, 3 variants v1/v2/v3)",
+    "about(2 variants)",
+    "timeline(education & experience)",
+    "work",
+    "services(accordion)",
+    "skills(tech stack)",
+    "testimonials",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "stacked-showcase",
+    "cols": 1,
+    "hover": "other",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "gsap",
+     "swiper",
+     "lenis",
+     "react-fast-marquee",
+     "bootstrap",
+     "next-themes"
+    ],
+    "preloader": true,
+    "custom_cursor": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false
+   },
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "high"
+   },
+   "spacing": "normal",
+   "footer_type": "minimal-line",
+   "signature": [
+    "좌측 프로필 카드(사진+인사말+소셜+CTA)가 스크롤 내내 고정되고 우측 콘텐츠 컬럼만 흐르는 2단 레이아웃(main-content col-lg-7 ms-auto + 별도 sidebar-user)",
+    "화면 우측 가장자리에 고정된 세로 pill형 도트 아이콘 내비게이션, hover 시 좌측으로 텍스트 툴팁이 슬라이드 아웃",
+    "인트로의 손글씨풍 SVG 스크리블 라인이 스크롤 진입 시 stroke-draw로 그려지고, 옆에 'award winning agency - since 2022' 문구가 원형으로 회전하는 curve-text 위젯 동반",
+    "Work 섹션은 카드가 쌓인 채(position:sticky) 스크롤에 따라 한 장씩 활성화되는 stacked showcase, Education은 좌측 세로 progress line이 스크롤 진행률에 맞춰 차오르는 타임라인"
+   ],
+   "confidence": "high"
+  },
+  {
+   "name": "isti-creative-portfolio-html-template-2024-11-05-02-53-41-utc",
+   "no_html": false,
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "overlay": false,
+    "has_portrait": true,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "cta_count": 2
+   },
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero (banner: portrait cutout image left, greeting+headline+desc+2 CTAs right)",
+    "about (heading left col-4, large image right col-8, id=about)",
+    "services (3-col icon/image cards, id=service)",
+    "skills/experience timeline (stacked rows: years+role | description | animated progress bar via barfiller)",
+    "portfolio (id=projects: 2x2 image slider left col-8 via slick '.portfolio_slider', heading+desc right col-4)",
+    "testimonials (heading + 2-up slick carousel of client quote cards)",
+    "brand logos strip + stats counter row (5 logos, then 4 counters)",
+    "blog (3-col cards with date, meta, title, read-more)",
+    "contact (2-col: newsletter subscribe + address/services list | contact form)",
+    "footer/copyright (single-line copyright + 3 text links)"
+   ],
+   "work": {
+    "layout": "carousel",
+    "cols": 2,
+    "hover": "other",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "gsap",
+     "scrollTrigger",
+     "SplitText",
+     "slick-carousel",
+     "venobox",
+     "barfiller"
+    ],
+    "custom_cursor": true,
+    "preloader": true,
+    "noise_or_texture": false,
+    "shapes_or_lines": false
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "med"
+   },
+   "spacing": "airy",
+   "footer_type": "minimal-line",
+   "signature": [
+    "SVG 웨이브 와이프(liquid reveal) 프리로더 — path 모핑으로 화면을 걷어내며 등장",
+    "다크 테마 + 단일 라임/옐로우그린 액센트(#c7d300), 헤딩은 rotate-in + word-split GSAP 애니메이션",
+    "커스텀 원형 매직 커서(#magic-cursor/#ball)가 링크·버튼 위에서 아이콘으로 바뀜(data-cursor 속성)",
+    "포트폴리오 섹션이 그리드가 아니라 2열 이미지가 slick 캐러셀로 옆으로 슬라이드되는 구조(텍스트는 고정 사이드바)"
+   ],
+   "confidence": "high"
+  },
+  {
+   "name": "it-s-me-personal-resume-and-portfolio-2023-11-27-05-25-46-utc",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "M",
+    "has_portrait": true,
+    "overlay": true,
+    "cta_count": 2
+   },
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "text"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "timeline",
+    "skills",
+    "stats",
+    "work",
+    "team",
+    "clients",
+    "testimonials",
+    "services",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 4,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   },
+   "decor": {
+    "animations": "subtle",
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false,
+    "libs": [
+     "isotope",
+     "magnific-popup",
+     "jquery.easypiechart",
+     "metismenu",
+     "gmap3",
+     "simplecaptcha"
+    ]
+   },
+   "typography": {
+    "display_style": "sans-rounded",
+    "size_contrast": "low"
+   },
+   "spacing": "normal",
+   "footer_type": "minimal-line",
+   "signature": [
+    "좌우 50:50 고정 분할 뷰포트 — 왼쪽은 position:fixed 배경사진 히어로, 오른쪽 콘텐츠 패널만 독립 스크롤(overflow-y:auto, 나머지는 고정 헤더/푸터)",
+    "히어로를 감싸는 두꺼운 테두리 프레임(상/하/좌 11px, 우측 50px 컬럼)에 글자 하나씩 페이드인하는 세로 텍스트 라벨(A·B·O·U·T·M·E)",
+    "메뉴·검색·공유 버튼이 각각 전체화면 '오버플라이(overfly)' 오버레이로 슬라이드 열림",
+    "포트폴리오는 isotope 필터 그리드(All/Image/Gallery/Video)이며 gal 타입 카드는 부트스트랩 캐러셀을 내장해 썸네일이 자동 전환됨"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": true,
+    "libs": [
+     "owlcarousel",
+     "particles.js",
+     "mixitup",
+     "venobox",
+     "wow.js",
+     "animate.css",
+     "jquery.stellar (parallax)",
+     "magic-mouse (custom cursor)"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": false
+   },
+   "footer_type": "social-only",
+   "hero": {
+    "cta_count": 0,
+    "has_portrait": false,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "media": "photo",
+    "overlay": true,
+    "type": "fullscreen-image"
+   },
+   "nav": {
+    "logo_style": "image",
+    "type": "topbar-fixed"
+   },
+   "sections": [
+    "hero(home)",
+    "about(profile+skills progress bars)",
+    "service(6 icon boxes)",
+    "funfact(parallax counter stats)",
+    "portfolio(filter grid)",
+    "resume(education/experience timeline)",
+    "team",
+    "blog",
+    "contact(form+address+map)",
+    "footer"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "med"
+   },
+   "work": {
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay",
+    "layout": "filter-grid"
+   },
+   "name": "janemon-personal-portfolio-html-template-2025-07-02-11-46-05-utc",
+   "signature": [
+    "히어로 배경 이미지 위 particles.js 캔버스 오버레이 + 오토타입 헤드라인(DESIGNER/FREELANCER/ENTREPRENEUR)",
+    "magic-mouse.js 커스텀 원형 커서(hover 시 circle-move)",
+    "히어로·펀팩트 섹션에 jquery.stellar 패럴랙스 배경(data-stellar-background-ratio)",
+    "mixitup 필터 그리드 + venobox 라이트박스 조합 포트폴리오, 카드마다 eye/link 아이콘 오버레이"
+   ]
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "preloader": true,
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "shapes_or_lines": false,
+    "libs": [
+     "isotope",
+     "masonry",
+     "jarallax",
+     "magnific-popup",
+     "owl-carousel",
+     "wow.js",
+     "jquery"
+    ]
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": true,
+    "overlay": false,
+    "cta_count": 2
+   },
+   "name": "jara-tailwind-css-personal-portfolio-template-2023-11-27-05-34-01-utc",
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "work",
+    "process",
+    "testimonials",
+    "pricing",
+    "blog",
+    "footer"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 2,
+    "hover": "zoom",
+    "filter_tabs": true
+   },
+   "signature": [
+    "about 섹션에 -15deg 회전한 숫자 카드(10 Years Experience)가 텍스트 사이에 끼어있음",
+    "포트폴리오 그리드가 홀수/짝수 열에서 세로 오프셋(mt:-227px)로 어긋나며 비대칭 masonry를 형성",
+    "화이트 오버레이가 스크롤 진입 시 좌→우로 걷히며 이미지가 드러나는 reveal 애니메이션(hover 아님)",
+    "히어로 우측 인물 사진 위에 재생 버튼을 얹어 유튜브 영상 팝업을 여는 하이브리드 히어로"
+   ]
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "swiper",
+     "gsap",
+     "wow",
+     "odometer",
+     "lightbox"
+    ],
+    "preloader": false,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "type": "split-image",
+    "media": "video",
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": true,
+    "overlay": true,
+    "cta_count": 0
+   },
+   "nav": {
+    "type": "dot-side",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "timeline",
+    "work",
+    "services",
+    "about",
+    "skills",
+    "testimonials",
+    "clients",
+    "process",
+    "awards",
+    "pricing",
+    "faq",
+    "contact",
+    "footer"
+   ],
+   "signature": [
+    "고정 좌측 유리질감 프로필 카드(아바타·연락처·Get Started 버튼)와 우측 원형 점 네비게이션이 position:fixed로 스크롤 내내 화면 양옆에 떠 있음(nav 자체가 아니라 사이드바+dot-nav 이중 구조)",
+    "우상단 원형 햄버거 버튼으로 여는 풀 오버레이 사이드메뉴 외에, 설정 패널(Configuration)에서 배경 비디오를 Liquids Wavy/3D Abstract Ball/Water Waves 등 6종으로 실시간 교체 가능(home1-v2~v6)",
+    "작업물(Selected Works)이 그리드가 아니라 세로 풀와이드 스택 카드로 나열되고 각 카드 하단에 반투명 블러 캡션 박스가 항상 오버레이되어 있음(호버 시엔 텍스트 색만 primary로 전환)",
+    "GSAP SplitText+ScrollTrigger로 대부분의 섹션 헤딩이 스크롤 진입마다 줄 단위로 올라오는 split-text 애니메이션이 반복 적용됨"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "list-rows",
+    "cols": 1,
+    "filter_tabs": false,
+    "hover": "color-shift"
+   },
+   "name": "jayden-personal-portfolio-html-template-2025-11-16-15-59-45-utc"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "preloader": true,
+    "custom_cursor": false,
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "libs": [
+     "isotope",
+     "imagesloaded",
+     "magnific-popup",
+     "slick",
+     "wow",
+     "nice-select",
+     "appear",
+     "bootstrap"
+    ]
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "type": "centered-minimal",
+    "media": "none",
+    "overlay": false,
+    "has_portrait": false,
+    "cta_count": 0,
+    "headline_align": "center",
+    "headline_scale": "XL"
+   },
+   "name": "kane-personal-portfolio-html-template-2024-08-02-03-57-08-utc",
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "no_html": false,
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "resume(experience+education)",
+    "work",
+    "testimonials",
+    "pricing",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "signature": [
+    "히어로 헤드라인 중 이름(span)만 fill 없는 outline 텍스트(-webkit-text-stroke 1px)로 처리",
+    "히어로 전체가 라운드 처리된 연회색 카드(.container-inner, border-radius 15px)에 감싸여 페이지 배경과 분리됨",
+    "포트폴리오 썸네일 호버 시 어두운 오버레이 위로 원형 화살표 버튼이 -45도 회전 상태로 중앙에 페이드인",
+    "about 섹션 프로필 이미지 위에 pulse 애니메이션 도트가 있는 'Available for Work' 배지가 오버레이"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   }
+  },
+  {
+   "name": "krozo-personal-portfolio-nextjs-template-2026-05-14-10-34-16-utc",
+   "no_html": true,
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "overlay": true,
+    "headline_align": "center",
+    "headline_scale": "L",
+    "cta_count": 0,
+    "has_portrait": false
+   },
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "skills",
+    "work",
+    "testimonials",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   },
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "aos",
+     "react-slick/slick-carousel",
+     "react-photoswipe-gallery",
+     "react-text-transition"
+    ],
+    "preloader": false,
+    "custom_cursor": false,
+    "shapes_or_lines": true,
+    "noise_or_texture": false
+   },
+   "typography": {
+    "display_style": "sans-rounded",
+    "size_contrast": "med"
+   },
+   "spacing": "normal",
+   "footer_type": "minimal-line",
+   "signature": [
+    "히어로 배경 사진 위에 회전하는 유기적(organic) SVG 블롭 도형 2개를 상하 배치(top-style/bottom-style, rotate-both-side)",
+    "이름 아래 직함이 react-text-transition으로 3초마다 자동 전환(Web Developer→UI/UX Designer→App Developer)",
+    "단일 홈페이지가 아니라 home-light/home-dark/home-video-light/home-*-animation 등 다수의 변형 홈을 preview 갤러리에서 고르는 데모팩 구조",
+    "포트폴리오 카드 hover 시 제목+부제 오버레이와 외부 링크 아이콘 노출, 클릭 시 PhotoSwipe 라이트박스 확대"
+   ],
+   "confidence": "med"
+  },
+  {
+   "confidence": "high",
+   "name": "kura-personal-portfolio-template-2023-11-27-05-35-50-utc",
+   "no_html": false,
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "M",
+    "has_portrait": true,
+    "overlay": false,
+    "cta_count": 0
+   },
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "work",
+    "skills",
+    "timeline",
+    "pricing",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "carousel",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": true,
+    "preloader": true,
+    "noise_or_texture": true,
+    "shapes_or_lines": true,
+    "libs": [
+     "swiper",
+     "wow.js",
+     "jarallax",
+     "magnific-popup"
+    ]
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "med"
+   },
+   "spacing": "airy",
+   "footer_type": "minimal-line",
+   "signature": [
+    "좌 콘텐츠/우 인물사진 50:50 히어로, 로드 시 인물 뒤 accent color 블록이 -6deg 회전하며 등장(.shape)",
+    "마우스를 따라다니는 커스텀 원형 커서(data-magic-cursor)",
+    "히어로 서비스 3항목이 hover 시 우측에서 상세설명 팝업 슬라이드-인(.hidden_content)",
+    "포트폴리오/뉴스 모두 grid가 아닌 Swiper 캐러셀(반응형 1/2/3열)+커스텀 progress bar 페이지네이션"
+   ]
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": false,
+    "libs": [
+     "revolution-slider",
+     "aos",
+     "jarallax",
+     "swiper",
+     "cubeportfolio",
+     "typed.js",
+     "fancybox",
+     "bootstrap4",
+     "jquery"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "cta_count": 1,
+    "has_portrait": false,
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "media": "photo",
+    "overlay": false,
+    "type": "slider"
+   },
+   "name": "leedo-colorful-creative-portfolio-template-2023-12-14-09-46-39-utc",
+   "nav": {
+    "logo_style": "image",
+    "type": "topbar-fixed"
+   },
+   "sections": [
+    "hero (revolution slider, single full-bleed slide)",
+    "about/intro statement + services (3 cols) with scrolling marquee band",
+    "work / portfolio grid (cubeportfolio, no filter tabs on this instance)",
+    "skills (progress bars) + client logo strip",
+    "video/CTA band (jarallax parallax bg + play button)",
+    "testimonials (swiper slider)",
+    "blog / latest news (3-col masonry teaser)",
+    "contact (form + Google Map)",
+    "footer"
+   ],
+   "signature": [
+    "헤드라인은 소문자 강제(text-transform:lowercase) + 마침표만 브랜드 컬러로 강조하는 패턴(예: 'Hello.', 'Leedo.')",
+    "섹션 사이에 거대한 아웃라인/핏텍스트 마퀴 스크롤 밴드 삽입(예: 'Services' 무한 스크롤 텍스트)",
+    "유기적 blob 모양 PNG 파티클을 섹션 모서리에 배치하고 마우스/스크롤 시차(data-jarallax-element)로 움직이게 함",
+    "포트폴리오 아이템 호버 시 브랜드 컬러 반투명 오버레이가 전체를 덮으며 제목+카테고리 텍스트 노출(cubeportfolio 3열 그리드)"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay",
+    "layout": "filter-grid"
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "framer-motion",
+     "swiper",
+     "react-countup",
+     "react-intersection-observer",
+     "react-scroll",
+     "bootstrap"
+    ],
+    "preloader": true,
+    "custom_cursor": false,
+    "shapes_or_lines": true,
+    "noise_or_texture": false
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "type": "bigtype-text",
+    "media": "none",
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "overlay": false,
+    "cta_count": 1
+   },
+   "name": "liam-personal-portfolio-react-template-2026-02-04-15-39-00-utc",
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "no_html": true,
+   "sections": [
+    "hero",
+    "about",
+    "resume",
+    "services",
+    "skills",
+    "work",
+    "testimonials",
+    "pricing",
+    "blog",
+    "clients",
+    "contact",
+    "footer"
+   ],
+   "signature": [
+    "다크 티올(#032628) 배경 + 골드(#E8C83E) 단일 포인트 컬러 팔레트, 헤더 우하단 라이트/다크 토글 버튼 포함",
+    "히어로 하단에 알약형(radius 100px) 골드 카운터 바(경력연차·프로젝트·만족도, CountUp 애니메이션)",
+    "히어로 좌우에 rotated_circle로 무한 회전하는 점(dot) 장식 이미지 2개",
+    "포트폴리오 카드 호버 시 이미지 위 반투명 틴트 + 중앙에 -45deg 회전된 원형 골드 버튼이 페이드인, 카테고리 필터 전환은 framer-motion으로 매번 랜덤(fade/slide/scale) 트랜지션"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   }
+  },
+  {
+   "name": "lieon-personal-portfolio-html-template-2025-12-20-02-05-32-utc",
+   "no_html": false,
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": true,
+    "cta_count": 2,
+    "overlay": false
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "marquee",
+    "timeline (experience list)",
+    "skills",
+    "stats-marquee",
+    "work",
+    "services",
+    "testimonials",
+    "clients",
+    "blog",
+    "cta-band (marquee)",
+    "contact",
+    "contact-info-bar",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 2,
+    "filter_tabs": true,
+    "hover": "zoom"
+   },
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "gsap",
+     "gsap-scrolltrigger",
+     "gsap-splittext",
+     "gsap-scrollsmoother",
+     "swiper",
+     "isotope",
+     "magnific-popup",
+     "jquery.counterup",
+     "waypoints",
+     "imagesloaded",
+     "custom-marquee"
+    ],
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "preloader": false,
+    "shapes_or_lines": true
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "big-cta",
+   "signature": [
+    "포트폴리오 그리드 항목에 마우스를 올리면 커서를 따라다니는 카테고리/타이틀 고정 라벨 표시 (main.js 144-161행, .portfolio2_titles 요소가 clientX/Y 좌표로 이동)",
+    "히어로 h1이 145px(모바일 70px까지 반응형 축소)에 달하는 초대형 헤드라인이며 GSAP SplitText로 단어 단위 슬라이드 인 애니메이션 적용 (data-text-animation=\"slide\" data-split=\"words\")",
+    "히어로 섹션 좌우 컨테이너 바깥 여백에 전화번호/스크롤 유도/소셜 아이콘을 배치한 레일 구조 (.banner-left, .banner-right)",
+    "가로 스크롤 마퀴 텍스트 밴드를 히어로 직후(어워드 문구), 중간(통계), CTA 직전(LET'S TALK) 세 번 반복 배치해 섹션 전환 리듬을 형성"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "swiper",
+     "typed.js",
+     "magnific-popup",
+     "jquery-css-skillbars",
+     "anime.js",
+     "ajaxchimp",
+     "kbw-countdown(다른 변형에서만 활성)"
+    ],
+    "preloader": true,
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "footer_type": "none",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "L",
+    "overlay": false,
+    "has_portrait": false,
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "work",
+    "contact"
+   ],
+   "signature": [
+    "1페이지가 스크롤이 아니라 화면 전체 패널 전환 구조 — nav 트리거(#home-trigger/#about-trigger/#portfolio-trigger/#contact-trigger)로 hero/about/portfolio/contact 섹션이 #main.active 클래스 토글로 풀스크린 전환됨",
+    "히어로가 좌8:우4 비대칭 분할 — 좌측엔 typed.js로 타이핑되는 롤(Web Designer/3D Artist/Illustrator) 헤드라인, 우측엔 프로젝트 3장을 넘기는 Swiper creative-effect 슬라이더",
+    "about/portfolio/contact 세 섹션 모두 동일한 좌8(콘텐츠, 스크롤)+우4(고정 배경 이미지) 스플릿 레이아웃을 반복하는 템플릿 패턴",
+    "전통적 <footer> 요소가 없음 — 카피라이트 문구가 풀스크린 메뉴 오버레이(#menu) 안에만 존재하고, contact 섹션의 문의 폼이 페이지의 실질적 끝"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "grid",
+    "cols": 2,
+    "filter_tabs": false,
+    "hover": "other"
+   },
+   "name": "marvio-coming-soon-portfolio-template-2026-07-08-09-12-20-utc",
+   "no_html": false
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": false,
+    "libs": [
+     "isotope",
+     "fancybox",
+     "jquery.parallaxify (custom multi-layer mouse/scroll parallax plugin)",
+     "jquery.easing"
+    ],
+    "noise_or_texture": true,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "cta_count": 0,
+    "has_portrait": false,
+    "headline_align": "center",
+    "headline_scale": "L",
+    "media": "illustration",
+    "overlay": false,
+    "type": "other"
+   },
+   "name": "master-creative-portfolio-template-2023-11-27-05-09-42-utc",
+   "nav": {
+    "logo_style": "image",
+    "type": "topbar-fixed"
+   },
+   "sections": [
+    "hero (fixed-bg parallax header)",
+    "about-us",
+    "team",
+    "hiring (mini cta text band)",
+    "services (intro header + 4-icon items + skills/numbers/progressbars)",
+    "portfolio (filterable isotope grid)",
+    "clients (logo strip, dark band inside portfolio section)",
+    "pricing (parallax header + 4 pricing cards)",
+    "contact (form + map)",
+    "footer"
+   ],
+   "signature": [
+    "header#head는 고정 배경(background-attachment:fixed) 위에 head_img PNG 그래픽과 h-text~h-text5 5개 레이어를 jquery.parallaxify로 각각 다른 강도로 마우스/스크롤에 반응시킴",
+    "JS로 매 로드시 50개의 반투명 원(.star, box-shadow 글로우)을 랜덤 위치·크기로 생성해 히어로 배경에 떠다니는 파티클처럼 배치(DOM 기반, canvas 아님)",
+    "services·pricing 섹션 헤더가 각각 back/middle/front 3겹의 PNG 레이어로 된 다단 패럴랙스 구조",
+    "섹션 경계마다 about_torn_paper.jpg 텍스처를 반복 배경으로 깔아 종이가 찢어진 듯한 구분선 연출; 스크롤 시 body에 .fx 클래스가 붙으며 상단 네비게이션이 static→fixed로 전환"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "med"
+   },
+   "work": {
+    "cols": 4,
+    "filter_tabs": true,
+    "hover": "other",
+    "layout": "filter-grid"
+   }
+  },
+  {
+   "name": "mer-s-personal-portfolio-template-2023-11-27-05-34-02-utc",
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "overlay": true,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "sidebar-left",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero(home)",
+    "about",
+    "service(+partners logo carousel)",
+    "portfolio",
+    "skills(+counter stats)",
+    "pricing",
+    "testimonials",
+    "news(blog)",
+    "contact"
+   ],
+   "work": {
+    "layout": "masonry",
+    "cols": 3,
+    "filter_tabs": false,
+    "hover": "zoom"
+   },
+   "decor": {
+    "animations": "rich",
+    "preloader": true,
+    "custom_cursor": true,
+    "noise_or_texture": false,
+    "shapes_or_lines": false,
+    "libs": [
+     "owl-carousel",
+     "isotope",
+     "magnific-popup",
+     "tilt.js",
+     "parallax.js"
+    ]
+   },
+   "typography": {
+    "display_style": "serif-elegant",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "none",
+   "signature": [
+    "고정 좌측 사이드바 내비(로고+뉴스레터+카피라이트 상시 노출, 300px)",
+    "커스텀 마우스 커서(cursor-outer/inner, magic-cursor)+카드 tilt.js 호버 효과 전 구간 적용",
+    "포트폴리오 그리드 3열 중 3번째 아이템만 위로 어긋나는 isotope 스태거드 배치",
+    "테스티모니얼 섹션 배경에 대형 아웃라인 스트로크 텍스트('Testimonials')"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": false,
+    "libs": [
+     "swiper",
+     "isotope",
+     "masonry",
+     "owl-carousel",
+     "particles.js"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "type": "split-image",
+    "media": "illustration",
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": false,
+    "overlay": false,
+    "cta_count": 2
+   },
+   "name": "metaverse-nft-portfolio-and-landing-page-2025-06-11-11-49-40-utc",
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero (glitch image slider + mint stat counter)",
+    "about (2-col text + image with SVG accents)",
+    "video-band (youtube trailer popup)",
+    "collection (3-row alternating-direction infinite marquee of NFT drops + collection stats CTA)",
+    "parallax (particles.js over parallax background image, no text)",
+    "roadmap (dual swiper: date timeline strip + phase detail cards)",
+    "team (grid of member cards)",
+    "faq (2-column accordion)",
+    "blog",
+    "sponsor (logo marquee carousel)",
+    "contact (info list + form)",
+    "footer"
+   ],
+   "signature": [
+    "카드마다(NFT/팀/블로그/컬렉션) 좌우 코너 브래킷 보더 라인이 있고 호버 시 70px로 확장",
+    "히어로 우측에 4겹 배경 레이어를 쌓은 글리치 이미지 슬라이더",
+    "섹션 타이틀마다 대각선 세그먼트 디바이더 샷코드(line/middle/left1/left2/right1/right2)가 선행",
+    "NFT 드롭 3줄이 좌우 번갈아 방향으로 무한 스크롤되는 오울 캐러셀 마키"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "other"
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "custom_cursor": true,
+    "libs": [
+     "swiper",
+     "isotope",
+     "magnific-popup",
+     "meanmenu",
+     "counterup",
+     "waypoints",
+     "progressbar"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "columns",
+   "hero": {
+    "cta_count": 1,
+    "has_portrait": false,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "media": "photo",
+    "overlay": false,
+    "type": "bigtype-text"
+   },
+   "name": "metier-portfolio-resume-bootstrap-5-template-2025-04-08-06-07-13-utc",
+   "nav": {
+    "logo_style": "image",
+    "type": "topbar-static"
+   },
+   "no_html": false,
+   "sections": [
+    "hero",
+    "features(swiper icon-cards slider)",
+    "services(4-item icon grid)",
+    "video-band",
+    "process(3-step, numbered)",
+    "faq(accordion)",
+    "footer",
+    "copyright"
+   ],
+   "signature": [
+    "헤드라인의 한 단어가 -webkit-text-stroke로 채움 없는 아웃라인 텍스트 처리(banner h1 span, 2px stroke)",
+    "서비스/프로세스 카드마다 우상단에 70px 대형 아웃라인 숫자(opacity 0.1)를 배경 장식으로 배치",
+    "마우스를 따라다니는 2겹 커스텀 커서(body.custom__cursor + custom__cursor-one/two, hover 시 확대)",
+    "포트폴리오 카드는 기본 상태에서 캡션 박스가 opacity:0으로 숨어있다가 hover 시 좌측에서 슬라이드+페이드인(흰 배경 카드)"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay",
+    "layout": "filter-grid"
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "preloader": true,
+    "custom_cursor": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "libs": [
+     "swiper",
+     "typed",
+     "wow",
+     "counterup",
+     "magnific-popup",
+     "meanmenu",
+     "nice-select",
+     "waypoints"
+    ]
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "type": "bigtype-text",
+    "media": "illustration",
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "overlay": false,
+    "cta_count": 2
+   },
+   "name": "minifolio-personal-portfolio-html-template-2025-08-26-05-05-06-utc",
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "marquee",
+    "about",
+    "services",
+    "work",
+    "timeline",
+    "skills",
+    "awards",
+    "pricing",
+    "testimonials",
+    "blog",
+    "footer"
+   ],
+   "signature": [
+    "센터정렬 히어로 h1에 148px 대형 -webkit-text-stroke 아웃라인(투명 채움+화이트 외곽선) 성씨 텍스트 + typed.js 타이핑 직함",
+    "마우스 따라오는 원형 커스텀 커서(cursor-inner/outer, hover 시 확대)",
+    "히어로 하단·푸터 두 곳에 무한 반복 마퀴 밴드('THE BEST SOLUTION' / 'Lets Work TOGETHER')",
+    "다크 배경(#060606)+라임그린(#BFF747) 단색 네온 액센트, 헤더는 히어로 위 absolute 투명 → 스크롤 시 fixed+solid(sticky) 전환"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "condensed",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "grid",
+    "cols": 2,
+    "hover": "zoom",
+    "filter_tabs": false
+   }
+  },
+  {
+   "name": "minimal-folio-responsive-portfolio-template-2023-11-27-05-09-13-utc",
+   "hero": {
+    "type": "other",
+    "media": "none",
+    "headline_align": "left",
+    "headline_scale": "S",
+    "cta_count": 0,
+    "has_portrait": false,
+    "overlay": false
+   },
+   "nav": {
+    "type": "topbar-static",
+    "logo_style": "text"
+   },
+   "sections": [
+    "hero",
+    "work",
+    "testimonials",
+    "footer"
+   ],
+   "work": {
+    "layout": "masonry",
+    "cols": 4,
+    "filter_tabs": false,
+    "hover": "other"
+   },
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "masonry",
+     "modernizr"
+    ],
+    "preloader": false,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "low"
+   },
+   "spacing": "airy",
+   "footer_type": "minimal-line",
+   "signature": [
+    "그리드 아이템이 스크롤 진입 시 컬러 커튼(#96cdc8)이 90도 회전하며 열리는 리빌 애니메이션 (swipe-rotate curtain, gridScrollFx.js)",
+    "그리드 아이템 호버 시 타이틀이 위로 30px 슬라이드되고 프레임형 보더가 나타남",
+    "다중 이미지 프로젝트 카드는 내부에 prev/next 이미지 슬라이더(pf-slider)를 내장",
+    "'View entire collection' 클릭 시 숨겨둔 li를 6개씩 그리드에 이어붙이는 클라이언트사이드 페이지네이션(무한로드 아님, 클릭식)"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": false,
+    "libs": [
+     "swiper",
+     "isotope",
+     "parallax.jquery(tiltfx/boxesFx custom)"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "columns",
+   "hero": {
+    "cta_count": 1,
+    "has_portrait": false,
+    "headline_align": "left",
+    "headline_scale": "M",
+    "media": "photo",
+    "overlay": true,
+    "type": "slider"
+   },
+   "name": "modesto-portfolio-photography-html-template-2023-11-27-05-33-23-utc",
+   "nav": {
+    "logo_style": "image",
+    "type": "hamburger-overlay"
+   },
+   "sections": [
+    "hero",
+    "footer"
+   ],
+   "signature": [
+    "히어로 스와이퍼: 활성 슬라이드만 scale(.8→1)로 확대되고 텍스트/태그 블록이 옆에서 rotate하며 슬라이드인, 비활성 카드는 반투명(opacity .3)",
+    "이미지 호버 시 4개 모서리 프레임 라인이 사각형으로 그려지고 중앙의 +아이콘이 45도 회전하며 나타나는 mouseover-helper-frame 효과",
+    "포트폴리오 그리드 호버 시 배경이미지가 위로 139px 슬라이드되고 그 뒤에서 캡션 패널이 밀고 올라오는 push-reveal(new-animation) — isotope 필터탭 + simple-lightbox 조합",
+    "햄버거 클릭 시 열리는 3컬럼 풀스크린 오버레이가 내비게이션+연락처/소셜+트위터피드·썸네일그리드로 구성된 미니 랜딩페이지 형태이며, body class로 8종 폰트 프리셋(fonts-1~8, Lato/Roboto Slab/Montserrat/Droid Serif/Inconsolata/Abril Fatface 등)을 전환 가능"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "high"
+   },
+   "work": {
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay",
+    "layout": "filter-grid"
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": true,
+    "libs": [
+     "swiper",
+     "glightbox",
+     "gmaps"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": false
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "cta_count": 0,
+    "has_portrait": false,
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "media": "none",
+    "overlay": false,
+    "type": "bigtype-text"
+   },
+   "name": "mone-tailwind-personal-portfolio-template-2025-02-25-18-51-00-utc",
+   "nav": {
+    "logo_style": "text",
+    "type": "hamburger-overlay"
+   },
+   "sections": [
+    "hero(=#about, giant stroke-text name only)",
+    "about(avatar+bio+skills+connect+stats, same block as hero)",
+    "services(numbered rows 01/02/03)",
+    "clients(logo swiper)",
+    "work(#portfolio, dark card + swiper)",
+    "awards(2-col card grid)",
+    "testimonials(swiper, quote+progressbar)",
+    "blog(dark card + swiper, category badge overlay)",
+    "contact(info+form)",
+    "map(google map embed, free-text section)",
+    "footer(copyright only)"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "cols": 2,
+    "filter_tabs": false,
+    "hover": "zoom",
+    "layout": "carousel"
+   },
+   "signature": [
+    "다크(#181a1c/black) 배경 위 흰색 stroke(윤곽선) 텍스트로 된 초대형 이름 히어로(text-9xl, fill 투명+stroke만)",
+    "마우스를 따라다니는 mix-blend-difference 커스텀 커서(#cursor), 링크/버튼 위에서 scale-5로 확대",
+    "버튼·링크 라벨이 호버 시 위/아래로 슬라이드하며 같은 텍스트로 교체되는 이중 레이어(before/after data-text) 효과가 전 UI에 반복",
+    "포트폴리오·블로그 섹션은 그리드가 아니라 dark rounded-2xl 카드 안에 담긴 Swiper 슬라이더(prev/next 화살표)로 구성"
+   ]
+  },
+  {
+   "name": "morex-tailwind-css-personal-portfolio-template-2023-11-27-05-24-12-utc",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": true,
+    "cta_count": 1,
+    "overlay": false
+   },
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero(#home)",
+    "services(#services, 6-card grid)",
+    "about(#about)",
+    "clients(logo strip)",
+    "resume/timeline(experience+education, dual-column vertical timeline, no id)",
+    "skills(progress bars, no id)",
+    "work/portfolio(#portfolio, isotope filter-grid)",
+    "testimonials(swiper slider)",
+    "contact(#contact, form+info+google map)",
+    "blog(#blog, 3-col cards w/ modal detail)",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   },
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "swiper",
+     "isotope",
+     "imagesloaded",
+     "glightbox(포함되어 있으나 head 링크는 주석 처리됨)"
+    ],
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "preloader": true,
+    "custom_cursor": false
+   },
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "minimal-line",
+   "signature": [
+    "히어로 인물 사진 옆에 animateUpDown 애니메이션으로 위아래 둥둥 떠다니는 툴 로고 배지(Photoshop/Figma)와 완료 프로젝트 수 카드가 겹쳐 배치됨",
+    "서비스 카드 아이콘 원형 배지 뒤에 회전/스큐된 블롭 형태 그림자 액센트(.service-shape::before)가 깔림",
+    "About 섹션 '27+' 같은 통계 숫자에 컬러 아웃라인 stroke 텍스트 효과(.title-stroke, text-shadow 다중 겹침으로 윤곽선만 표현)",
+    "Contact 섹션 하단에 270px 여백을 만들고 그 안의 Google 지도 iframe에 음수 마진(-275px)을 줘서 섹션 경계를 넘어 다음(Blog) 섹션 쪽으로 오버랩되게 배치"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "custom_cursor": false,
+    "libs": [
+     "owl-carousel",
+     "isotope",
+     "jquery"
+    ],
+    "noise_or_texture": false,
+    "preloader": false,
+    "shapes_or_lines": true
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "headline_align": "right",
+    "headline_scale": "M",
+    "overlay": false,
+    "has_portrait": false,
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero (owl-carousel featured-posts slider)",
+    "tags (image tile grid w/ counts)",
+    "work (latest-projects masonry grid + marquee load-more)",
+    "footer (newsletter CTA + social/menu/copyright)"
+   ],
+   "work": {
+    "layout": "masonry",
+    "cols": 2,
+    "filter_tabs": false,
+    "hover": "caption-overlay"
+   },
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "med"
+   },
+   "spacing": "airy",
+   "signature": [
+    "섹션 타이틀은 Playfair Display 이탤릭 세리프 48px + zigzag.svg 밑줄 장식(:after mask-image)",
+    "히어로가 owl-carousel 슬라이더 이미지 위에 우측으로 겹쳐 뜨는 화이트 카드(제목/설명/화살표) 구조, 뒤에 대각선 크로스해치 fp_decor 배경선",
+    "Load More 버튼이 'Load More' 텍스트가 끝없이 반복되는 marquee 애니메이션으로 구현됨",
+    "Isotope 기반 2단 masonry 워크 그리드: hover 시 이미지가 위로 슬라이드되며 하단 메타 캡션이 올라와 노출"
+   ],
+   "name": "mosso-personal-portfolio-html-template-2025-06-12-17-09-57-utc"
+  },
+  {
+   "name": "mountain-the-minimal-portfolio-template-for-insp-2023-11-27-05-24-21-utc",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "M",
+    "cta_count": 1,
+    "has_portrait": false,
+    "overlay": false
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "work",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   },
+   "decor": {
+    "animations": "subtle",
+    "custom_cursor": true,
+    "libs": [
+     "isotope",
+     "owl.carousel",
+     "revolution-slider",
+     "magnific-popup",
+     "flexslider",
+     "jquery-waypoints"
+    ],
+    "preloader": true,
+    "noise_or_texture": false,
+    "shapes_or_lines": false
+   },
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "med"
+   },
+   "spacing": "normal",
+   "footer_type": "minimal-line",
+   "signature": [
+    "포트폴리오 썸네일 호버 시 검은 오버레이 위로 제목·카테고리가 왼쪽(-150px)에서 슬라이드인",
+    "프로젝트 아이템 호버 시 커서가 icon-view.png/icon-zoom.png 이미지로 교체되는 커스텀 커서",
+    "Revolution Slider 히어로 슬라이드 중 하나가 정지 이미지 대신 유튜브 iframe 임베드로 구성",
+    "홈 화면에 Isotope 필터(All/Design/Handmade/Startup/Photography)가 바로 노출되는 3열 갤러리(gallery-alt-layout)"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "custom_cursor": true,
+    "libs": [
+     "swiper",
+     "mixitup",
+     "glightbox",
+     "scrollcue"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": false
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "cta_count": 1,
+    "has_portrait": false,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "media": "none",
+    "overlay": false,
+    "type": "bigtype-text"
+   },
+   "name": "naru-personal-portfolio-template-2024-11-14-13-34-05-utc",
+   "nav": {
+    "logo_style": "text",
+    "type": "topbar-fixed"
+   },
+   "sections": [
+    "hero/about (name+tagline+stats)",
+    "work (4-item portfolio grid, no filter on homepage)",
+    "services (6-item icon list, numbered 01-06)",
+    "clients (logo carousel)",
+    "resume (education + experience two-column timeline cards)",
+    "contact-band (giant email display)",
+    "footer"
+   ],
+   "signature": [
+    "텍스트 위에 마우스를 올리면 원형 커스텀 커서가 확대되며 캡션/이미지로 바뀜 (data-hover-caption, data-hover-img, cursorInner.innerHTML 교체 방식)",
+    "히어로 이름에 마우스를 올리면 커서 안에 프로필 사진이 뜸 (data-hover-img=avatar.png)",
+    "서비스 항목마다 01.~06. 형태의 2자리 인덱스 라벨(sm-heading)이 아이콘+타이틀 위에 붙음",
+    "포트폴리오 필터는 Isotope/Masonry가 아니라 MixItUp 라이브러리로 구현(mixitup('.portfolio-grid'))"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "high"
+   },
+   "work": {
+    "cols": 2,
+    "filter_tabs": true,
+    "hover": "other",
+    "layout": "filter-grid"
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "glide.js",
+     "isotope",
+     "masonry",
+     "gsap",
+     "typed.js"
+    ],
+    "custom_cursor": true,
+    "preloader": false,
+    "shapes_or_lines": false,
+    "noise_or_texture": false
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "overlay": true,
+    "has_portrait": false,
+    "cta_count": 0
+   },
+   "name": "neoto-creative-studio-portfolio-template-2023-11-27-04-49-41-utc",
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "no_html": false,
+   "sections": [
+    "hero(4-slide full-bleed glide.js slider, image bg + massive headline link)",
+    "footer(copyright + social nav, fixed-bottom)"
+   ],
+   "signature": [
+    "원형 커스텀 커서(#cursor, backdrop-filter blur) — hover 대상에 따라 로딩 스피너(rotate 애니메이션)·텍스트 캐럿(\"I\")·닫기 X·라이트박스 화살표로 형태가 바뀜",
+    "히어로 전체가 클릭 가능한 링크(class=tilt no-link)로, h6 카테고리 라벨 + font-size 10rem/17vw .massive 헤드라인(폰트weight 900, letter-spacing -0.07em)이 좌/우 정렬로 배치되고 4개 슬라이드를 glide.js가 순환",
+    "포트폴리오 그리드는 isotope+masonry 기반 가변폭 타일(col-6/col-3 혼합)이며 hover 시 이미지가 반투명해지고 backdrop-filter blur 캡션이 opacity 0→1로 오버레이",
+    "실제 홈(index.html)에는 <section> 없이 히어로 슬라이더+푸터만 존재 — about/services/work/blog/contact는 전부 별도 페이지로 분리된 멀티페이지 구조(싱글페이지 스크롤 아님)"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "masonry",
+    "cols": 4,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "slick",
+     "owl-carousel",
+     "photoswipe",
+     "lity"
+    ],
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "overlay": true,
+    "headline_align": "center",
+    "headline_scale": "L",
+    "has_portrait": false,
+    "cta_count": 0
+   },
+   "name": "nextex-one-page-photography-portfolio-template-2025-05-29-15-22-19-utc",
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "team",
+    "services",
+    "works",
+    "works-carousel",
+    "news",
+    "contact"
+   ],
+   "signature": [
+    "뷰포트 4변을 감싸는 얇은 프레임 보더가 스크롤 100px 지점부터 페이드인(border-top/bottom/left/right + bottom-position-primary 클래스)",
+    "섹션 제목마다 '01.'~'09.' 2자리 번호가 span으로 붙는 넘버링 헤딩(.section-heading span)",
+    "works 섹션이 반반 분할(좌 텍스트 col-lg-4 오프셋7 / 우 배경이미지, 다음 아이템은 반대로 오프셋1)로 좌우 지그재그 리스트를 이루고 owl-carousel로 추가 세트가 이어짐(bg-dark-reverse)",
+    "히어로 타이틀(Nextex, 60px 대문자 letter-spacing -0.08em)이 슬라이드쇼 배경 위에 얇은 상하 divider 라인 사이 중앙 배치"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "fullwidth-rows",
+    "cols": 1,
+    "hover": "other",
+    "filter_tabs": false
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "isotope",
+     "fancybox",
+     "nivo-slider",
+     "supersized",
+     "carouFredSel",
+     "jScrollPane",
+     "mediaelement"
+    ],
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "right",
+    "headline_scale": "XL",
+    "overlay": false,
+    "cta_count": 0,
+    "has_portrait": false
+   },
+   "name": "node-responsive-portfolio-template-2023-11-27-05-21-41-utc",
+   "nav": {
+    "type": "sidebar-right",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "timeline",
+    "services",
+    "process",
+    "blog",
+    "team",
+    "work",
+    "contact",
+    "footer"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   },
+   "signature": [
+    "좌우 정확히 50:50 분할 히어로 — 왼쪽은 96px 우측정렬 대형 헤드라인, 오른쪽은 supersized.js 풀블리드 사진 슬라이더가 동시에 슬라이드 전환",
+    "해시뱅(#!/) AJAX 라우팅 싱글페이지 아키텍처 — 60여 개 서브페이지가 모두 index.html 하나에 동적 로드되며 메인/페이지 프리로더 2종 존재",
+    "고정 우측 세로 바 내비게이션 — 로고+메뉴아이콘 100px 스트립이 항상 떠있고 클릭 시 225px 스크롤메뉴 패널이 옆으로 펼쳐짐",
+    "포트폴리오 그리드는 isotope 기반 카테고리 필터 + 마우스오버 시 제목·부제·팝업/상세 링크 캡션 오버레이"
+   ]
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": true,
+    "libs": [
+     "swiper",
+     "isotope",
+     "splitting",
+     "jarallax",
+     "skrollr",
+     "magnific-popup",
+     "jquery.scrolla"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "card-profile",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": true,
+    "overlay": false,
+    "cta_count": 0
+   },
+   "name": "ober-personal-portfolio-template-2023-11-27-05-01-25-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero (no id, class section-started)",
+    "about-section",
+    "resume-section",
+    "works-section",
+    "pricing-section",
+    "testimonials (no id, swiper slider)",
+    "blog-section",
+    "clients (no id, logo row)",
+    "contact-section",
+    "footer"
+   ],
+   "signature": [
+    "프로필 사진 뒤에 겹쳐진 5개의 유기적 컬러 blob SVG 도형(circle-1~5, 오렌지·블루·퍼플·옐로 등)",
+    "헤더 우상단에 해/달 아이콘의 다크·라이트 스킨 스위처 버튼(body.light-skin 토글)",
+    "커스텀 원형 커서(.cursor)와 Splitting.js 기반 글자 단위(char) 스크롤 인 애니메이션 전 구간 적용",
+    "좌측 여백에 숫자형 통계(About: completed/clients/awards, Contact: phone/email/address)를 배치하고 본문 컬럼을 세로선(vertical-line)으로 구분하는 3:9 그리드 반복 패턴"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 1,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": true,
+    "preloader": true,
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "libs": [
+     "swiper",
+     "isotope",
+     "gsap (tweenmax)",
+     "pixi",
+     "splitting.js",
+     "skrollr",
+     "magnific-popup"
+    ]
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "overlay": true,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "cta_count": 1,
+    "has_portrait": false
+   },
+   "name": "oblo-creative-photography-portfolio-template-2023-11-27-04-55-27-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "no_html": false,
+   "sections": [
+    "hero"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "serif-elegant",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   },
+   "signature": [
+    "실제 index.html은 히어로 풀스크린 슬라이더(Swiper+PIXI 캔버스 디스토션) 하나만 있고 nav 오버레이로 about/work/gallery/contact/blog 서브페이지로 연결되는 허브형 홈 — 별도 index-onepage.html에 description/services/quote/experience/team/works/awards/partners/contact/newsletter 12개 섹션 원페이지 대안 존재",
+    "마우스 추적 커스텀 커서(.cursor, cursor.js)와 Splitting.js 기반 글자 단위 스크롤 애니메이션(splitting-text-anim-1/2/3)이 거의 모든 텍스트 요소에 적용됨",
+    "다크 배경(#21202e)에 코랄 액센트(#eb6165), 디스플레이 폰트 Yeseva One(세리프) + 필기체 포인트 폰트 Mr De Haviland 조합",
+    "작업물 그리드는 Isotope 기반 카테고리 필터(sorting-food/motion/wildlife/fashion)+2/3컬럼 offset 그리드, 호버 시 caption(category+name) 오버레이"
+   ]
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "owl-carousel",
+     "slick",
+     "swiper(css만, 미사용 추정)",
+     "fancybox",
+     "odometer",
+     "wow.js",
+     "modernizr"
+    ],
+    "preloader": true,
+    "noise_or_texture": false,
+    "shapes_or_lines": false,
+    "custom_cursor": false
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "overlay": false,
+    "headline_align": "center",
+    "headline_scale": "L",
+    "cta_count": 0,
+    "has_portrait": true
+   },
+   "name": "olulu-creative-portfolio-html5-template-2024-11-13-06-24-51-utc",
+   "nav": {
+    "type": "sidebar-left",
+    "logo_style": "text"
+   },
+   "sections": [
+    "about (히어로 없이 About가 첫 섹션, 이름·직함·오도미터 통계)",
+    "services",
+    "testimonials (slick 슬라이더)",
+    "work/portfolio (owl-carousel, 4개 미리보기 + '전체보기' 링크)",
+    "blog (2컬럼)",
+    "clients/partners (로고 owl-carousel)",
+    "contact (폼+연락처정보)",
+    "footer (미니멀 1단)"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "grid",
+    "cols": 3,
+    "hover": "other",
+    "filter_tabs": false
+   },
+   "signature": [
+    "고정 풀스크린 배경사진(.personal, position:fixed) 위로 본문이 우측 50% 폭 패널로 떠서 흐름 — 좌측 사진+우측 스크롤 패널의 스플릿 구조",
+    "좌측 50%를 차지하는 fixed 세로 내비게이션(#header, position:fixed width:50%)이 사진 위에 텍스트로만 오버레이됨(sidebar-left)",
+    "별도 히어로 섹션 없이 About가 최상단 콘텐츠 — 이름/직함 + odometer.js 카운터(경력·프로젝트·고객수)로 시작",
+    "포트폴리오 아이템은 isotope/필터탭 없는 순수 3열 그리드+페이지네이션, hover 시 translateY(-20px) 리프트만 적용"
+   ]
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "nivo-slider",
+     "bxslider",
+     "fancybox",
+     "jscrollpane",
+     "qtip",
+     "supersized",
+     "timelinr",
+     "jquery-ui",
+     "blockui"
+    ],
+    "preloader": true,
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "shapes_or_lines": true
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "other",
+    "media": "illustration",
+    "headline_align": "center",
+    "headline_scale": "S",
+    "has_portrait": false,
+    "overlay": false,
+    "cta_count": 5
+   },
+   "name": "opal-minimal-portfolio-template-2023-11-27-04-56-43-utc",
+   "nav": {
+    "type": "none",
+    "logo_style": "text"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "blog",
+    "work",
+    "services",
+    "contact",
+    "footer"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "low"
+   },
+   "work": {
+    "layout": "stacked-showcase",
+    "cols": 1,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   },
+   "signature": [
+    "home 화면 자체가 헤더 로고 아래 5개 대형 아이콘(About/Blog/Portfolio/Services/Contact)이 bxSlider로 배치된 원형 뱃지 형태 진입 내비 — 전통적 텍스트 헤드라인 히어로가 없음",
+    "서브페이지(about/blog/portfolio/services/contact)는 개별 HTML이 아니라 #!/ 해시라우팅 + AJAX로 #opal-page 오버레이에 로드되는 단일 셸 구조",
+    "포트폴리오는 timelinr 플러그인 기반 연도별 가로 타임라인 탭(2012/2011/2010)으로 필터링되고, 각 연도 안에서 이미지-텍스트 50/50 좌우 교차 행이 쌓이는 구조",
+    "전체 프리로더(#background-preloader, 진행 바 + 상하 커튼 분할 오프닝 애니메이션)와 jScrollPane 커스텀 스크롤바가 셸 전역에 적용됨"
+   ]
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "preloader": true,
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "shapes_or_lines": true,
+    "libs": [
+     "isotope",
+     "wow.js",
+     "jquery",
+     "bootstrap",
+     "validator.js"
+    ]
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "M",
+    "has_portrait": false,
+    "cta_count": 1,
+    "overlay": false
+   },
+   "name": "origin-minimal-personal-portfolio-template-2023-11-27-05-01-46-utc",
+   "nav": {
+    "type": "none",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero (split-home: left 40% fixed photo panel + right 60% scrollable content panel)",
+    "footer (page nav links: about/portfolio/contact + copyright)"
+   ],
+   "signature": [
+    "화면을 좌:우 40:60으로 쪼개 왼쪽엔 고정 배경사진, 오른쪽만 스크롤되는 split-home 레이아웃이 index/about/portfolio/contact 전 페이지에 동일 적용됨",
+    "뷰포트 가장자리를 감싸는 10px 흰색 보더 프레임(#top #bottom #left #right, 반응형에서 25px로 확대)",
+    "우하단 코너에 다음 페이지로 가는 링크 하나만 두는 미니멀 코너내비(밑줄 바가 호버 시 레드(#C5283D)로 전환)",
+    "포트폴리오 그리드는 isotope 필터(All/Portfolio/Design/eCommerce/Branding/Web Development) + 호버 시 검은 오버레이 위로 카테고리 라벨이 아래에서 위로 슬라이드되는 caption-overlay"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "serif-elegant",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 2,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   }
+  },
+  {
+   "name": "pallas-creative-masonry-portfolio-template-2023-11-27-05-17-56-utc",
+   "no_html": false,
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "overlay": false,
+    "headline_align": "center",
+    "headline_scale": "L",
+    "has_portrait": false,
+    "cta_count": 0
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero (home-top, full-bleed photo bg)",
+    "about (cd-half-block scroll-snap teaser)",
+    "portfolio (cd-half-block scroll-snap teaser)",
+    "blog/jurnal (cd-half-block scroll-snap teaser)",
+    "contact (cd-half-block scroll-snap teaser)",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   },
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "isotope",
+     "masonry",
+     "owl.carousel",
+     "animsition",
+     "animate.css",
+     "slimmenu"
+    ],
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false,
+    "preloader": false
+   },
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "med"
+   },
+   "spacing": "airy",
+   "footer_type": "minimal-line",
+   "signature": [
+    "홈 전체가 풀스크린 스크롤스냅 섹션(cd-section)으로 구성되어, 스크롤할 때마다 좌우 절반 블록이 서로 반대 방향에서 슬라이드-인하며 스케일/투명도 애니메이션 (custom-work.js의 animateSection)",
+    "포트폴리오 그리드는 isotope layoutMode:'masonry' + data-filter 탭 조합, 카드 hover 시 검은 마스크(mask-1)가 채워지며 제목/구분선/카테고리가 좌측에서 순차 슬라이드-인 (transition-delay 0.2s/0.4s 스태거)",
+    "동일 홈페이지의 히어로만 6가지 변형(index~index6: 배경 이미지/슬라이더/텍스트 슬라이더/HTML5 비디오/유튜브 비디오/움직이는 이미지)으로 제공되는 데모 구조",
+    "인트로 타이틀 아래 태그라인에 손글씨풍 스크립트 폰트('Satisfy', cursive)를 대비로 사용하고, 원형 화살표 버튼이 뷰포트 하단 중앙에 고정되어 스크롤 유도"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "aos",
+     "swiper",
+     "magnific-popup",
+     "jquery-counterup"
+    ],
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "preloader": false,
+    "custom_cursor": false
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "cta_count": 2,
+    "has_portrait": true,
+    "overlay": false
+   },
+   "name": "perez-personal-portfolio-template-2024-10-30-14-22-46-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "no_html": false,
+   "sections": [
+    "hero",
+    "services",
+    "about",
+    "resume-tabs (about me / experience / education / skills / awards)",
+    "work",
+    "testimonials",
+    "blog",
+    "pricing",
+    "footer"
+   ],
+   "signature": [
+    "섹션 제목마다 첫 1~2글자 뒤로 지름 70~120px 노란 원(#FFB646)이 겹쳐지는 circle-shape 장식이 Hero부터 Footer까지 전 섹션에 반복(코드: .circle-shape::before)",
+    "히어로 우측 하단에 회전 애니메이션이 걸린 원형 SVG 배지(.contact-spin .animate-spin)가 Contact 페이지로 연결되는 장식 CTA",
+    "프로젝트 그리드가 isotope/masonry JS 없이 col-lg-5/7, 4/4/4, 7/5 폭의 부트스트랩 컬럼 조합만으로 비대칭 타일을 만들고, 호버 시 어두운 오버레이 위로 캡션이 24px 슬라이드업(.project-item-content)",
+    "Resume 섹션이 About me/Experience/Education/Skills/Awards 5개 탭(Bootstrap pill)을 하나의 블록에 통합"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "masonry",
+    "cols": 2,
+    "filter_tabs": false,
+    "hover": "caption-overlay"
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": true,
+    "libs": [
+     "aos",
+     "gsap",
+     "slick",
+     "fancybox",
+     "magnific-popup"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "cta_count": 0,
+    "has_portrait": true,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "media": "photo",
+    "overlay": false,
+    "type": "split-image"
+   },
+   "name": "personal-portfolio-html-template-biogi-2024-09-10-13-15-15-utc",
+   "nav": {
+    "logo_style": "image",
+    "type": "topbar-fixed"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "marquee(clients)",
+    "services(accordion+cta)",
+    "marquee(ticker)",
+    "skills(stats)",
+    "work(portfolio filter tabs)",
+    "testimonials",
+    "blog",
+    "cta-band(contact ticker)",
+    "footer"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "cols": 2,
+    "filter_tabs": true,
+    "hover": "caption-overlay",
+    "layout": "filter-grid"
+   },
+   "signature": [
+    "히어로에 인물사진 위로 화살표+이름라벨(Jessica Biogi)과 'Worked with 100+ Clients' 플로팅 배지가 겹쳐진 프로필형 구성",
+    "마우스를 따라다니는 원형 아웃라인 커스텀 커서(mix-blend-mode:difference, hover시 확대)",
+    "서비스 섹션이 nested-accordion 리스트 + 두 개의 원형 CTA 버튼(VIEW MY WORK/CONTACT ME) 조합으로 구성",
+    "포트폴리오가 탭 필터(ALL/CONTENT/GALLERY/HTML VIDEO/YT VIDEO/VIMEO/SOUND CLOUD, 각 탭에 개수 배지)로 종류별 필터링되는 grid, hover시 카테고리+제목 캡션 오버레이(effect-milo)"
+   ]
+  },
+  {
+   "name": "personal-portfolio-html-template-salva-2023-11-27-04-53-30-utc",
+   "no_html": false,
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "overlay": true,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": true,
+    "cta_count": 2
+   },
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "skills",
+    "awards",
+    "clients",
+    "testimonials",
+    "work",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "color-shift",
+    "filter_tabs": true
+   },
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": true,
+    "preloader": true,
+    "noise_or_texture": false,
+    "shapes_or_lines": false,
+    "libs": [
+     "aos",
+     "gsap",
+     "particles",
+     "owl-carousel",
+     "slick"
+    ]
+   },
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "high"
+   },
+   "spacing": "normal",
+   "footer_type": "minimal-line",
+   "signature": [
+    "홈/소개/포트폴리오/뉴스/컨택 5개 별도 페이지 구조에서 좌측 40% 폭 패널이 position:fixed로 고정되어 이미지+파티클 캔버스(#particles-js) 배경을 페이지 전환과 무관하게 유지",
+    "다크·라이트 각 10종씩 총 20개 스킨이 동일한 HTML 구조를 공유하되 히어로 배경 이펙트만 particle/constellation/ripple/snow-rain/glitch/color-bird/grow-ball/bubble-particle/slider/video 등으로 교체되는 스와핑 아키텍처",
+    "모든 페이지 하단에 다크/라이트 토글이 아닌 'Weekend Mode' 이스터에그 콘텐츠 전환 스위치 존재",
+    "포트폴리오 카드 썸네일은 기본 흑백(filter: saturate(0))이며 hover 시 컬러 전환 + 1.02배 확대(transition 0.6s)"
+   ],
+   "confidence": "high"
+  },
+  {
+   "name": "popito-personal-portfolio-html-template-2025-06-12-17-09-57-utc",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "S",
+    "cta_count": 2,
+    "has_portrait": false,
+    "overlay": false
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "carousel(hero-slider)",
+    "tags-marquee",
+    "about",
+    "call-to-action",
+    "latest-posts-numbered-list",
+    "footer(vertical-slider+newsletter)"
+   ],
+   "work": {
+    "layout": "list-rows",
+    "cols": 1,
+    "filter_tabs": false,
+    "hover": "other"
+   },
+   "decor": {
+    "animations": "subtle",
+    "preloader": false,
+    "custom_cursor": false,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "libs": [
+     "owl-carousel"
+    ]
+   },
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "med"
+   },
+   "spacing": "normal",
+   "footer_type": "columns",
+   "signature": [
+    "섹션마다 등장하는 원형 회전 텍스트 배지 (\"About Me ● About Me ●\" SVG textPath, 15s 무한 회전)",
+    "4px 블랙 보더 + 10px 라운드 코너 + #ffdd00 옐로 포인트의 네오브루탈리즘 배색(CSS 변수 --mc1/--hc/--bc)",
+    "가로 자동 스크롤 마퀴 형태의 인기 태그 리스트(배경이미지+카운트 배지)",
+    "프로젝트 리스트가 그리드가 아닌 40/60 분할 풀와이드 행(row)으로 번호(01,02..)와 물결(wave) SVG 장식과 함께 나열됨"
+   ],
+   "confidence": "high"
+  },
+  {
+   "name": "portf-sketch-personal-portfolio-websitetemplate-2026-07-07-13-18-56-utc",
+   "no_html": true,
+   "hero": {
+    "type": "none",
+    "media": "none",
+    "headline_align": "center",
+    "headline_scale": "M"
+   },
+   "nav": {
+    "type": "none"
+   },
+   "sections": [],
+   "work": {
+    "layout": "none"
+   },
+   "decor": {
+    "animations": "none"
+   },
+   "typography": {
+    "display_style": "mixed"
+   },
+   "spacing": "normal",
+   "footer_type": "none",
+   "signature": [
+    "zip 내용물이 HTML 데모가 아닌 Sketch 소스 파일(PortF-Sketch_v1.0.sketch)과 PDF 문서(Docs-TF.pdf)뿐이라 코드 근거로 구조 해부 불가"
+   ],
+   "confidence": "low"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "custom_cursor": false,
+    "libs": [
+     "react-slick/slick-carousel",
+     "react-scroll",
+     "react-anchor-link-smooth-scroll",
+     "react-animated-css"
+    ],
+    "noise_or_texture": false,
+    "preloader": false,
+    "shapes_or_lines": true
+   },
+   "footer_type": "social-only",
+   "hero": {
+    "cta_count": 1,
+    "has_portrait": false,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "media": "photo",
+    "overlay": false,
+    "type": "fullscreen-image"
+   },
+   "name": "portfar-personal-portfolio-react-template-2024-12-27-17-53-04-utc",
+   "nav": {
+    "logo_style": "image",
+    "type": "hamburger-overlay"
+   },
+   "no_html": true,
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "work",
+    "testimonials",
+    "pricing",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "signature": [
+    "섹션(Hero/About/Portfolio) 하단마다 반복되는 흰색 웨이브 SVG 폴리곤 디바이더",
+    "내비게이션이 상단바가 아니라 폭 350px 오른쪽 고정 슬라이드 패널(햄버거 버튼 트리거, position:fixed;right:0;height:100%)",
+    "포트폴리오 3열 그리드 카드, hover 시 이미지 어둡게+캡션 좌측 슬라이드인, 클릭하면 별도 라이트박스형 PortfolioSingle 모달 오픈",
+    "통계 카운터(Counter 컴포넌트)가 별도 섹션이 아니라 About의 팝업 모달(AboutModal) 안에 숨어 있음"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "med"
+   },
+   "work": {
+    "cols": 3,
+    "filter_tabs": false,
+    "hover": "caption-overlay",
+    "layout": "grid"
+   }
+  },
+  {
+   "name": "portfoy-creative-portfolio-html5-template-2024-11-20-07-16-15-utc",
+   "no_html": false,
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "overlay": false,
+    "cta_count": 1,
+    "has_portrait": true
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about (skills/advantages, odometer % counters)",
+    "work (portfolio, vertical filter tabs + list)",
+    "services (icon cards)",
+    "testimonials (carousel)",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 2,
+    "filter_tabs": true,
+    "hover": "color-shift"
+   },
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "owl.carousel",
+     "swiper (css linked, unused on this page)",
+     "slick (css linked, unused on this page)",
+     "odometer",
+     "fancybox",
+     "magnific-popup",
+     "nice-select"
+    ],
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false,
+    "preloader": true
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "spacing": "normal",
+   "footer_type": "columns",
+   "signature": [
+    "히어로 우측에 CSS @keyframes rotating으로 회전하는 원형 텍스트 배지(SVG textPath + 중앙 꽃모양 아이콘)",
+    "히어로 하단에 장식용 세로 라인 5개(header-line, line-border-1~5)",
+    "포트폴리오 섹션이 좌측 세로 필터 탭(nav-pills, 9개 카테고리) + 우측 2열 리스트 구조(isotope 아님, 탭 전환식)",
+    "스킬 섹션이 %를 odometer.js 카운트업 숫자로 표시(Figma 80%, Sketch 67% 등)"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "owl-carousel",
+     "masonry",
+     "wow.js",
+     "magnific-popup",
+     "jquery.stellar"
+    ],
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "cta_count": 2,
+    "overlay": false
+   },
+   "name": "portfx-personal-portfolio-html-template-2024-05-29-07-53-31-utc",
+   "nav": {
+    "type": "topbar-static",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "stats",
+    "about",
+    "services",
+    "work",
+    "video-band",
+    "pricing",
+    "clients",
+    "testimonials",
+    "blog",
+    "cta-band",
+    "footer"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "grid",
+    "cols": 3,
+    "filter_tabs": false,
+    "hover": "caption-overlay"
+   },
+   "signature": [
+    "서비스 카드: 번호 원형 점선 화살표 버튼 + hover 시 다크그린(#1C3F39) 배경 풀필 스윕",
+    "포트폴리오 썸네일 hover 시 우상단 라이트박스 버튼이 -20px→20px로 슬라이드 인(opacity 0→1)",
+    "히어로 배경 사진 위에 다각형 SVG 데코 셰이프 3개(bshape1/2/3) + 세로 소셜아이콘 스택 + 원형 about 배지",
+    "단일 about-me 섹션에 소개+스킬바(data-percent 애니메이션)+Education/Experience 타임라인이 3열로 모두 몰려있는 구성"
+   ]
+  },
+  {
+   "confidence": "med",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "gsap",
+     "swiper",
+     "slick",
+     "odometer",
+     "magnific-popup",
+     "simpleparallax",
+     "isotope-like(jquery-plugin-collection)"
+    ],
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "footer_type": "none",
+   "hero": {
+    "type": "card-profile",
+    "media": "photo",
+    "overlay": false,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "cta_count": 0,
+    "has_portrait": true
+   },
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "timeline",
+    "services",
+    "work",
+    "testimonials",
+    "pricing",
+    "contact"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "serif-elegant",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 2,
+    "filter_tabs": true,
+    "hover": "zoom"
+   },
+   "name": "portio-personal-portfolio-resume-template-2024-09-18-11-10-04-utc",
+   "signature": [
+    "화면 왼쪽에 고정된 프로필 사이드바(사진+이름+소개+소셜아이콘)가 전 페이지 공통 틀로 유지되고 우측만 스크롤",
+    "히어로 우측 상단에 회전하는 원형 텍스트 뱃지('hire me your dream project.')와 화살표 아이콘 조합",
+    "각 섹션마다 대형 방사형 그라디언트 원(radial-gradient SVG circle) 장식과 line-shape 구분선이 반복 등장 (라임그린 #C4EF17 포인트 컬러)",
+    "GSAP ScrollTrigger/SplitText 기반 scroll-text-animation(data-animation=fade_from_bottom/fade_from_right)으로 섹션 진입 시 텍스트가 순차적으로 등장, 헤딩은 Marcellus 세리프+본문은 Inter"
+   ]
+  },
+  {
+   "confidence": "low",
+   "decor": {
+    "animations": "none",
+    "custom_cursor": false,
+    "libs": [],
+    "noise_or_texture": false,
+    "preloader": false,
+    "shapes_or_lines": false
+   },
+   "footer_type": "none",
+   "hero": {
+    "type": "none",
+    "media": "none",
+    "headline_align": "center",
+    "headline_scale": "M",
+    "cta_count": 0,
+    "has_portrait": false,
+    "overlay": false
+   },
+   "name": "portivio-personal-portfolio-figma-template-2025-10-04-05-48-17-utc",
+   "nav": {
+    "type": "none",
+    "logo_style": "none"
+   },
+   "no_html": true,
+   "sections": [],
+   "signature": [
+    "압축 파일 안에 코드가 전혀 없음 — 오직 Figma 소스 파일(Portivio_Placeholder.fig, 3.3MB)과 readme.txt뿐",
+    "readme 기준 '3 Home Page Style' 구성이라고만 명시되어 있으나 실제 레이아웃·섹션 구조는 .fig 바이너리 안에 있어 정적 파일 탐색으로는 확인 불가",
+    "폰트: Jost + Kumbh Sans, 아이콘: Font Awesome/Flaticon, 그래픽: Freepik (readme 명시, 코드 근거 아님)"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "mixed"
+   },
+   "work": {
+    "layout": "none",
+    "cols": 0,
+    "filter_tabs": false,
+    "hover": "none"
+   }
+  },
+  {
+   "name": "portm-personal-portfolio-template-2026-06-03-02-59-54-utc",
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "has_portrait": true,
+    "overlay": true,
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "work",
+    "testimonials",
+    "blog",
+    "clients",
+    "footer"
+   ],
+   "work": {
+    "layout": "masonry",
+    "cols": 3,
+    "hover": "zoom",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "isotope",
+     "gsap",
+     "wow.js",
+     "odometer"
+    ],
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "preloader": true,
+    "custom_cursor": true
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "big-cta",
+   "signature": [
+    "풀블리드 인물사진 히어로 위에 이름이 중앙 하단 그라디언트 텍스트로 오버레이",
+    "GSAP로 마우스를 따라오는 이중 원형 커스텀 커서(lg/sm)",
+    "서비스 아이콘박스마다 '프로젝트 수' 라벨 + 퍼센트 진행바(cs_progressbar)가 함께 붙음",
+    "곳곳에 odometer 카운트업 숫자(만족도%, 프로젝트 수, 경력년수)와 손글씨풍 스크라이블 SVG 언더라인이 섹션 제목 옆에 반복 배치"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "custom_cursor": false,
+    "libs": [
+     "owlcarousel",
+     "isotope"
+    ],
+    "noise_or_texture": false,
+    "preloader": false,
+    "shapes_or_lines": false
+   },
+   "footer_type": "none",
+   "hero": {
+    "cta_count": 0,
+    "has_portrait": false,
+    "headline_align": "center",
+    "headline_scale": "M",
+    "media": "photo",
+    "overlay": true,
+    "type": "slider"
+   },
+   "name": "portreto-photography-portfolio-html5-template-2023-11-27-05-29-24-utc",
+   "nav": {
+    "logo_style": "image",
+    "type": "sidebar-left"
+   },
+   "sections": [
+    "work"
+   ],
+   "signature": [
+    "콘텐츠 영역 전체가 header(고정 330px 좌측 사이드바)를 뺀 나머지에 owl-carousel 풀블리드 작업물 슬라이더 하나만 존재 — 텍스트 히어로 없이 work 캐러셀이 곧 홈페이지",
+    "작업물 기본 상태는 흰색 2px 테두리 프레임 + 중앙에 '좋아요' 카운트만 노출, hover 시 검은 반투명 오버레이로 확장되며 제목·태그·설명·View Post 버튼이 opacity/height 트랜지션으로 나타남",
+    "포트폴리오 목록 페이지(portfolio-2col/3col)는 isotope 기반 filter-grid — data-filter 태그(photography/model/nature/portrait)로 필터링, col-2·col-3 두 그리드 밀도 변형 제공",
+    "홈페이지 변형이 8종(home2~home8, home-video)이나 사이드바+캐러셀 구조인 index.html이 기본값이며, 그 외 about.html에만 services/about/team 섹션이 별도로 존재(홈에는 없음)"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "low"
+   },
+   "work": {
+    "cols": 2,
+    "filter_tabs": true,
+    "hover": "caption-overlay",
+    "layout": "filter-grid"
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "mixitup",
+     "vanta-three.js",
+     "vanilla-tilt",
+     "typer(typed-style)",
+     "counterup",
+     "jquery-knob",
+     "meanmenu",
+     "slick",
+     "fancybox"
+    ],
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": true
+   },
+   "footer_type": "minimal-line",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "overlay": true,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": true,
+    "cta_count": 1
+   },
+   "name": "procv-cv-resume-personal-portfolio-html-template-2026-01-10-06-49-23-utc",
+   "nav": {
+    "type": "topbar-static",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero(profile)",
+    "about",
+    "services",
+    "testimonials",
+    "pricing",
+    "clients",
+    "resume(experience+education)",
+    "skills",
+    "awards",
+    "more-about(knowledge/tools/hobbies list)",
+    "references(university/recognition logos)",
+    "work(portfolio, filter-grid)",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "signature": [
+    "히어로 인물 이미지 위에 ChatGPT/Midjourney 등 AI툴 로고 아이콘이 tilt 인터랙션과 함께 궤도처럼 배치",
+    "About~Contact 전체를 감싸는 흰색 rounded-corner 카드가 vanta-dots 캔버스 애니메이션 배경 위에 떠 있는 원페이지 앱쉘 구조",
+    "앵커 내비게이션이 원형 아이콘 pill로 표시되다 hover/active 시 200px 캡슐로 확장되며 라벨이 나타나는 독(dock)형 메뉴",
+    "magic-mouse.js 커스텀 커서 + counterup·jquery-knob 원형 스킬 게이지 조합"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-rounded",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   }
+  },
+  {
+   "name": "qurifolio-flask-personal-creative-portfolio-2025-08-06-11-59-01-utc",
+   "no_html": false,
+   "hero": {
+    "type": "bigtype-text",
+    "media": "photo",
+    "has_portrait": true,
+    "overlay": false,
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "cta_count": 0
+   },
+   "nav": {
+    "type": "topbar-static",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "work",
+    "skills",
+    "clients",
+    "testimonials",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "stacked-showcase",
+    "cols": 1,
+    "hover": "none",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "aos",
+     "slick",
+     "lenis",
+     "counterUp",
+     "magnific-popup",
+     "waypoints",
+     "wow",
+     "simpleParallax",
+     "metisMenu"
+    ],
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false,
+    "preloader": true
+   },
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "columns",
+   "signature": [
+    "히어로에 260px 대형 아웃라인 텍스트('Designer')가 6초 주기로 채워지는 스윕 애니메이션(data-text 의사요소 + width 키프레임)으로 표시되고 그 위에 인물 사진이 겹쳐짐",
+    "스크롤 유도 버튼이 59초 주기로 무한 회전하는 원형 배지(bg-round)로 구현됨",
+    "프로젝트 섹션이 그리드가 아니라 텍스트/이미지가 좌우 교대로 배치되는 풀블리드 스택형(row 반복, order-lg-2로 좌우 반전)",
+    "우측 하단 톱니바퀴 아이콘(gear-box)을 열면 라이트/다크 모드 토글과 Home 1/2/Single Page 레이아웃 전환 메뉴가 나옴"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "custom_cursor": false,
+    "libs": [
+     "swiper",
+     "isotope",
+     "wow",
+     "tilt"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": false,
+    "cta_count": 0,
+    "overlay": false
+   },
+   "name": "rainfo-portfolio-and-agency-template-2024-03-04-18-55-05-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "skills",
+    "services",
+    "work",
+    "awards",
+    "blog",
+    "footer/contact"
+   ],
+   "signature": [
+    "히어로가 5장 슬라이드 캐러셀: 좌측 카피/우측 이미지 50:50 분할, translateY 상하 전환 + 세로 텍스트 Prev/Next 화살표",
+    "슬라이드 번호용 12rem(약 190px) 대형 아웃라인 넘버(01) 전용 마크업 존재(.number-wrapper, 기본 display:none)",
+    "About/Skill/Service/Award/Blog 섹션 전부 좌우 50:50 w-50 이미지-텍스트 분할 레이아웃 반복",
+    "햄버거 클릭 시 화면 우측 폭 50%의 검정(#000) 오버레이 메뉴가 슬라이드로 펼쳐짐"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "grid",
+    "cols": 3,
+    "filter_tabs": false,
+    "hover": "caption-overlay"
+   }
+  },
+  {
+   "name": "rasalina-personal-portfolio-html5-template-2023-11-27-04-50-31-utc",
+   "hero": {
+    "type": "split-image",
+    "media": "illustration",
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": true,
+    "cta_count": 1,
+    "overlay": false
+   },
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "process",
+    "work",
+    "clients",
+    "testimonials",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 1,
+    "hover": "none",
+    "filter_tabs": true
+   },
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "slick",
+     "isotope",
+     "magnific-popup",
+     "wow.js",
+     "bootstrap"
+    ],
+    "preloader": true,
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "typography": {
+    "display_style": "serif-elegant",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "columns",
+   "signature": [
+    "라이트/다크 모드 토글 스위처 (히어로 nav의 switcher__tab, body.active-dark-mode 클래스, 아이콘 전부 light/dark 이중세트)",
+    "홈 포트폴리오 섹션이 slick 캐러셀로, 활성(중앙) 슬라이드에만 지름 438px 원형 블루 오버레이 캡션이 확대되며 나타남 (coverflow식 scale 0.785→1)",
+    "섹션마다 '01 - About me'식 두 자리 번호 서브타이틀 매김",
+    "별도 portfolio.html은 isotope 필터 탭 + 이미지·텍스트 좌우 교차(zigzag, nth-child even 반전) 풀와이드 행 레이아웃으로, 썸네일 그리드가 아님"
+   ],
+   "confidence": "med"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": false,
+    "libs": [
+     "owl-carousel",
+     "swiper",
+     "slick",
+     "photoswipe",
+     "parallax",
+     "mootools",
+     "birds-canvas"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "overlay": true,
+    "cta_count": 0,
+    "has_portrait": false
+   },
+   "name": "rebel-creative-portfolio-template-2025-05-29-15-28-20-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "stats",
+    "services",
+    "work",
+    "testimonials",
+    "blog(news)",
+    "contact",
+    "map(google-maps)",
+    "footer"
+   ],
+   "spacing": "airy",
+   "signature": [
+    "히어로 145px 대형 타이틀 아래 자동 순환되는 4종 서브타이틀 캐러셀(카피가 곧 CTA 링크)",
+    "서비스 항목마다 140px 반투명 아웃라인 숫자가 배경에 깔리는 넘버링 서비스 리스트",
+    "작업 썸네일 호버 시 40px 인셋 프레임(어두운 반투명 박스)+중앙 plus/share 아이콘 페이드인",
+    "동일 본문에 히어로/배경 연출만 바꾼 48종 index-*.html 변형 세트(파랄락스 싱글이미지, 스플릿 슬라이더, 켄번즈, 캐러셀, 이미지월, 캔버스 버즈, 유튜브/비메오/HTML5 비디오 등)를 통째로 제공"
+   ],
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "grid",
+    "cols": 2,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "jquery-stellar-parallax",
+     "lightbox2",
+     "qtip-tooltips",
+     "cbpQTRotator-testimonial-fader",
+     "custom-og-grid-expand"
+    ],
+    "preloader": false,
+    "shapes_or_lines": false,
+    "noise_or_texture": true,
+    "custom_cursor": false
+   },
+   "footer_type": "none",
+   "hero": {
+    "type": "card-profile",
+    "media": "photo",
+    "overlay": false,
+    "headline_align": "center",
+    "headline_scale": "M",
+    "cta_count": 0,
+    "has_portrait": true
+   },
+   "name": "resume-template-2026-07-10-15-08-25-utc",
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "none"
+   },
+   "no_html": false,
+   "sections": [
+    "hero",
+    "about",
+    "skills",
+    "testimonials",
+    "services",
+    "timeline",
+    "work",
+    "contact"
+   ],
+   "signature": [
+    "원형 프로필 사진 + 좌우 비대칭 라운드(50px 50px 50px 0px) 고정 top nav 캡슐",
+    "width% 인라인 스타일로 채워지는 막대형 스킬 그래프(#chart li)",
+    "클릭 시 그리드 아래로 인라인 확장되는 og-grid 포트폴리오(Expanding Image Grid, 오버레이 라이트박스 아님)",
+    "동일 구조에 색상만 다른 4벌 세트(blue/orange/yellow/gray) + 사이드 스타일 스위처 패널"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "condensed",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "grid",
+    "hover": "other",
+    "filter_tabs": false,
+    "cols": 4
+   }
+  },
+  {
+   "name": "rewall-personal-portfolio-template-2024-09-16-08-13-06-utc",
+   "hero": {
+    "type": "card-profile",
+    "media": "photo",
+    "overlay": false,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "has_portrait": true,
+    "cta_count": 0
+   },
+   "nav": {
+    "type": "sidebar-left",
+    "logo_style": "image"
+   },
+   "sections": [
+    "about (hero/intro)",
+    "biography (bio + info list + CV download + tabs: experience/education/skills with progress bars)",
+    "portfolio (masonry gallery)",
+    "service (pricing/service list)",
+    "customer (partner logos + testimonial carousel)",
+    "blog (news list)",
+    "contact (form + info)"
+   ],
+   "work": {
+    "layout": "masonry",
+    "cols": 2,
+    "hover": "other",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "rich",
+    "preloader": false,
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "shapes_or_lines": true,
+    "libs": [
+     "isotope (masonry only, no filter UI)",
+     "owl-carousel",
+     "magnific-popup (zoom lightbox)",
+     "wow.js (scroll reveal)",
+     "waypoints",
+     "parallax.js (mouse-move layered parallax)"
+    ]
+   },
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "none",
+   "signature": [
+    "좌측 고정 사이드바 내비게이션을 마우스로 직접 드래그해 폭을 조절(350~800px, e-resize 커서 + width_indicator)",
+    "섹션마다 마우스 움직임에 반응하는 레이어드 패럴랙스 히어로 이미지(parallax.js, data-depth)",
+    "프리셋 15종 이상의 '컬러 스킴 스위처' 패널 — 사이트 전체 배색을 실시간 프리뷰 전환",
+    "섹션 경계마다 '더블클릭으로 스크롤' 화살표 툴팁이 붙은 next-section 내비게이터"
+   ],
+   "confidence": "high"
+  },
+  {
+   "name": "scrape-creative-portfolio-template-2023-11-27-05-22-08-utc",
+   "confidence": "high",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "overlay": true,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "cta_count": 1,
+    "has_portrait": false
+   },
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "services",
+    "work",
+    "about",
+    "team",
+    "blog",
+    "contact-footer"
+   ],
+   "work": {
+    "layout": "grid",
+    "cols": 3,
+    "hover": "zoom",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": false,
+    "libs": [
+     "owl-carousel",
+     "morphext",
+     "particleground",
+     "magnific-popup",
+     "pace"
+    ],
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": true
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "columns",
+   "signature": [
+    "섹션 경계마다 skew-down-left/skew-up-right 유틸리티 클래스 + bg-skew PNG로 대각선 경사 분리선 처리",
+    "히어로 H1 일부가 Morphext(text-carousel)로 'Design, Creative, Architecture' 등 문구를 순환 표시",
+    "로딩 스크린 종료 후 h1 .hero__title 글자에 흰색 마스크가 좌→우로 슬라이드하며 드러나는 reveal 애니메이션(keyframes animation-h1-bg-reveal-in)",
+    "푸터 배경에 particleground.js 캔버스 파티클 애니메이션(.background--particles)"
+   ]
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "preloader": true,
+    "custom_cursor": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "libs": [
+     "masonry",
+     "owl-carousel",
+     "modernizr",
+     "simplebar"
+    ]
+   },
+   "footer_type": "none",
+   "hero": {
+    "type": "centered-minimal",
+    "media": "none",
+    "overlay": false,
+    "headline_align": "center",
+    "headline_scale": "L",
+    "has_portrait": false,
+    "cta_count": 1
+   },
+   "name": "sliim-personal-portfolio-2024-10-25-12-58-30-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "none"
+   },
+   "sections": [
+    "hero",
+    "about (bio+photo, resume/experience-education tabbed carousel, stats badges, skill bars)",
+    "work (portfolio grid)",
+    "contact (info boxes + form)",
+    "blog (latest posts list)"
+   ],
+   "signature": [
+    "작업 항목에 마우스를 올리면 커서를 따라다니는 프로젝트 제목 툴팁(#mousemove + .item-title-hover)",
+    "히어로에 사진 없이 텍스트만, 배경에 도트 패턴 장식(.right-dotted-shape)만 배치된 미니멀 구성",
+    "경력/학력을 owl-carousel 탭 전환(experience↔education)으로 같은 슬롯에서 스와핑",
+    "한 파일이 아니라 hero variant별 진입점 4종(index-image/-video/-animated-light/-animated-dark)으로 분기된 원-템플릿-다중-스킨 구조"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "masonry",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "isotope",
+     "owl-carousel",
+     "masterslider",
+     "lightbox",
+     "pace",
+     "modernizr"
+    ],
+    "custom_cursor": false,
+    "noise_or_texture": true,
+    "preloader": true,
+    "shapes_or_lines": false
+   },
+   "footer_type": "none",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "cta_count": 1,
+    "overlay": true
+   },
+   "name": "smarty-portfolio-photography-html-template-2023-11-27-04-49-46-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "no_html": false,
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "team",
+    "work",
+    "blog",
+    "contact"
+   ],
+   "signature": [
+    "사이드 메뉴 패널(고정 좌측 박스, 70px 오프셋) 하단에 카피라이트·소셜 아이콘 배치, 별도 전역 푸터는 없음",
+    "isotope 필터 그리드 포트폴리오 — 호버 시 사진 위로 제목+카테고리 캡션 오버레이가 올라옴",
+    "onscroll-animate data-animation 속성으로 섹션 진입 시 fadeInRight/Up 순차 등장, 각 요소 data-delay로 타이밍 제어",
+    "서비스/스킬을 원형 도넛 그래프(퍼센트)와 수평 막대 그래프 두 방식으로 반복 시각화"
+   ],
+   "spacing": "normal",
+   "typography": {
+    "display_style": "condensed",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "filter_tabs": true,
+    "hover": "caption-overlay"
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "isotope",
+     "animsition",
+     "magnific-popup",
+     "imagesLoaded"
+    ],
+    "preloader": false,
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "footer_type": "none",
+   "hero": {
+    "type": "none",
+    "media": "none",
+    "headline_align": "left",
+    "headline_scale": "S",
+    "has_portrait": false,
+    "overlay": false,
+    "cta_count": 0
+   },
+   "name": "sonex-minimalistic-portfolio-2023-11-27-05-34-58-utc",
+   "nav": {
+    "type": "sidebar-left",
+    "logo_style": "image"
+   },
+   "sections": [
+    "work"
+   ],
+   "signature": [
+    "워크 그리드 호버 시 검정 오버레이(opacity 0→1) + 중앙 정렬 캡션 텍스트가 scale(1.2→1)로 축소되며 노출 (style.css #works-grid .works-item:hover)",
+    "isotope+imagesLoaded 기반 masonry 필터 그리드, 동일 홈을 2/3/4열 컬럼 변형(index-columns-2/4.html)으로 별도 제공",
+    "고정 좌측 사이드바(폭 25%, float:left)에 로고·소개문·드롭다운 내비·워크 필터 위젯·트위터 위젯·카피라이트가 한 블록에 공존 — 별도 <footer> 태그 없이 사이드바 하단에 카피라이트 삽입",
+    "페이지 이동 시 animsition(class smooth-leave) 기반 슬라이드 오버레이 트랜지션 적용, 프로젝트 상세는 magnific-popup 갤러리+캐러셀"
+   ],
+   "spacing": "tight",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   }
+  },
+  {
+   "name": "swiftly-personal-branding-portfolio-template-2026-05-30-10-08-58-utc",
+   "hero": {
+    "type": "none",
+    "media": "none",
+    "headline_align": "center",
+    "headline_scale": "M",
+    "has_portrait": false,
+    "overlay": false,
+    "cta_count": 0
+   },
+   "nav": {
+    "type": "none",
+    "logo_style": "none"
+   },
+   "sections": [],
+   "work": {
+    "layout": "none",
+    "cols": 0,
+    "hover": "none",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "none",
+    "libs": [],
+    "preloader": false,
+    "custom_cursor": false,
+    "shapes_or_lines": false,
+    "noise_or_texture": false
+   },
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "low"
+   },
+   "spacing": "normal",
+   "footer_type": "none",
+   "signature": [
+    "코드 산출물 없음: zip 내용물이 Swiftly-Sketch_v1.0.sketch(Sketch 소스 파일) + Docs-TF-S.pdf(문서)뿐",
+    "HTML/CSS/JS가 전혀 포함되어 있지 않아 구조 해부 불가"
+   ],
+   "no_html": true,
+   "confidence": "high"
+  },
+  {
+   "confidence": "med",
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "owl-carousel",
+     "magnific-popup",
+     "bootstrap",
+     "jquery"
+    ],
+    "noise_or_texture": false,
+    "preloader": false,
+    "shapes_or_lines": false,
+    "custom_cursor": false
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "headline_align": "center",
+    "headline_scale": "L",
+    "overlay": true,
+    "has_portrait": false,
+    "cta_count": 0
+   },
+   "name": "sylor-agency-portfolio-html-template-2023-11-27-05-05-20-utc",
+   "nav": {
+    "type": "topbar-static",
+    "logo_style": "text"
+   },
+   "no_html": false,
+   "sections": [
+    "hero (owl-carousel full-width slider, 3 slides)",
+    "about-teaser (title-box + image + rotating intro-text carousel)",
+    "services-teaser (title-box + branding icon carousel)",
+    "work-teaser (title-box + mosaic portfolio thumbnails)",
+    "testimonials (client quote carousel)",
+    "blog (2 blog cards + latest-news widget)",
+    "newsletter (cta box with email form)",
+    "footer (location/phone widget, partner-logo widget, bottom link bar + copyright)"
+   ],
+   "signature": [
+    "홈 화면 자체가 개별 페이지 섹션이 아니라 About/Services/Portfolio/News를 01~04 번호 배지가 붙은 컬러코드(퍼플#6e40c1·블루#02a8f3·틸#019587) 박스들로 흩어놓은 벤토형 모자이크 그리드",
+    "body에 배경 이미지를 fixed·cover로 고정해 그 위에 여백 5px의 촘촘한 카드 타일들이 얹히는 구조",
+    "포트폴리오 목록이 isotope/masonry.js 없이 부트스트랩 col-sm-3/6 조합과 image-tall·image-db 커스텀 비율 클래스만으로 불규칙 모자이크를 수작업 배치",
+    "포트폴리오 박스 호버 시 figcaption(제목+서브텍스트)이 페이드인하고 동시에 magnific-popup 라이트박스용 확대 아이콘이 나타나는 이중 오버레이"
+   ],
+   "spacing": "tight",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "med"
+   },
+   "work": {
+    "layout": "masonry",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   }
+  },
+  {
+   "name": "textio-react-personal-portfolio-template-2026-05-01-03-04-20-utc",
+   "no_html": true,
+   "hero": {
+    "type": "card-profile",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "cta_count": 2,
+    "has_portrait": true,
+    "overlay": false
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "text"
+   },
+   "sections": [
+    "hero",
+    "skills",
+    "about",
+    "work",
+    "services",
+    "testimonials",
+    "marquee",
+    "pricing",
+    "clients",
+    "blog",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "filter-grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": true
+   },
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": false,
+    "libs": [
+     "swiper",
+     "motion"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "minimal-line",
+   "signature": [
+    "히어로 프로필 사진 옆에 원형으로 회전하는 'contact me' 뱃지와 화살표 링크가 떠 있음 (contact-rotate-wrapper)",
+    "서비스 섹션이 96px 대형 숫자급 텍스트 아코디언 형태 — 클릭 시 AnimateHeight로 feature 리스트와 원형 CTA 버튼이 펼쳐짐",
+    "무한 스크롤 마퀴 텍스트가 두 번 등장 (About 다음 큰 타이포 마퀴, Contact 상단 이메일/전화 마퀴) — stroke-only 텍스트가 교차 반복",
+    "포트폴리오 그리드가 big(58.5%)/mid(41.5%)/기본(1/3) 세 가지 폭 타일을 섞어 배치하는 비정형 그리드"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "name": "trito-personal-portfolio-template-2023-11-27-04-59-08-utc",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": true,
+    "overlay": false,
+    "cta_count": 2
+   },
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "clients",
+    "services",
+    "skills",
+    "stats",
+    "about",
+    "testimonials",
+    "work",
+    "faq",
+    "cta-band",
+    "blog",
+    "contact"
+   ],
+   "work": {
+    "layout": "grid",
+    "cols": 3,
+    "filter_tabs": false,
+    "hover": "caption-overlay"
+   },
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "owl-carousel",
+     "isotope",
+     "masonry",
+     "jquery"
+    ],
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": true
+   },
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "none",
+   "signature": [
+    "포트폴리오 그리드가 5칸마다 2장=50%폭·3장=33%폭으로 번갈아 배치되는 고정 비대칭 패턴 (li:nth-of-type(5n+1),(5n+2){width:50%} — 진짜 isotope masonry는 아니고 CSS 고정 패턴, JS의 masonry/isotope 함수는 이 페이지에서 미사용)",
+    "히어로가 좌측 텍스트 50%(이름 font-size 88px, letter-spacing -4px) + 우측 아바타 컷아웃 PNG 50%로 분할되고, 그 뒤를 풀블리드 배경사진(data-img-url)이 전체 100vh를 덮는 이중 레이어 구조",
+    "커스텀 원형 마우스 커서 (.mouse-cursor.cursor-outer/.cursor-inner, data-magic-cursor=\"show\" 속성으로 토글)",
+    "섹션 eyebrow 라벨(span)마다 좌측 24px·우측 65px 길이의 얇은 가로선이 :before/:after로 붙는 타이포 패턴, 헤딩은 Space Grotesk인데 어바웃 섹션의 '12+' 같은 강조 숫자만 Calistoga 세리프 폰트로 전환"
+   ]
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "preloader": true,
+    "custom_cursor": false,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "libs": [
+     "isotope",
+     "owl-carousel",
+     "jarallax",
+     "prettyphoto",
+     "fitvids"
+    ]
+   },
+   "footer_type": "none",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "overlay": false,
+    "has_portrait": true,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "cta_count": 1
+   },
+   "name": "ukko-personal-portfolio-html-template-2023-11-27-04-51-17-utc",
+   "nav": {
+    "type": "sidebar-right",
+    "logo_style": "text"
+   },
+   "no_html": false,
+   "sections": [
+    "hero",
+    "services",
+    "about",
+    "work",
+    "blog",
+    "skills",
+    "contact"
+   ],
+   "signature": [
+    "사이드 고정 내비게이션에 스크롤 연동 페이지 카운터 '01/07' (섹션 진입마다 숫자 fade 전환, main.js 104-121행)",
+    "히어로 대형 타이포(140px, 800weight, 빨강)가 인물사진 위에 절대배치로 겹쳐지는 레이아웃(entry-title absolute z-index:1 + block-right 이미지)",
+    "포트폴리오 그리드 호버 시 빨강/검정 캡션 패널이 translateX(-100%→0)로 슬라이드인",
+    "포트폴리오 아이템 클릭 시 페이지 이동 없이 ajax-portfolio로 같은 화면 내 콘텐츠 교체 로드(portfolio-load-content-holder)"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "grid",
+    "cols": 2,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   }
+  },
+  {
+   "name": "unded-creative-agency-portfolio-react-template-2024-01-15-17-52-05-utc",
+   "hero": {
+    "type": "other",
+    "media": "none",
+    "headline_align": "left",
+    "headline_scale": "M",
+    "cta_count": 0,
+    "has_portrait": false,
+    "overlay": false
+   },
+   "nav": {
+    "type": "none",
+    "logo_style": "none"
+   },
+   "sections": [],
+   "work": {
+    "layout": "none",
+    "cols": 0,
+    "filter_tabs": false,
+    "hover": "none"
+   },
+   "decor": {
+    "animations": "none",
+    "libs": [],
+    "preloader": false,
+    "custom_cursor": false,
+    "shapes_or_lines": false,
+    "noise_or_texture": false
+   },
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "low"
+   },
+   "spacing": "normal",
+   "footer_type": "none",
+   "signature": [
+    "React(CRA) 소스 템플릿 — 실제 화면 마크업이 담긴 정적 HTML이 없어 구조 판정 불가",
+    "public/index.html은 <div id=\"root\">만 있는 CRA 표준 셸(전체 내용 확인함, boilerplate뿐)",
+    "진입 후보 HTML은 documentation 4개(제외 대상)뿐, 그 외 index.html은 콘텐츠 없음",
+    "실제 UI는 src/main-component(HomePage~4 등)·src/components(hero/hero2/hero3, header/header3/header4, ProjectSection~S5, TeamSection, MarqueeSection, footer/footer2 등) JSX에 분산 — 절차상 미열람"
+   ],
+   "confidence": "low"
+  },
+  {
+   "name": "unded-creative-portfolio-figma-template-2024-01-19-16-16-30-utc",
+   "hero": {
+    "type": "none",
+    "media": "none",
+    "headline_align": "center",
+    "headline_scale": "M",
+    "has_portrait": false,
+    "cta_count": 0,
+    "overlay": false
+   },
+   "nav": {
+    "type": "none",
+    "logo_style": "none"
+   },
+   "sections": [],
+   "work": {
+    "layout": "none",
+    "cols": 0,
+    "filter_tabs": false,
+    "hover": "none"
+   },
+   "decor": {
+    "animations": "none",
+    "libs": [],
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "preloader": false,
+    "custom_cursor": false
+   },
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "low"
+   },
+   "spacing": "normal",
+   "footer_type": "none",
+   "signature": [],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "gsap",
+     "scrolltrigger",
+     "swiper"
+    ],
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "type": "split-image",
+    "media": "photo",
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "has_portrait": true,
+    "cta_count": 1,
+    "overlay": false
+   },
+   "name": "uniqeme-personal-portfolio-html-template-2025-12-13-01-10-50-utc",
+   "nav": {
+    "type": "topbar-static",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "video-band",
+    "skills",
+    "services",
+    "work",
+    "timeline",
+    "testimonials",
+    "clients",
+    "blog",
+    "footer"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "grid",
+    "cols": 2,
+    "hover": "color-shift",
+    "filter_tabs": false
+   },
+   "signature": [
+    "스킬 카드에 장식 프레임(shape-top/bottom.png)과 '## 1 ##' 아웃라인 번호 placeholder",
+    "히어로 양옆 세로 사이드바 — 전화번호/Follow Me 세로 텍스트+스크롤 화살표",
+    "경력/학력·클라이언트 리뷰를 아코디언(collapse) 토글로 열고 닫는 구조",
+    "섹션 사이 무한 반복 스와이퍼 마키 타이틀(project-title swiper)로 이름 자기소개 리본 삽입"
+   ]
+  },
+  {
+   "name": "upper-modern-comprehensive-portfolio-2023-11-27-05-20-50-utc",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "has_portrait": false,
+    "overlay": false,
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "work",
+    "services",
+    "about",
+    "clients",
+    "cta-band",
+    "footer"
+   ],
+   "work": {
+    "layout": "grid",
+    "cols": 3,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "revolution-slider",
+     "particles.js",
+     "owl-carousel",
+     "masonry.js",
+     "fancybox",
+     "wow.js",
+     "jquery.stellar",
+     "odometer"
+    ],
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "shapes_or_lines": true,
+    "preloader": true
+   },
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "high"
+   },
+   "spacing": "airy",
+   "footer_type": "minimal-line",
+   "signature": [
+    "스크롤 진입 시 포트폴리오 3열 그리드의 각 항목 위를 붉은 커튼(#e93951)이 아래로 스와이프하며 걷히는 'swipe-down' reveal 애니메이션(js/gridScrollFx.min.js + CSS keyframes)",
+    "햄버거 클릭 시 열리는 풀스크린 오버레이 내비게이션 내부에 particles.js 인터랙티브 파티클 배경이 깔림",
+    "main{margin-bottom:50vh} + footer{position:fixed;height:50vh;z-index:-1} 조합으로 본문이 끝나며 아래 고정된 푸터가 드러나는 reveal-footer 구조",
+    "Revolution Slider 기반 히어로: 160px 초대형 중앙정렬 텍스트가 hero1~3.jpg 배경사진 위에서 페이드 전환되고 'LEARN MORE' 클릭 시 하단 스크롤(scrollbelow action)"
+   ],
+   "confidence": "high"
+  },
+  {
+   "name": "valiser-responsive-portfolio-creative-email-2023-11-27-05-16-25-utc",
+   "no_html": false,
+   "hero": {
+    "type": "none",
+    "media": "none",
+    "headline_align": "left",
+    "headline_scale": "S",
+    "overlay": false,
+    "has_portrait": false,
+    "cta_count": 0
+   },
+   "nav": {
+    "type": "none",
+    "logo_style": "none"
+   },
+   "sections": [
+    "실제 확인 결과: 이 zip은 포트폴리오 웹사이트 템플릿이 아니라 'Valiser - Responsive Email & Online Template Builder V.2.0' 이라는 이메일 뉴스레터 템플릿 제품입니다",
+    "루트에 BUILDER/, Documentation/, Offline Templates/{Campaign Monitor,HTML,MailChimp}/, PSD/ 폴더만 존재",
+    "index.html(Offline Templates/HTML)은 <!DOCTYPE html40 Transitional>, table 기반 레이아웃, 인라인 style, MSO 대응 코드로 구성된 순수 이메일 마크업(1832줄)",
+    "<section>, <nav>, id 기반 섹션 구조 전무 (grep 결과 id=\"box\" 하나뿐) — hero/work/about 같은 포트폴리오 앵커 섹션 자체가 존재하지 않음",
+    "Swiper/Isotope/GSAP/AOS/Particles 등 포트폴리오형 라이브러리 흔적 없음 (grep 결과 0건)",
+    "Documentation 폴더에 별도 css/js/img가 있으나 이는 제품 사용설명서용이지 템플릿 본문 자산이 아님"
+   ],
+   "work": {
+    "layout": "none",
+    "hover": "none",
+    "cols": 0,
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "none",
+    "preloader": false,
+    "shapes_or_lines": false,
+    "noise_or_texture": false,
+    "custom_cursor": false,
+    "libs": []
+   },
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "low"
+   },
+   "spacing": "normal",
+   "footer_type": "none",
+   "signature": [
+    "이 파일은 '포트폴리오 템플릿'이 아니라 이메일/뉴스레터 HTML 템플릿 빌더 제품임 (제목 자체가 'Responsive Email & Online Template Builder')",
+    "구조가 table 기반 이메일 레이아웃(td/tr 중첩, MSO 조건부 주석)이라 웹 포트폴리오의 hero/nav/work 개념이 적용되지 않음",
+    "Campaign Monitor / MailChimp / 순수 HTML 3종의 이메일 서비스별 변형 버전 제공이 이 제품의 실제 특징",
+    "파일이 'Design/Portfolio' 폴더에 들어있던 것은 분류 오류로 추정 — 재조립 가능한 포트폴리오 부품 카탈로그 소스로는 부적합"
+   ],
+   "confidence": "low"
+  },
+  {
+   "name": "veltrixo-figma-agency-studio-personal-portfolio-2026-06-18-10-23-13-utc",
+   "no_html": true,
+   "hero": {
+    "type": "none",
+    "media": "none",
+    "headline_align": "center",
+    "headline_scale": "M"
+   },
+   "nav": {
+    "type": "none",
+    "logo_style": "none"
+   },
+   "sections": [],
+   "work": {
+    "layout": "none"
+   },
+   "decor": {
+    "animations": "none",
+    "libs": [],
+    "preloader": false,
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "shapes_or_lines": false
+   },
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "med"
+   },
+   "spacing": "normal",
+   "footer_type": "none",
+   "signature": [],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "masonry.min.js",
+     "jquery.themepunch.revolution (slider)",
+     "jquery.stellar.js (parallax)",
+     "jquery.swipebox.js (lightbox)",
+     "jquery.counterup.min.js",
+     "jquery.textrotater.js",
+     "wow.js + animate.css"
+    ],
+    "preloader": true,
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "shapes_or_lines": true
+   },
+   "footer_type": "big-cta",
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "overlay": false,
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "cta_count": 0,
+    "has_portrait": false
+   },
+   "name": "wave-agency-freelancer-portfolio-2023-11-27-05-00-54-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "work",
+    "services",
+    "cta-band",
+    "stats",
+    "footer"
+   ],
+   "signature": [
+    "로딩 화면에 텍스트로터(jquery.textrotater.js)로 문구가 순환 표시됨 ('Hey please wait' → 'Still loading')",
+    "햄버거 클릭 시 뮤트 비디오 배경(opacity 0.1) 위에 대형 자간(20px) 풀스크린 내비게이션 오버레이가 열림",
+    "쇼케이스 마소너리 그리드(20%/40% 폭 혼합) 각 셀에 알파벳 이니셜+반투명 컬러 오버레이 캡션이 hover 시 노출",
+    "커스텀 디스플레이 폰트 'jaapokki'로 90~100px 초대형 헤드라인 구성, 본문은 Lato, 인용구만 세리프 Playfair Display"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "masonry",
+    "cols": 5,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "fullPage.js",
+     "Owl Carousel",
+     "Slick",
+     "Lity",
+     "easyPieChart",
+     "jquery.appear"
+    ],
+    "preloader": true,
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "shapes_or_lines": true
+   },
+   "footer_type": "none",
+   "hero": {
+    "type": "fullscreen-image",
+    "media": "photo",
+    "overlay": true,
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "cta_count": 0,
+    "has_portrait": false
+   },
+   "name": "wext-one-page-portfolio-template-2025-11-29-14-12-45-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero (#home, single full-bleed bg image + giant stacked wordmark)",
+    "about (#about, internally an Owl Carousel of 4 sub-panels: testimonial quotes via Slick, then 3 easyPieChart % rings for Customer Care/Process Control/Quality Result)",
+    "works (#works, internally an Owl Carousel of 6 sub-panels: intro text, image-gallery lightbox x2, YouTube video, Vimeo video, single popup image)",
+    "contact (#contact, internally an Owl Carousel of 2 sub-panels: email CTA, then address/social/phone 3-col grid)"
+   ],
+   "signature": [
+    "섹션 자체가 fullPage.js 세로 스크롤 위에 얹힌 Owl Carousel 가로 슬라이드 — 즉 home/about/works/contact 4개 섹션 각각이 내부적으로 스와이프 가능한 서브 패널 덱으로 다시 쪼개지는 이중 내비게이션 구조",
+    "히어로 300px / 섹션 타이틀 200px, letter-spacing -0.08em 대문자 스택형 초대형 워드마크(Montserrat/Raleway 700-900)가 시그니처 타이포",
+    "내비게이션은 fullPage 페이징과 별개로 화면 폭 20%짜리 우측 슬라이드 패널(hamburger-overlay), 63x50px 애니메이션 햄버거 버튼으로 트리거",
+    "about 섹션 서브슬라이드에 jquery.appear로 스크롤 진입 시 카운트업되는 easyPieChart 퍼센트 링(76/66/56%)이 Slick 테스티모니얼과 나란히 배치"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-grotesk",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "carousel",
+    "cols": 1,
+    "hover": "none",
+    "filter_tabs": false
+   }
+  },
+  {
+   "confidence": "high",
+   "name": "whitespace-portfolio-agency-website-template-2024-12-10-12-31-53-utc",
+   "no_html": false,
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "headline_align": "center",
+    "headline_scale": "L",
+    "overlay": false,
+    "has_portrait": false,
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "services",
+    "testimonials",
+    "team",
+    "cta-band",
+    "work",
+    "clients",
+    "footer"
+   ],
+   "work": {
+    "layout": "grid",
+    "cols": 4,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "subtle",
+    "libs": [
+     "isotope",
+     "slick",
+     "magnific-popup",
+     "revolution-slider",
+     "imagesloaded",
+     "nouislider"
+    ],
+    "preloader": false,
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "shapes_or_lines": false
+   },
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "med"
+   },
+   "spacing": "normal",
+   "footer_type": "columns",
+   "signature": [
+    "헤더가 2단 구조: 상단 유틸리티 바(전화/이메일/로그인/장바구니/언어선택)+하단 메가메뉴 내비, 메가메뉴 자체가 12개 홈페이지 베리언트(Corporate/Creative/Portfolio/One Page) 스위처 역할",
+    "히어로가 풀블리드가 아니라 container 폭 안에 담긴 Revolution Slider('slider_with_offset' 클래스)로, 로고+서브타이틀+타이틀+CTA가 중앙 정렬 캡션으로 페이드 전환",
+    "포트폴리오 목록은 페이지별로 다른 배치 제공: 홈 'Recent Projects'는 4열 고정 그리드+호버 캡션 오버레이, 별도 portfolio-masonry.html은 isotope 기반 카테고리 필터(.isot-filters data-filter) 매소너리",
+    "푸터 위젯 4칼럼이 isotope row로 감싸져 있고 그 중 하나가 실시간 Instagram 피드 위젯(data-instagram)"
+   ]
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": false,
+    "libs": [
+     "fullpage.js",
+     "slick",
+     "owl.carousel",
+     "lity",
+     "scrollmagic",
+     "mgGlitch (variant only)",
+     "wave.js (variant only)"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": false
+   },
+   "footer_type": "none",
+   "hero": {
+    "cta_count": 0,
+    "has_portrait": false,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "media": "photo",
+    "overlay": true,
+    "type": "slider"
+   },
+   "name": "wildone-photography-portfolio-template-2025-06-17-14-27-38-utc",
+   "nav": {
+    "logo_style": "monogram",
+    "type": "hamburger-overlay"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "services",
+    "work",
+    "news",
+    "contact"
+   ],
+   "signature": [
+    "섹션마다 제목 뒤에 대형(120px) 반투명/컬러 아웃라인 텍스트가 배경으로 겹침 (예: 'About' 뒤에 큰 빨간 반투명 'About')",
+    "fullPage.js 기반 1스크린=1섹션 스냅 스크롤 (hamburger-overlay 메뉴, section0~5)",
+    "about/services/contact가 좌우 50:50 분할(텍스트 vs 이미지/슬라이더)로 반복되는 그리드 패턴, services는 좌우 색 반전(dark/light) 2세트 교차 배치",
+    "히어로가 index 변형마다 교체 가능한 모듈형 배경(슬라이드쇼/단일이미지/비디오/글리치/비/필름그레인/웨이브)으로 13개 index-*.html 프리셋 제공"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "cols": 3,
+    "filter_tabs": false,
+    "hover": "caption-overlay",
+    "layout": "carousel"
+   }
+  },
+  {
+   "name": "wythe-creative-portfolio-html-template-2023-11-27-04-56-29-utc",
+   "no_html": false,
+   "hero": {
+    "type": "slider",
+    "media": "photo",
+    "overlay": false,
+    "headline_align": "left",
+    "headline_scale": "M",
+    "has_portrait": false,
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "topbar-static",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "about",
+    "work",
+    "services",
+    "clients",
+    "blog",
+    "cta-band",
+    "team",
+    "contact",
+    "footer"
+   ],
+   "work": {
+    "layout": "masonry",
+    "cols": 5,
+    "filter_tabs": false,
+    "hover": "other"
+   },
+   "decor": {
+    "shapes_or_lines": false,
+    "custom_cursor": false,
+    "noise_or_texture": false,
+    "preloader": false,
+    "animations": "subtle",
+    "libs": [
+     "revolution-slider",
+     "owl.carousel",
+     "masonry",
+     "lightcase"
+    ]
+   },
+   "typography": {
+    "display_style": "mixed",
+    "size_contrast": "med"
+   },
+   "spacing": "airy",
+   "footer_type": "columns",
+   "signature": [
+    "포트폴리오 타일 호버 시 이미지+제목 헤더 전체가 대각선(55px,-55px)으로 밀려나며 좋아요/날짜/화살표 메타 정보가 모서리에서 슬라이드인",
+    "Revolution Slider 풀스크린 히어로: 슬라이드마다 아이패드/아이폰 목업, 회전하는 원형 그래픽 등 레이어 애니메이션이 다름",
+    "요소가 뷰포트에 들어올 때 data-scrolled-into-view 속성 기반 순차 페이드인(자식마다 0.2s씩 지연)",
+    "포트폴리오 그리드는 20%/40% 폭 타일이 섞인 masonry 배치이며 타일별 dark/light 배경이 교차"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "custom_cursor": true,
+    "libs": [
+     "swiper",
+     "isotope",
+     "gsap(tween-max)",
+     "wow.js",
+     "odometer",
+     "slick",
+     "magnific-popup"
+    ],
+    "noise_or_texture": false,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "split-image",
+    "media": "illustration",
+    "headline_align": "left",
+    "headline_scale": "L",
+    "overlay": false,
+    "cta_count": 1,
+    "has_portrait": false
+   },
+   "name": "xolio-creative-agency-portfolio-template-2023-11-27-05-10-24-utc",
+   "nav": {
+    "type": "transparent-then-solid",
+    "logo_style": "image"
+   },
+   "no_html": false,
+   "sections": [
+    "hero(banner-area)",
+    "services",
+    "about",
+    "team",
+    "work(project-area, swiper carousel)",
+    "testimonials",
+    "cta-band(consultation-area, form)",
+    "blog",
+    "newsletter",
+    "footer"
+   ],
+   "signature": [
+    "섹션마다 떠다니는 배경 데코 도형(rotateme/float-bob-x/ribbonRotate 클래스, banner/team/project/consultation/newsletter 모두 shape-wrap 보유)",
+    "드래그 커스텀 커서(mouseCursor cursor-outer/cursor-inner, 'Drag' 텍스트)가 프로젝트 슬라이더에 결합",
+    "헤더에 확장형 연락처 패널 내장(상단 메뉴 클릭 시 이메일·주소·영업시간+상담폼 미니 대시보드가 펼쳐짐, header-contact-wrap)",
+    "히어로가 사진이 아닌 얼굴 없는 3D 캐릭터 일러스트(팀 협업 장면)"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "carousel",
+    "hover": "none",
+    "filter_tabs": false
+   }
+  },
+  {
+   "name": "xorim-personal-portfolio-template-2026-06-12-22-37-32-utc",
+   "no_html": false,
+   "hero": {
+    "type": "split-image",
+    "media": "illustration",
+    "has_portrait": true,
+    "overlay": false,
+    "headline_align": "left",
+    "headline_scale": "L",
+    "cta_count": 1
+   },
+   "nav": {
+    "type": "topbar-fixed",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero",
+    "services",
+    "about",
+    "skills",
+    "marquee",
+    "timeline",
+    "work",
+    "testimonials",
+    "clients",
+    "pricing",
+    "cta-band",
+    "contact",
+    "blog",
+    "footer"
+   ],
+   "work": {
+    "layout": "grid",
+    "cols": 2,
+    "hover": "zoom",
+    "filter_tabs": false
+   },
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "swiper",
+     "isotope",
+     "gsap",
+     "typed",
+     "wow",
+     "magnific-popup"
+    ],
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "typography": {
+    "display_style": "condensed",
+    "size_contrast": "med"
+   },
+   "spacing": "normal",
+   "footer_type": "columns",
+   "signature": [
+    "히어로가 4:8 컬럼 분할 — 왼쪽엔 일러스트 인물+소셜링크, 오른쪽엔 typed.js로 직함이 순환 타이핑되는 헤드라인",
+    "브랜드 영역이 텍스트 단어(Marketing/Branding/Design/Development)만 좌우로 흐르는 마퀴 스타일",
+    "경력/학력 섹션이 탭(내 경력·내 교육) 전환형 좌우 분할 타임라인 리스트로 구성",
+    "포트폴리오 카드에 썸네일 줌 호버 + 원형 화살표 버튼(pf-btn)이 겹쳐지는 구조"
+   ],
+   "confidence": "high"
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "subtle",
+    "custom_cursor": false,
+    "libs": [
+     "fullpage.js",
+     "owl.carousel",
+     "slick",
+     "swiper",
+     "magnificPopup",
+     "lity"
+    ],
+    "noise_or_texture": true,
+    "preloader": true,
+    "shapes_or_lines": true
+   },
+   "footer_type": "none",
+   "hero": {
+    "cta_count": 0,
+    "has_portrait": false,
+    "headline_align": "left",
+    "headline_scale": "XL",
+    "media": "photo",
+    "overlay": true,
+    "type": "fullscreen-image"
+   },
+   "name": "yex-one-page-portfolio-template-2025-01-17-10-57-26-utc",
+   "nav": {
+    "logo_style": "image",
+    "type": "sidebar-right"
+   },
+   "sections": [
+    "hero(home)",
+    "about(team+works-teaser 3-slide carousel)",
+    "work(works, 6-slide fullbleed carousel incl. image-gallery lightbox item)",
+    "news(featured news 4-item carousel with expandable 'more')",
+    "contact(address/web/phone/social, no form)"
+   ],
+   "signature": [
+    "fullPage.js로 5개 섹션(홈/about/works/news/contact)이 화면 전체 높이로 세로 스냅되고, 그 각 섹션 내부에 다시 owl-carousel 가로 서브슬라이드가 중첩되는 '섹션 속 캐러셀' 이중 구조",
+    "헤로는 초대형 좌측정렬 헤드라인(데스크톱 100px, 1920px+ 140px, 모바일 50px)에 20% 다크 오버레이를 얹은 풀스크린 배경 이미지이며, 동일 마크업에 헤로만 6종(단일이미지/슬라이드쇼 zoom-fade/켄번즈/패럴랙스 슬라이더/유튜브/비메오)으로 교체 가능한 데모 세트로 제공됨",
+    "light-mode/dark-mode/dark-mode-2 섹션이 번갈아 배치되고 각 콘텐츠 블록 모서리에 30px 간격 반복되는 회색 radial-gradient 도트그리드 배경(.the-dots)이 깔림",
+    "내비게이션은 우측에서 슬라이드 인되는 폭 20%·풀하이트 고정 패널(#menu-mobile, 흰 배경, 700weight 대문자 메뉴)이며 별도 접촉 폼 없이 contact 섹션은 mailto 링크+주소/전화/소셜 아이콘만으로 구성됨"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "cols": 1,
+    "filter_tabs": false,
+    "hover": "other",
+    "layout": "carousel"
+   }
+  },
+  {
+   "confidence": "high",
+   "decor": {
+    "animations": "rich",
+    "libs": [
+     "owl-carousel",
+     "photoswipe",
+     "mootools"
+    ],
+    "preloader": true,
+    "shapes_or_lines": true,
+    "noise_or_texture": false,
+    "custom_cursor": false
+   },
+   "footer_type": "columns",
+   "hero": {
+    "type": "collage",
+    "media": "photo",
+    "headline_align": "center",
+    "headline_scale": "XL",
+    "overlay": true,
+    "cta_count": 0,
+    "has_portrait": false
+   },
+   "name": "youth-creative-portfolio-template-2025-05-29-15-28-20-utc",
+   "nav": {
+    "type": "hamburger-overlay",
+    "logo_style": "image"
+   },
+   "sections": [
+    "hero/home",
+    "about",
+    "facts",
+    "services",
+    "work",
+    "testimonials",
+    "news",
+    "contact",
+    "google-maps",
+    "footer"
+   ],
+   "spacing": "airy",
+   "typography": {
+    "display_style": "sans-geometric",
+    "size_contrast": "high"
+   },
+   "work": {
+    "layout": "stacked-showcase",
+    "cols": 2,
+    "hover": "caption-overlay",
+    "filter_tabs": false
+   },
+   "signature": [
+    "히어로 전체가 살아있는 이미지 타일 '더 월'(#wall, JS로 렌더) — 40장 사진이 뷰포트를 꽉 채운 콜라주, static/slider 두 변종 제공",
+    "동일 본문(About·Services·Works·Testimonials·News·Contact) 위에 히어로만 6종(이미지월/켄번즈 슬라이드쇼/싱글이미지/싱글이미지+영상재생버튼/유튜브영상)으로 갈아끼우는 index-*.html 세트 구조",
+    "H1 홈타이틀 145px 초대형 산세리프(Montserrat) 중앙 배치 + 서브타이틀은 owl-carousel로 문구 자동전환",
+    "Works는 필터 그리드가 아닌 2열 PhotoSwipe 라이트박스, 호버 시 캡션+플러스/공유 아이콘 오버레이"
+   ]
+  }
+ ]
+}
