@@ -470,9 +470,8 @@ body[data-fam="corporate"] .card:hover{border-left-color:var(--acc);transform:tr
 /* contact v1 좌정렬 / v2 박스 */
 #contact[data-v="1"]{text-align:left;}
 #contact[data-v="1"] .eyebrow{justify-content:flex-start !important;}
-#contact[data-v="2"] .wrap,#contact[data-v="2"]{text-align:center;}
-#contact[data-v="2"].contact{padding:60px 0;}
-#contact[data-v="2"] .wrap{background:var(--surf);border:1px solid var(--line);border-radius:calc(var(--rad) + 10px);padding:clamp(34px,5vw,64px);}
+#contact[data-v="2"]{text-align:center;background:var(--surf);border:1px solid var(--line);border-radius:calc(var(--rad) + 10px);
+  padding:clamp(34px,5vw,64px) clamp(20px,4vw,56px);margin-bottom:40px;}
 
 /* ---------- 부품: 작업 필터탭 (실측 1위 배치, 47개) ---------- */
 .wtabs{display:none;gap:8px;flex-wrap:wrap;margin-bottom:26px;}
