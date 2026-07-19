@@ -192,6 +192,9 @@ function tplPreviewUrl(t){
   l.case=(SANS_POOL.includes(disp)&&(H>>>17&3)===0)?'upper':'';
   l.imgStart=(H>>>19)%6;
   l.aspect=['4/3','3/2','4/5'][(H>>>21)%3];
+  l.flow=(H>>>23)%6;                                   // 섹션 구성 흐름 6종
+  l.about=['','center','bar'][(H>>>26)%3];             // 소개 레이아웃 3변형
+  if((H>>>29&7)===0)l.nav='side';                      // 1/8 확률 사이드 내비
   const tok={c:{bg,surf:_mix(bg,ink,dark?.09:.05),ink,mut:_mix(ink,bg,.42),line:dark?'rgba(255,255,255,.12)':'rgba(17,17,17,.13)',acc,acc2},
     f:{disp,body},l,
     m:{fam:clean(t.name),famko:'',pal:(FAM[t.family]?.ko||t.family)+' 무드',k:t.family}};

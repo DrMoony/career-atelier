@@ -437,6 +437,9 @@ function synthTokens(variant=0){
   else{bg=mix(byL[byL.length-1],'#FFFFFF',0.5);ink=mix(byL[0],'#0A0B0C',0.4);if(lum(ink)>0.4)ink=mix(ink,'#111',0.6);}
   const surf=dark?mix(bg,ink,0.09):mix(bg,ink,0.045),mut=mix(ink,bg,0.42),line=dark?'rgba(255,255,255,.12)':'rgba(17,17,17,.13)';
   const L=layoutTokens(); L.imgStart=variant%6;
+  const baseFlow=({scroll:0,sections:2,sidebar:4})[oChoice.structure]??0;
+  L.flow=(baseFlow+variant)%6;                       // 재생성마다 구성 흐름도 회전
+  L.about=V.density>0.5?'center':'';
   return{c:{bg,surf,ink,mut,line,acc,acc2},f:fontPair(best.k,V.type),l:L,m:{fam:best.name,famko:best.ko,pal:p.en,k:best.k}};
 }
 let genVariant=0;
