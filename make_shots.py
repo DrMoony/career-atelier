@@ -13,7 +13,8 @@ from concurrent.futures import ThreadPoolExecutor
 HERE   = os.path.dirname(os.path.abspath(__file__))
 SRC    = "/Volumes/Pool/Cloud/2_user-biz/Design/Portfolio"
 WORK   = "/Volumes/Pool/Cloud/2_user-biz/Design/.atelier-shots-work"
-OUT    = os.path.join(HERE, "assets", "shots")
+FULL   = os.environ.get("FULL") == "1"
+OUT    = os.path.join(HERE, "assets", "shots-full" if FULL else "shots")
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 SKIP_DIR = re.compile(r'(^|/)(documentation|docs?|licen[cs]e|readme|__macosx|source[-_ ]?files?|psd|sketch-?files?)(/|$)', re.I)
 PREFER   = re.compile(r'(^|/)(main|html|demo|template|dist|build|preview|site)(/|$)', re.I)
@@ -57,13 +58,13 @@ def shoot(zname):
         png = os.path.join(dest, "__shot.png")
         url = "file://" + os.path.join(dest, entry)
         r = subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars",
-                            "--window-size=1280,860", "--virtual-time-budget=30000",
+                            "--window-size=1280,5200" if FULL else "--window-size=1280,860", "--virtual-time-budget=30000",
                             "--timeout=20000", "--screenshot=" + png, url],
                            capture_output=True, timeout=60)
         if not os.path.exists(png) or os.path.getsize(png) < 5000:
             return slug, "chrome-fail"
-        subprocess.run(["sips", "-Z", "640", "-s", "format", "jpeg",
-                        "-s", "formatOptions", "72", png, "--out", out],
+        subprocess.run(["sips", "--resampleWidth", "800" if FULL else "640", "-s", "format", "jpeg",
+                        "-s", "formatOptions", "60" if FULL else "72", png, "--out", out],
                        capture_output=True, timeout=30)
         if not os.path.exists(out):
             return slug, "sips-fail"

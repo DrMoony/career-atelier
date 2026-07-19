@@ -49,8 +49,16 @@ header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0C
 .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;
   display:flex;flex-direction:column;transition:.18s}
 .card:hover{border-color:var(--gold2);transform:translateY(-2px)}
-.shot{display:block;width:100%;aspect-ratio:640/430;object-fit:cover;object-position:top;background:var(--panel2);border-bottom:1px solid var(--line)}
+.shot{display:block;width:100%;aspect-ratio:640/430;object-fit:cover;object-position:top;background:var(--panel2);border-bottom:1px solid var(--line);cursor:zoom-in}
 .card:hover .shot{opacity:.92}
+/* 원본 풀페이지 라이트박스 */
+.lb{position:fixed;inset:0;z-index:80;display:none;background:rgba(4,6,7,.88);overflow-y:auto;padding:34px 16px 60px;backdrop-filter:blur(4px)}
+.lb.on{display:block}
+.lb img{display:block;width:min(920px,95vw);margin:0 auto;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lb .lbcap{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:10px;
+  width:min(920px,95vw);margin:0 auto 12px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:13px}
+.lb .lbcap b{text-transform:capitalize}
+.lb .lbx{background:var(--gold);color:#100C05;border:0;border-radius:8px;font-weight:700;font-size:13px;padding:6px 14px;cursor:pointer;font-family:inherit}
 .pal{display:flex;height:96px}
 .card.has-shot .pal{height:26px}
 .pal span{flex:1;transition:flex .2s}
@@ -110,6 +118,7 @@ header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0C
   <p class="note" id="note"></p>
 </div>
 <div class="toast" id="toast"></div>
+<div class="lb" id="lb"><div class="lbcap"><span>원본 전체 페이지 캡처 — <b id="lbName"></b></span><button class="lbx" id="lbClose">닫기 ✕</button></div><img id="lbImg" alt=""></div>
 
 <script>
 const FAM = {
@@ -218,7 +227,7 @@ function tplPreviewUrl(t){
     f:{disp,body,dispKr,bodyKr},l,
     p:{ind:PACK_KEYS[(H>>>2)%PACK_KEYS.length]},   /* 샘플 페르소나도 로테이션 — 카피·사진·프로젝트가 통째로 달라짐 */
     m:{fam:clean(t.name),famko:'',pal:(FAM[t.family]?.ko||t.family)+' 무드',k:t.family}};
-  return 'preview.html#'+encodeURIComponent(JSON.stringify(tok));
+  return 'preview.html?v13#'+encodeURIComponent(JSON.stringify(tok));  /* 쿼리 = 구버전 캐시 무효화 */
 }
 
 function render(){
@@ -241,11 +250,12 @@ function render(){
     const col = `var(${f.c})`;
     const pal = (t.palette||[]).slice(0,5).map(h=>`<span style="background:${h}" data-hex="${h}" title="${h}"></span>`).join('');
     const pv = tplPreviewUrl(t);
-    const demo = (pv?`<a class="demo" href="${pv}" target="_blank" rel="noopener" title="이 템플릿의 실측 색·무드를 우리 렌더러에 입혀 미리보기">이 무드로 미리보기 ↗</a>`:'')
+    const demo = `<a class="demo" data-full="${slug(t.name)}" title="원본 전체 페이지 캡처 보기">원본 전체 보기</a>`
+      + (pv?` <a class="demo" href="${pv}" target="_blank" rel="noopener" title="이 템플릿의 색·무드를 우리 렌더러가 새로 지은 페이지로">재창조 미리보기 ↗</a>`:'')
       + (LOCAL ? ` <a class="demo" href="demo?z=${encodeURIComponent(t.name)}" target="_blank" rel="noopener">원본 데모 ↗</a>` : '');
     const conf = (t.confidence||'med').toLowerCase();
     return `<div class="card has-shot">
-      <img class="shot" src="assets/shots/${slug(t.name)}.jpg" alt="" loading="lazy"
+      <img class="shot" src="assets/shots/${slug(t.name)}.jpg" alt="" loading="lazy" data-full="${slug(t.name)}"
         onerror="this.remove();this.closest('.card').classList.remove('has-shot')">
       <div class="pal">${pal}</div>
       <div class="cbody">
@@ -289,7 +299,20 @@ document.getElementById('bgseg').onclick = e=>{ const b=e.target.closest('button
   [...e.currentTarget.children].forEach(c=>c.classList.remove('on')); b.classList.add('on');
   state.bg=b.dataset.bg; render(); };
 document.getElementById('q').oninput = e=>{ state.q=e.target.value; render(); };
+/* 원본 풀페이지 라이트박스 */
+const lb=document.getElementById('lb'), lbImg=document.getElementById('lbImg'), lbName=document.getElementById('lbName');
+function openFull(slugName){
+  lbName.textContent=clean(slugName+'.zip');
+  lbImg.onerror=()=>{ lbImg.onerror=()=>{ lb.classList.remove('on'); toast('이 템플릿은 Figma/React 소스라 정적 캡처가 없어요'); };
+    lbImg.src='assets/shots/'+slugName+'.jpg'; };            // 풀 캡처 없으면 상단 캡처로 폴백
+  lbImg.src='assets/shots-full/'+slugName+'.jpg';
+  lb.classList.add('on'); lb.scrollTop=0;
+}
+document.getElementById('lbClose').onclick=()=>lb.classList.remove('on');
+lb.addEventListener('click',e=>{ if(e.target===lb) lb.classList.remove('on'); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') lb.classList.remove('on'); });
 document.getElementById('grid').addEventListener('click', e=>{
+  const fl=e.target.closest('[data-full]'); if(fl){ e.preventDefault(); openFull(fl.dataset.full); return; }
   const s=e.target.closest('.pal span'); if(s&&s.dataset.hex){ navigator.clipboard?.writeText(s.dataset.hex); toast(s.dataset.hex+' 복사됨'); }
 });
 
@@ -304,7 +327,7 @@ fetch('template-classification.json').then(r=>r.json()).then(data=>{
   render();
   document.getElementById('note').innerHTML =
     `카드 상단 이미지는 각 템플릿을 <b>실제로 렌더링해 캡처한 원본 스크린샷</b>이에요. 분류 근거: 각 템플릿의 CSS·HTML을 열어 실제 배경·팔레트·폰트·레이아웃을 읽고 8개 디자인 패밀리로 나눴어요 (전수 115개). 팔레트 색을 클릭하면 hex가 복사돼요. `
-    + `'이 무드로 미리보기'는 각 템플릿의 실측 색·무드를 우리 렌더러에 입혀 <b>실제 포트폴리오 페이지로</b> 보여줘요.`
+    + `카드 이미지나 <b>'원본 전체 보기'</b>를 누르면 그 템플릿의 <b>전체 페이지 캡처</b>가 열려요 — 샘플 확인은 이걸로. '재창조 미리보기'는 그 색·무드를 우리 렌더러가 <b>새로 지은</b> 페이지(원본 아님)예요.`
     + (LOCAL ? ` '원본 데모'는 로컬에서 zip을 풀어 띄웁니다.` : ` (상용 원본 데모는 로컬 <code>python3 serve.py</code> 전용)`)
     + ` · <a href="design-quiz.html">취향 진단으로 방향 찾기 →</a>`;
 });
