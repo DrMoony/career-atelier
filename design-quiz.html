@@ -418,40 +418,96 @@ function layoutTokens(){
   const dens=+(1+0.18*V.density).toFixed(2);
   return{hero,nav,work,motion,rad,dens};
 }
+/* ---------- 부품 조합 엔진 v2 ----------
+   퀴즈 답변을 은유적으로 부품 공간(해부 카탈로그에서 구현된 히어로 6종·내비 3종·
+   배치 4종·섹션 16종·장식)에 매핑. 명시 답변(레이아웃 6문)은 앵커로 고정하고,
+   나머지는 취향 축이 가중치를 주는 시드 조합 — 재생성마다 시드가 돌아
+   같은 취향 안에서도 서로 다른 형태가 나온다. 색은 스킴·지터로 자유도를 높이되
+   렌더러의 fixColors가 가독성을 보증한다. */
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 function synthTokens(variant=0){
   const p=PAL.find(x=>x.id===selPalId),{best}=nearest();
-  const cols=p.c.map(c=>c[0]),dark=V.mood<0,byL=[...cols].sort((a,b)=>lum(a)-lum(b));
+  /* 시드: 답변 전체 + 팔레트 + variant → 결정론적이되 재생성마다 회전 */
+  let seed=2166136261;
+  const sig=selPalId+'|'+JSON.stringify(oChoice)+'|'+AXES.map(a=>Math.round(V[a.k]*8)).join(',')+'|'+variant;
+  for(let i=0;i<sig.length;i++){seed^=sig.charCodeAt(i);seed=Math.imul(seed,16777619);}
+  const R=mulberry32(seed>>>0), pick=arr=>arr[Math.floor(R()*arr.length)], chance=x=>R()<x;
+
+  /* ---- 색: 스킴 + 색조 지터 (fixColors가 가독성 가드) ---- */
+  const cols=p.c.map(c=>c[0]),byL=[...cols].sort((a,b)=>lum(a)-lum(b));
+  const dark=V.mood<-0.25?true:V.mood>0.25?false:chance(.5);   // 무드 애매하면 시드가 결정
   let acc0=cols.reduce((m,c)=>chroma(c)>chroma(m)?c:m,cols[0]);
   if(chroma(acc0)<0.08)acc0=hsl2hex(FAMHUE[best.k]??210,0.5,dark?0.6:0.5);
   let[ah,as,al]=hex2hsl(acc0);
   const tgt=V.temp>0?40:205,sd=(a,b)=>((b-a)%360+540)%360-180;
-  ah=(ah+sd(ah,tgt)*0.22*Math.abs(V.temp)+360)%360;
-  as=Math.max(0.16,Math.min(0.9,as*(1+0.3*(-V.energy))));
-  al=Math.max(0.42,Math.min(0.72,dark?Math.max(al,0.54):Math.min(al,0.6)));
+  ah=(ah+sd(ah,tgt)*0.22*Math.abs(V.temp)+(R()*44-22)*(V.era<0?1.3:0.6)+360)%360;  // 실험적일수록 지터 큼
+  as=Math.max(0.16,Math.min(0.95,as*(1+0.35*(-V.energy))+R()*0.1-0.05));
+  al=Math.max(0.38,Math.min(0.75,dark?Math.max(al,0.5):Math.min(al,0.62)));
   const acc=hsl2hex(ah,as,al);
-  const near=(TPL||[]).filter(t=>Array.isArray(t.palette)&&t.palette.length)
-    .map(t=>({t,d:palDist(p.c.map(c=>hex2lab(c[0])),t.palette.map(hex2lab))})).sort((a,b)=>a.d-b.d);
-  const cand=[];
-  for(const{t}of near){const a=t.palette.reduce((m,c)=>chroma(c)>chroma(m)?c:m,t.palette[0]);if(chroma(a)>0.16&&hueDist(a,acc)>32)cand.push(a);if(cand.length>=6)break;}
-  let acc2=cand.length?cand[variant%cand.length]:rotateHue(acc,150);
-  {let[h2,s2,l2]=hex2hsl(acc2);acc2=hsl2hex(h2,Math.min(0.72,Math.max(0.3,s2)),dark?Math.max(0.5,l2):Math.min(0.6,l2));}
+  /* 보조 악센트: 실측 샘플/보색/유사색/삼각 중 시드 선택 */
+  const rel=pick(['sample','sample','complement','analog','triad']);
+  let acc2;
+  if(rel==='sample'){
+    const near=(TPL||[]).filter(t=>Array.isArray(t.palette)&&t.palette.length)
+      .map(t=>({t,d:palDist(p.c.map(c=>hex2lab(c[0])),t.palette.map(hex2lab))})).sort((a,b)=>a.d-b.d);
+    const cand=[];
+    for(const{t}of near){const a=t.palette.reduce((m,c)=>chroma(c)>chroma(m)?c:m,t.palette[0]);if(chroma(a)>0.16&&hueDist(a,acc)>32)cand.push(a);if(cand.length>=6)break;}
+    acc2=cand.length?pick(cand):rotateHue(acc,150);
+  }else acc2=rotateHue(acc,rel==='complement'?180:rel==='analog'?(chance(.5)?40:-40):120);
+  {let[h2,s2,l2]=hex2hsl(acc2);acc2=hsl2hex(h2,Math.min(0.8,Math.max(0.3,s2)),dark?Math.max(0.5,l2):Math.min(0.6,l2));}
+  /* 배경 스킴: clean / 틴트 / 딥 악센트 배경 */
+  const scheme=pick(dark
+    ?(V.energy<0?['clean','tinted','accent-bg','tinted']:['clean','clean','tinted'])
+    :(V.energy<0?['clean','tinted','tinted','accent-bg']:['clean','clean','tinted']));
   let bg,ink;
   if(dark){bg=mix(byL[0],'#04070A',0.55);ink=mix(byL[byL.length-1],'#FFFFFF',0.2);if(lum(ink)<0.7)ink=mix(ink,'#fff',0.5);}
   else{bg=mix(byL[byL.length-1],'#FFFFFF',0.5);ink=mix(byL[0],'#0A0B0C',0.4);if(lum(ink)>0.4)ink=mix(ink,'#111',0.6);}
-  const surf=dark?mix(bg,ink,0.09):mix(bg,ink,0.045),mut=mix(ink,bg,0.42),line=dark?'rgba(255,255,255,.12)':'rgba(17,17,17,.13)';
-  const L=layoutTokens(); L.imgStart=variant%6;
-  const baseFlow=({scroll:0,sections:2,sidebar:4})[oChoice.structure]??0;
-  L.flow=(baseFlow+variant)%6;                       // 재생성마다 구성 흐름도 회전
-  L.about=V.density>0.5?'center':'';
-  /* 아키타입: 구조 답변이 기본, 재생성마다 포맷 자체가 순환 */
-  const baseArch=({scroll:'onepage',sections:'onepage',sidebar:'split'})[oChoice.structure]||'onepage';
-  L.arch=variant?['onepage','split','deck','wall','vcard','cv'][variant%6]:baseArch;
-  return{c:{bg,surf,ink,mut,line,acc,acc2},f:fontPair(best.k,V.type),l:L,m:{fam:best.name,famko:best.ko,pal:p.en,k:best.k}};
+  if(scheme==='tinted')bg=mix(bg,acc,0.05+R()*0.06);
+  if(scheme==='accent-bg')bg=hsl2hex(ah,Math.min(0.4,as*0.7),dark?0.08+R()*0.04:0.93+R()*0.03);
+  const surfTint=scheme==='clean'?0:R()*0.1;
+  let surf=dark?mix(bg,ink,0.09):mix(bg,ink,0.045);
+  if(surfTint)surf=mix(surf,acc,surfTint);
+  const mut=mix(ink,bg,0.42),line=dark?'rgba(255,255,255,.12)':'rgba(17,17,17,.13)';
+
+  /* ---- 부품: 명시 답변 앵커 + 취향 축 가중 시드 ---- */
+  const g=k=>oChoice[k];
+  const heroSets={type:['bigtype','bigtype','card'],image:['fullbleed','slider','slider'],split:['split','split','collage'],center:['bigtype','card']};
+  const hero=pick(heroSets[g('hero')]||['bigtype','split']);
+  const halign=g('hero')==='center'?'center':(hero==='bigtype'&&chance(.2)?'center':'');
+  const nav=(g('nav')==='side'||g('structure')==='sidebar')?'side':g('nav')==='hidden'?'burger':'top';
+  const navbe=nav==='top'&&chance(V.energy<0?.55:.22)?'trans':'';
+  const work=({grid:'grid3',masonry:'mason',list:'grid2',carousel:'row'})[g('work')]||'grid3';
+  const wtabs=(work==='grid3'||work==='mason')&&chance(V.density<0?.7:.3)?1:0;
+  const motion=g('motion')==='rich'?'bold':g('motion')==='static'?'calm':(V.energy<0?'bold':'calm');
+  const pre=chance(motion==='bold'?.65:.3)?1:0;
+  const cur=chance(V.era<-0.2?.5:.12)?1:0;
+  const radBase=({round:20,sharp:4,mixed:12})[g('shape')]??12;
+  const rad=Math.max(0,Math.min(24,radBase+Math.round(R()*6-3)));
+  const dens=+(Math.max(.88,Math.min(1.2,1+0.15*V.density+R()*0.06-0.03))).toFixed(2);
+  const scale=V.energy<0?pick([1.1,1.22,1.22]):pick([0.9,1,1.1]);
+  const F=fontPair(best.k,V.type);
+  const caseU=(!['Fraunces','Playfair Display','Instrument Serif','Lora'].includes(F.disp)&&V.era<0&&chance(.4))?'upper':'';
+
+  /* ---- 섹션 조합: 문법 순서 + 가중 확률 + 밀도 기반 개수 ---- */
+  const CANON=['hero','stats','marq','about','skills','tline','svc','work','video','pricing','testi','clients','blog','quote','cta2','contact'];
+  const W={stats:.45+.25*V.energy, marq:.2+.4*(-V.energy), skills:.45, tline:.3+.25*V.era,
+    svc:.6, video:.15+.3*(-V.energy), pricing:.3, testi:.45, clients:.35,
+    blog:.35, quote:.25+.3*V.energy, cta2:.45};
+  const target=Math.max(4,Math.min(12,Math.round(6.5+(-V.density)*3+(R()*2-1))));
+  const scored=Object.keys(W).map(k=>({k,s:W[k]+R()*0.5})).sort((a,b)=>b.s-a.s);
+  const chosen=new Set(['hero','about','work','contact']);
+  for(const{k}of scored){if(chosen.size>=target)break;chosen.add(k);}
+  const secs=CANON.filter(k=>chosen.has(k));
+
+  const L={hero,nav,navbe,work,wtabs,motion,rad,dens,scale,halign,'case':caseU,
+    imgStart:Math.floor(R()*6),aspect:pick(['4/3','4/3','3/2','4/5']),
+    pre,cur,secs,about:V.density>0.5?'center':pick(['','','bar']),arch:'onepage'};
+  return{c:{bg,surf,ink,mut,line,acc,acc2},f:F,l:L,m:{fam:best.name,famko:best.ko,pal:p.en,k:best.k}};
 }
 let genVariant=0;
 function renderPreview(){
   if(!$('#pvIframe'))return;
-  const url='preview.html#'+encodeURIComponent(JSON.stringify(synthTokens(genVariant)));
+  const url='preview.html?v15#'+encodeURIComponent(JSON.stringify(synthTokens(genVariant)));
   $('#pvIframe').src=url; if($('#pvOpen'))$('#pvOpen').href=url;
 }
 function renderBrief(){
