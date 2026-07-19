@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>미리보기 · Career Atelier</title>
+<!--
+  Career Atelier — 재창조 미리보기 렌더러 (우리 소유 파라메트릭 템플릿).
+  퀴즈 답변에서 학습·합성한 디자인 토큰을 location.hash(JSON)로 받아
+  실제 포트폴리오 페이지로 렌더링한다. 상용 템플릿을 쓰지 않으므로 온라인 게시 가능.
+  토큰 스키마: {c:{색상 역할}, f:{폰트}, l:{레이아웃 변형}, m:{메타}, p:{페르소나}}
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Space+Grotesk:wght@400;500;700&family=Archivo:wght@400;600;800&family=Instrument+Serif:ital@0;1&family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0A0E0F; --surf:#12191C; --ink:#ECEFEC; --mut:#9BA6A3; --line:rgba(255,255,255,.12);
+  --acc:#C9A96A; --acc2:#57B7C1; --disp:'Fraunces'; --body:'Outfit';
+  --rad:14px; --dens:1; --ease:cubic-bezier(.19,1,.22,1);
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--body),-apple-system,"Apple SD Gothic Neo",sans-serif;line-height:1.65;word-break:keep-all;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+.serif{font-family:var(--disp),Georgia,serif;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(20px,5vw,56px);}
+section{padding:calc(clamp(60px,10vw,120px)*var(--dens)) 0;}
+.eyebrow{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc);font-weight:600;display:inline-flex;align-items:center;gap:10px;}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--acc);opacity:.7;}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.reveal.in{opacity:1;transform:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:40;display:flex;align-items:center;justify-content:space-between;
+  padding:18px clamp(20px,5vw,56px);backdrop-filter:blur(12px);background:color-mix(in srgb,var(--bg) 72%,transparent);border-bottom:1px solid var(--line);}
+nav .logo{font-family:var(--disp);font-weight:600;font-size:19px;letter-spacing:-.01em;}
+nav .nl{display:flex;gap:28px;font-size:13.5px;color:var(--mut);}
+nav .nl a:hover{color:var(--acc);}
+nav .cta{font-size:13px;font-weight:600;border:1px solid var(--line);border-radius:100px;padding:8px 18px;color:var(--ink);transition:.2s;}
+nav .cta:hover{background:var(--acc);color:var(--bg);border-color:var(--acc);}
+@media(max-width:720px){nav .nl{display:none;}}
+/* side-nav variant */
+body[data-nav="side"] nav{flex-direction:column;top:0;bottom:0;right:auto;width:210px;align-items:flex-start;justify-content:flex-start;gap:34px;padding:40px 28px;border-bottom:0;border-right:1px solid var(--line);background:var(--surf);}
+body[data-nav="side"] nav .nl{flex-direction:column;gap:16px;}
+body[data-nav="side"] .page{margin-left:210px;}
+body[data-nav="side"] nav .cta{margin-top:auto;}
+@media(max-width:900px){body[data-nav="side"] nav{position:fixed;flex-direction:row;width:auto;left:0;right:0;bottom:auto;height:auto;padding:18px 24px;border-right:0;border-bottom:1px solid var(--line);}body[data-nav="side"] nav .nl{flex-direction:row;}body[data-nav="side"] .page{margin-left:0;}}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding-top:120px;}
+.hero .kn{font-size:clamp(13px,1.5vw,15px);color:var(--mut);letter-spacing:.02em;}
+.hero h1{font-family:var(--disp);font-weight:600;line-height:1.02;letter-spacing:-.02em;font-size:clamp(46px,9vw,116px);margin:20px 0 0;}
+.hero h1 em{font-style:italic;color:var(--acc);}
+.hero .sub{margin-top:26px;max-width:52ch;font-size:clamp(16px,1.9vw,21px);color:var(--mut);font-weight:300;}
+.hero .meta{margin-top:40px;display:flex;gap:28px;flex-wrap:wrap;font-size:13px;color:var(--mut);}
+.hero .meta b{color:var(--ink);font-weight:600;}
+.hero .scroll{position:absolute;bottom:34px;left:0;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);}
+/* hero: fullbleed */
+body[data-hero="fullbleed"] .hero::after{content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(120% 90% at 78% 12%,color-mix(in srgb,var(--acc) 42%,transparent),transparent 60%),
+             radial-gradient(90% 80% at 12% 92%,color-mix(in srgb,var(--acc2) 34%,transparent),transparent 62%),var(--bg);}
+body[data-hero="fullbleed"] .hero .portrait{position:absolute;inset:0;z-index:-1;opacity:.5;
+  background:linear-gradient(200deg,color-mix(in srgb,var(--acc) 60%,var(--surf)),var(--surf));mix-blend-mode:screen;}
+/* hero: split */
+body[data-hero="split"] .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;}
+body[data-hero="split"] .hero .portrait{aspect-ratio:4/5;border-radius:var(--rad);
+  background:linear-gradient(200deg,color-mix(in srgb,var(--acc) 70%,var(--surf)),var(--surf) 70%),var(--surf);
+  border:1px solid var(--line);position:relative;overflow:hidden;}
+body[data-hero="split"] .hero .portrait::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 50% at 50% 20%,color-mix(in srgb,var(--acc2) 50%,transparent),transparent);}
+body[data-hero="bigtype"] .hero .portrait{display:none;}
+@media(max-width:820px){body[data-hero="split"] .hero{grid-template-columns:1fr;}body[data-hero="split"] .hero .portrait{display:none;}}
+
+/* ABOUT */
+.about{display:grid;grid-template-columns:.7fr 1.3fr;gap:clamp(30px,6vw,80px);}
+.about h2{font-family:var(--disp);font-weight:500;font-size:clamp(24px,3.4vw,40px);line-height:1.2;letter-spacing:-.01em;}
+.about p{color:var(--mut);font-weight:300;font-size:clamp(15px,1.7vw,18px);margin-bottom:18px;}
+.about .lede{color:var(--ink);font-weight:400;}
+@media(max-width:760px){.about{grid-template-columns:1fr;gap:20px;}}
+
+/* WORK */
+.work .head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;gap:20px;flex-wrap:wrap;}
+.work h2{font-family:var(--disp);font-weight:600;font-size:clamp(28px,4.4vw,54px);letter-spacing:-.02em;}
+.grid{display:grid;gap:clamp(16px,2.4vw,28px);}
+body[data-work="grid3"] .grid{grid-template-columns:repeat(3,1fr);}
+body[data-work="grid2"] .grid{grid-template-columns:repeat(2,1fr);}
+body[data-work="mason"] .grid{grid-template-columns:repeat(2,1fr);}
+body[data-work="mason"] .card:nth-child(3n){grid-row:span 1;}
+.card{border-radius:var(--rad);overflow:hidden;background:var(--surf);border:1px solid var(--line);transition:transform .5s var(--ease),border-color .3s;}
+.card:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--acc) 60%,var(--line));}
+.card .thumb{aspect-ratio:4/3;position:relative;overflow:hidden;}
+body[data-work="mason"] .card:nth-child(2n) .thumb{aspect-ratio:4/5;}
+.card .thumb i{position:absolute;inset:0;}
+.card .num{position:absolute;top:14px;left:16px;font-family:var(--disp);font-size:13px;color:#fff;mix-blend-mode:difference;z-index:2;}
+.card .body{padding:18px 20px 22px;}
+.card .body .t{font-family:var(--disp);font-weight:600;font-size:19px;}
+.card .body .d{font-size:13px;color:var(--mut);margin-top:5px;}
+.card .body .tags{margin-top:12px;display:flex;gap:6px;flex-wrap:wrap;}
+.card .body .tags span{font-size:10.5px;color:var(--mut);border:1px solid var(--line);border-radius:100px;padding:3px 10px;}
+@media(max-width:820px){body[data-work="grid3"] .grid,body[data-work="grid2"] .grid,body[data-work="mason"] .grid{grid-template-columns:1fr;}}
+
+/* MARQUEE (capabilities) */
+.marq{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:26px 0;}
+.marq .track{display:flex;gap:52px;white-space:nowrap;width:max-content;animation:scrollx 26s linear infinite;}
+body[data-motion="bold"] .marq .track{animation-duration:16s;}
+.marq .track span{font-family:var(--disp);font-size:clamp(22px,3vw,40px);font-weight:600;color:var(--mut);letter-spacing:-.01em;}
+.marq .track span::before{content:"◆";color:var(--acc);font-size:.5em;vertical-align:middle;margin-right:52px;}
+@keyframes scrollx{to{transform:translateX(-50%);}}
+
+/* CONTACT */
+.contact{text-align:center;}
+.contact h2{font-family:var(--disp);font-weight:600;font-size:clamp(34px,7vw,86px);line-height:1.04;letter-spacing:-.02em;}
+.contact h2 em{font-style:italic;color:var(--acc);}
+.contact .mail{display:inline-block;margin-top:30px;font-size:clamp(16px,2.4vw,26px);border-bottom:2px solid var(--acc);padding-bottom:4px;transition:.2s;}
+.contact .mail:hover{color:var(--acc);}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+
+/* banner: this is a generated preview */
+.genban{position:fixed;bottom:0;left:0;right:0;z-index:60;background:var(--acc);color:var(--bg);font-size:12.5px;font-weight:600;
+  text-align:center;padding:9px 16px;letter-spacing:.01em;}
+.genban a{text-decoration:underline;}
+body{padding-bottom:40px;}
+</style>
+</head>
+<body data-hero="bigtype" data-nav="top" data-work="grid3" data-motion="calm">
+<nav>
+  <a href="#top" class="logo" id="navlogo">Seoyeon Kim</a>
+  <div class="nl"><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+  <a href="#contact" class="cta">연락하기</a>
+</nav>
+<div class="page">
+<a id="top"></a>
+
+<header class="hero wrap">
+  <div class="portrait"></div>
+  <div class="heroText">
+    <div class="kn" id="heroKn">안녕하세요 — 프로덕트 디자이너</div>
+    <h1 class="serif" id="heroH1">서연의 <em>일하는 방식</em>,<br>한 페이지에.</h1>
+    <p class="sub" id="heroSub">사용자 리서치부터 출시까지, 결정의 이유를 남기는 디자이너. 이 포트폴리오는 당신의 취향 진단에서 생성된 디자인으로 렌더링됐어요.</p>
+    <div class="meta" id="heroMeta">
+      <div><b>7년</b> · 프로덕트 디자인</div><div><b>Fintech · SaaS</b></div><div><b>Seoul</b>, 원격 가능</div>
+    </div>
+  </div>
+  <div class="scroll">Scroll ↓</div>
+</header>
+
+<section class="about wrap reveal" id="about">
+  <div><div class="eyebrow">About</div></div>
+  <div>
+    <h2 class="serif" id="aboutH">문제를 좁히고, 근거를 남기고, 아름답게 끝맺어요.</h2>
+    <p class="lede" id="aboutP1">저는 화면을 예쁘게 만드는 일보다, 왜 이 화면이어야 하는지를 설명할 수 있는 일을 좋아해요. 인터뷰로 맥락을 모으고, 가설을 세우고, 가장 작은 실험으로 검증한 뒤에야 픽셀을 움직입니다.</p>
+    <p id="aboutP2">핀테크와 SaaS에서 7년간 0→1 제품과 리디자인을 이끌었어요. 리서치·프로토타이핑·디자인 시스템·프론트엔드 협업까지, 한 흐름으로 붙여 일합니다.</p>
+  </div>
+</section>
+
+<section class="work wrap" id="work">
+  <div class="head reveal">
+    <h2 class="serif">Selected Work</h2>
+    <div class="eyebrow" id="workCount">2020 — 2026 · 6 projects</div>
+  </div>
+  <div class="grid" id="workGrid"></div>
+</section>
+
+<div class="marq reveal"><div class="track" id="marqTrack"></div></div>
+
+<section class="contact wrap reveal" id="contact">
+  <div class="eyebrow" style="justify-content:center;margin-bottom:22px;">Contact</div>
+  <h2 class="serif">함께 <em>좋은 결정</em>을<br>만들고 싶다면.</h2>
+  <a href="#" class="mail" id="mail">seoyeon@example.com</a>
+</section>
+<footer class="wrap">
+  <span id="footL">© 2026 Seoyeon Kim · Portfolio</span>
+  <span id="footR">Career Atelier에서 생성된 디자인</span>
+</footer>
+</div>
+
+<div class="genban" id="genban">이 페이지는 당신의 취향 진단으로 <b>생성된 맞춤 디자인</b>이에요 (샘플 콘텐츠). <a href="design-quiz.html">다시 진단하기 →</a></div>
+
+<script>
+/* ---------- 토큰 수신 & 적용 ---------- */
+const DEFAULT={
+  c:{bg:"#0A0E0F",surf:"#12191C",ink:"#ECEFEC",mut:"#9BA6A3",line:"rgba(255,255,255,.12)",acc:"#C9A96A",acc2:"#57B7C1"},
+  f:{disp:"Fraunces",body:"Outfit"},
+  l:{hero:"bigtype",nav:"top",work:"grid3",rad:14,motion:"calm",dens:1},
+  m:{fam:"Atelier Noir",famko:"아틀리에 누아르",pal:"Champagne Noir"}
+};
+function readTokens(){
+  try{
+    const h=decodeURIComponent(location.hash.slice(1));
+    if(!h) return DEFAULT;
+    const t=JSON.parse(h);
+    return {c:{...DEFAULT.c,...(t.c||{})},f:{...DEFAULT.f,...(t.f||{})},l:{...DEFAULT.l,...(t.l||{})},m:{...DEFAULT.m,...(t.m||{})},p:t.p||null};
+  }catch(e){return DEFAULT;}
+}
+const WORKS=[
+  {t:"Nova 송금 리디자인",d:"3단계 송금 플로우를 1화면으로. 이탈 −34%.",tags:["0→1","Research","iOS"]},
+  {t:"Atlas 대시보드",d:"B2B 애널리틱스 정보구조 재설계.",tags:["SaaS","Design System"]},
+  {t:"Bloom 온보딩",d:"첫 세션 활성화율 +21%p.",tags:["Growth","Motion"]},
+  {t:"Kite 결제 SDK",d:"개발자용 결제 위젯과 문서 UX.",tags:["Fintech","DX"]},
+  {t:"Muse 브랜드 사이트",d:"아트디렉션부터 프론트 구현까지.",tags:["Brand","Web"]},
+  {t:"Field 리서치 툴킷",d:"인터뷰·합성 워크플로우 자동화.",tags:["Ops","Internal"]}
+];
+function grad(a,b,ang){return `linear-gradient(${ang}deg,${a},${b})`;}
+function apply(t){
+  const r=document.documentElement.style;
+  for(const [k,v] of Object.entries(t.c)) r.setProperty('--'+k,v);
+  r.setProperty('--disp',"'"+t.f.disp+"'"); r.setProperty('--body',"'"+t.f.body+"'");
+  r.setProperty('--rad',(t.l.rad||14)+'px'); r.setProperty('--dens',t.l.dens||1);
+  document.body.dataset.hero=t.l.hero; document.body.dataset.nav=t.l.nav;
+  document.body.dataset.work=t.l.work; document.body.dataset.motion=t.l.motion;
+  // work cards
+  const c=t.c;
+  document.getElementById('workGrid').innerHTML=WORKS.map((w,i)=>{
+    const combos=[grad(c.acc,c.surf,200),grad(c.acc2,c.surf,160),grad(c.acc,c.acc2,135),grad(c.surf,c.acc,320),grad(c.acc2,c.bg,180),grad(c.acc,c.bg,150)];
+    return `<a class="card reveal" href="#" style="transition-delay:${i*60}ms">
+      <div class="thumb"><span class="num">0${i+1}</span><i style="background:${combos[i%combos.length]}"></i></div>
+      <div class="body"><div class="t serif">${w.t}</div><div class="d">${w.d}</div>
+      <div class="tags">${w.tags.map(x=>`<span>${x}</span>`).join('')}</div></div></a>`;
+  }).join('');
+  // marquee
+  const caps=["Product Design","User Research","Design Systems","Prototyping","Frontend 협업","Art Direction"];
+  document.getElementById('marqTrack').innerHTML=[...caps,...caps].map(x=>`<span>${x}</span>`).join('');
+  // persona override (optional)
+  if(t.p){
+    const p=t.p;
+    if(p.name){document.getElementById('navlogo').textContent=p.name;document.getElementById('footL').textContent='© 2026 '+p.name+' · Portfolio';}
+    if(p.mail){document.getElementById('mail').textContent=p.mail;}
+  }
+  // meta note in footer
+  document.getElementById('footR').textContent=`${t.m.fam} · ${t.m.pal} — Career Atelier 생성`;
+  document.title=`미리보기 · ${t.m.fam} · Career Atelier`;
+}
+apply(readTokens());
+window.addEventListener('hashchange',()=>apply(readTokens()));
+
+/* reveal on scroll */
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12});
+setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>io.observe(el)),40);
+</script>
+</body>
+</html>

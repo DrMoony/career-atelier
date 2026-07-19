@@ -110,6 +110,10 @@ h2.qh{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:c
 .pmatch .nm{font-size:11.5px;font-weight:600;margin-top:7px;color:var(--ink2);text-transform:capitalize;line-height:1.3;}
 .pmatch .mt{font-size:10px;color:var(--faint);margin-top:2px;}
 .pmatch .empty{font-size:12.5px;color:var(--faint);}
+.pvcard .pvframe{border:1px solid var(--line2);border-radius:12px;overflow:hidden;background:#0A0E0F;box-shadow:0 24px 50px -30px rgba(42,38,32,.55);}
+.pvcard iframe{width:100%;height:min(72vh,620px);border:0;display:block;}
+.pvcard .pvrow{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
+.pvcard .pvnote{margin-top:12px;font-size:12px;color:var(--muted);line-height:1.6;}
 .axes{margin-top:6px;}.axrow{display:grid;grid-template-columns:60px 1fr 60px;gap:10px;align-items:center;margin:8px 0;font-size:11px;color:var(--muted);}
 .axrow .bar{height:6px;background:var(--panel2);border-radius:6px;position:relative;border:1px solid var(--line);}.axrow .bar i{position:absolute;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--gold);transform:translateX(-50%);box-shadow:0 0 0 3px var(--panel);}.axrow .r{text-align:right;}
 .res-cta{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
@@ -155,6 +159,10 @@ h2.qh{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:c
     <div class="kicker">당신의 디자인 브리프</div>
     <div class="fam serif" id="famName"></div>
     <p class="blurb" id="famBlurb"></p>
+    <div class="card pvcard"><div class="lab">내 포트폴리오 미리보기 — 답변으로 <b>생성</b>됐어요</div>
+      <div class="pvframe"><iframe id="pvIframe" title="생성된 포트폴리오 미리보기" loading="lazy"></iframe></div>
+      <div class="pvrow"><a class="btn" id="pvOpen" target="_blank" rel="noopener">전체 화면으로 열기 ↗</a><button class="btn ghost" id="pvRegen">다른 조합으로 재생성 ↻</button></div>
+      <div class="pvnote">색·폰트·레이아웃을 115개 실측 샘플에서 학습·재조합해 만든 <b>우리 소유 디자인</b>이에요. 특정 상용 템플릿이 아니라, 당신 답변 기반으로 새로 지은 페이지입니다.</div></div>
     <div class="card bpal"><div class="lab">팔레트 (Pantone)</div><div id="bpalBody"></div></div>
     <div class="card"><div class="lab">이 팔레트에 가까운 실제 템플릿</div><div class="pmatch" id="palMatchBody"></div></div>
     <div class="card"><div class="lab">레이아웃 아웃라인</div><div class="blay" id="blayBody"></div></div>
@@ -340,7 +348,7 @@ let TPL=[];
 fetch('template-classification.json').then(r=>r.json()).then(d=>{
   const root=(d&&d.templates)?d:(d&&d.result)?d.result:{templates:[]};
   TPL=root.templates||[];
-  if(!$('#brief').classList.contains('hidden')) renderPalMatch();
+  if(!$('#brief').classList.contains('hidden')){ renderPalMatch(); renderPreview(); }
 }).catch(()=>{});
 function hex2lab(hex){
   hex=(hex||'').replace('#','');
@@ -368,6 +376,67 @@ function renderPalMatch(){
     return `<a href="library.html?q=${encodeURIComponent(tplQuery(t.name))}" title="${t.name}"><div class="sw">${sw}</div><div class="nm">${tplLabel(t.name)}</div><div class="mt">${t.family||''}${t.bg?' · '+t.bg:''}</div></a>`;
   }).join('');
 }
+/* ---------- 디자인 토큰 합성 (샘플 학습·재조합 → 렌더 미리보기) ---------- */
+function h2rgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+function rgb2h(r,g,b){const c=v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0');return'#'+c(r)+c(g)+c(b);}
+function lum(h){const[r,g,b]=h2rgb(h);return(0.2126*r+0.7152*g+0.0722*b)/255;}
+function mix(a,b,t){const A=h2rgb(a),B=h2rgb(b);return rgb2h(A[0]+(B[0]-A[0])*t,A[1]+(B[1]-A[1])*t,A[2]+(B[2]-A[2])*t);}
+function rgb2hsl(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let h,s,l=(mx+mn)/2;if(mx===mn){h=s=0;}else{const d=mx-mn;s=l>.5?d/(2-mx-mn):d/(mx+mn);h=mx===r?(g-b)/d+(g<b?6:0):mx===g?(b-r)/d+2:(r-g)/d+4;h/=6;}return[h*360,s,l];}
+function hsl2rgb(h,s,l){h/=360;if(s===0){const v=l*255;return[v,v,v];}const q=l<.5?l*(1+s):l+s-l*s,p=2*l-q;const f=t=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p;};return[f(h+1/3)*255,f(h)*255,f(h-1/3)*255];}
+function hex2hsl(h){const[r,g,b]=h2rgb(h);return rgb2hsl(r,g,b);}
+function hsl2hex(h,s,l){const[r,g,b]=hsl2rgb(h,s,l);return rgb2h(r,g,b);}
+function chroma(h){const[H,S,L]=hex2hsl(h);return S*Math.min(1,L*2)*Math.min(1,(1-L)*2.2);}
+function hueOf(h){return hex2hsl(h)[0];}
+function hueDist(a,b){let d=Math.abs(hueOf(a)-hueOf(b))%360;return d>180?360-d:d;}
+function rotateHue(h,deg){const[H,S,L]=hex2hsl(h);return hsl2hex((H+deg+360)%360,S,L);}
+const FAMHUE={noir:44,warm:38,gallery:187,editorial:206,studio:210,neotech:198,lens:204,corporate:209};
+function fontPair(k,typeAxis){
+  const map={noir:['Fraunces','Outfit'],warm:['Fraunces','Manrope'],gallery:['Fraunces','Outfit'],editorial:['Playfair Display','Inter'],studio:['Space Grotesk','Space Grotesk'],neotech:['Space Grotesk','Inter'],lens:['Instrument Serif','Inter'],corporate:['Archivo','Inter']};
+  let [d,b]=map[k]||['Fraunces','Outfit'];const serif=typeAxis>=0;
+  if(!serif&&['Fraunces','Playfair Display','Instrument Serif'].includes(d))d=(k==='corporate'?'Archivo':'Space Grotesk');
+  if(serif&&d==='Space Grotesk')d='Fraunces';
+  return{disp:d,body:b};
+}
+function layoutTokens(){
+  const g=k=>oChoice[k];
+  const hero=({type:'bigtype',image:'fullbleed',split:'split',center:'bigtype'})[g('hero')]||'bigtype';
+  let nav=({top:'top',side:'side',hidden:'top'})[g('nav')]||'top';
+  if(g('structure')==='sidebar')nav='side';
+  const work=({grid:'grid3',masonry:'mason',list:'grid2',carousel:'grid2'})[g('work')]||'grid3';
+  const motion=({static:'calm',subtle:'calm',rich:'bold'})[g('motion')]||(V.energy<0?'bold':'calm');
+  const rad=({round:20,sharp:4,mixed:12})[g('shape')]??14;
+  const dens=+(1+0.18*V.density).toFixed(2);
+  return{hero,nav,work,motion,rad,dens};
+}
+function synthTokens(variant=0){
+  const p=PAL.find(x=>x.id===selPalId),{best}=nearest();
+  const cols=p.c.map(c=>c[0]),dark=V.mood<0,byL=[...cols].sort((a,b)=>lum(a)-lum(b));
+  let acc0=cols.reduce((m,c)=>chroma(c)>chroma(m)?c:m,cols[0]);
+  if(chroma(acc0)<0.08)acc0=hsl2hex(FAMHUE[best.k]??210,0.5,dark?0.6:0.5);
+  let[ah,as,al]=hex2hsl(acc0);
+  const tgt=V.temp>0?40:205,sd=(a,b)=>((b-a)%360+540)%360-180;
+  ah=(ah+sd(ah,tgt)*0.22*Math.abs(V.temp)+360)%360;
+  as=Math.max(0.16,Math.min(0.9,as*(1+0.3*(-V.energy))));
+  al=Math.max(0.42,Math.min(0.72,dark?Math.max(al,0.54):Math.min(al,0.6)));
+  const acc=hsl2hex(ah,as,al);
+  const near=(TPL||[]).filter(t=>Array.isArray(t.palette)&&t.palette.length)
+    .map(t=>({t,d:palDist(p.c.map(c=>hex2lab(c[0])),t.palette.map(hex2lab))})).sort((a,b)=>a.d-b.d);
+  const cand=[];
+  for(const{t}of near){const a=t.palette.reduce((m,c)=>chroma(c)>chroma(m)?c:m,t.palette[0]);if(chroma(a)>0.16&&hueDist(a,acc)>32)cand.push(a);if(cand.length>=6)break;}
+  let acc2=cand.length?cand[variant%cand.length]:rotateHue(acc,150);
+  {let[h2,s2,l2]=hex2hsl(acc2);acc2=hsl2hex(h2,Math.min(0.72,Math.max(0.3,s2)),dark?Math.max(0.5,l2):Math.min(0.6,l2));}
+  let bg,ink;
+  if(dark){bg=mix(byL[0],'#04070A',0.55);ink=mix(byL[byL.length-1],'#FFFFFF',0.2);if(lum(ink)<0.7)ink=mix(ink,'#fff',0.5);}
+  else{bg=mix(byL[byL.length-1],'#FFFFFF',0.5);ink=mix(byL[0],'#0A0B0C',0.4);if(lum(ink)>0.4)ink=mix(ink,'#111',0.6);}
+  const surf=dark?mix(bg,ink,0.09):mix(bg,ink,0.045),mut=mix(ink,bg,0.42),line=dark?'rgba(255,255,255,.12)':'rgba(17,17,17,.13)';
+  return{c:{bg,surf,ink,mut,line,acc,acc2},f:fontPair(best.k,V.type),l:layoutTokens(),m:{fam:best.name,famko:best.ko,pal:p.en}};
+}
+let genVariant=0;
+function renderPreview(){
+  if(!$('#pvIframe'))return;
+  const url='preview.html#'+encodeURIComponent(JSON.stringify(synthTokens(genVariant)));
+  $('#pvIframe').src=url; if($('#pvOpen'))$('#pvOpen').href=url;
+}
 function renderBrief(){
   const {best,second}=nearest();
   $('#famName').innerHTML=`${best.name}<span class="famko">${best.ko}</span>`;
@@ -376,7 +445,7 @@ function renderBrief(){
   $('#bpalBody').innerHTML=`<div class="psw">${p.c.map(c=>`<i style="background:${c[0]}"></i>`).join('')}</div>
     <div class="pmeta"><b>${p.en}</b> · ${p.ko} <span style="color:var(--faint)">(${p.catko})</span>
     <div class="pcodes">${p.c.map(c=>`<span>Pantone ${c[1]}</span>`).join('')}</div></div>`;
-  renderPalMatch();
+  renderPalMatch(); renderPreview();
   $('#blayBody').innerHTML=OUT.map(d=>{const o=d.o.find(x=>x.id===oChoice[d.key]);
     return `<div class="bi"><div class="k">${d.q.replace(/은$|는$/,'')}</div>${o?o.m:'<div class="mk"></div>'}<div class="v">${o?o.l:'—'}</div></div>`;}).join('');
   $('#typLine').innerHTML=`<b>타이포:</b> ${best.type}`;
@@ -392,7 +461,8 @@ $('#palback').onclick=()=>{cur=0;AXES.forEach(a=>score[a.k]=0);selPalId=null;go(
 $('#palnext').onclick=()=>{oStep=0;go('outline');renderOut();};
 $('#oback').onclick=()=>{if(oStep>0){oStep--;renderOut();}};
 $('#oskip').onclick=()=>nextOut();
-$('#again').onclick=()=>{cur=0;oStep=0;selPalId=null;AXES.forEach(a=>score[a.k]=0);OUT.forEach(o=>oChoice[o.key]=null);go('intro');};
+$('#pvRegen').onclick=()=>{genVariant++;renderPreview();};
+$('#again').onclick=()=>{cur=0;oStep=0;selPalId=null;genVariant=0;AXES.forEach(a=>score[a.k]=0);OUT.forEach(o=>oChoice[o.key]=null);go('intro');};
 $('#copy').onclick=()=>{const {best}=nearest();const p=PAL.find(x=>x.id===selPalId);
   const lay=OUT.map(d=>{const o=d.o.find(x=>x.id===oChoice[d.key]);return o?o.l:'—';}).join(' · ');
   const t=`[Career Atelier 디자인 브리프]\n방향: ${best.name} (${best.ko})\n팔레트: ${p.ko} [${p.c.map(c=>c[1]).join(', ')}]\n레이아웃: ${lay}\n타이포: ${best.type}`;
