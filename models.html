@@ -173,6 +173,7 @@ function genModel(i){
     scale:ax.energy<0?pick([1.1,1.22]):pick([0.9,1,1.1]),halign:hero==='bigtype'&&chance(.25)?'center':'',
     'case':!serif&&ax.era<0&&chance(.4)?'upper':'',imgStart:Math.floor(R()*6),aspect:pick(['4/3','3/2','4/5']),
     pre:chance(motion==='bold'?.6:.25)?1:0,cur:chance(ax.era<-0.2?.45:.1)?1:0,secs,
+    sv:{skills:Math.floor(R()*3),marq:Math.floor(R()*3),tline:Math.floor(R()*3),testi:Math.floor(R()*3),svc:Math.floor(R()*3),stats:Math.floor(R()*3)},
     about:pick(['','','center','bar']),arch:'onepage'};
   const pTok={ind};if(u.name)pTok.name=u.name;
   const tok={c,f:{disp,body:serif?'Outfit':'Inter',dispKr,bodyKr:'Noto Sans KR'},l,p:pTok,

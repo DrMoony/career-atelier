@@ -364,6 +364,56 @@ body[data-fam="corporate"] .card:hover{border-left-color:var(--acc);transform:tr
 .cta2Btn{display:inline-block;background:var(--acc);color:var(--bg);font-weight:600;border-radius:100px;padding:13px 26px;font-size:14.5px;transition:.25s;}
 .cta2Btn:hover{background:var(--ink);}
 
+/* ---------- 섹션 비주얼 변형 (같은 섹션도 형태가 다르게) ---------- */
+#skills[data-v="1"] .skGrid{display:flex;flex-wrap:wrap;gap:10px;}
+#skills[data-v="1"] .sk{border:1px solid var(--line);border-radius:100px;padding:10px 20px;background:var(--surf);}
+#skills[data-v="1"] .sk .row{margin:0;gap:10px;}
+#skills[data-v="1"] .sk .row span{color:var(--acc);font-weight:600;}
+#skills[data-v="1"] .sk .bar{display:none;}
+#skills[data-v="2"] .skGrid{grid-template-columns:repeat(3,1fr);gap:26px;}
+#skills[data-v="2"] .sk .row{flex-direction:column-reverse;align-items:flex-start;gap:2px;}
+#skills[data-v="2"] .sk .row span{font-family:var(--disp);font-size:clamp(30px,4vw,46px);color:var(--acc);font-weight:600;}
+#skills[data-v="2"] .sk .bar{display:none;}
+@media(max-width:640px){#skills[data-v="2"] .skGrid{grid-template-columns:1fr 1fr;}}
+.marq[data-v="1"] .track span{color:transparent;-webkit-text-stroke:1.2px var(--mut);}
+.marq[data-v="1"] .track span::before{-webkit-text-stroke:0;color:var(--acc);}
+.marq[data-v="2"]{transform:rotate(-1.6deg) scale(1.03);background:var(--acc);border-color:transparent;}
+.marq[data-v="2"] .track span{color:var(--bg);}
+.marq[data-v="2"] .track span::before{color:var(--bg);}
+#tline[data-v="1"] .tlList{border-left:0;padding-left:0;max-width:none;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+#tline[data-v="1"] .tl{border:1px solid var(--line);border-radius:var(--rad);padding:22px;background:var(--surf);}
+#tline[data-v="1"] .tl::before{left:22px;top:auto;bottom:16px;opacity:.55;}
+@media(max-width:700px){#tline[data-v="1"] .tlList{grid-template-columns:1fr;}}
+#tline[data-v="2"] .tlList{border-left:0;padding-left:0;max-width:760px;}
+#tline[data-v="2"] .tl{display:grid;grid-template-columns:130px 1fr;gap:18px;border-top:1px solid var(--line);padding:18px 0;}
+#tline[data-v="2"] .tl::before{display:none;}
+#tline[data-v="2"] .tl .y{font-size:clamp(26px,3.4vw,40px);font-weight:600;}
+#testi[data-v="1"] .tsGrid{grid-template-columns:1fr;}
+#testi[data-v="1"] .ts{border:0;background:none;text-align:center;max-width:720px;margin:0 auto;}
+#testi[data-v="1"] .ts:nth-child(n+2){display:none;}
+#testi[data-v="1"] .ts q{font-family:var(--disp);font-size:clamp(20px,3vw,32px);line-height:1.5;font-style:italic;}
+#testi[data-v="2"] .tsGrid{grid-template-columns:1fr;gap:0;}
+#testi[data-v="2"] .ts{border:0;border-top:1px solid var(--line);border-radius:0;background:none;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:18px 0;}
+#testi[data-v="2"] .ts .star{display:none;}
+#testi[data-v="2"] .ts .who{margin:0;white-space:nowrap;}
+#svc[data-v="1"] .svcGrid{grid-template-columns:1fr;gap:0;}
+#svc[data-v="1"] .sv{display:grid;grid-template-columns:100px 220px 1fr;gap:18px;align-items:baseline;border:0;border-top:1px solid var(--line);border-radius:0;background:none;padding:22px 0;}
+#svc[data-v="1"] .sv:hover{transform:none;}
+#svc[data-v="1"] .sv .no{font-family:var(--disp);font-size:clamp(26px,3.6vw,44px);color:transparent;-webkit-text-stroke:1.2px var(--acc);}
+#svc[data-v="1"] .sv h3{margin:0;}
+@media(max-width:700px){#svc[data-v="1"] .sv{grid-template-columns:64px 1fr;}#svc[data-v="1"] .sv p{grid-column:2;}}
+#svc[data-v="2"] .svcGrid{grid-template-columns:1fr 1fr;}
+#svc[data-v="2"] .sv{display:flex;gap:14px;align-items:baseline;padding:18px 20px;}
+#svc[data-v="2"] .sv .no{min-width:34px;}
+#svc[data-v="2"] .sv p{display:none;}
+@media(max-width:640px){#svc[data-v="2"] .svcGrid{grid-template-columns:1fr;}}
+#stats[data-v="1"]{border:0;background:none;}
+#stats[data-v="1"] .statsIn{gap:30px;}
+#stats[data-v="1"] .st{text-align:left;border-left:2px solid var(--acc);padding-left:18px;}
+#stats[data-v="2"]{border:0;background:none;}
+#stats[data-v="2"] .statsIn{gap:14px;}
+#stats[data-v="2"] .st{border:1px solid var(--line);border-radius:var(--rad);padding:22px 10px;background:var(--surf);}
+
 /* ---------- 부품: 작업 필터탭 (실측 1위 배치, 47개) ---------- */
 .wtabs{display:none;gap:8px;flex-wrap:wrap;margin-bottom:26px;}
 body[data-wtabs="1"] .wtabs{display:flex;}
@@ -840,6 +890,11 @@ function apply(t){
   document.body.dataset.fam=(t.m&&t.m.k)||""; document.body.dataset.case=t.l.case||"";
   document.body.dataset.about=t.l.about||""; document.body.dataset.halign=t.l.halign||"";
   document.body.dataset.arch=t.l.arch||"onepage";
+  /* 섹션 비주얼 변형 (l.sv = {skills:0..2, marq:0..2, ...}) */
+  const SV=t.l.sv||{};
+  for(const[k,sel]of[['skills','#skills'],['marq','.marq'],['tline','#tline'],['testi','#testi'],['svc','#svc'],['stats','#stats']]){
+    const el=document.querySelector(sel); if(el)el.dataset.v=SV[k]||0;
+  }
   // ---------- 구성 흐름: 섹션 순서·존재 자체를 변주 ----------
   const FLOWS=[
     ['hero','about','work','marq','contact'],          // 0 클래식

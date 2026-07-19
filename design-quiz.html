@@ -518,18 +518,24 @@ function synthTokens(colorVar=0,layoutVar=0){
   const caseU=(!['Fraunces','Playfair Display','Instrument Serif','Lora'].includes(F.disp)&&V.era<0&&chanceL(.4))?'upper':'';
 
   /* 섹션 조합 — 지터 확대(0.8) + 목표 개수도 흔들림 */
-  const W={stats:.45+.25*V.energy, marq:.2+.4*(-V.energy), skills:.45, tline:.3+.25*V.era,
-    svc:.6, video:.15+.3*(-V.energy), pricing:.3, testi:.45, clients:.35,
-    blog:.35, quote:.25+.3*V.energy, cta2:.45};
-  const target=Math.max(4,Math.min(12,Math.round(6.5+(-V.density)*3+(Rl()*4-2))));
-  const scored=Object.keys(W).map(k=>({k,s:W[k]+Rl()*0.8})).sort((a,b)=>b.s-a.s);
+  /* 취향 가중 강화: 초기(lVar=0)는 지터를 눌러 취향이 지배, 셔플부터 크게 흔듦 */
+  const W={stats:.45+.4*V.energy, marq:.15+.55*(-V.energy), skills:.45+.15*(-V.density), tline:.3+.4*V.era,
+    svc:.6, video:.1+.45*(-V.energy), pricing:.3, testi:.45+.2*V.energy, clients:.35,
+    blog:.35, quote:.2+.45*V.energy, cta2:.45};
+  const structBonus=g('structure')==='sections'?1.5:g('structure')==='scroll'?-0.5:0;
+  const target=Math.max(4,Math.min(12,Math.round(6.5+(-V.density)*3+structBonus+(loose?Rl()*4-2:Rl()*1.6-0.8))));
+  const jit=loose?0.8:0.3;
+  const scored=Object.keys(W).map(k=>({k,s:W[k]+Rl()*jit})).sort((a,b)=>b.s-a.s);
   const chosen=new Set(['hero','about','work','contact']);
   for(const{k}of scored){if(chosen.size>=target)break;chosen.add(k);}
   const secs=CANON.filter(k=>chosen.has(k));
 
+  const sv={skills:pickL([0,1,2]),marq:V.energy<0?pickL([0,1,2,2]):pickL([0,0,1]),
+    tline:pickL([0,1,2]),testi:V.energy>0.2?pickL([0,1,1,2]):pickL([0,1,2]),
+    svc:pickL([0,1,2]),stats:pickL([0,1,2])};
   const L={hero,nav,navbe,work,wtabs,motion,rad,dens,scale,halign,'case':caseU,
     imgStart:Math.floor(Rl()*6),aspect:pickL(['4/3','4/3','3/2','4/5']),
-    pre,cur,secs,about:V.density>0.5?'center':pickL(['','','bar']),arch:'onepage'};
+    pre,cur,secs,sv,about:V.density>0.5?'center':pickL(['','','bar']),arch:'onepage'};
   return{c:{bg,surf,ink,mut,line,acc,acc2},f:F,l:L,p:personaTok(),m:{fam:best.name,famko:best.ko,pal:p.en,k:best.k}};
 }
 let cVar=0,lVar=0;                                   /* 색/구성 독립 시드 */
