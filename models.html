@@ -48,12 +48,15 @@ header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0C
       <div class="brand">Career Atelier · Models</div>
       <div class="h1">모델 갤러리</div>
       <div class="sub">여기 있는 모델은 전부 <b style="color:var(--ink)">재조합으로 새로 생성된 디자인</b>이에요. 115개 레퍼런스에서 학습한 부품·팔레트·구성 문법을 조합해 매번 새로 짓습니다 — 셔플할 때마다 존재한 적 없는 모델들이 나와요.</div>
+      <div class="sub" id="quizNote" style="display:none;color:var(--gold)">🎯 취향 진단 결과로 생성 중 — 팔레트·무드·구성이 당신 답변에 맞춰져 있어요. <a href="design-quiz.html" style="text-decoration:underline">다시 진단</a></div>
     </div>
   </div>
   <div class="controls">
     <div class="seg" id="tone"><button data-v="all" class="on">톤 전체</button><button data-v="light">라이트</button><button data-v="dark">다크</button></div>
     <div class="seg" id="energy"><button data-v="all" class="on">무드 전체</button><button data-v="calm">차분</button><button data-v="bold">대담</button></div>
     <div class="seg" id="dens"><button data-v="all" class="on">밀도 전체</button><button data-v="min">미니멀</button><button data-v="rich">풍부</button></div>
+    <input id="pName" maxlength="12" placeholder="이름" style="font:inherit;font-size:12.5px;border:1px solid var(--line);border-radius:100px;padding:7px 14px;background:var(--panel);color:var(--ink);width:120px">
+    <select id="pInd" style="font:inherit;font-size:12.5px;border:1px solid var(--line);border-radius:100px;padding:7px 12px;background:var(--panel);color:var(--ink)"></select>
     <button class="shuffle" id="shuffle">셔플 ↻</button>
   </div>
 </div></header>
@@ -99,23 +102,34 @@ const FAMP={noir:{mood:-.8,energy:.5,type:1,era:.6},gallery:{mood:.8,energy:.7,t
 let PALS=[];
 const q=new URLSearchParams(location.search);
 const state={tone:'all',energy:'all',dens:'all',seed:+(q.get('s')||7),count:24,fam:q.get('fam')||''};
+/* 퀴즈에서 넘어온 취향: ax=축6개(×10 정수), pal=팔레트 id */
+const QAX=(q.get('ax')||'').split(',').map(Number);
+const HAS_AX=QAX.length===6&&QAX.every(n=>!isNaN(n));
+const QPAL=q.get('pal')||'';
+function loadPersona(){try{return JSON.parse(localStorage.getItem('atelier_persona')||'{}');}catch(e){return{};}}
+function savePersona(p){try{localStorage.setItem('atelier_persona',JSON.stringify(p));}catch(e){}}
 
 function genModel(i){
   const R=mulberry32(fnv(state.seed+'|'+i+'|'+state.tone+state.energy+state.dens+state.fam));
   const pick=a=>a[Math.floor(R()*a.length)],chance=x=>R()<x;
   const FP=FAMP[state.fam]||{};
-  /* 축: 필터·프리셋이 고정, 나머지는 시드 */
+  /* 축: 퀴즈 취향(ax) > 필터 > 패밀리 프리셋 > 시드. 퀴즈 축은 카드별 소지터로 변주 */
+  const jit=()=>(R()-0.5)*0.35;
+  const AXK=['mood','density','type','temp','energy','era'];
+  const QA=HAS_AX?Object.fromEntries(AXK.map((k,ix)=>[k,Math.max(-1,Math.min(1,QAX[ix]/10+jit()))])):{};
   const ax={
-    mood:state.tone==='dark'?-0.7:state.tone==='light'?0.7:(FP.mood??(R()*2-1)),
-    energy:state.energy==='calm'?0.7:state.energy==='bold'?-0.8:(FP.energy??(R()*2-1)),
-    density:state.dens==='min'?0.8:state.dens==='rich'?-0.8:(FP.density??(R()*2-1)),
-    type:FP.type??(R()*2-1), temp:FP.temp??(R()*2-1), era:FP.era??(R()*2-1)};
+    mood:state.tone==='dark'?-0.7:state.tone==='light'?0.7:(QA.mood??FP.mood??(R()*2-1)),
+    energy:state.energy==='calm'?0.7:state.energy==='bold'?-0.8:(QA.energy??FP.energy??(R()*2-1)),
+    density:state.dens==='min'?0.8:state.dens==='rich'?-0.8:(QA.density??FP.density??(R()*2-1)),
+    type:QA.type??FP.type??(R()*2-1), temp:QA.temp??FP.temp??(R()*2-1), era:QA.era??FP.era??(R()*2-1)};
   /* 팔레트: 톤 필터에 맞는 것 중 시드 선택 */
   let pool=PALS;
   if(ax.mood<-0.3)pool=PALS.filter(p=>(p.moods||[]).includes('dark')||lum(p.colors[0].hex)<0.25);
   else if(ax.mood>0.3)pool=PALS.filter(p=>!(p.moods||[]).includes('dark'));
   if(!pool.length)pool=PALS;
-  const P=pool[Math.floor(R()*pool.length)];
+  let P=pool[Math.floor(R()*pool.length)];
+  /* 퀴즈 선택 팔레트: 카드의 40%는 그 팔레트로, 나머지는 같은 무드 풀에서 */
+  if(QPAL&&R()<0.4){const qp=PALS.find(x=>x.id===QPAL);if(qp)P=qp;}
   const cols=P.colors.map(c=>c.hex),byL=[...cols].sort((a,b)=>lum(a)-lum(b));
   const dark=ax.mood<-0.25?true:ax.mood>0.25?false:chance(.5);
   let acc=cols.reduce((m,c)=>chroma(c)>chroma(m)?c:m,cols[0]);
@@ -153,13 +167,15 @@ function genModel(i){
   const chosen=new Set(['hero','about','work','contact']);
   for(const{k}of scored){if(chosen.size>=target)break;chosen.add(k);}
   const secs=CANON.filter(k=>chosen.has(k));
-  const ind=PACK_KEYS[Math.floor(R()*PACK_KEYS.length)];
+  const u=loadPersona();
+  const ind=u.ind||PACK_KEYS[Math.floor(R()*PACK_KEYS.length)];
   const l={hero,nav,navbe,work,wtabs,motion,rad:Math.round(R()*20),dens:+(1+0.14*ax.density).toFixed(2),
     scale:ax.energy<0?pick([1.1,1.22]):pick([0.9,1,1.1]),halign:hero==='bigtype'&&chance(.25)?'center':'',
     'case':!serif&&ax.era<0&&chance(.4)?'upper':'',imgStart:Math.floor(R()*6),aspect:pick(['4/3','3/2','4/5']),
     pre:chance(motion==='bold'?.6:.25)?1:0,cur:chance(ax.era<-0.2?.45:.1)?1:0,secs,
     about:pick(['','','center','bar']),arch:'onepage'};
-  const tok={c,f:{disp,body:serif?'Outfit':'Inter',dispKr,bodyKr:'Noto Sans KR'},l,p:{ind},
+  const pTok={ind};if(u.name)pTok.name=u.name;
+  const tok={c,f:{disp,body:serif?'Outfit':'Inter',dispKr,bodyKr:'Noto Sans KR'},l,p:pTok,
     m:{fam:P.ko+' 조합',famko:'',pal:P.en,k:''}};
   return{tok,P,hero,nav,secs,dispKr,ind,dark,name:`${P.ko} ${HEROKO[hero]} ${String(i+1).padStart(2,'0')}`};
 }
@@ -191,5 +207,16 @@ for(const id of['tone','energy','dens']){
 document.getElementById('shuffle').onclick=()=>{state.seed=(state.seed*1103515245+12345)>>>0;state.count=24;
   history.replaceState(null,'','?s='+state.seed+(state.fam?'&fam='+state.fam:''));render();};
 document.getElementById('more').onclick=()=>{state.count+=12;render();};
+(function(){
+  const sel=document.getElementById('pInd');
+  sel.innerHTML='<option value="">업종 자동</option>'+PACK_KEYS.map(k=>`<option value="${k}">${PACKS[k]}</option>`).join('');
+  const u=loadPersona();
+  if(u.name)document.getElementById('pName').value=u.name;
+  if(u.ind)sel.value=u.ind;
+  let t=null;
+  document.getElementById('pName').addEventListener('input',e=>{clearTimeout(t);t=setTimeout(()=>{const u=loadPersona();u.name=e.target.value.trim();savePersona(u);render();},350);});
+  sel.addEventListener('change',e=>{const u=loadPersona();u.ind=e.target.value;savePersona(u);render();});
+  if(HAS_AX)document.getElementById('quizNote').style.display='';
+})();
 fetch('palettes.json').then(r=>r.json()).then(p=>{PALS=p;render();});
 </script>

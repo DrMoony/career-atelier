@@ -114,6 +114,9 @@ h2.qh{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:c
 .pvcard iframe{width:100%;height:min(72vh,620px);border:0;display:block;}
 .pvcard .pvrow{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;}
 .pvcard .pvnote{margin-top:12px;font-size:12px;color:var(--muted);line-height:1.6;}
+.pvpersona{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;}
+.pvpersona input,.pvpersona select{font:inherit;font-size:13px;border:1px solid var(--line2);border-radius:9px;padding:8px 12px;background:var(--panel);color:var(--ink);}
+.pvpersona input{width:170px;}
 .axes{margin-top:6px;}.axrow{display:grid;grid-template-columns:60px 1fr 60px;gap:10px;align-items:center;margin:8px 0;font-size:11px;color:var(--muted);}
 .axrow .bar{height:6px;background:var(--panel2);border-radius:6px;position:relative;border:1px solid var(--line);}.axrow .bar i{position:absolute;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--gold);transform:translateX(-50%);box-shadow:0 0 0 3px var(--panel);}.axrow .r{text-align:right;}
 .res-cta{margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
@@ -162,6 +165,7 @@ h2.qh{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:c
     <div class="fam serif" id="famName"></div>
     <p class="blurb" id="famBlurb"></p>
     <div class="card pvcard"><div class="lab">내 포트폴리오 미리보기 — 답변으로 <b>생성</b>됐어요</div>
+      <div class="pvpersona"><input id="uName" maxlength="12" placeholder="이름 (미리보기에 반영)"><select id="uInd"></select></div>
       <div class="pvframe"><iframe id="pvIframe" title="생성된 포트폴리오 미리보기" loading="lazy"></iframe></div>
       <div class="pvrow"><a class="btn" id="pvOpen" target="_blank" rel="noopener">전체 화면으로 열기 ↗</a><button class="btn ghost" id="pvRegen">다른 조합으로 재생성 ↻</button></div>
       <div class="pvnote">색·폰트·레이아웃을 115개 실측 샘플에서 학습·재조합해 만든 <b>우리 소유 디자인</b>이에요. 특정 상용 템플릿이 아니라, 당신 답변 기반으로 새로 지은 페이지입니다.</div></div>
@@ -424,6 +428,13 @@ function layoutTokens(){
    나머지는 취향 축이 가중치를 주는 시드 조합 — 재생성마다 시드가 돌아
    같은 취향 안에서도 서로 다른 형태가 나온다. 색은 스킴·지터로 자유도를 높이되
    렌더러의 fixColors가 가독성을 보증한다. */
+/* 사용자 페르소나(이름·업종) — 갤러리·미리보기와 localStorage로 공유 */
+const INDS=[['design','디자인·프로덕트'],['pharma','제약·바이오'],['medical','의료·진료'],['photo','사진·영상'],['archi','건축·인테리어'],['tech','개발·테크'],['data','데이터·리서치'],['mkt','마케팅·브랜드'],['edu','교육·강의'],['law','법률·특허'],['finance','금융·투자'],['fnb','셰프·F&B']];
+function loadPersona(){try{return JSON.parse(localStorage.getItem('atelier_persona')||'{}');}catch(e){return{};}}
+function savePersona(p){try{localStorage.setItem('atelier_persona',JSON.stringify(p));}catch(e){}}
+function personaTok(){const u=loadPersona();const o={};if(u.name)o.name=u.name;if(u.ind)o.ind=u.ind;return o;}
+function axPack(){return AXES.map(a=>Math.round((V?V[a.k]:0)*10)).join(',');}
+function modelsUrl(k){return `models.html?fam=${k}&ax=${axPack()}&pal=${selPalId||''}`;}
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 function synthTokens(variant=0){
   const p=PAL.find(x=>x.id===selPalId),{best}=nearest();
@@ -502,7 +513,7 @@ function synthTokens(variant=0){
   const L={hero,nav,navbe,work,wtabs,motion,rad,dens,scale,halign,'case':caseU,
     imgStart:Math.floor(R()*6),aspect:pick(['4/3','4/3','3/2','4/5']),
     pre,cur,secs,about:V.density>0.5?'center':pick(['','','bar']),arch:'onepage'};
-  return{c:{bg,surf,ink,mut,line,acc,acc2},f:F,l:L,m:{fam:best.name,famko:best.ko,pal:p.en,k:best.k}};
+  return{c:{bg,surf,ink,mut,line,acc,acc2},f:F,l:L,p:personaTok(),m:{fam:best.name,famko:best.ko,pal:p.en,k:best.k}};
 }
 let genVariant=0;
 function renderPreview(){
@@ -523,8 +534,8 @@ function renderBrief(){
     return `<div class="bi"><div class="k">${d.q.replace(/은$|는$/,'')}</div>${o?o.m:'<div class="mk"></div>'}<div class="v">${o?o.l:'—'}</div></div>`;}).join('');
   $('#typLine').innerHTML=`<b>타이포:</b> ${best.type}`;
   $('#axes').innerHTML=AXES.map(a=>{const pc=(V[a.k]+1)/2*100;return `<div class="axrow"><span>${a.neg}</span><span class="bar"><i style="left:${pc}%"></i></span><span class="r">${a.pos}</span></div>`;}).join('');
-  $('#tmplChips').innerHTML=`<a class="chip" href="models.html?fam=${best.k}" style="color:var(--gold);border-color:var(--gold);font-weight:600">이 방향으로 생성된 모델 갤러리 →</a>`;
-  $('#also').innerHTML=`<span style="color:var(--faint)">모델은 전부 재조합 생성이에요 — 특정 템플릿을 고르는 게 아니라 당신 취향으로 새로 지어져요. 두 번째 방향: <b>${second.name}</b> <a href="models.html?fam=${second.k}" style="color:var(--gold)">모델 보기 →</a></span>`;
+  $('#tmplChips').innerHTML=`<a class="chip" href="${modelsUrl(best.k)}" style="color:var(--gold);border-color:var(--gold);font-weight:600">내 취향으로 생성된 모델 갤러리 →</a>`;
+  $('#also').innerHTML=`<span style="color:var(--faint)">모델은 전부 재조합 생성이에요 — 특정 템플릿을 고르는 게 아니라 당신 취향으로 새로 지어져요. 두 번째 방향: <b>${second.name}</b> <a href="${modelsUrl(second.k)}" style="color:var(--gold)">모델 보기 →</a></span>`;
 }
 
 /* wire */
@@ -548,6 +559,13 @@ $('#ofill').onclick=()=>{const {best}=nearest();const d=FAMOUT[best.k]||{};
   OUT.forEach(o=>{if(!oChoice[o.key])oChoice[o.key]=d[o.key]||o.o[0].id;});
   go('brief');renderBrief();};
 $('#pvRegen').onclick=()=>{genVariant++;renderPreview();};
+(function(){const sel=$('#uInd');if(!sel)return;
+  sel.innerHTML='<option value="">업종 (샘플 자동)</option>'+INDS.map(x=>`<option value="${x[0]}">${x[1]}</option>`).join('');
+  const u=loadPersona(); if(u.name)$('#uName').value=u.name; if(u.ind)sel.value=u.ind;
+  let t=null;
+  $('#uName').addEventListener('input',e=>{clearTimeout(t);t=setTimeout(()=>{const u=loadPersona();u.name=e.target.value.trim();savePersona(u);renderPreview();},350);});
+  sel.addEventListener('change',e=>{const u=loadPersona();u.ind=e.target.value;savePersona(u);renderPreview();});
+})();
 $('#again').onclick=()=>{cur=0;oStep=0;selPalId=null;genVariant=0;AXES.forEach(a=>score[a.k]=0);OUT.forEach(o=>oChoice[o.key]=null);go('intro');};
 $('#copy').onclick=()=>{const {best}=nearest();const p=PAL.find(x=>x.id===selPalId);
   const lay=OUT.map(d=>{const o=d.o.find(x=>x.id===oChoice[d.key]);return o?o.l:'—';}).join(' · ');
