@@ -11,7 +11,7 @@
   토큰 스키마: {c:{색상 역할}, f:{폰트}, l:{레이아웃 변형}, m:{메타}, p:{페르소나}}
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Space+Grotesk:wght@400;500;700&family=Archivo:wght@400;600;800&family=Instrument+Serif:ital@0;1&family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Space+Grotesk:wght@400;500;700&family=Archivo:wght@400;600;800&family=Instrument+Serif:ital@0;1&family=Outfit:wght@200;300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg:#0A0E0F; --surf:#12191C; --ink:#ECEFEC; --mut:#9BA6A3; --line:rgba(255,255,255,.12);
@@ -116,6 +116,85 @@ body[data-motion="bold"] .marq .track{animation-duration:16s;}
 .contact .mail:hover{color:var(--acc);}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
 
+/* ---------- 패밀리 아이덴티티 (구조가 달라야 다르게 느껴진다) ---------- */
+/* gallery — 미술관: 센터 정렬, 액자 매팅, 헤어라인 룰, 얇은 세리프 */
+body[data-fam="gallery"] .hero{text-align:center;}
+body[data-fam="gallery"] .hero .sub,body[data-fam="gallery"] .hero .meta{margin-left:auto;margin-right:auto;justify-content:center;}
+body[data-fam="gallery"] .hero h1{font-weight:400;}
+body[data-fam="gallery"] .hero h1 em{font-weight:400;}
+body[data-fam="gallery"] section{border-top:1px solid var(--line);}
+body[data-fam="gallery"] .card{background:transparent;border:1px solid var(--line);border-radius:0;padding:12px;}
+body[data-fam="gallery"] .card .thumb{border:1px solid var(--line);}
+body[data-fam="gallery"] .card .body{padding:16px 4px 4px;text-align:center;}
+body[data-fam="gallery"] .card .body .t{font-weight:400;}
+body[data-fam="gallery"] .card .tags{justify-content:center;}
+body[data-fam="gallery"] .card:hover{transform:none;border-color:var(--acc);}
+/* noir — 프리미엄 다크: 골드 디테일, 넓은 자간, 채워진 CTA */
+body[data-fam="noir"] .eyebrow{letter-spacing:.34em;}
+body[data-fam="noir"] nav .cta{background:var(--acc);color:var(--bg);border-color:var(--acc);}
+body[data-fam="noir"] .hero h1 em{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.14em;}
+body[data-fam="noir"] .card{border-color:color-mix(in srgb,var(--acc) 26%,var(--line));}
+body[data-fam="noir"] .marq .track span::before{content:"✦";}
+/* editorial — 잡지: 거대 헤드라인, 두꺼운 룰, 리스트형 작업 */
+body[data-fam="editorial"] .hero h1{font-size:clamp(50px,10.5vw,140px);line-height:.98;letter-spacing:-.03em;}
+body[data-fam="editorial"] .work h2{border-bottom:3px solid var(--ink);padding-bottom:14px;width:100%;}
+body[data-fam="editorial"] .grid{grid-template-columns:1fr !important;gap:0;}
+body[data-fam="editorial"] .card{display:grid;grid-template-columns:1fr minmax(200px,320px);border:0;border-top:1px solid var(--line);border-radius:0;background:transparent;overflow:visible;}
+body[data-fam="editorial"] .card .thumb{order:2;aspect-ratio:4/3 !important;}
+body[data-fam="editorial"] .card .body{order:1;align-self:center;padding:26px 26px 26px 0;}
+body[data-fam="editorial"] .card .body .t{font-size:clamp(23px,3vw,34px);}
+body[data-fam="editorial"] .card:hover{transform:none;}
+body[data-fam="editorial"] .card:hover .body .t{color:var(--acc);}
+@media(max-width:720px){body[data-fam="editorial"] .card{grid-template-columns:1fr;}body[data-fam="editorial"] .card .body{order:2;padding:16px 0;}}
+/* studio — 크리에이티브: 하이라이트 박스, 회전 카드, 채워진 태그 */
+body[data-fam="studio"] .hero h1 em{font-style:normal;display:inline-block;background:var(--acc);color:var(--bg);padding:.02em .18em;transform:rotate(-2deg);}
+body[data-fam="studio"] .card{border-width:2px;border-color:var(--ink);}
+body[data-fam="studio"] .card:nth-child(odd):hover{transform:translateY(-6px) rotate(-1.2deg);}
+body[data-fam="studio"] .card:nth-child(even):hover{transform:translateY(-6px) rotate(1.2deg);}
+body[data-fam="studio"] .card .body .tags span{background:var(--acc2);border-color:transparent;color:var(--bg);font-weight:600;}
+body[data-fam="studio"] .marq .track{animation-duration:12s;}
+body[data-fam="studio"] .marq .track span{color:var(--ink);}
+/* neotech — 터미널: 모노 크롬, 그리드 배경, 커서 블링크, 직각 */
+body[data-fam="neotech"]{--mono:'JetBrains Mono',monospace;}
+body[data-fam="neotech"]::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.16;
+  background:repeating-linear-gradient(0deg,transparent 0 55px,var(--line) 55px 56px),repeating-linear-gradient(90deg,transparent 0 55px,var(--line) 55px 56px);}
+body[data-fam="neotech"] .eyebrow{font-family:var(--mono);letter-spacing:0;text-transform:none;}
+body[data-fam="neotech"] .eyebrow::before{content:"$";width:auto;height:auto;background:none;color:var(--acc);font-weight:600;}
+body[data-fam="neotech"] .hero .kn{font-family:var(--mono);font-size:13px;color:var(--acc);}
+body[data-fam="neotech"] .hero h1 em{font-style:normal;color:var(--acc);}
+body[data-fam="neotech"] .hero h1 em::after{content:"_";animation:blink 1.1s steps(1) infinite;}
+@keyframes blink{50%{opacity:0;}}
+body[data-fam="neotech"] .card{border-radius:3px;}
+body[data-fam="neotech"] .card .num{font-family:var(--mono);}
+body[data-fam="neotech"] .card .body .tags span{font-family:var(--mono);border-radius:3px;}
+body[data-fam="neotech"] .contact .mail{font-family:var(--mono);}
+/* warm — 다정: 라운드·소프트 섀도·블롭, 필 버튼 */
+body[data-fam="warm"] .hero::before{content:"";position:absolute;width:46vw;height:46vw;border-radius:50%;top:4%;right:-10%;z-index:-1;
+  background:radial-gradient(circle,color-mix(in srgb,var(--acc) 22%,transparent),transparent 70%);}
+body[data-fam="warm"] .hero h1{font-weight:700;}
+body[data-fam="warm"] .hero h1 em{font-style:normal;color:var(--acc);}
+body[data-fam="warm"] .card{border:0;box-shadow:0 18px 44px -20px color-mix(in srgb,var(--acc) 45%,rgba(0,0,0,.3));}
+body[data-fam="warm"] .card .body .tags span{border-radius:100px;background:color-mix(in srgb,var(--acc) 12%,transparent);border-color:transparent;color:var(--ink);}
+body[data-fam="warm"] .marq .track span::before{content:"✽";}
+/* lens — 사진 우선: 이미지 온리 카드 + 오버레이 캡션, 얇은 타이포 */
+body[data-fam="lens"] .hero h1{font-weight:300;letter-spacing:.01em;}
+body[data-fam="lens"] .hero h1 em{font-style:normal;border-bottom:2px solid var(--acc);}
+body[data-fam="lens"] .eyebrow{letter-spacing:.4em;}
+body[data-fam="lens"] .card{position:relative;border:0;}
+body[data-fam="lens"] .card .thumb{aspect-ratio:4/3;}
+body[data-fam="lens"] .card .body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:18px 20px;background:linear-gradient(transparent,rgba(0,0,0,.66));}
+body[data-fam="lens"] .card .body .t{color:#fff;font-weight:400;}
+body[data-fam="lens"] .card .body .d{color:rgba(255,255,255,.75);}
+body[data-fam="lens"] .card .body .tags{display:none;}
+/* corporate — 신뢰 CV: 헤비 산세리프, 스탯 카드, 좌측 악센트 바 */
+body[data-fam="corporate"] .hero h1{font-weight:800;}
+body[data-fam="corporate"] .hero h1 em{font-style:normal;color:var(--acc);}
+body[data-fam="corporate"] .hero .meta div{border:1px solid var(--line);border-radius:10px;padding:10px 16px;background:var(--surf);}
+body[data-fam="corporate"] .eyebrow::before{width:10px;height:10px;background:var(--acc);}
+body[data-fam="corporate"] nav .cta{background:var(--acc);border-color:var(--acc);color:#fff;}
+body[data-fam="corporate"] .card{border-left:3px solid transparent;}
+body[data-fam="corporate"] .card:hover{border-left-color:var(--acc);transform:translateY(-3px);}
+
 /* banner: this is a generated preview */
 .genban{position:fixed;bottom:0;left:0;right:0;z-index:60;background:var(--acc);color:var(--bg);font-size:12.5px;font-weight:600;
   text-align:center;padding:9px 16px;letter-spacing:.01em;}
@@ -183,7 +262,7 @@ const DEFAULT={
   c:{bg:"#0A0E0F",surf:"#12191C",ink:"#ECEFEC",mut:"#9BA6A3",line:"rgba(255,255,255,.12)",acc:"#C9A96A",acc2:"#57B7C1"},
   f:{disp:"Fraunces",body:"Outfit"},
   l:{hero:"bigtype",nav:"top",work:"grid3",rad:14,motion:"calm",dens:1},
-  m:{fam:"Atelier Noir",famko:"아틀리에 누아르",pal:"Champagne Noir"}
+  m:{fam:"Atelier Noir",famko:"아틀리에 누아르",pal:"Champagne Noir",k:"noir"}
 };
 function readTokens(){
   try{
@@ -208,6 +287,7 @@ function apply(t){
   r.setProperty('--rad',(t.l.rad||14)+'px'); r.setProperty('--dens',t.l.dens||1);
   document.body.dataset.hero=t.l.hero; document.body.dataset.nav=t.l.nav;
   document.body.dataset.work=t.l.work; document.body.dataset.motion=t.l.motion;
+  document.body.dataset.fam=(t.m&&t.m.k)||"";
   // 풀블리드 히어로는 분위기 사진, 스플릿은 인물 사진
   const pImg=document.querySelector('#portrait img');
   if(pImg) pImg.src = t.l.hero==='fullbleed' ? 'assets/img/scape.jpg' : 'assets/img/portrait.jpg';

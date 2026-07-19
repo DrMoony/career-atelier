@@ -398,10 +398,10 @@ function hueDist(a,b){let d=Math.abs(hueOf(a)-hueOf(b))%360;return d>180?360-d:d
 function rotateHue(h,deg){const[H,S,L]=hex2hsl(h);return hsl2hex((H+deg+360)%360,S,L);}
 const FAMHUE={noir:44,warm:38,gallery:187,editorial:206,studio:210,neotech:198,lens:204,corporate:209};
 function fontPair(k,typeAxis){
-  const map={noir:['Fraunces','Outfit'],warm:['Fraunces','Manrope'],gallery:['Fraunces','Outfit'],editorial:['Playfair Display','Inter'],studio:['Space Grotesk','Space Grotesk'],neotech:['Space Grotesk','Inter'],lens:['Instrument Serif','Inter'],corporate:['Archivo','Inter']};
-  let [d,b]=map[k]||['Fraunces','Outfit'];const serif=typeAxis>=0;
-  if(!serif&&['Fraunces','Playfair Display','Instrument Serif'].includes(d))d=(k==='corporate'?'Archivo':'Space Grotesk');
-  if(serif&&d==='Space Grotesk')d='Fraunces';
+  const map={noir:['Playfair Display','Outfit'],warm:['Manrope','Manrope'],gallery:['Fraunces','Outfit'],editorial:['Instrument Serif','Inter'],studio:['Space Grotesk','Space Grotesk'],neotech:['Space Grotesk','Inter'],lens:['Inter','Inter'],corporate:['Archivo','Inter']};
+  let [d,b]=map[k]||['Fraunces','Outfit'];
+  if(typeAxis<-0.4&&['Fraunces','Playfair Display','Instrument Serif'].includes(d))d=(k==='corporate'?'Archivo':'Space Grotesk');
+  if(typeAxis>0.4&&d==='Space Grotesk'&&k!=='neotech')d='Fraunces';
   return{disp:d,body:b};
 }
 function layoutTokens(){
@@ -436,7 +436,7 @@ function synthTokens(variant=0){
   if(dark){bg=mix(byL[0],'#04070A',0.55);ink=mix(byL[byL.length-1],'#FFFFFF',0.2);if(lum(ink)<0.7)ink=mix(ink,'#fff',0.5);}
   else{bg=mix(byL[byL.length-1],'#FFFFFF',0.5);ink=mix(byL[0],'#0A0B0C',0.4);if(lum(ink)>0.4)ink=mix(ink,'#111',0.6);}
   const surf=dark?mix(bg,ink,0.09):mix(bg,ink,0.045),mut=mix(ink,bg,0.42),line=dark?'rgba(255,255,255,.12)':'rgba(17,17,17,.13)';
-  return{c:{bg,surf,ink,mut,line,acc,acc2},f:fontPair(best.k,V.type),l:layoutTokens(),m:{fam:best.name,famko:best.ko,pal:p.en}};
+  return{c:{bg,surf,ink,mut,line,acc,acc2},f:fontPair(best.k,V.type),l:layoutTokens(),m:{fam:best.name,famko:best.ko,pal:p.en,k:best.k}};
 }
 let genVariant=0;
 function renderPreview(){
