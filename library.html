@@ -216,7 +216,8 @@ function applySpec(l,f,spec,H){
   for(const s of spec.sections){const k=mapSecKey(s);if(k&&!seen.has(k)){seen.add(k);secs.push(k);}}
   if(secs.length)l.secs=secs;   /* 1~2개짜리 초미니멀도 그 템플릿의 진짜 해부 — 그대로 존중 */
   l.arch='onepage';                       /* 스펙 뼈대가 곧 구조 — 랜덤 아키타입 해제 */
-  l.sv={skills:(H>>>3)%3,marq:(H>>>7)%3,tline:(H>>>11)%3,testi:(H>>>13)%3,svc:(H>>>17)%3,stats:(H>>>21)%3};
+  {const ks=['skills','marq','tline','testi','svc','stats','hero','work','blog','clients','pricing','cta2','quote','contact'];
+   l.sv=Object.fromEntries(ks.map((k,i)=>[k,(H>>>((i*2+3)%29))%3]));l.sv.video=(H>>>9)%2;}
   delete l.flow;
   /* 타이포 */
   const ty=spec.typography.display_style;

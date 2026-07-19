@@ -173,7 +173,7 @@ h2.qh{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:c
     <div class="card pvcard"><div class="lab">내 포트폴리오 미리보기 — 답변으로 <b>생성</b>됐어요</div>
       <div class="pvpersona"><input id="uName" maxlength="12" placeholder="이름 (미리보기에 반영)"><select id="uInd"></select></div>
       <div class="pvframe"><iframe id="pvIframe" title="생성된 포트폴리오 미리보기" loading="lazy"></iframe></div>
-      <div class="pvrow"><a class="btn" id="pvOpen" target="_blank" rel="noopener">전체 화면으로 열기 ↗</a><button class="btn ghost" id="rgLayout">구성 셔플 ↻</button><button class="btn ghost" id="rgColor">색 조합 셔플 ↻</button></div>
+      <div class="pvrow"><a class="btn" id="pvOpen" target="_blank" rel="noopener">전체 화면으로 열기 ↗</a><button class="btn ghost" id="rgLayout">구성 셔플 ↻</button><button class="btn ghost" id="rgForm">형태 셔플 ↻</button><button class="btn ghost" id="rgColor">색 셔플 ↻</button></div>
       <div class="lab" style="margin-top:18px">구성 레고 — 칩을 눌러 섹션을 넣고 빼세요</div>
       <div class="lego" id="legoSecs"></div>
       <div class="lego2">
@@ -452,11 +452,12 @@ function modelsUrl(k){return `models.html?fam=${k}&ax=${axPack()}&pal=${selPalId
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 const CANON=['hero','stats','marq','about','skills','tline','svc','work','video','pricing','testi','clients','blog','quote','cta2','contact'];
 const SECOPT=[['stats','스탯'],['marq','마퀴'],['skills','스킬'],['tline','타임라인'],['svc','서비스'],['video','비디오'],['pricing','플랜'],['testi','추천사'],['clients','클라이언트'],['blog','노트'],['quote','인용'],['cta2','CTA밴드']];
-function synthTokens(colorVar=0,layoutVar=0){
+function synthTokens(colorVar=0,layoutVar=0,formVar=0){
   const p=PAL.find(x=>x.id===selPalId),{best}=nearest();
   const sig=selPalId+'|'+JSON.stringify(oChoice)+'|'+AXES.map(a=>Math.round(V[a.k]*8)).join(',');
   const seedOf=t=>{let h=2166136261;const q=sig+'|'+t;for(let i=0;i<q.length;i++){h^=q.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;};
-  const Rc=mulberry32(seedOf('c'+colorVar)), Rl=mulberry32(seedOf('l'+layoutVar));
+  const Rc=mulberry32(seedOf('c'+colorVar)), Rl=mulberry32(seedOf('l'+layoutVar)), Rv=mulberry32(seedOf('v'+formVar));
+  const pickV=a=>a[Math.floor(Rv()*a.length)];
   const pickC=a=>a[Math.floor(Rc()*a.length)], chanceC=x=>Rc()<x;
   const pickL=a=>a[Math.floor(Rl()*a.length)], chanceL=x=>Rl()<x;
 
@@ -530,15 +531,18 @@ function synthTokens(colorVar=0,layoutVar=0){
   for(const{k}of scored){if(chosen.size>=target)break;chosen.add(k);}
   const secs=CANON.filter(k=>chosen.has(k));
 
-  const sv={skills:pickL([0,1,2]),marq:V.energy<0?pickL([0,1,2,2]):pickL([0,0,1]),
-    tline:pickL([0,1,2]),testi:V.energy>0.2?pickL([0,1,1,2]):pickL([0,1,2]),
-    svc:pickL([0,1,2]),stats:pickL([0,1,2])};
+  const sv={skills:pickV([0,1,2]),marq:V.energy<0?pickV([0,1,2,2]):pickV([0,0,1]),
+    tline:pickV([0,1,2]),testi:V.energy>0.2?pickV([0,1,1,2]):pickV([0,1,2]),
+    svc:pickV([0,1,2]),stats:pickV([0,1,2]),
+    hero:pickV([0,0,1,2]),work:pickV([0,1,2]),blog:pickV([0,1,2]),clients:pickV([0,1,2]),
+    pricing:pickV([0,1,2]),cta2:pickV([0,1,2]),quote:pickV([0,1,2]),video:pickV([0,1]),
+    contact:pickV([0,1,2])};
   const L={hero,nav,navbe,work,wtabs,motion,rad,dens,scale,halign,'case':caseU,
     imgStart:Math.floor(Rl()*6),aspect:pickL(['4/3','4/3','3/2','4/5']),
     pre,cur,secs,sv,about:V.density>0.5?'center':pickL(['','','bar']),arch:'onepage'};
   return{c:{bg,surf,ink,mut,line,acc,acc2},f:F,l:L,p:personaTok(),m:{fam:best.name,famko:best.ko,pal:p.en,k:best.k}};
 }
-let cVar=0,lVar=0;                                   /* 색/구성 독립 시드 */
+let cVar=0,lVar=0,vVar=0;                                   /* 색/구성 독립 시드 */
 const secPins=new Map();                              /* 레고: 섹션 pin (key→true/false) */
 const partSel={hero:'',work:'',nav:''};               /* 레고: 부품 직접 선택 */
 function applyLego(tok){
@@ -561,7 +565,7 @@ function renderLego(secs){
 }
 function renderPreview(){
   if(!$('#pvIframe'))return;
-  const tok=applyLego(synthTokens(cVar,lVar));
+  const tok=applyLego(synthTokens(cVar,lVar,vVar));
   const url='preview.html?v15#'+encodeURIComponent(JSON.stringify(tok));
   $('#pvIframe').src=url; if($('#pvOpen'))$('#pvOpen').href=url;
   renderLego(tok.l.secs);
@@ -605,6 +609,7 @@ $('#ofill').onclick=()=>{const {best}=nearest();const d=FAMOUT[best.k]||{};
   go('brief');renderBrief();};
 $('#rgLayout').onclick=()=>{lVar++;renderPreview();};
 $('#rgColor').onclick=()=>{cVar++;renderPreview();};
+$('#rgForm').onclick=()=>{vVar++;renderPreview();};
 $('#legoSecs').addEventListener('click',e=>{const b=e.target.closest('.lchip');if(!b)return;
   const k=b.dataset.k, on=b.classList.contains('on');
   secPins.set(k,!on);renderPreview();});
@@ -619,7 +624,7 @@ $('#lgReset').onclick=()=>{secPins.clear();Object.keys(partSel).forEach(k=>partS
   $('#uName').addEventListener('input',e=>{clearTimeout(t);t=setTimeout(()=>{const u=loadPersona();u.name=e.target.value.trim();savePersona(u);renderPreview();},350);});
   sel.addEventListener('change',e=>{const u=loadPersona();u.ind=e.target.value;savePersona(u);renderPreview();});
 })();
-$('#again').onclick=()=>{cur=0;oStep=0;selPalId=null;cVar=0;lVar=0;secPins.clear();Object.keys(partSel).forEach(k=>partSel[k]='');AXES.forEach(a=>score[a.k]=0);OUT.forEach(o=>oChoice[o.key]=null);go('intro');};
+$('#again').onclick=()=>{cur=0;oStep=0;selPalId=null;cVar=0;lVar=0;vVar=0;secPins.clear();Object.keys(partSel).forEach(k=>partSel[k]='');AXES.forEach(a=>score[a.k]=0);OUT.forEach(o=>oChoice[o.key]=null);go('intro');};
 $('#copy').onclick=()=>{const {best}=nearest();const p=PAL.find(x=>x.id===selPalId);
   const lay=OUT.map(d=>{const o=d.o.find(x=>x.id===oChoice[d.key]);return o?o.l:'—';}).join(' · ');
   const t=`[Career Atelier 디자인 브리프]\n방향: ${best.name} (${best.ko})\n팔레트: ${p.ko} [${p.c.map(c=>c[1]).join(', ')}]\n레이아웃: ${lay}\n타이포: ${best.type}`;
