@@ -380,7 +380,7 @@ function renderPalMatch(){
     .map(t=>({t,d:palDist(pl,t.palette.map(hex2lab))})).sort((a,b)=>a.d-b.d).slice(0,6);
   el.innerHTML=ranked.map(({t})=>{
     const sw=t.palette.slice(0,5).map(h=>`<i style="background:${h}"></i>`).join('');
-    return `<a href="library.html?q=${encodeURIComponent(tplQuery(t.name))}" title="${t.name}"><div class="sw">${sw}</div><div class="nm">${tplLabel(t.name)}</div><div class="mt">${t.family||''}${t.bg?' · '+t.bg:''}</div></a>`;
+    return `<span title="색 레퍼런스"><div class="sw">${sw}</div><div class="nm">${tplLabel(t.name)}</div><div class="mt">${t.family||''}${t.bg?' · '+t.bg:''}</div></span>`;
   }).join('');
 }
 /* ---------- 디자인 토큰 합성 (샘플 학습·재조합 → 렌더 미리보기) ---------- */
@@ -523,8 +523,8 @@ function renderBrief(){
     return `<div class="bi"><div class="k">${d.q.replace(/은$|는$/,'')}</div>${o?o.m:'<div class="mk"></div>'}<div class="v">${o?o.l:'—'}</div></div>`;}).join('');
   $('#typLine').innerHTML=`<b>타이포:</b> ${best.type}`;
   $('#axes').innerHTML=AXES.map(a=>{const pc=(V[a.k]+1)/2*100;return `<div class="axrow"><span>${a.neg}</span><span class="bar"><i style="left:${pc}%"></i></span><span class="r">${a.pos}</span></div>`;}).join('');
-  $('#tmplChips').innerHTML=best.t.map(t=>`<a class="chip" href="library.html?fam=${best.k}" title="라이브러리에서 실제 팔레트·데모 보기">${t}</a>`).join('');
-  $('#also').innerHTML=`<a href="library.html?fam=${best.k}" style="color:var(--gold);font-weight:600">이 방향 템플릿 전체 보기 (실제 팔레트·데모) →</a><br><span style="color:var(--faint)">두 번째로 가까운 방향: <b>${second.name} · ${second.ko}</b></span>`;
+  $('#tmplChips').innerHTML=`<a class="chip" href="models.html?fam=${best.k}" style="color:var(--gold);border-color:var(--gold);font-weight:600">이 방향으로 생성된 모델 갤러리 →</a>`;
+  $('#also').innerHTML=`<span style="color:var(--faint)">모델은 전부 재조합 생성이에요 — 특정 템플릿을 고르는 게 아니라 당신 취향으로 새로 지어져요. 두 번째 방향: <b>${second.name}</b> <a href="models.html?fam=${second.k}" style="color:var(--gold)">모델 보기 →</a></span>`;
 }
 
 /* wire */

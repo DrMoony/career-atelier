@@ -1,0 +1,195 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>모델 갤러리 · Career Atelier</title>
+<!--
+  모델 갤러리 — 사용자가 고르는 것은 전부 "재조합으로 생성된 모델".
+  원본 템플릿 115개는 부품·팔레트·해부 패턴의 학습 소재일 뿐 선택지가 아니다.
+  각 카드 = 시드 조합(팔레트 × 부품 × 섹션 문법 × 페르소나) → preview.html 토큰.
+-->
+<style>
+:root{--bg:#0A0E0F;--panel:#141B1D;--panel2:#1A2325;--line:#26312F;--ink:#ECEFEC;--ink2:#AAB4B1;--ink3:#6E7C79;--gold:#C9A96A;--gold2:#A8823E}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Outfit','Pretendard',system-ui,-apple-system,'Apple SD Gothic Neo',sans-serif;line-height:1.5;word-break:keep-all;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 22px}
+header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0C1113,var(--bg));position:sticky;top:0;z-index:20;backdrop-filter:blur(8px)}
+.hrow{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:20px 0 14px}
+.brand{font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.h1{font-family:'Fraunces',Georgia,serif;font-size:26px;font-weight:500}
+.sub{color:var(--ink2);font-size:13.5px;margin-top:3px;max-width:70ch}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px 0 14px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:100px;overflow:hidden}
+.seg button{background:transparent;border:0;color:var(--ink2);font-size:12.5px;padding:7px 14px;cursor:pointer;font-family:inherit}
+.seg button.on{background:var(--panel2);color:var(--ink)}
+.shuffle{background:var(--gold);color:#100C05;border:0;border-radius:100px;font-weight:700;font-size:13px;padding:8px 18px;cursor:pointer;font-family:inherit}
+.shuffle:hover{background:#E0C084}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;padding:22px 0 30px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:.18s}
+.card:hover{border-color:var(--gold2);transform:translateY(-2px)}
+.pal{display:flex;height:64px}
+.pal i{flex:1}
+.cb{padding:14px 15px 15px;display:flex;flex-direction:column;flex:1}
+.nm{font-size:15px;font-weight:600;letter-spacing:-.01em}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 8px}
+.chips span{font-size:11px;color:var(--ink2);background:#0F1416;border:1px solid var(--line);padding:3px 8px;border-radius:6px}
+.flow{font-size:11px;color:var(--ink3);line-height:1.6;flex:1}
+.open{margin-top:12px;align-self:flex-start;font-size:12.5px;color:var(--gold);border:1px solid var(--gold2);border-radius:8px;padding:6px 14px;transition:.15s}
+.open:hover{background:var(--gold);color:#100C05}
+.more{display:block;margin:0 auto 40px;background:transparent;border:1px solid var(--line);color:var(--ink2);border-radius:100px;font-size:13px;padding:10px 24px;cursor:pointer;font-family:inherit}
+.more:hover{border-color:var(--gold);color:var(--ink)}
+.note{color:var(--ink3);font-size:12px;padding:0 0 44px;line-height:1.7}
+.note b{color:var(--ink2)}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+</style>
+
+<header><div class="wrap">
+  <div class="hrow">
+    <div>
+      <div class="brand">Career Atelier · Models</div>
+      <div class="h1">모델 갤러리</div>
+      <div class="sub">여기 있는 모델은 전부 <b style="color:var(--ink)">재조합으로 새로 생성된 디자인</b>이에요. 115개 레퍼런스에서 학습한 부품·팔레트·구성 문법을 조합해 매번 새로 짓습니다 — 셔플할 때마다 존재한 적 없는 모델들이 나와요.</div>
+    </div>
+  </div>
+  <div class="controls">
+    <div class="seg" id="tone"><button data-v="all" class="on">톤 전체</button><button data-v="light">라이트</button><button data-v="dark">다크</button></div>
+    <div class="seg" id="energy"><button data-v="all" class="on">무드 전체</button><button data-v="calm">차분</button><button data-v="bold">대담</button></div>
+    <div class="seg" id="dens"><button data-v="all" class="on">밀도 전체</button><button data-v="min">미니멀</button><button data-v="rich">풍부</button></div>
+    <button class="shuffle" id="shuffle">셔플 ↻</button>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <div class="grid" id="grid"></div>
+  <button class="more" id="more">모델 12개 더 생성</button>
+  <p class="note">각 모델은 팔레트 68종 × 히어로 6종 × 내비 3종 × 배치 4종 × 섹션 16종 조합 × 색 스킴에서 시드로 생성돼요. 마음에 드는 모델을 열고, 하단 바에서 업종·이름을 바꿔보세요. 취향에서 출발하려면 <a href="design-quiz.html" style="color:var(--gold)">취향 진단 →</a></p>
+</div>
+
+<script>
+/* ---------- 시드 유틸 ---------- */
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function fnv(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return h>>>0;}
+/* ---------- 색 유틸 ---------- */
+function h2rgb(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+function rgb2h(r,g,b){const c=v=>Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0');return'#'+c(r)+c(g)+c(b);}
+function lum(h){const[r,g,b]=h2rgb(h);return(0.2126*r+0.7152*g+0.0722*b)/255;}
+function mix(a,b,t){const A=h2rgb(a),B=h2rgb(b);return rgb2h(A[0]+(B[0]-A[0])*t,A[1]+(B[1]-A[1])*t,A[2]+(B[2]-A[2])*t);}
+function hex2hsl(x){const[r,g,b]=h2rgb(x).map(v=>v/255);const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let H=0,S=0,L=(mx+mn)/2;
+  if(mx!==mn){const d=mx-mn;S=L>.5?d/(2-mx-mn):d/(mx+mn);H=mx===r?((g-b)/d+(g<b?6:0)):mx===g?((b-r)/d+2):((r-g)/d+4);H*=60;}return[H,S,L];}
+function hsl2hex(H,S,L){H/=360;if(S===0){const v=L*255;return rgb2h(v,v,v);}const q=L<.5?L*(1+S):L+S-L*S,p=2*L-q;
+  const f=t=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p;};
+  return rgb2h(f(H+1/3)*255,f(H)*255,f(H-1/3)*255);}
+function chroma(x){const[H,S,L]=hex2hsl(x);return S*Math.min(1,L*2)*Math.min(1,(1-L)*2.2);}
+function rotateHue(x,d){const[H,S,L]=hex2hsl(x);return hsl2hex((H+d+360)%360,S,L);}
+/* ---------- 부품 사전 ---------- */
+const HEROKO={bigtype:'대형 타이포',split:'스플릿',fullbleed:'풀블리드',slider:'슬라이더',card:'프로필 카드',collage:'콜라주'};
+const NAVKO={top:'상단 내비',burger:'햄버거',side:'사이드'};
+const SECKO={hero:'히어로',stats:'스탯',marq:'마퀴',about:'소개',skills:'스킬',tline:'타임라인',svc:'서비스',work:'작업',video:'비디오',pricing:'플랜',testi:'추천사',clients:'클라이언트',blog:'노트',quote:'인용',cta2:'CTA',contact:'연락'};
+const PACKS={design:'디자인',pharma:'제약·바이오',medical:'의료',photo:'사진',archi:'건축',tech:'개발',data:'데이터',mkt:'마케팅',edu:'교육',law:'법률',finance:'금융',fnb:'F&B'};
+const PACK_KEYS=Object.keys(PACKS);
+const SERIF_POOL=['Fraunces','Playfair Display','Instrument Serif','Lora','Cormorant Garamond','Marcellus','Prata'];
+const SANS_POOL=['Space Grotesk','Archivo','Inter','Manrope','Outfit','Sora','Syne','DM Sans','Work Sans','Urbanist','Barlow'];
+const KR_SERIF=['Noto Serif KR','Nanum Myeongjo','Gowun Batang','Song Myung','Hahmlet'];
+const KR_SANS=['Gothic A1','IBM Plex Sans KR','Black Han Sans','Do Hyeon','Gowun Dodum','Jua'];
+/* ?fam= 취향 프리셋 (퀴즈에서 넘어올 때) */
+const FAMP={noir:{mood:-.8,energy:.5,type:1,era:.6},gallery:{mood:.8,energy:.7,type:1,era:.6},
+  editorial:{mood:.7,energy:.6,type:1,era:.3},studio:{mood:.1,energy:-.9,type:-1,era:-.8},
+  neotech:{mood:-.8,energy:-.4,type:-1,era:-.8},warm:{mood:.8,energy:.4,type:-.4,temp:.9},
+  lens:{mood:-.4,energy:.5,type:-.4},corporate:{mood:.8,energy:.7,type:-1,temp:-.7}};
+
+let PALS=[];
+const q=new URLSearchParams(location.search);
+const state={tone:'all',energy:'all',dens:'all',seed:+(q.get('s')||7),count:24,fam:q.get('fam')||''};
+
+function genModel(i){
+  const R=mulberry32(fnv(state.seed+'|'+i+'|'+state.tone+state.energy+state.dens+state.fam));
+  const pick=a=>a[Math.floor(R()*a.length)],chance=x=>R()<x;
+  const FP=FAMP[state.fam]||{};
+  /* 축: 필터·프리셋이 고정, 나머지는 시드 */
+  const ax={
+    mood:state.tone==='dark'?-0.7:state.tone==='light'?0.7:(FP.mood??(R()*2-1)),
+    energy:state.energy==='calm'?0.7:state.energy==='bold'?-0.8:(FP.energy??(R()*2-1)),
+    density:state.dens==='min'?0.8:state.dens==='rich'?-0.8:(FP.density??(R()*2-1)),
+    type:FP.type??(R()*2-1), temp:FP.temp??(R()*2-1), era:FP.era??(R()*2-1)};
+  /* 팔레트: 톤 필터에 맞는 것 중 시드 선택 */
+  let pool=PALS;
+  if(ax.mood<-0.3)pool=PALS.filter(p=>(p.moods||[]).includes('dark')||lum(p.colors[0].hex)<0.25);
+  else if(ax.mood>0.3)pool=PALS.filter(p=>!(p.moods||[]).includes('dark'));
+  if(!pool.length)pool=PALS;
+  const P=pool[Math.floor(R()*pool.length)];
+  const cols=P.colors.map(c=>c.hex),byL=[...cols].sort((a,b)=>lum(a)-lum(b));
+  const dark=ax.mood<-0.25?true:ax.mood>0.25?false:chance(.5);
+  let acc=cols.reduce((m,c)=>chroma(c)>chroma(m)?c:m,cols[0]);
+  if(chroma(acc)<0.08)acc=hsl2hex(210,0.5,dark?0.6:0.5);
+  let[ah,as,al]=hex2hsl(acc);
+  ah=(ah+(R()*44-22)*(ax.era<0?1.2:0.5)+360)%360;
+  as=Math.max(0.16,Math.min(0.95,as*(1+0.35*(-ax.energy))));
+  al=Math.max(0.38,Math.min(0.75,dark?Math.max(al,0.5):Math.min(al,0.62)));
+  acc=hsl2hex(ah,as,al);
+  let acc2=rotateHue(acc,pick([180,40,-40,120,150]));
+  {const[h2,s2,l2]=hex2hsl(acc2);acc2=hsl2hex(h2,Math.min(0.8,Math.max(0.3,s2)),dark?Math.max(0.5,l2):Math.min(0.6,l2));}
+  let bg=dark?mix(byL[0],'#04070A',0.55):mix(byL[byL.length-1],'#FFFFFF',0.5);
+  let ink=dark?mix(byL[byL.length-1],'#FFFFFF',0.45):mix(byL[0],'#0A0B0C',0.55);
+  const scheme=pick(ax.energy<0?['clean','tinted','tinted','accent-bg']:['clean','clean','tinted']);
+  if(scheme==='tinted')bg=mix(bg,acc,0.05+R()*0.06);
+  if(scheme==='accent-bg')bg=hsl2hex(ah,Math.min(0.4,as*0.7),dark?0.09:0.94);
+  let surf=dark?mix(bg,ink,0.09):mix(bg,ink,0.045);
+  if(scheme!=='clean')surf=mix(surf,acc,R()*0.1);
+  const c={bg,surf,ink,mut:mix(ink,bg,0.42),line:dark?'rgba(255,255,255,.12)':'rgba(17,17,17,.13)',acc,acc2};
+  /* 부품 */
+  const hero=pick(ax.energy<0?['slider','fullbleed','collage','split','bigtype']:['bigtype','split','split','fullbleed','card']);
+  const nav=pick(ax.era<0?['top','burger','burger','side']:['top','top','burger','side']);
+  const navbe=nav==='top'&&chance(ax.energy<0?.5:.2)?'trans':'';
+  const work=pick(['grid3','grid3','grid2','mason','row']);
+  const wtabs=(work==='grid3'||work==='mason')&&chance(ax.density<0?.7:.3)?1:0;
+  const motion=ax.energy<0?'bold':'calm';
+  const serif=ax.type>0;
+  const disp=serif?SERIF_POOL[Math.floor(R()*SERIF_POOL.length)]:SANS_POOL[Math.floor(R()*SANS_POOL.length)];
+  const dispKr=serif?KR_SERIF[Math.floor(R()*KR_SERIF.length)]:KR_SANS[Math.floor(R()*KR_SANS.length)];
+  const CANON=['hero','stats','marq','about','skills','tline','svc','work','video','pricing','testi','clients','blog','quote','cta2','contact'];
+  const W={stats:.45+.25*ax.energy,marq:.2+.4*(-ax.energy),skills:.45,tline:.3+.25*ax.era,svc:.6,
+    video:.15+.3*(-ax.energy),pricing:.3,testi:.45,clients:.35,blog:.35,quote:.25+.3*ax.energy,cta2:.45};
+  const target=Math.max(4,Math.min(12,Math.round(6.5+(-ax.density)*3+(R()*2-1))));
+  const scored=Object.keys(W).map(k=>({k,s:W[k]+R()*0.5})).sort((a,b)=>b.s-a.s);
+  const chosen=new Set(['hero','about','work','contact']);
+  for(const{k}of scored){if(chosen.size>=target)break;chosen.add(k);}
+  const secs=CANON.filter(k=>chosen.has(k));
+  const ind=PACK_KEYS[Math.floor(R()*PACK_KEYS.length)];
+  const l={hero,nav,navbe,work,wtabs,motion,rad:Math.round(R()*20),dens:+(1+0.14*ax.density).toFixed(2),
+    scale:ax.energy<0?pick([1.1,1.22]):pick([0.9,1,1.1]),halign:hero==='bigtype'&&chance(.25)?'center':'',
+    'case':!serif&&ax.era<0&&chance(.4)?'upper':'',imgStart:Math.floor(R()*6),aspect:pick(['4/3','3/2','4/5']),
+    pre:chance(motion==='bold'?.6:.25)?1:0,cur:chance(ax.era<-0.2?.45:.1)?1:0,secs,
+    about:pick(['','','center','bar']),arch:'onepage'};
+  const tok={c,f:{disp,body:serif?'Outfit':'Inter',dispKr,bodyKr:'Noto Sans KR'},l,p:{ind},
+    m:{fam:P.ko+' 조합',famko:'',pal:P.en,k:''}};
+  return{tok,P,hero,nav,secs,dispKr,ind,dark,name:`${P.ko} ${HEROKO[hero]} ${String(i+1).padStart(2,'0')}`};
+}
+
+function render(){
+  const g=document.getElementById('grid');
+  const cards=[];
+  for(let i=0;i<state.count;i++){
+    const m=genModel(i);
+    const url='preview.html?v15#'+encodeURIComponent(JSON.stringify(m.tok));
+    cards.push(`<div class="card">
+      <a href="${url}" target="_blank" rel="noopener"><div class="pal">${m.P.colors.slice(0,5).map(cl=>`<i style="background:${cl.hex}"></i>`).join('')}</div></a>
+      <div class="cb">
+        <div class="nm">${m.name}</div>
+        <div class="chips"><span>${HEROKO[m.hero]}</span><span>${NAVKO[m.nav]}</span><span>${m.secs.length}섹션</span><span>${m.dispKr}</span><span>${PACKS[m.ind]}</span><span>${m.dark?'다크':'라이트'}</span></div>
+        <div class="flow">${m.secs.map(s=>SECKO[s]).join(' → ')}</div>
+        <a class="open" href="${url}" target="_blank" rel="noopener">열어보기 ↗</a>
+      </div></div>`);
+  }
+  g.innerHTML=cards.join('');
+}
+for(const id of['tone','energy','dens']){
+  document.getElementById(id).addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b)return;
+    document.querySelectorAll('#'+id+' button').forEach(x=>x.classList.toggle('on',x===b));
+    state[id==='dens'?'dens':id]=b.dataset.v;state.count=24;render();
+  });
+}
+document.getElementById('shuffle').onclick=()=>{state.seed=(state.seed*1103515245+12345)>>>0;state.count=24;
+  history.replaceState(null,'','?s='+state.seed+(state.fam?'&fam='+state.fam:''));render();};
+document.getElementById('more').onclick=()=>{state.count+=12;render();};
+fetch('palettes.json').then(r=>r.json()).then(p=>{PALS=p;render();});
+</script>

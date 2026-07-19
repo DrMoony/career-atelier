@@ -134,6 +134,9 @@ const FAM = {
 const FAM_ORDER = ['gallery','noir','editorial','studio','neotech','warm','lens','corporate'];
 let TPL = [], state = {fam:'all', bg:'all', q:''};
 const LOCAL = ['localhost','127.0.0.1','[::1]'].includes(location.hostname);
+/* 원본 라이브러리는 내부 소재 열람용(로컬 전용) — 공개 방문자는 생성 모델 갤러리로.
+   사용자가 고르는 대상은 언제나 '재조합으로 생성된 모델'이어야 한다. */
+if(!LOCAL) location.replace('models.html'+location.search);
 
 function clean(name){
   return name
