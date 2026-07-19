@@ -443,6 +443,9 @@ function synthTokens(variant=0){
   const baseFlow=({scroll:0,sections:2,sidebar:4})[oChoice.structure]??0;
   L.flow=(baseFlow+variant)%6;                       // 재생성마다 구성 흐름도 회전
   L.about=V.density>0.5?'center':'';
+  /* 아키타입: 구조 답변이 기본, 재생성마다 포맷 자체가 순환 */
+  const baseArch=({scroll:'onepage',sections:'onepage',sidebar:'split'})[oChoice.structure]||'onepage';
+  L.arch=variant?['onepage','split','deck','wall','vcard','cv'][variant%6]:baseArch;
   return{c:{bg,surf,ink,mut,line,acc,acc2},f:fontPair(best.k,V.type),l:L,m:{fam:best.name,famko:best.ko,pal:p.en,k:best.k}};
 }
 let genVariant=0;

@@ -146,6 +146,74 @@ body[data-about="bar"] .about h2{border-left:3px solid var(--acc);padding-left:2
 .contact .mail:hover{color:var(--acc);}
 footer{border-top:1px solid var(--line);padding:28px 0;color:var(--mut);font-size:12.5px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
 
+/* ---------- 페이지 아키타입: 포맷(골격) 자체가 다른 6종 ---------- */
+/* split — 좌측 고정 프로필 패널 + 우측 스크롤 */
+body[data-arch="split"] nav{display:none;}
+body[data-arch="split"] .page{display:grid;grid-template-columns:minmax(300px,400px) 1fr;}
+body[data-arch="split"] .hero{grid-column:1;grid-row:1/span 30;position:sticky;top:0;height:100svh;min-height:0;
+  background:var(--surf);border-right:1px solid var(--line);padding:clamp(28px,4vw,56px);justify-content:center;}
+body[data-arch="split"] .hero h1{font-size:clamp(30px,3.4vw,50px);}
+body[data-arch="split"] .hero .portrait{display:block !important;position:relative;width:120px;aspect-ratio:1;border-radius:50%;margin-bottom:24px;inset:auto;z-index:0;}
+body[data-arch="split"] .hero .scroll{display:none;}
+body[data-arch="split"] .page>section,body[data-arch="split"] .page>.marq{grid-column:2;}
+body[data-arch="split"] .page>footer{grid-column:1/-1;}
+@media(max-width:860px){body[data-arch="split"] .page{display:flex;flex-direction:column;}
+  body[data-arch="split"] .hero{position:static;height:auto;border-right:0;min-height:70svh;}}
+/* vcard — 배경 위에 뜬 명함 카드 한 장 */
+body[data-arch="vcard"] nav,body[data-arch="vcard"] .marq,body[data-arch="vcard"] .hero .scroll{display:none !important;}
+body[data-arch="vcard"]{background:linear-gradient(160deg,var(--bg),color-mix(in srgb,var(--acc) 16%,var(--bg)));}
+body[data-arch="vcard"] .page{max-width:760px;margin:46px auto;background:var(--surf);border:1px solid var(--line);
+  border-radius:calc(var(--rad) + 12px);box-shadow:0 40px 90px -42px rgba(0,0,0,.55);overflow:hidden;}
+body[data-arch="vcard"] .hero{min-height:0;padding:56px 0 30px;text-align:center;}
+body[data-arch="vcard"] .hero .portrait{display:block !important;position:relative;width:104px;aspect-ratio:1;border-radius:50%;margin:0 auto 20px;inset:auto;z-index:0;}
+body[data-arch="vcard"] .hero h1{font-size:clamp(28px,4.4vw,44px);}
+body[data-arch="vcard"] .hero .sub{margin-left:auto;margin-right:auto;font-size:15px;}
+body[data-arch="vcard"] .hero .meta{justify-content:center;}
+body[data-arch="vcard"] section{padding:34px 0;}
+body[data-arch="vcard"] .grid{grid-template-columns:1fr 1fr !important;display:grid !important;}
+body[data-arch="vcard"] .contact h2{font-size:clamp(26px,4vw,40px);}
+/* cv — 문서형 이력서: 썸네일 없는 타임라인 */
+body[data-arch="cv"] nav,body[data-arch="cv"] .marq,body[data-arch="cv"] .card .thumb,body[data-arch="cv"] .hero .scroll{display:none !important;}
+body[data-arch="cv"]{background:color-mix(in srgb,var(--bg) 88%,var(--ink));}
+body[data-arch="cv"] .page{max-width:860px;margin:40px auto;background:var(--bg);border:1px solid var(--line);box-shadow:0 30px 70px -38px rgba(0,0,0,.5);}
+body[data-arch="cv"] .hero{min-height:0;padding:64px 0 30px;border-bottom:3px solid var(--ink);}
+body[data-arch="cv"] .hero h1{font-size:clamp(32px,5vw,56px);}
+body[data-arch="cv"] section{padding:36px 0;}
+body[data-arch="cv"] .grid{display:block !important;}
+body[data-arch="cv"] .card{display:block;background:transparent;border:0 !important;border-left:2px solid var(--line) !important;border-radius:0;
+  padding:2px 0 20px 26px;position:relative;margin-bottom:4px;transform:none !important;box-shadow:none !important;}
+body[data-arch="cv"] .card::before{content:"";position:absolute;left:-6px;top:9px;width:10px;height:10px;border-radius:50%;background:var(--acc);}
+body[data-arch="cv"] .card .body{padding:0;position:static;background:none;}
+body[data-arch="cv"] .card .body .t{color:var(--ink);}
+body[data-arch="cv"] .card .body .d{color:var(--mut);}
+body[data-arch="cv"] .stats{background:transparent;}
+/* wall — 사진 모자이크가 곧 첫 화면 */
+body[data-arch="wall"] #about,body[data-arch="wall"] .marq,body[data-arch="wall"] #stats,body[data-arch="wall"] #quote{display:none !important;}
+body[data-arch="wall"] .hero{min-height:0;padding:110px 0 22px;}
+body[data-arch="wall"] .hero h1{font-size:clamp(24px,3.4vw,38px);}
+body[data-arch="wall"] .hero .sub{display:none;}
+body[data-arch="wall"] .hero .meta{margin-top:12px;}
+body[data-arch="wall"] .hero .scroll,body[data-arch="wall"] .hero .portrait{display:none !important;}
+body[data-arch="wall"] .work{padding:16px 0 40px;}
+body[data-arch="wall"] .work .head{display:none;}
+body[data-arch="wall"] .work .wrap{max-width:none;padding:0 8px;}
+body[data-arch="wall"] .grid{display:grid !important;grid-template-columns:repeat(3,1fr) !important;gap:7px !important;}
+@media(max-width:700px){body[data-arch="wall"] .grid{grid-template-columns:repeat(2,1fr) !important;}}
+body[data-arch="wall"] .card{position:relative;border:0;border-radius:3px;}
+body[data-arch="wall"] .card .thumb{aspect-ratio:1 !important;}
+body[data-arch="wall"] .card .body{position:absolute;inset:auto 0 0;padding:14px 16px;background:linear-gradient(transparent,rgba(0,0,0,.62));opacity:0;transition:opacity .3s;}
+body[data-arch="wall"] .card:hover .body{opacity:1;}
+body[data-arch="wall"] .card .body .t{color:#fff;}
+body[data-arch="wall"] .card .body .d,body[data-arch="wall"] .card .body .tags{display:none;}
+body[data-arch="wall"] .contact{padding:60px 0;}
+/* deck — 풀스크린 스냅 슬라이드 */
+html:has(body[data-arch="deck"]){scroll-snap-type:y mandatory;}
+body[data-arch="deck"] .hero,body[data-arch="deck"] .page>section{min-height:100svh;scroll-snap-align:start;
+  display:flex;flex-direction:column;justify-content:center;border-top:1px solid var(--line);}
+body[data-arch="deck"] .marq{scroll-snap-align:start;}
+body[data-arch="deck"] .grid{display:flex !important;overflow-x:auto;scroll-snap-type:x mandatory;gap:clamp(14px,2vw,24px);padding-bottom:12px;}
+body[data-arch="deck"] .card{flex:0 0 min(400px,74vw);scroll-snap-align:start;}
+
 /* ---------- 패밀리 아이덴티티 (구조가 달라야 다르게 느껴진다) ---------- */
 /* gallery — 미술관: 센터 정렬, 액자 매팅, 헤어라인 룰, 얇은 세리프 */
 body[data-fam="gallery"] .hero{text-align:center;}
@@ -553,6 +621,7 @@ function apply(t){
   document.body.dataset.work=t.l.work; document.body.dataset.motion=t.l.motion;
   document.body.dataset.fam=(t.m&&t.m.k)||""; document.body.dataset.case=t.l.case||"";
   document.body.dataset.about=t.l.about||""; document.body.dataset.halign=t.l.halign||"";
+  document.body.dataset.arch=t.l.arch||"onepage";
   // ---------- 구성 흐름: 섹션 순서·존재 자체를 변주 ----------
   const FLOWS=[
     ['hero','about','work','marq','contact'],          // 0 클래식
