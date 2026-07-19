@@ -537,9 +537,14 @@ function synthTokens(colorVar=0,layoutVar=0,formVar=0){
     hero:pickV([0,0,1,2]),work:pickV([0,1,2]),blog:pickV([0,1,2]),clients:pickV([0,1,2]),
     pricing:pickV([0,1,2]),cta2:pickV([0,1,2]),quote:pickV([0,1,2]),video:pickV([0,1]),
     contact:pickV([0,1,2])};
+  /* 시그니처 이펙트: 실험적·대담할수록 확률↑, 최대 3개 (형태 셔플 축) */
+  const FXW=[['rotate',.22+.2*(-V.era)],['badge',.18+.2*(-V.era)],['secnum',.2+.18*(-V.energy)],
+    ['wave',.16+.12*V.temp],['grain',.14+(dark?.1:0)],['progress',.2],['tilt',.16+.15*(-V.energy)],
+    ['push',.2],['diag',.1+.16*(-V.era)]];
+  const fx=FXW.filter(([k,w])=>Rv()<w).map(([k])=>k).slice(0,3);
   const L={hero,nav,navbe,work,wtabs,motion,rad,dens,scale,halign,'case':caseU,
     imgStart:Math.floor(Rl()*6),aspect:pickL(['4/3','4/3','3/2','4/5']),
-    pre,cur,secs,sv,about:V.density>0.5?'center':pickL(['','','bar']),arch:'onepage'};
+    pre,cur,secs,sv,fx,about:V.density>0.5?'center':pickL(['','','bar']),arch:'onepage'};
   return{c:{bg,surf,ink,mut,line,acc,acc2},f:F,l:L,p:personaTok(),m:{fam:best.name,famko:best.ko,pal:p.en,k:best.k}};
 }
 let cVar=0,lVar=0,vVar=0;                                   /* 색/구성 독립 시드 */
@@ -548,7 +553,10 @@ const partSel={hero:'',work:'',nav:''};               /* 레고: 부품 직접 �
 function applyLego(tok){
   if(secPins.size){
     const cur=new Set(tok.l.secs);
-    for(const[k,v]of secPins){v?cur.add(k):cur.delete(k);}
+    for(const[k,p]of secPins){
+      if(p.on){cur.add(k);tok.l.sv=tok.l.sv||{};tok.l.sv[k]=p.v;}
+      else cur.delete(k);
+    }
     ['hero','about','work','contact'].forEach(k=>cur.add(k));
     tok.l.secs=CANON.filter(k=>cur.has(k));
   }
@@ -557,18 +565,28 @@ function applyLego(tok){
   if(partSel.nav){tok.l.nav=partSel.nav;if(partSel.nav!=='top')tok.l.navbe='';}
   return tok;
 }
-function renderLego(secs){
+const FORMN={skills:['바','태그','숫자'],marq:['기본','아웃라인','밴드'],tline:['세로','카드','연도'],
+  testi:['카드','인용','행'],svc:['카드','넘버','컴팩트'],stats:['밴드','인라인','박스'],
+  video:['라운드','풀폭'],pricing:['카드','행','포커스'],clients:['스트립','박스','캡'],
+  blog:['카드','행','썸행'],quote:['센터','룰','밴드'],cta2:['바','센터','박스']};
+let lastSv={};
+function renderLego(secs,sv){
   const el=$('#legoSecs');if(!el)return;
+  lastSv=sv||lastSv;
   const cur=new Set(secs);
-  el.innerHTML=SECOPT.map(([k,ko])=>
-    `<button class="lchip${cur.has(k)?' on':''}${secPins.has(k)?' pin':''}" data-k="${k}">${ko}</button>`).join('');
+  el.innerHTML=SECOPT.map(([k,ko])=>{
+    const on=cur.has(k);
+    const v=(secPins.get(k)&&secPins.get(k).on)?secPins.get(k).v:(lastSv[k]||0);
+    const fn=on?` · ${(FORMN[k]||[])[v]||''}`:'';
+    return `<button class="lchip${on?' on':''}${secPins.has(k)?' pin':''}" data-k="${k}" title="클릭: 형태 순환 → 마지막엔 제거">${ko}${fn}</button>`;
+  }).join('');
 }
 function renderPreview(){
   if(!$('#pvIframe'))return;
   const tok=applyLego(synthTokens(cVar,lVar,vVar));
   const url='preview.html?v15#'+encodeURIComponent(JSON.stringify(tok));
   $('#pvIframe').src=url; if($('#pvOpen'))$('#pvOpen').href=url;
-  renderLego(tok.l.secs);
+  renderLego(tok.l.secs,tok.l.sv);
 }
 function renderBrief(){
   const {best,second}=nearest();
@@ -611,8 +629,17 @@ $('#rgLayout').onclick=()=>{lVar++;renderPreview();};
 $('#rgColor').onclick=()=>{cVar++;renderPreview();};
 $('#rgForm').onclick=()=>{vVar++;renderPreview();};
 $('#legoSecs').addEventListener('click',e=>{const b=e.target.closest('.lchip');if(!b)return;
-  const k=b.dataset.k, on=b.classList.contains('on');
-  secPins.set(k,!on);renderPreview();});
+  const k=b.dataset.k;
+  const maxV=(FORMN[k]||['']).length;
+  const pin=secPins.get(k);
+  const on=b.classList.contains('on');
+  if(!on)secPins.set(k,{on:true,v:0});                       // off → v0 켜기
+  else{
+    const curV=pin&&pin.on?pin.v:(lastSv[k]||0);
+    if(curV+1<maxV)secPins.set(k,{on:true,v:curV+1});        // 다음 형태
+    else secPins.set(k,{on:false});                          // 마지막 형태 → 제거
+  }
+  renderPreview();});
 for(const[id,key]of[['lgHero','hero'],['lgWork','work'],['lgNav','nav']])
   $('#'+id).addEventListener('change',e=>{partSel[key]=e.target.value;renderPreview();});
 $('#lgReset').onclick=()=>{secPins.clear();Object.keys(partSel).forEach(k=>partSel[k]='');

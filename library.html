@@ -218,6 +218,19 @@ function applySpec(l,f,spec,H){
   l.arch='onepage';                       /* 스펙 뼈대가 곧 구조 — 랜덤 아키타입 해제 */
   {const ks=['skills','marq','tline','testi','svc','stats','hero','work','blog','clients','pricing','cta2','quote','contact'];
    l.sv=Object.fromEntries(ks.map((k,i)=>[k,(H>>>((i*2+3)%29))%3]));l.sv.video=(H>>>9)%2;}
+  /* 시그니처 문구 접지: 해부 때 캐치한 그 템플릿의 실제 디테일 → 이펙트 */
+  {const sig=(spec.signature||[]).join(' ');
+   const fx=[];
+   if(/물결|웨이브|wave/i.test(sig))fx.push('wave');
+   if(/원형|circle|circular|곡선 텍스트/i.test(sig))fx.push('badge');
+   if(/넘버|숫자|number|아웃라인.*(번호|넘버|숫자)/i.test(sig))fx.push('secnum');
+   if(/타이핑|typed|로테이션|순환|headline.*순환/i.test(sig))fx.push('rotate');
+   if(/사선|지그재그|절단|기울/i.test(sig))fx.push('diag');
+   if(/노이즈|그레인|텍스처/i.test(sig))fx.push('grain');
+   if(/커서/i.test(sig))l.cur=1;
+   if(/틸트|tilt/i.test(sig))fx.push('tilt');
+   if(!fx.length&&(H>>>25&3)===0)fx.push(['progress','push','tilt'][(H>>>27)%3]);
+   if(fx.length)l.fx=fx.slice(0,3);}
   delete l.flow;
   /* 타이포 */
   const ty=spec.typography.display_style;

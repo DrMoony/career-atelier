@@ -535,6 +535,42 @@ body[data-pre="1"] #pre{display:block;}
   transform:translate(-50%,-50%);display:none;transition:width .2s,height .2s;mix-blend-mode:difference;}
 body[data-cur="1"] #cur{display:block;}
 
+/* ---------- 시그니처 장식 레이어 (해부 404개에서 추출한 대표 이펙트) ---------- */
+/* 물결 디바이더 — 밴드형 섹션 상단 */
+body.fx-wave :is(#stats,#cta2,#quote,.marq){position:relative;}
+body.fx-wave :is(#stats,#cta2,#quote,.marq)::before{content:"";position:absolute;top:-1px;left:0;right:0;height:24px;background:var(--bg);z-index:1;
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'><path d='M0 22 Q150 42 300 22 T600 22 T900 22 T1200 22 L1200 0 L0 0 Z'/></svg>") center/100% 100% no-repeat;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 40' preserveAspectRatio='none'><path d='M0 22 Q150 42 300 22 T600 22 T900 22 T1200 22 L1200 0 L0 0 Z'/></svg>") center/100% 100% no-repeat;}
+/* 사선 절단면 */
+body.fx-diag :is(#stats,#cta2,#quote,.marq){clip-path:polygon(0 6%,100% 0,100% 94%,0 100%);}
+/* 섹션 대형 아웃라인 넘버 */
+body.fx-secnum .page{counter-reset:sec;}
+body.fx-secnum .page>section{position:relative;counter-increment:sec;}
+body.fx-secnum .page>section::after{content:"0" counter(sec);position:absolute;top:26px;right:4vw;z-index:0;pointer-events:none;
+  font-family:var(--disp);font-weight:600;font-size:clamp(54px,8vw,120px);line-height:1;
+  color:transparent;-webkit-text-stroke:1px color-mix(in srgb,var(--ink) 16%,transparent);}
+/* 그레인 텍스처 */
+body.fx-grain::after{content:"";position:fixed;inset:0;z-index:94;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");}
+/* 스크롤 프로그레스 */
+#sprog{position:fixed;top:0;left:0;height:3px;background:var(--acc);z-index:99;width:0;display:none;}
+body.fx-progress #sprog{display:block;}
+/* 틸트 카드 호버 */
+body.fx-tilt #work .card:hover{transform:perspective(900px) rotateX(2deg) rotateY(-2.4deg) translateY(-6px);}
+/* push-reveal 캡션 */
+body.fx-push #work .card .thumb img{transition:transform .5s var(--ease);}
+body.fx-push #work .card:hover .thumb img{transform:translateY(-5%) scale(1.05);}
+body.fx-push #work .card .body{position:relative;}
+body.fx-push #work .card .body::before{content:"";position:absolute;top:0;left:0;width:0;height:2px;background:var(--acc);transition:width .45s var(--ease);}
+body.fx-push #work .card:hover .body::before{width:100%;}
+/* 회전 원형 텍스트 배지 */
+#fxBadge{position:absolute;right:clamp(18px,5vw,60px);bottom:70px;width:112px;height:112px;color:var(--acc);z-index:3;
+  animation:fxspin 14s linear infinite;font-size:10px;letter-spacing:.22em;text-transform:uppercase;fill:currentColor;}
+@keyframes fxspin{to{transform:rotate(360deg);}}
+@media(max-width:760px){#fxBadge{display:none;}}
+/* 로테이션 헤드라인 단어 */
+#rotW{color:var(--acc);display:inline-block;min-width:6ch;transition:opacity .3s;}
+
 /* banner: generated preview + 샘플 컨트롤 (LLM 없이 즉시 치환) */
 .genban{position:fixed;bottom:0;left:0;right:0;z-index:60;background:var(--acc);color:var(--bg);font-size:12.5px;font-weight:600;
   display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;padding:8px 14px;letter-spacing:.01em;}
@@ -561,6 +597,7 @@ body.embed{padding-bottom:0;}
 </style>
 </head>
 <body data-hero="bigtype" data-nav="top" data-work="grid3" data-motion="calm">
+<div id="sprog"></div>
 <div id="pre"><i class="pL"></i><i class="pR"></i><span class="pTxt" id="preTxt">Loading</span></div>
 <div id="cur"></div>
 <nav>
@@ -1020,6 +1057,25 @@ function apply(t){
   g('st3n').textContent=(94+((t.l.flow||0)%3))+'%';
   g('st4n').textContent=String(3+((t.l.imgStart||0)%4));
   g('quoteTxt').textContent=pack.aboutH;
+  /* 시그니처 장식 레이어 (l.fx = ['wave','badge',...]) */
+  const FXALL=['wave','badge','secnum','rotate','grain','progress','tilt','push','diag'];
+  FXALL.forEach(k=>document.body.classList.remove('fx-'+k));
+  const FX=t.l.fx||[];
+  FX.forEach(k=>document.body.classList.add('fx-'+k));
+  document.getElementById('fxBadge')?.remove();
+  if(FX.includes('badge')){
+    const hero=document.querySelector('.hero');
+    if(hero)hero.insertAdjacentHTML('beforeend',
+      `<svg id="fxBadge" viewBox="0 0 120 120"><defs><path id="fxcir" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs>`+
+      `<text><textPath href="#fxcir">PORTFOLIO · ${name} · 2026 · SEOUL ·</textPath></text><circle cx="60" cy="60" r="3"/></svg>`);
+  }
+  if(window.__rotT){clearInterval(window.__rotT);window.__rotT=null;}
+  if(FX.includes('rotate')){
+    g('heroKn').innerHTML=`안녕하세요 — ${name}의 <span id="rotW">${pack.caps[0]}</span>`;
+    let ri=0;window.__rotT=setInterval(()=>{const el=document.getElementById('rotW');if(!el)return;
+      el.style.opacity=0;setTimeout(()=>{ri=(ri+1)%pack.caps.length;el.textContent=pack.caps[ri];el.style.opacity=1;},280);},2600);
+  }
+
   // ---------- 신규 부품 섹션 콘텐츠 (팩에서 파생) ----------
   const SVCD=['전략 수립부터 실행까지, 끝까지 함께해요.','프로젝트마다 측정 가능한 결과로 증명해요.','협업 파트너들이 가장 신뢰하는 영역이에요.','꾸준한 학습으로 최신 흐름을 유지해요.','작은 개선을 쌓아 큰 차이를 만들어요.','처음 하는 시도도 안전하게 설계해요.'];
   g('svcGrid').innerHTML=pack.caps.slice(0,6).map((cp,i)=>
@@ -1111,7 +1167,8 @@ document.getElementById('cvApply').onclick=()=>{
 /* 부품 전역 동작: 버거 오버레이 · 투명 내비 스크롤 전환 · 커스텀 커서 */
 document.getElementById('burger').onclick=()=>document.body.classList.toggle('menuOpen');
 document.getElementById('ovmenu').addEventListener('click',e=>{if(e.target.closest('a'))document.body.classList.remove('menuOpen');});
-window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',scrollY>40);},{passive:true});
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',scrollY>40);
+  const sp=document.getElementById('sprog');if(sp){const h=document.documentElement.scrollHeight-innerHeight;sp.style.width=(h>0?scrollY/h*100:0)+'%';}},{passive:true});
 (function(){const cur=document.getElementById('cur');let x=innerWidth/2,y=innerHeight/2,tx=x,ty=y;
   addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY;});
   (function loop(){x+=(tx-x)*.16;y+=(ty-y)*.16;cur.style.left=x+'px';cur.style.top=y+'px';requestAnimationFrame(loop);})();})();
