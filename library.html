@@ -173,6 +173,56 @@ const KR_SERIF=['Noto Serif KR','Nanum Myeongjo','Gowun Batang','Song Myung','Ha
 const KR_SANS=['Gothic A1','IBM Plex Sans KR','Black Han Sans','Do Hyeon','Gowun Dodum','Jua'];
 const KR_BODY=['Noto Sans KR','IBM Plex Sans KR','Gothic A1'];
 const PACK_KEYS=['design','pharma','medical','photo','archi','tech','data','mkt','edu','law','finance','fnb'];
+
+/* ---------- 해부 스펙 → 재조립 토큰 (template-anatomy.json) ---------- */
+let ANAT={};
+function mapSecKey(x){x=String(x).toLowerCase();
+  const M=[['testimonial','testi'],['client','clients'],['brand','clients'],['logo','clients'],['skill','skills'],
+    ['pricing','pricing'],['price','pricing'],['marquee','marq'],['timeline','tline'],['experience','tline'],
+    ['education','tline'],['resume','tline'],['history','tline'],['video','video'],['showreel','video'],
+    ['blog','blog'],['news','blog'],['article','blog'],['stat','stats'],['fact','stats'],['counter','stats'],
+    ['award','stats'],['service','svc'],['what i do','svc'],['process','svc'],['expertise','svc'],
+    ['portfolio','work'],['work','work'],['gallery','work'],['project','work'],['case','work'],
+    ['about','about'],['team','about'],['intro','about'],['faq','about'],['cta','cta2'],
+    ['contact','contact'],['hero','hero'],['banner','hero'],['slider','hero'],['footer',null]];
+  for(const[p,k]of M)if(x.includes(p))return k;return null;}
+const GEO_POOL=['Space Grotesk','Sora','Syne','Urbanist','Outfit'];
+const GRO_POOL=['Archivo','Work Sans','Barlow','Inter','Space Grotesk'];
+function applySpec(l,f,spec,H){
+  /* 히어로 */
+  const hm={'fullscreen-image':'fullbleed','split-image':'split','bigtype-text':'bigtype','centered-minimal':'bigtype',
+    'slider':'slider','card-profile':'card','collage':'collage','canvas-particle':'fullbleed','video':'fullbleed'};
+  l.hero=hm[spec.hero.type]||'bigtype';
+  l.halign=(spec.hero.headline_align==='center'||spec.hero.type==='centered-minimal')?'center':'';
+  l.scale=({S:.85,M:1,L:1.1,XL:1.22})[spec.hero.headline_scale]||1;
+  /* 내비 */
+  const nv=spec.nav.type||'';
+  l.nav=/sidebar|dot/.test(nv)?'side':/hamburger/.test(nv)?'burger':'top';
+  l.navbe=/transparent/.test(nv)?'trans':'';
+  /* 작업 배치 */
+  const wl=spec.work.layout;
+  l.wtabs=wl==='filter-grid'||spec.work.filter_tabs?1:0;
+  l.work=wl==='masonry'?'mason':wl==='carousel'?'row':(wl==='grid'&&(spec.work.cols||3)<=2)||wl==='stacked-showcase'||wl==='list-rows'||wl==='fullwidth-rows'?'grid2':'grid3';
+  /* 장식·밀도 */
+  l.motion=spec.decor.animations==='rich'?'bold':'calm';
+  l.pre=spec.decor.preloader?1:0;
+  l.cur=spec.decor.custom_cursor?1:0;
+  l.dens=({airy:1.15,normal:1,tight:.88})[spec.spacing]||1;
+  /* 섹션 순서 — 이 템플릿의 실제 뼈대 */
+  const seen=new Set(),secs=[];
+  for(const s of spec.sections){const k=mapSecKey(s);if(k&&!seen.has(k)){seen.add(k);secs.push(k);}}
+  if(secs.length)l.secs=secs;   /* 1~2개짜리 초미니멀도 그 템플릿의 진짜 해부 — 그대로 존중 */
+  l.arch='onepage';                       /* 스펙 뼈대가 곧 구조 — 랜덤 아키타입 해제 */
+  delete l.flow;
+  /* 타이포 */
+  const ty=spec.typography.display_style;
+  if(ty==='serif-elegant'){f.disp=SERIF_POOL[H%SERIF_POOL.length];f.dispKr=KR_SERIF[(H>>>5)%KR_SERIF.length];}
+  else if(ty==='sans-geometric'){f.disp=GEO_POOL[H%GEO_POOL.length];f.dispKr=KR_SANS[(H>>>5)%KR_SANS.length];}
+  else if(ty==='sans-grotesk'||ty==='condensed'){f.disp=GRO_POOL[H%GRO_POOL.length];f.dispKr=['Gothic A1','Black Han Sans','Do Hyeon'][(H>>>5)%3];}
+  else if(ty==='sans-rounded'){f.disp=['Manrope','DM Sans'][H%2];f.dispKr=['Jua','Gowun Dodum'][(H>>>5)%2];}
+  else if(ty==='mono'){f.disp='Space Grotesk';f.dispKr='IBM Plex Sans KR';}
+  /* mixed는 기존 해시 선택 유지 */
+}
 function tplPreviewUrl(t){
   const pal=(t.palette||[]).filter(h=>/^#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?$/.test(h));
   if(!pal.length) return null;
@@ -225,11 +275,15 @@ function tplPreviewUrl(t){
   else l.arch=['onepage','split','vcard','cv','wall','deck','onepage','split'][(H>>>12)%8];
   /* 아키타입-템플릿 정합: 사진 월은 사진 중심 패밀리에서만, wall이면 페르소나도 사진으로 */
   if(l.arch==='wall'&&!['lens','studio'].includes(t.family))l.arch=(H>>>15&1)?'onepage':'split';
+  const f={disp,body,dispKr,bodyKr};
+  /* 해부 스펙이 있으면 이 템플릿의 실제 뼈대(섹션 순서·히어로·내비·배치·장식)로 재조립 */
+  const spec=ANAT[slug(t.name)];
+  if(spec&&!spec.no_html)applySpec(l,f,spec,H);
   const tok={c:{bg,surf:_mix(bg,ink,dark?.09:.05),ink,mut:_mix(ink,bg,.42),line:dark?'rgba(255,255,255,.12)':'rgba(17,17,17,.13)',acc,acc2},
-    f:{disp,body,dispKr,bodyKr},l,
-    p:{ind:l.arch==='wall'?'photo':PACK_KEYS[(H>>>2)%PACK_KEYS.length]},   /* 페르소나 로테이션 — 단 사진 월엔 사진 페르소나 */
+    f,l,
+    p:{ind:l.arch==='wall'?'photo':PACK_KEYS[(H>>>2)%PACK_KEYS.length]},
     m:{fam:clean(t.name),famko:'',pal:(FAM[t.family]?.ko||t.family)+' 무드',k:t.family}};
-  return 'preview.html?v14#'+encodeURIComponent(JSON.stringify(tok));  /* 쿼리 = 구버전 캐시 무효화 */
+  return 'preview.html?v15#'+encodeURIComponent(JSON.stringify(tok));  /* 쿼리 = 구버전 캐시 무효화 */
 }
 
 function render(){
@@ -318,9 +372,13 @@ document.getElementById('grid').addEventListener('click', e=>{
   const s=e.target.closest('.pal span'); if(s&&s.dataset.hex){ navigator.clipboard?.writeText(s.dataset.hex); toast(s.dataset.hex+' 복사됨'); }
 });
 
-fetch('template-classification.json').then(r=>r.json()).then(data=>{
+Promise.all([
+  fetch('template-classification.json').then(r=>r.json()),
+  fetch('template-anatomy.json').then(r=>r.ok?r.json():{specs:[]}).catch(()=>({specs:[]})),
+]).then(([data,anat])=>{
   const root = (data&&data.templates)?data:(data&&data.result)?data.result:{templates:[]};
   TPL = root.templates||[];
+  for(const s of (anat.specs||[])) ANAT[s.name]=s;
   const q = new URLSearchParams(location.search);
   if(q.get('fam')&&FAM[q.get('fam')]) state.fam=q.get('fam');
   if(q.get('q')){ state.q=q.get('q'); const qi=document.getElementById('q'); if(qi) qi.value=state.q; }
