@@ -217,7 +217,7 @@ function apply(t){
     const tint=i%3===1?c.acc2:c.acc; const op=i%3===2?.6:.85;
     return `<a class="card reveal" href="#" style="transition-delay:${i*60}ms">
       <div class="thumb duo"><span class="num">0${i+1}</span>
-        <img src="assets/img/w${(i%6)+1}.jpg" alt="" loading="lazy" onerror="this.remove()">
+        <img src="assets/img/w${(i%6)+1}.jpg" alt="" onerror="this.remove()">
         <i class="tint" style="background:${tint};opacity:${op}"></i><i class="shade"></i></div>
       <div class="body"><div class="t serif">${w.t}</div><div class="d">${w.d}</div>
       <div class="tags">${w.tags.map(x=>`<span>${x}</span>`).join('')}</div></div></a>`;
