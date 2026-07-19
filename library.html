@@ -49,7 +49,10 @@ header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0C
 .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;
   display:flex;flex-direction:column;transition:.18s}
 .card:hover{border-color:var(--gold2);transform:translateY(-2px)}
+.shot{display:block;width:100%;aspect-ratio:640/430;object-fit:cover;object-position:top;background:var(--panel2);border-bottom:1px solid var(--line)}
+.card:hover .shot{opacity:.92}
 .pal{display:flex;height:96px}
+.card.has-shot .pal{height:26px}
 .pal span{flex:1;transition:flex .2s}
 .pal span:hover{flex:1.6}
 .cbody{padding:14px 15px 15px}
@@ -241,7 +244,9 @@ function render(){
     const demo = (pv?`<a class="demo" href="${pv}" target="_blank" rel="noopener" title="이 템플릿의 실측 색·무드를 우리 렌더러에 입혀 미리보기">이 무드로 미리보기 ↗</a>`:'')
       + (LOCAL ? ` <a class="demo" href="demo?z=${encodeURIComponent(t.name)}" target="_blank" rel="noopener">원본 데모 ↗</a>` : '');
     const conf = (t.confidence||'med').toLowerCase();
-    return `<div class="card">
+    return `<div class="card has-shot">
+      <img class="shot" src="assets/shots/${slug(t.name)}.jpg" alt="" loading="lazy"
+        onerror="this.remove();this.closest('.card').classList.remove('has-shot')">
       <div class="pal">${pal}</div>
       <div class="cbody">
         <div class="ctop">
@@ -298,7 +303,7 @@ fetch('template-classification.json').then(r=>r.json()).then(data=>{
   if(state.fam!=='all'){ const b=document.querySelector(`.chip[data-fam="${state.fam}"]`); if(b){document.querySelector('.chip.on')?.classList.remove('on');b.classList.add('on');} }
   render();
   document.getElementById('note').innerHTML =
-    `분류 근거: 각 템플릿의 CSS·HTML을 열어 실제 배경·팔레트·폰트·레이아웃을 읽고 8개 디자인 패밀리로 나눴어요 (멀티에이전트 워크플로우, 전수 115개). 팔레트 색을 클릭하면 hex가 복사돼요. `
+    `카드 상단 이미지는 각 템플릿을 <b>실제로 렌더링해 캡처한 원본 스크린샷</b>이에요. 분류 근거: 각 템플릿의 CSS·HTML을 열어 실제 배경·팔레트·폰트·레이아웃을 읽고 8개 디자인 패밀리로 나눴어요 (전수 115개). 팔레트 색을 클릭하면 hex가 복사돼요. `
     + `'이 무드로 미리보기'는 각 템플릿의 실측 색·무드를 우리 렌더러에 입혀 <b>실제 포트폴리오 페이지로</b> 보여줘요.`
     + (LOCAL ? ` '원본 데모'는 로컬에서 zip을 풀어 띄웁니다.` : ` (상용 원본 데모는 로컬 <code>python3 serve.py</code> 전용)`)
     + ` · <a href="design-quiz.html">취향 진단으로 방향 찾기 →</a>`;
