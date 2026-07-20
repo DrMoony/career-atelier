@@ -64,7 +64,7 @@ header{border-bottom:1px solid var(--line);background:linear-gradient(180deg,#0C
 <div class="wrap">
   <div class="grid" id="grid"></div>
   <button class="more" id="more">모델 12개 더 생성</button>
-  <p class="note">각 모델은 팔레트 68종 × 히어로 6종 × 내비 3종 × 배치 4종 × 섹션 16종 조합 × 색 스킴에서 시드로 생성돼요. 마음에 드는 모델을 열고, 하단 바에서 업종·이름을 바꿔보세요. 취향에서 출발하려면 <a href="design-quiz.html" style="color:var(--gold)">취향 진단 →</a></p>
+  <p class="note">각 모델은 팔레트 68종 × 히어로 6종 × 내비 3종 × 배치 4종 × 섹션 16종 조합 × 색 스킴에서 시드로 생성돼요. 마음에 드는 모델을 열고 하단 바에서 업종·이름을 바꿔보세요. <b>[제작 문의]</b>를 누르면 그 모델의 재현 코드가 문의 메일에 담겨요 — 보신 디자인 그대로 만들어 드립니다. 취향에서 출발하려면 <a href="design-quiz.html" style="color:var(--gold)">취향 진단 →</a></p>
 </div>
 
 <script>
@@ -194,7 +194,7 @@ function render(){
         <div class="nm">${m.name}</div>
         <div class="chips"><span>${HEROKO[m.hero]}</span><span>${NAVKO[m.nav]}</span><span>${m.secs.length}섹션</span><span>${m.dispKr}</span><span>${PACKS[m.ind]}</span><span>${m.dark?'다크':'라이트'}</span></div>
         <div class="flow">${m.secs.map(s=>SECKO[s]).join(' → ')}</div>
-        <a class="open" href="${url}" target="_blank" rel="noopener">열어보기 ↗</a>
+        <div style="display:flex;gap:8px;margin-top:12px"><a class="open" style="margin:0" href="${url}" target="_blank" rel="noopener">열어보기 ↗</a><a class="open" style="margin:0;background:var(--gold);color:#100C05" href="${url.replace('?v15','?v15&inq=1')}" target="_blank" rel="noopener">제작 문의</a></div>
       </div></div>`);
   }
   g.innerHTML=cards.join('');

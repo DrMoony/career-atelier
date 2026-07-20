@@ -580,6 +580,18 @@ body.fx-push #work .card:hover .body::before{width:100%;}
 .genban input{width:90px;}
 .genban button{cursor:pointer;}
 .genban button:hover{background:var(--bg);color:var(--acc);}
+.genban .inqbtn{background:var(--bg);color:var(--acc);font-weight:700;border-color:var(--bg);}
+.genban .inqbtn:hover{background:color-mix(in srgb,var(--bg) 80%,#000);color:var(--acc);}
+#inqDlg{border:1px solid var(--line);border-radius:14px;background:var(--surf);color:var(--ink);padding:22px;max-width:560px;width:92vw;}
+#inqDlg::backdrop{background:rgba(0,0,0,.55);}
+#inqDlg h3{font-family:var(--disp);margin-bottom:10px;}
+#inqDlg p{font-size:12.5px;color:var(--mut);margin-bottom:10px;line-height:1.65;}
+#inqDlg p b{color:var(--ink);}
+#inqDlg textarea{width:100%;height:64px;background:var(--bg);color:var(--mut);border:1px solid var(--line);border-radius:10px;padding:10px;font:11px/1.5 monospace;resize:none;}
+#inqDlg .dlgrow{display:flex;gap:8px;margin-top:12px;}
+#inqDlg button{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--acc);color:var(--bg);border-radius:9px;padding:9px 16px;cursor:pointer;}
+#inqDlg #inqClose{background:transparent;color:var(--ink);}
+#inqDlg .cvout{font-size:12px;color:var(--acc);margin-top:8px;}
 @media(max-width:640px){.genban .gtxt{display:none;}}
 #cvDlg{border:1px solid var(--line);border-radius:14px;background:var(--surf);color:var(--ink);padding:22px;max-width:520px;width:92vw;}
 #cvDlg::backdrop{background:rgba(0,0,0,.55);}
@@ -729,6 +741,7 @@ body.embed{padding-bottom:0;}
   </select>
   <input id="sName" placeholder="이름(선택)" maxlength="12" aria-label="이름">
   <button id="sCv" type="button">CV 붙여넣기</button>
+  <button id="inqBtn" type="button" class="inqbtn">이 디자인으로 제작 문의 →</button>
   <a href="design-quiz.html">다시 진단 →</a>
 </div>
 <dialog id="cvDlg">
@@ -737,6 +750,14 @@ body.embed{padding-bottom:0;}
   <textarea id="cvText" placeholder="이력서 내용을 붙여넣으세요…"></textarea>
   <div class="dlgrow"><button id="cvApply" type="button">추출해서 적용</button><button id="cvClose" type="button">닫기</button></div>
   <div class="cvout" id="cvOut"></div>
+</dialog>
+<dialog id="inqDlg">
+  <h3>제작 문의 — 이 디자인 그대로 만들어드려요</h3>
+  <p id="inqSum" style="white-space:pre-line"></p>
+  <p>아래 <b>모델 코드</b>가 있으면 저희가 지금 보신 디자인을 정확히 재현할 수 있어요. [코드 복사 + 메일 쓰기]를 누르면 코드가 복사되고 메일이 열립니다 — 본문에 붙여넣기(⌘V)만 해주세요.</p>
+  <textarea id="inqCode" readonly></textarea>
+  <div class="dlgrow"><button id="inqGo" type="button">코드 복사 + 메일 쓰기 →</button><button id="inqClose" type="button">닫기</button></div>
+  <div class="cvout" id="inqOut"></div>
 </dialog>
 
 <script>
@@ -1154,6 +1175,42 @@ document.getElementById('sName').addEventListener('input',e=>{
   clearTimeout(nameTimer);
   nameTimer=setTimeout(()=>setPersona({name:e.target.value.trim()||undefined}),350);
 });
+/* ---------- 제작 문의: 모델 요약 + 재현 코드 ---------- */
+const INQ_MAIL='help.paperpulsar@gmail.com';
+const HEROKO={bigtype:'대형 타이포',split:'스플릿',fullbleed:'풀블리드',slider:'슬라이더',card:'프로필 카드',collage:'콜라주'};
+const NAVKO2={top:'상단',burger:'햄버거',side:'사이드'};
+const SECKO2={hero:'히어로',stats:'스탯',marq:'마퀴',about:'소개',skills:'스킬',tline:'타임라인',svc:'서비스',work:'작업',video:'비디오',pricing:'플랜',testi:'추천사',clients:'클라이언트',blog:'노트',quote:'인용',cta2:'CTA',contact:'연락'};
+const FXKO={wave:'물결 디바이더',badge:'회전 배지',secnum:'섹션 넘버',rotate:'로테이션 헤드라인',grain:'그레인',progress:'프로그레스 바',tilt:'틸트 호버',push:'push-reveal',diag:'사선 절단'};
+function inqSummary(){
+  const t=readTokens();
+  const p=t.p||{}, pk=PACKS[p.ind]||PACKS.design;
+  const secs=(Array.isArray(t.l.secs)&&t.l.secs.length?t.l.secs:['hero','about','work','contact']).map(k=>SECKO2[k]||k).join(' → ');
+  const fx=(t.l.fx||[]).map(k=>FXKO[k]||k).join(', ');
+  return [
+    `이름/업종: ${p.name||'(미입력)'} / ${pk.label}`,
+    `팔레트: ${t.m&&t.m.pal||'-'} · ${t.m&&t.m.fam||''}`,
+    `히어로: ${HEROKO[t.l.hero]||t.l.hero} · 내비: ${NAVKO2[t.l.nav]||t.l.nav}${t.l.navbe?'(투명전환)':''} · 배치: ${t.l.work}${t.l.wtabs?'+필터탭':''}`,
+    `구성: ${secs}`,
+    fx?`장식: ${fx}`:null,
+  ].filter(Boolean).join('\n');
+}
+const inqDlg=document.getElementById('inqDlg');
+document.getElementById('inqBtn').onclick=()=>{
+  document.getElementById('inqSum').textContent=inqSummary();
+  document.getElementById('inqCode').value=location.href;
+  document.getElementById('inqOut').textContent='';
+  inqDlg.showModal();
+};
+document.getElementById('inqClose').onclick=()=>inqDlg.close();
+document.getElementById('inqGo').onclick=async()=>{
+  const code=document.getElementById('inqCode').value;
+  try{await navigator.clipboard.writeText(code);document.getElementById('inqOut').textContent='✓ 모델 코드 복사됨 — 메일 본문에 붙여넣어 주세요';}
+  catch(e){document.getElementById('inqCode').select();document.execCommand&&document.execCommand('copy');}
+  const body=encodeURIComponent('[Career Atelier 제작 문의]\n\n'+inqSummary()+'\n\n▼ 모델 코드 (복사된 것을 여기에 붙여넣어 주세요)\n\n\n연락받을 이메일/연락처: ');
+  window.open(`mailto:${INQ_MAIL}?subject=${encodeURIComponent('포트폴리오 제작 문의 — 생성 모델')}&body=${body}`,'_self');
+};
+if(new URLSearchParams(location.search).has('inq'))setTimeout(()=>document.getElementById('inqBtn').click(),600);
+
 const dlg=document.getElementById('cvDlg');
 document.getElementById('sCv').onclick=()=>dlg.showModal();
 document.getElementById('cvClose').onclick=()=>dlg.close();
