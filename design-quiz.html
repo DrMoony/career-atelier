@@ -463,7 +463,7 @@ function synthTokens(colorVar=0,layoutVar=0,formVar=0){
 
   /* ---- 색 (Rc 스트림 — '색 조합 셔플'만 여길 돌림) ---- */
   const cols=p.c.map(c=>c[0]),byL=[...cols].sort((a,b)=>lum(a)-lum(b));
-  const dark=V.mood<-0.25?true:V.mood>0.25?false:chanceC(.5);
+  const dark=V.mood<-0.25?true:V.mood>0.25?false:((p.m||[]).includes('dark')?true:(p.m||[]).includes('bright')?false:chanceC(.5)); /* 애매하면 선택 팔레트 명암을 따름 */
   let acc0=cols.reduce((m,c)=>chroma(c)>chroma(m)?c:m,cols[0]);
   if(chroma(acc0)<0.08)acc0=hsl2hex(FAMHUE[best.k]??210,0.5,dark?0.6:0.5);
   let[ah,as,al]=hex2hsl(acc0);
