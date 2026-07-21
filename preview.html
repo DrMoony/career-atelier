@@ -572,6 +572,48 @@ body.fx-push #work .card:hover .body::before{width:100%;}
 /* 로테이션 헤드라인 단어 */
 #rotW{color:var(--acc);display:inline-block;min-width:6ch;transition:opacity .3s;}
 
+/* ---------- 케이스 스터디 오버레이 ---------- */
+#caseDlg{border:0;border-radius:calc(var(--rad) + 8px);background:var(--bg);color:var(--ink);padding:0;max-width:860px;width:94vw;max-height:90vh;overflow-y:auto;}
+#caseDlg::backdrop{background:rgba(0,0,0,.66);backdrop-filter:blur(4px);}
+#caseDlg .csx{position:sticky;top:14px;margin-left:calc(100% - 52px);z-index:5;width:38px;height:38px;border-radius:50%;border:0;background:var(--surf);color:var(--ink);font-size:15px;cursor:pointer;}
+.csHero{aspect-ratio:16/8;position:relative;margin-top:-52px;}
+.csBody{padding:clamp(22px,4vw,44px);}
+.csBody h2{font-family:var(--disp);font-size:clamp(24px,3.6vw,40px);font-weight:600;margin:12px 0 14px;}
+.csMeta{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:12.5px;color:var(--mut);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin-bottom:22px;}
+.csMeta b{color:var(--ink);font-weight:600;}
+.csCols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:24px;}
+.csCols h4{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--acc);margin-bottom:8px;}
+.csCols p{font-size:13.5px;color:var(--mut);line-height:1.7;}
+@media(max-width:700px){.csCols{grid-template-columns:1fr;}}
+.csStats{display:flex;gap:26px;flex-wrap:wrap;margin-bottom:24px;}
+.csStats .cst b{display:block;font-family:var(--disp);font-size:26px;color:var(--acc);}
+.csStats .cst span{font-size:11.5px;color:var(--mut);}
+.csGal{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:26px;}
+.csGal .duo{aspect-ratio:4/3;border-radius:var(--rad);}
+.csNav{display:flex;justify-content:space-between;border-top:1px solid var(--line);padding-top:16px;}
+.csNav button{font:inherit;font-size:13px;color:var(--acc);background:none;border:0;cursor:pointer;font-weight:600;}
+.csNav button:hover{color:var(--ink);}
+/* ---------- About 팩트 ---------- */
+.factsRow{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px;border-top:1px solid var(--line);padding-top:24px;}
+.factsRow .fb2 h5{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:9px;}
+.factsRow .fb2 div{font-size:13px;color:var(--mut);line-height:1.9;}
+@media(max-width:700px){.factsRow{grid-template-columns:1fr;}}
+/* ---------- 확장 푸터 ---------- */
+footer.bigfoot{display:block;padding:0 0 26px;}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr auto;gap:26px;border-top:1px solid var(--line);padding:38px 0 26px;}
+.fgrid .flogo{font-size:22px;font-weight:600;margin-bottom:8px;}
+.fgrid .fb p{font-size:12.5px;max-width:26ch;}
+.fgrid .fh{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:10px;}
+.fgrid .fb a{display:block;font-size:13px;color:var(--mut);margin-bottom:7px;transition:color .2s;}
+.fgrid .fb a:hover{color:var(--acc);}
+.fgrid .fsoc{display:flex;gap:12px;margin-top:10px;}
+.fgrid .fsoc a{font-size:11.5px;}
+.topBtn{border:1px solid var(--line);border-radius:100px;padding:10px 18px;font-size:12.5px;color:var(--ink) !important;}
+.topBtn:hover{border-color:var(--acc);}
+.fline{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;border-top:1px solid var(--line);padding-top:18px;font-size:12px;color:var(--mut);}
+@media(max-width:760px){.fgrid{grid-template-columns:1fr 1fr;}}
+body[data-arch="cv"] .fgrid,body[data-arch="wall"] .fgrid,body[data-arch="vcard"] .fgrid{display:none;}
+
 /* banner: generated preview + 샘플 컨트롤 (LLM 없이 즉시 치환) */
 .genban{position:fixed;bottom:0;left:0;right:0;z-index:60;background:var(--acc);color:var(--bg);font-size:12.5px;font-weight:600;
   display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;padding:8px 14px;letter-spacing:.01em;}
@@ -724,12 +766,35 @@ body.embed{padding-bottom:0;}
   <h2 class="serif" id="contactH">함께 <em>좋은 결정</em>을<br>만들고 싶다면.</h2>
   <a href="#" class="mail" id="mail">seoyeon@example.com</a>
 </section>
-<footer class="wrap">
-  <span id="footL">© 2026 Seoyeon Kim · Portfolio</span>
-  <span id="footR">Career Atelier에서 생성된 디자인</span>
+<footer class="wrap bigfoot">
+  <div class="fgrid">
+    <div class="fb"><div class="flogo serif" id="footLogo">Seoyeon</div><p id="footTag">결정의 이유를 남기는 사람.</p></div>
+    <div class="fb"><div class="fh">Menu</div><a href="#work">Work</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+    <div class="fb"><div class="fh">Contact</div><a href="#" id="footMail">hello@example.com</a>
+      <div class="fsoc"><a href="#">Instagram</a><a href="#">LinkedIn</a><a href="#">Behance</a></div></div>
+    <div class="fb ftop"><a href="#top" class="topBtn">↑ 맨 위로</a></div>
+  </div>
+  <div class="fline"><span id="footL">© 2026 Seoyeon Kim · Portfolio</span><span id="footR">Career Atelier에서 생성된 디자인</span></div>
 </footer>
 </div>
 
+<dialog id="caseDlg">
+  <button class="csx" id="csClose">✕</button>
+  <div class="csHero duo" id="csHero"><img id="csImg" alt="" onerror="imgRetry(this)"><i class="tint" id="csTint"></i><i class="shade"></i></div>
+  <div class="csBody">
+    <div class="eyebrow" id="csKicker">Case Study</div>
+    <h2 class="serif" id="csTitle"></h2>
+    <div class="csMeta" id="csMeta"></div>
+    <div class="csCols">
+      <div><h4>배경</h4><p id="csC"></p></div>
+      <div><h4>접근</h4><p id="csA"></p></div>
+      <div><h4>결과</h4><p id="csR"></p></div>
+    </div>
+    <div class="csStats" id="csStats"></div>
+    <div class="csGal" id="csGal"></div>
+    <div class="csNav"><button id="csPrev">← 이전 프로젝트</button><button id="csNext">다음 프로젝트 →</button></div>
+  </div>
+</dialog>
 <div class="genban" id="genban">
   <span class="gtxt">취향 진단으로 <b>생성된 디자인</b> · 샘플:</span>
   <select id="sInd" aria-label="업종">
@@ -1067,6 +1132,16 @@ function apply(t){
   g('contactH').innerHTML=pack.contact;
   g('mail').textContent=p.email||`${/^[a-z]/i.test(name)?name.toLowerCase():'hello'}@example.com`;
   g('footL').textContent=`© 2026 ${name} · Portfolio`;
+  g('footLogo').textContent=name;
+  g('footTag').textContent=pack.sub.split(',')[0].replace(/\.$/,'')+'.';
+  g('footMail').textContent=g('mail').textContent;
+  /* About 팩트 3열 */
+  g('factsRow').innerHTML=`
+    <div class=fb2><h5>핵심 역량</h5><div>${pack.caps.slice(0,3).join('<br>')}</div></div>
+    <div class=fb2><h5>도구와 방법</h5><div>${pack.caps.slice(3,6).join('<br>')}</div></div>
+    <div class=fb2><h5>인정받은 것</h5><div>업계 어워드 ${2+(t.l.imgStart||0)%3}회<br>초청 강연·기고 다수<br>${pack.dom} ${years}년</div></div>`;
+  /* 케이스 오버레이 상태 갱신 */
+  window.__case={pack,name,imgStart,c:{...c}};
   const imgStart=t.l.imgStart||0;
   g('workGrid').innerHTML=pack.works.map((w,i)=>{
     const tint=i%3===1?c.acc2:c.acc; const op=i%3===2?.6:.85;
@@ -1176,6 +1251,44 @@ setTimeout(()=>{
 },2500);
 apply(readTokens());
 window.addEventListener('hashchange',()=>apply(readTokens()));
+
+/* ---------- 케이스 스터디 오버레이 ---------- */
+const caseDlg=document.getElementById('caseDlg');
+let caseIdx=0;
+function openCase(i){
+  const st=window.__case; if(!st)return;
+  const{pack,imgStart,c}=st; const w=pack.works[i]; if(!w)return;
+  caseIdx=i;
+  const g=id=>document.getElementById(id);
+  const im=pack.imgs[(i+imgStart)%pack.imgs.length];
+  g('csImg').src='assets/img/'+im+'.jpg'; g('csImg').dataset.r=0; g('csImg').style.opacity='';
+  g('csTint').style.background=i%3===1?c.acc2:c.acc;
+  g('csTitle').textContent=w.t;
+  g('csKicker').textContent=`Case ${String(i+1).padStart(2,'0')} — ${w.tags[0]||''}`;
+  g('csMeta').innerHTML=`<span>역할 <b>${pack.role}</b></span><span>기간 <b>${2+((i+imgStart)%4)}개월</b></span><span>연도 <b>${2023+((i+imgStart)%3)}</b></span><span>분야 <b>${w.tags.join(' · ')}</b></span>`;
+  g('csC').textContent=`기존 방식으로는 ${pack.dom} 환경의 요구를 따라가기 어려웠어요. ${w.t}\u2014그 한계를 정면으로 다룬 프로젝트입니다.`;
+  g('csA').textContent=`${pack.caps[0]}와 ${pack.caps[1]}을 축으로, 이해관계자와 기준을 먼저 합의하고 작은 검증을 반복하며 리스크를 줄였습니다.`;
+  g('csR').textContent=`${w.d} 이 결과는 이후 프로젝트의 기준선이 됐습니다.`;
+  const nums=(w.d.match(/[+\-−]?\d+[.,]?\d*\s?[%p배:천만억]+[%p]?/g)||[]).slice(0,3);
+  g('csStats').innerHTML=(nums.length?nums:['성과 검증','이해관계자 만족','재의뢰']).map((n,ix)=>
+    `<div class=cst><b>${n}</b><span>${nums.length?['핵심 지표','부가 효과','규모'][ix]||'지표':['정성 평가','피드백','후속'][ix]}</span></div>`).join('');
+  g('csGal').innerHTML=[1,2].map(k=>{
+    const gi=pack.imgs[(i+imgStart+k)%pack.imgs.length];
+    return `<div class=duo><img src="assets/img/${gi}.jpg" alt="" onerror="imgRetry(this)"><i class=tint style="background:${k%2?c.acc2:c.acc};opacity:.7"></i></div>`;}).join('');
+  if(!caseDlg.open)caseDlg.showModal();
+  caseDlg.scrollTop=0;
+}
+document.getElementById('workGrid').addEventListener('click',e=>{
+  const card=e.target.closest('.card'); if(!card)return;
+  e.preventDefault();
+  const cards=[...document.querySelectorAll('#workGrid .card')];
+  openCase(cards.indexOf(card));
+});
+document.getElementById('blGrid')?.addEventListener('click',e=>{const b=e.target.closest('.bl');if(b)e.preventDefault();});
+document.getElementById('csClose').onclick=()=>caseDlg.close();
+caseDlg.addEventListener('click',e=>{if(e.target===caseDlg)caseDlg.close();});
+document.getElementById('csPrev').onclick=()=>{const n=window.__case.pack.works.length;openCase((caseIdx-1+n)%n);};
+document.getElementById('csNext').onclick=()=>{const n=window.__case.pack.works.length;openCase((caseIdx+1)%n);};
 
 /* 샘플 컨트롤: 토큰의 p만 바꿔 hash 재기록 → 공유 가능한 URL 유지 */
 function setPersona(patch){
