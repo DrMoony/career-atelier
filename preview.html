@@ -67,6 +67,7 @@ body[data-halign="center"] .hero .sub,body[data-halign="center"] .hero .meta{mar
 .duo{position:relative;overflow:hidden;background:var(--surf);}
 .duo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06);}
 .duo .tint{position:absolute;inset:0;background:var(--acc);mix-blend-mode:color;opacity:.85;}
+.duo.noimg .tint{opacity:.18;}
 .duo .shade{position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,color-mix(in srgb,var(--bg) 55%,transparent));}
 /* hero: fullbleed */
 body[data-hero="fullbleed"] .hero .portrait{position:absolute;inset:0;z-index:-1;}
@@ -624,7 +625,7 @@ body.embed{padding-bottom:0;}
 
 <header class="hero wrap">
   <div class="heroSlides" id="heroSlides"></div>
-  <div class="portrait duo" id="portrait"><img src="assets/img/portrait.jpg" alt="" loading="eager" onerror="this.remove()"><i class="tint"></i><i class="shade"></i></div>
+  <div class="portrait duo" id="portrait"><img src="assets/img/portrait.jpg" alt="" loading="eager" onerror="imgRetry(this)"><i class="tint"></i><i class="shade"></i></div>
   <div class="heroText">
     <div class="kn" id="heroKn">안녕하세요 — 프로덕트 디자이너</div>
     <h1 class="serif" id="heroH1">서연의 <em>일하는 방식</em>,<br>한 페이지에.</h1>
@@ -792,6 +793,12 @@ function fixColors(c){
   c.acc=ensureContrast(c.acc,c.bg,3);     // em·아이브로·링크가 읽히는 최소선
   c.acc2=ensureContrast(c.acc2,c.bg,3);
   return c;
+}
+/* 이미지 회복력: 일시 네트워크 실패 시 제거하지 않고 재시도 (업종 전환 시 새 팩 이미지 로드 실패 방지) */
+function imgRetry(im){
+  const n=(+im.dataset.r||0)+1; im.dataset.r=n;
+  if(n<=2){const src=im.src.split('?')[0];setTimeout(()=>{im.src=src+'?r='+n+'_'+n;},400*n);}
+  else{im.style.opacity='0';im.closest('.duo')?.classList.add('noimg');}
 }
 function readTokens(){
   try{
@@ -1066,7 +1073,7 @@ function apply(t){
     const im=pack.imgs[(i+imgStart)%pack.imgs.length];
     return `<a class="card reveal" href="#" style="transition-delay:${i*60}ms">
       <div class="thumb duo"><span class="num">0${i+1}</span>
-        <img src="assets/img/${im}.jpg" alt="" onerror="this.remove()">
+        <img src="assets/img/${im}.jpg" alt="" onerror="imgRetry(this)">
         <i class="tint" style="background:${tint};opacity:${op}"></i><i class="shade"></i></div>
       <div class="body"><div class="t serif">${w.t}</div><div class="d">${w.d}</div>
       <div class="tags">${w.tags.map(x=>`<span>${x}</span>`).join('')}</div></div></a>`;
@@ -1124,7 +1131,7 @@ function apply(t){
   ].map(x=>`<div class="tl"><div class="y">${x[0]}</div><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join('');
   g('blGrid').innerHTML=pack.works.slice(3,6).map((w,i)=>{
     const im=pack.imgs[(i+3+imgStart)%pack.imgs.length];
-    return `<a class="bl" href="#"><div class="bthumb duo"><img src="assets/img/${im}.jpg" alt="" onerror="this.remove()"><i class="tint" style="background:${i%2?c.acc2:c.acc};opacity:.8"></i></div>
+    return `<a class="bl" href="#"><div class="bthumb duo"><img src="assets/img/${im}.jpg" alt="" onerror="imgRetry(this)"><i class="tint" style="background:${i%2?c.acc2:c.acc};opacity:.8"></i></div>
       <div class="bb"><div class="date">2026. 0${i+2}</div><h3>${w.t}, 그 뒤의 이야기</h3></div></a>`;}).join('');
   g('cta2Txt').textContent=`${name}와 프로젝트를 시작해볼까요?`;
   // ---------- 부품 동작: 필터탭 · 히어로 슬라이더 · 내비 ----------
@@ -1161,6 +1168,12 @@ function apply(t){
   document.title=`미리보기 · ${t.m.fam} · ${pack.label} · Career Atelier`;
 }
 if(window.self!==window.top)document.body.classList.add('embed');
+/* 유휴 시 전 업종 팩 이미지 선로딩 (~1.5MB) — 업종 전환 시 그림 공백 방지 */
+setTimeout(()=>{
+  const all=new Set(['portrait','scape']);
+  for(const p of Object.values(PACKS))p.imgs.forEach(x=>all.add(x));
+  all.forEach(x=>{const im=new Image();im.src='assets/img/'+x+'.jpg';});
+},2500);
 apply(readTokens());
 window.addEventListener('hashchange',()=>apply(readTokens()));
 
