@@ -1141,9 +1141,8 @@ function apply(t){
     <div class=fb2><h5>핵심 역량</h5><div>${pack.caps.slice(0,3).join('<br>')}</div></div>
     <div class=fb2><h5>도구와 방법</h5><div>${pack.caps.slice(3,6).join('<br>')}</div></div>
     <div class=fb2><h5>인정받은 것</h5><div>업계 어워드 ${2+(t.l.imgStart||0)%3}회<br>초청 강연·기고 다수<br>${pack.dom} ${years}년</div></div>`;
-  /* 케이스 오버레이 상태 갱신 */
-  window.__case={pack,name,imgStart,c:{...c}};
   const imgStart=t.l.imgStart||0;
+  window.__case={pack,name,imgStart,c:{...c}};   /* 케이스 오버레이 상태 */
   g('workGrid').innerHTML=pack.works.map((w,i)=>{
     const tint=i%3===1?c.acc2:c.acc; const op=i%3===2?.6:.85;
     const im=pack.imgs[(i+imgStart)%pack.imgs.length];
