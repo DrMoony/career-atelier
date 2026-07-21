@@ -122,6 +122,27 @@ h2.qh{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:c
 .lego .lchip.on{background:var(--gold);border-color:var(--gold);color:#FBF7EF;font-weight:600;}
 .lego .lchip.pin::after{content:" ●";font-size:8px;vertical-align:middle;}
 .lego2{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:12px;font-size:12.5px;color:var(--muted);}
+.lego .cchip{display:inline-flex;align-items:center;gap:6px;font-size:12px;border:1px solid var(--gold);border-radius:100px;padding:6px 12px;background:var(--panel);color:var(--ink2);cursor:pointer;}
+.lego .cchip b{color:var(--gold);font-weight:700;}
+.lego .cchip.fx{border-color:var(--line2);color:var(--faint);cursor:default;}
+.bkcat{display:flex;flex-direction:column;gap:9px;}
+.bkrow{display:grid;grid-template-columns:74px 1fr;gap:10px;align-items:center;}
+.bklab{font-size:12px;color:var(--muted);font-weight:600;}
+.bktiles{display:flex;gap:8px;flex-wrap:wrap;}
+.bkt{width:86px;cursor:pointer;text-align:center;}
+.bk{width:86px;height:54px;border:1px solid var(--line2);border-radius:9px;background:var(--panel);padding:7px;display:flex;flex-direction:column;gap:3px;justify-content:center;transition:.15s;overflow:hidden;}
+.bkt:hover .bk{border-color:var(--gold2);transform:translateY(-2px);}
+.bkt.on .bk{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold2);}
+.bkt .bn{font-size:10px;color:var(--faint);margin-top:4px;}
+.bkt.on .bn{color:var(--gold);font-weight:700;}
+.bk i{display:block;background:var(--line2);border-radius:2px;min-height:4px;flex:0 0 auto;}
+.bk i.a{background:var(--gold2);}
+.bk i.o{background:transparent;border:1px solid var(--line2);flex:1;border-radius:4px;}
+.bk .fr{display:flex;gap:3px;flex:1;min-height:0;}
+.bk .fc{display:flex;flex-direction:column;gap:3px;flex:1;justify-content:center;min-height:0;}
+.bk .tilt{transform:rotate(-4deg);}
+.bk .q{font-family:Georgia,serif;color:var(--gold);font-size:15px;line-height:1;}
+.bk .play{margin:auto;width:14px;height:14px;border-radius:50%;background:var(--gold);color:#FBF7EF;font-size:7px;display:grid;place-items:center;}
 .lego2 select{font:inherit;font-size:12.5px;border:1px solid var(--line2);border-radius:8px;padding:5px 9px;background:var(--panel);color:var(--ink);margin-left:5px;}
 .axes{margin-top:6px;}.axrow{display:grid;grid-template-columns:60px 1fr 60px;gap:10px;align-items:center;margin:8px 0;font-size:11px;color:var(--muted);}
 .axrow .bar{height:6px;background:var(--panel2);border-radius:6px;position:relative;border:1px solid var(--line);}.axrow .bar i{position:absolute;top:-3px;width:12px;height:12px;border-radius:50%;background:var(--gold);transform:translateX(-50%);box-shadow:0 0 0 3px var(--panel);}.axrow .r{text-align:right;}
@@ -174,8 +195,10 @@ h2.qh{text-align:center;font-family:"Fraunces",serif;font-weight:400;font-size:c
       <div class="pvpersona"><input id="uName" maxlength="12" placeholder="이름 (미리보기에 반영)"><select id="uInd"></select></div>
       <div class="pvframe"><iframe id="pvIframe" title="생성된 포트폴리오 미리보기" loading="lazy"></iframe></div>
       <div class="pvrow"><a class="btn" id="pvInq" target="_blank" rel="noopener" style="background:var(--ink);">이 디자인으로 제작 문의 →</a><a class="btn ghost" id="pvOpen" target="_blank" rel="noopener">전체 화면 ↗</a><button class="btn ghost" id="rgLayout">구성 셔플 ↻</button><button class="btn ghost" id="rgForm">형태 셔플 ↻</button><button class="btn ghost" id="rgColor">색 셔플 ↻</button></div>
-      <div class="lab" style="margin-top:18px">구성 레고 — 칩을 눌러 섹션을 넣고 빼세요</div>
-      <div class="lego" id="legoSecs"></div>
+      <div class="lab" style="margin-top:18px">현재 구성 — ✕로 빼기</div>
+      <div class="lego" id="curSecs"></div>
+      <div class="lab" style="margin-top:16px">블록 상자 — 예시를 보고 원하는 형태로 추가 (다시 누르면 제거)</div>
+      <div class="bkcat" id="blockCat"></div>
       <div class="lego2">
         <label>히어로 <select id="lgHero"><option value="">자동</option><option value="bigtype">대형 타이포</option><option value="split">스플릿</option><option value="fullbleed">풀블리드</option><option value="slider">슬라이더</option><option value="card">프로필 카드</option><option value="collage">콜라주</option></select></label>
         <label>작업 배치 <select id="lgWork"><option value="">자동</option><option value="grid3">3열 그리드</option><option value="grid3t">3열+필터탭</option><option value="grid2">2열</option><option value="mason">메이슨리</option><option value="row">가로 스크롤</option></select></label>
@@ -565,20 +588,67 @@ function applyLego(tok){
   if(partSel.nav){tok.l.nav=partSel.nav;if(partSel.nav!=='top')tok.l.navbe='';}
   return tok;
 }
+const SECKO_Q={hero:'히어로',about:'소개',work:'작업',contact:'연락',stats:'스탯',marq:'마퀴',skills:'스킬',tline:'타임라인',svc:'서비스',video:'비디오',pricing:'플랜',testi:'추천사',clients:'클라이언트',blog:'노트',quote:'인용',cta2:'CTA'};
+const MOCKS={
+ stats:[`<div class=fr><div class=fc><i class=a style="height:9px"></i><i></i></div><div class=fc><i class=a style="height:9px"></i><i></i></div><div class=fc><i class=a style="height:9px"></i><i></i></div><div class=fc><i class=a style="height:9px"></i><i></i></div></div>`,
+  `<div class=fr><div class=fc style="border-left:2px solid var(--gold2);padding-left:3px"><i class=a style="height:8px"></i><i></i></div><div class=fc style="border-left:2px solid var(--gold2);padding-left:3px"><i class=a style="height:8px"></i><i></i></div><div class=fc style="border-left:2px solid var(--gold2);padding-left:3px"><i class=a style="height:8px"></i><i></i></div></div>`,
+  `<div class=fr><i class=o></i><i class=o></i><i class=o></i><i class=o></i></div>`],
+ marq:[`<div class=fc><i style="height:7px"></i></div>`,
+  `<div class=fc><i class=o style="flex:0 0 9px"></i></div>`,
+  `<div class=fc><i class="a tilt" style="height:11px"></i></div>`],
+ skills:[`<div class=fc><i style="width:85%"></i><i class=a style="width:60%"></i><i style="width:72%"></i></div>`,
+  `<div class=fr style="flex-wrap:wrap;align-content:center;gap:3px"><i style="width:18px;border-radius:5px"></i><i class=a style="width:14px;border-radius:5px"></i><i style="width:20px;border-radius:5px"></i><i style="width:12px;border-radius:5px"></i><i class=a style="width:16px;border-radius:5px"></i></div>`,
+  `<div class=fr><div class=fc><i class=a style="height:13px"></i><i style="width:70%"></i></div><div class=fc><i class=a style="height:13px"></i><i style="width:70%"></i></div><div class=fc><i class=a style="height:13px"></i><i style="width:70%"></i></div></div>`],
+ tline:[`<div class=fr><div style="width:3px;background:var(--gold2);border-radius:2px"></div><div class=fc><i></i><i style="width:70%"></i><i></i></div></div>`,
+  `<div class=fr><i class=o></i><i class=o></i><i class=o></i></div>`,
+  `<div class=fc><div class=fr style="align-items:center"><i class=a style="width:18px;height:9px"></i><i style="flex:1"></i></div><div class=fr style="align-items:center"><i class=a style="width:18px;height:9px"></i><i style="flex:1"></i></div></div>`],
+ svc:[`<div class=fr><i class=o></i><i class=o></i><i class=o></i></div>`,
+  `<div class=fc><div class=fr style="align-items:center"><i class=o style="flex:0 0 12px;height:12px"></i><i style="flex:1"></i></div><div class=fr style="align-items:center"><i class=o style="flex:0 0 12px;height:12px"></i><i style="flex:1"></i></div></div>`,
+  `<div class=fr><div class=fc><i></i><i style="width:60%"></i></div><div class=fc><i></i><i style="width:60%"></i></div></div>`],
+ video:[`<div class=o style="flex:1;display:grid;place-items:center;border-radius:7px"><span class=play>▶</span></div>`,
+  `<div style="flex:1;background:var(--line2);display:grid;place-items:center;margin:-7px;border-radius:0"><span class=play>▶</span></div>`],
+ pricing:[`<div class=fr><i class=o></i><i class=o style="border-color:var(--gold)"></i><i class=o></i></div>`,
+  `<div class=fc><div class=fr style="align-items:center"><i style="flex:1"></i><i class=a style="width:10px"></i></div><div class=fr style="align-items:center"><i style="flex:1"></i><i class=a style="width:10px"></i></div><div class=fr style="align-items:center"><i style="flex:1"></i><i class=a style="width:10px"></i></div></div>`,
+  `<div class=fr><i class=o style="opacity:.35"></i><i class=o style="border-color:var(--gold)"></i><i class=o style="opacity:.35"></i></div>`],
+ testi:[`<div class=fr style="align-items:center;justify-content:space-around"><span class=q>“</span><span class=q>“</span><span class=q>“</span></div>`,
+  `<div style="margin:auto;text-align:center"><span class=q style="font-size:22px">“</span></div>`,
+  `<div class=fc><i></i><i style="width:80%"></i><i></i></div>`],
+ clients:[`<div class=fr style="align-items:center"><i style="height:5px"></i><i style="height:5px"></i><i style="height:5px"></i><i style="height:5px"></i></div>`,
+  `<div class=fr><i class=o></i><i class=o></i><i class=o></i><i class=o></i></div>`,
+  `<div class=fr style="align-items:center;justify-content:center;gap:7px"><i style="height:4px;width:12px"></i><i style="height:4px;width:12px"></i><i style="height:4px;width:12px"></i></div>`],
+ blog:[`<div class=fr><div class=fc><i style="height:11px"></i><i style="width:75%"></i></div><div class=fc><i style="height:11px"></i><i style="width:75%"></i></div><div class=fc><i style="height:11px"></i><i style="width:75%"></i></div></div>`,
+  `<div class=fc><i></i><i style="width:65%"></i><i></i></div>`,
+  `<div class=fc><div class=fr><i style="width:16px;height:100%;min-height:10px"></i><div class=fc><i></i><i style="width:60%"></i></div></div><div class=fr><i style="width:16px;height:100%;min-height:10px"></i><div class=fc><i></i><i style="width:60%"></i></div></div></div>`],
+ quote:[`<div style="margin:auto;text-align:center"><span class=q style="font-size:18px">“</span><i style="width:36px;margin:3px auto 0"></i></div>`,
+  `<div class=fr><div style="width:3px;background:var(--gold)"></div><div class=fc><i></i><i style="width:70%"></i></div></div>`,
+  `<div class=fc><i class=a style="height:15px"></i></div>`],
+ cta2:[`<div class=fr style="align-items:center"><i style="flex:1;height:6px"></i><i class=a style="width:20px;height:11px;border-radius:6px"></i></div>`,
+  `<div class=fc style="align-items:center"><i style="width:70%"></i><i class=a style="width:24px;height:10px;border-radius:6px"></i></div>`,
+  `<div class=o style="flex:1;display:flex;align-items:center;gap:4px;padding:5px;border-radius:7px"><i style="flex:1;height:5px"></i><i class=a style="width:16px;height:9px;border-radius:5px"></i></div>`],
+};
 const FORMN={skills:['바','태그','숫자'],marq:['기본','아웃라인','밴드'],tline:['세로','카드','연도'],
   testi:['카드','인용','행'],svc:['카드','넘버','컴팩트'],stats:['밴드','인라인','박스'],
   video:['라운드','풀폭'],pricing:['카드','행','포커스'],clients:['스트립','박스','캡'],
   blog:['카드','행','썸행'],quote:['센터','룰','밴드'],cta2:['바','센터','박스']};
 let lastSv={};
 function renderLego(secs,sv){
-  const el=$('#legoSecs');if(!el)return;
   lastSv=sv||lastSv;
   const cur=new Set(secs);
-  el.innerHTML=SECOPT.map(([k,ko])=>{
-    const on=cur.has(k);
+  const FIXED=new Set(['hero','about','work','contact']);
+  /* 현재 구성 스트립 */
+  const strip=$('#curSecs');
+  if(strip)strip.innerHTML=secs.map(k=>{
+    if(FIXED.has(k))return `<span class="cchip fx">${SECKO_Q[k]||k}</span>`;
     const v=(secPins.get(k)&&secPins.get(k).on)?secPins.get(k).v:(lastSv[k]||0);
-    const fn=on?` · ${(FORMN[k]||[])[v]||''}`:'';
-    return `<button class="lchip${on?' on':''}${secPins.has(k)?' pin':''}" data-k="${k}" title="클릭: 형태 순환 → 마지막엔 제거">${ko}${fn}</button>`;
+    return `<button class="cchip" data-k="${k}" title="빼기">${SECKO_Q[k]}${(FORMN[k]||[])[v]?' · '+FORMN[k][v]:''} <b>✕</b></button>`;
+  }).join('');
+  /* 블록 상자: 섹션 × 형태 미니 목업 */
+  const cat=$('#blockCat');
+  if(cat)cat.innerHTML=SECOPT.map(([k,ko])=>{
+    const activeV=cur.has(k)?((secPins.get(k)&&secPins.get(k).on)?secPins.get(k).v:(lastSv[k]||0)):-1;
+    const tiles=(MOCKS[k]||[]).map((m,i)=>
+      `<div class="bkt${activeV===i?' on':''}" data-k="${k}" data-v="${i}"><div class=bk>${m}</div><div class=bn>${(FORMN[k]||[])[i]||''}</div></div>`).join('');
+    return `<div class=bkrow><span class=bklab>${ko}</span><div class=bktiles>${tiles}</div></div>`;
   }).join('');
 }
 function renderPreview(){
@@ -629,17 +699,12 @@ $('#ofill').onclick=()=>{const {best}=nearest();const d=FAMOUT[best.k]||{};
 $('#rgLayout').onclick=()=>{lVar++;renderPreview();};
 $('#rgColor').onclick=()=>{cVar++;renderPreview();};
 $('#rgForm').onclick=()=>{vVar++;renderPreview();};
-$('#legoSecs').addEventListener('click',e=>{const b=e.target.closest('.lchip');if(!b)return;
-  const k=b.dataset.k;
-  const maxV=(FORMN[k]||['']).length;
-  const pin=secPins.get(k);
-  const on=b.classList.contains('on');
-  if(!on)secPins.set(k,{on:true,v:0});                       // off → v0 켜기
-  else{
-    const curV=pin&&pin.on?pin.v:(lastSv[k]||0);
-    if(curV+1<maxV)secPins.set(k,{on:true,v:curV+1});        // 다음 형태
-    else secPins.set(k,{on:false});                          // 마지막 형태 → 제거
-  }
+$('#curSecs').addEventListener('click',e=>{const b=e.target.closest('.cchip[data-k]');if(!b)return;
+  secPins.set(b.dataset.k,{on:false});renderPreview();});
+$('#blockCat').addEventListener('click',e=>{const t=e.target.closest('.bkt');if(!t)return;
+  const k=t.dataset.k,v=+t.dataset.v;
+  if(t.classList.contains('on'))secPins.set(k,{on:false});   // 활성 타일 재클릭 → 제거
+  else secPins.set(k,{on:true,v});                           // 그 형태로 추가/변경
   renderPreview();});
 for(const[id,key]of[['lgHero','hero'],['lgWork','work'],['lgNav','nav']])
   $('#'+id).addEventListener('change',e=>{partSel[key]=e.target.value;renderPreview();});
