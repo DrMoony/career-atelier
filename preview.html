@@ -1278,6 +1278,9 @@ window.addEventListener('hashchange',()=>apply(readTokens()));
 /* ---------- 케이스 스터디 오버레이 ---------- */
 const caseDlg=document.getElementById('caseDlg');
 let caseIdx=0;
+function josa(w,a,b){const c=(w||'').charCodeAt((w||'').length-1);
+  const bat=(c>=0xAC00&&c<=0xD7A3)?((c-0xAC00)%28)!==0:/[bcdfgklmnpqrstvxz0-9]$/i.test(w||'');
+  return w+(bat?a:b);}
 function openCase(i){
   const st=window.__case; if(!st)return;
   const{pack,works,caps,imgStart,c}=st; const w=works[i]; if(!w)return;
@@ -1290,7 +1293,7 @@ function openCase(i){
   g('csKicker').textContent=`Case ${String(i+1).padStart(2,'0')} — ${w.tags[0]||''}`;
   g('csMeta').innerHTML=`<span>역할 <b>${pack.role}</b></span><span>기간 <b>${2+((i+imgStart)%4)}개월</b></span><span>연도 <b>${2023+((i+imgStart)%3)}</b></span><span>분야 <b>${w.tags.join(' · ')}</b></span>`;
   g('csC').textContent=`기존 방식으로는 ${pack.dom} 환경의 요구를 따라가기 어려웠어요. ${w.t}\u2014그 한계를 정면으로 다룬 프로젝트입니다.`;
-  g('csA').textContent=`${caps[0]}와 ${caps[1]}을 축으로, 이해관계자와 기준을 먼저 합의하고 작은 검증을 반복하며 리스크를 줄였습니다.`;
+  g('csA').textContent=`${josa(caps[0],'과','와')} ${josa(caps[1],'을','를')} 축으로, 이해관계자와 기준을 먼저 합의하고 작은 검증을 반복하며 리스크를 줄였습니다.`;
   g('csR').textContent=`${w.d} 이 결과는 이후 프로젝트의 기준선이 됐습니다.`;
   const nums=(w.d.match(/[+\-−]?\d+[.,]?\d*\s?[%p배:천만억]+[%p]?/g)||[]).slice(0,3);
   g('csStats').innerHTML=(nums.length?nums:['성과 검증','이해관계자 만족','재의뢰']).map((n,ix)=>
