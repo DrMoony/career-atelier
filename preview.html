@@ -1065,7 +1065,25 @@ function parseCV(t){
     design:/디자이너|UX|UI|프로덕트\s?디자인|피그마|디자인\s?시스템/gi};
   let ind='design',bs=0;
   for(const k in IND){const c=(t.match(IND[k])||[]).length;if(c>bs){bs=c;ind=k;}}
-  return{name,years,ind,email};
+  /* 실제 경력 항목 추출: 불릿/수치 성과 라인 → 작업 카드 */
+  const metric=/[+\-−]?\d+(?:[.,]\d+)?\s?(?:%p|%|배|억|천만|만명|만 명|만|건|명|회|개국|편|쇄|석)/;
+  const works=[];
+  for(const raw of t.split(/\n+/)){
+    const line=raw.trim();
+    if(line.length<10||line.length>160)continue;
+    const isBullet=/^[-•·▪◦*∙]|^\d+[.)]\s/.test(line);
+    const clean=line.replace(/^[-•·▪◦*∙\s]+|^\d+[.)]\s*/g,'').trim();
+    if(!(metric.test(clean)||(isBullet&&clean.length>=14)))continue;
+    if(/^(이름|성명|이메일|연락처|주소|생년|학력|Email|Phone)/.test(clean))continue;
+    let title=clean.split(/\s[—–|:]\s|[:：]/)[0];
+    if(title.length>30){const cut=title.slice(0,30);title=cut.slice(0,cut.lastIndexOf(' ')>12?cut.lastIndexOf(' '):30)+'…';}
+    works.push({t:title,d:clean});
+    if(works.length>=6)break;
+  }
+  let caps=[];
+  const sm=t.match(/(?:기술|스킬|역량|Skills?|Tools?)\s*[:：]?\s*\n?([^\n]{4,140})/i);
+  if(sm)caps=sm[1].split(/[,·/|•]+/).map(x=>x.trim()).filter(x=>x&&x.length<=22).slice(0,6);
+  return{name,years,ind,email,works,caps};
 }
 function apply(t){
   const r=document.documentElement.style;
@@ -1118,6 +1136,11 @@ function apply(t){
   // ---------- 페르소나 팩 적용 (LLM 없이 즉시 치환) ----------
   const p=t.p||{};
   const pack=PACKS[p.ind]||PACKS.design;
+  /* CV 추출 실데이터가 있으면 mock 팩을 대체 */
+  const uWorks=(Array.isArray(p.works)&&p.works.length)
+    ? p.works.map(w=>({t:w.t,d:w.d,tags:(w.tags&&w.tags.length)?w.tags:[pack.label,'CV 기반']})) : null;
+  const uCaps=(Array.isArray(p.caps)&&p.caps.length)?p.caps.concat(pack.caps).slice(0,6):null;
+  const works=uWorks||pack.works, caps=uCaps||pack.caps;
   const name=p.name||pack.name;
   const years=p.years||pack.years;
   const g=id=>document.getElementById(id);
@@ -1129,7 +1152,7 @@ function apply(t){
   g('aboutH').textContent=pack.aboutH;
   g('aboutP1').textContent=pack.p1;
   g('aboutP2').textContent=pack.p2(years);
-  g('workCount').innerHTML=`2020 — 2026 · ${pack.works.length} projects`;
+  g('workCount').innerHTML=`2020 — 2026 · ${works.length} projects`;
   g('contactH').innerHTML=pack.contact;
   g('mail').textContent=p.email||`${/^[a-z]/i.test(name)?name.toLowerCase():'hello'}@example.com`;
   g('footL').textContent=`© 2026 ${name} · Portfolio`;
@@ -1138,12 +1161,12 @@ function apply(t){
   g('footMail').textContent=g('mail').textContent;
   /* About 팩트 3열 */
   g('factsRow').innerHTML=`
-    <div class=fb2><h5>핵심 역량</h5><div>${pack.caps.slice(0,3).join('<br>')}</div></div>
-    <div class=fb2><h5>도구와 방법</h5><div>${pack.caps.slice(3,6).join('<br>')}</div></div>
+    <div class=fb2><h5>핵심 역량</h5><div>${caps.slice(0,3).join('<br>')}</div></div>
+    <div class=fb2><h5>도구와 방법</h5><div>${caps.slice(3,6).join('<br>')}</div></div>
     <div class=fb2><h5>인정받은 것</h5><div>업계 어워드 ${2+(t.l.imgStart||0)%3}회<br>초청 강연·기고 다수<br>${pack.dom} ${years}년</div></div>`;
   const imgStart=t.l.imgStart||0;
-  window.__case={pack,name,imgStart,c:{...c}};   /* 케이스 오버레이 상태 */
-  g('workGrid').innerHTML=pack.works.map((w,i)=>{
+  window.__case={pack,works,caps,name,imgStart,c:{...c}};   /* 케이스 오버레이 상태 */
+  g('workGrid').innerHTML=works.map((w,i)=>{
     const tint=i%3===1?c.acc2:c.acc; const op=i%3===2?.6:.85;
     const im=pack.imgs[(i+imgStart)%pack.imgs.length];
     return `<a class="card reveal" href="#" style="transition-delay:${i*60}ms">
@@ -1153,7 +1176,7 @@ function apply(t){
       <div class="body"><div class="t serif">${w.t}</div><div class="d">${w.d}</div>
       <div class="tags">${w.tags.map(x=>`<span>${x}</span>`).join('')}</div></div></a>`;
   }).join('');
-  g('marqTrack').innerHTML=[...pack.caps,...pack.caps].map(x=>`<span>${x}</span>`).join('');
+  g('marqTrack').innerHTML=[...caps,...caps].map(x=>`<span>${x}</span>`).join('');
   // 스탯·인용 밴드 (흐름에 포함될 때만 보임)
   g('st1n').textContent=years;
   g('st2n').textContent=(12+(t.l.imgStart||0)*4)+'+';
@@ -1174,16 +1197,16 @@ function apply(t){
   }
   if(window.__rotT){clearInterval(window.__rotT);window.__rotT=null;}
   if(FX.includes('rotate')){
-    g('heroKn').innerHTML=`안녕하세요 — ${name}의 <span id="rotW">${pack.caps[0]}</span>`;
+    g('heroKn').innerHTML=`안녕하세요 — ${name}의 <span id="rotW">${caps[0]}</span>`;
     let ri=0;window.__rotT=setInterval(()=>{const el=document.getElementById('rotW');if(!el)return;
-      el.style.opacity=0;setTimeout(()=>{ri=(ri+1)%pack.caps.length;el.textContent=pack.caps[ri];el.style.opacity=1;},280);},2600);
+      el.style.opacity=0;setTimeout(()=>{ri=(ri+1)%caps.length;el.textContent=caps[ri];el.style.opacity=1;},280);},2600);
   }
 
   // ---------- 신규 부품 섹션 콘텐츠 (팩에서 파생) ----------
   const SVCD=['전략 수립부터 실행까지, 끝까지 함께해요.','프로젝트마다 측정 가능한 결과로 증명해요.','협업 파트너들이 가장 신뢰하는 영역이에요.','꾸준한 학습으로 최신 흐름을 유지해요.','작은 개선을 쌓아 큰 차이를 만들어요.','처음 하는 시도도 안전하게 설계해요.'];
-  g('svcGrid').innerHTML=pack.caps.slice(0,6).map((cp,i)=>
+  g('svcGrid').innerHTML=caps.slice(0,6).map((cp,i)=>
     `<div class="sv"><div class="no">0${i+1}</div><h3>${cp}</h3><p>${SVCD[i%SVCD.length]}</p></div>`).join('');
-  g('skGrid').innerHTML=pack.caps.slice(0,6).map((cp,i)=>{
+  g('skGrid').innerHTML=caps.slice(0,6).map((cp,i)=>{
     const pct=72+((i*7+(t.l.imgStart||0)*5)%24);
     return `<div class="sk"><div class="row"><b>${cp}</b><span>${pct}%</span></div><div class="bar"><i style="width:${pct}%"></i></div></div>`;}).join('');
   const TSN=[['김민아','프로젝트 리드'],['박준호','대표'],['이서현','디렉터']];
@@ -1201,10 +1224,10 @@ function apply(t){
   const y0=2026-years;
   g('tlList').innerHTML=[
     [y0,'커리어 시작',`${pack.dom} 분야에 첫발을 내딛다.`],
-    [y0+Math.ceil(years/2),'전환점',`${pack.works[0].t} — 이름을 알린 프로젝트.`],
+    [y0+Math.ceil(years/2),'전환점',`${works[0].t} — 이름을 알린 프로젝트.`],
     [2026,'현재',`${pack.role}로 활동 중. ${pack.dom}.`],
   ].map(x=>`<div class="tl"><div class="y">${x[0]}</div><h3>${x[1]}</h3><p>${x[2]}</p></div>`).join('');
-  g('blGrid').innerHTML=pack.works.slice(3,6).map((w,i)=>{
+  g('blGrid').innerHTML=(works.length>3?works.slice(3,6):works.slice(0,3)).map((w,i)=>{
     const im=pack.imgs[(i+3+imgStart)%pack.imgs.length];
     return `<a class="bl" href="#"><div class="bthumb duo"><img src="assets/img/${im}.jpg" alt="" onerror="imgRetry(this)"><i class="tint" style="background:${i%2?c.acc2:c.acc};opacity:.8"></i></div>
       <div class="bb"><div class="date">2026. 0${i+2}</div><h3>${w.t}, 그 뒤의 이야기</h3></div></a>`;}).join('');
@@ -1213,12 +1236,12 @@ function apply(t){
   document.body.dataset.wtabs=t.l.wtabs?'1':'';
   const tabsEl=g('workTabs');
   if(t.l.wtabs){
-    const cats=[...new Set(pack.works.map(w=>w.tags[0]))].slice(0,4);
+    const cats=[...new Set(works.map(w=>w.tags[0]))].slice(0,4);
     tabsEl.innerHTML=`<button class="on" data-c="*">전체</button>`+cats.map(ct=>`<button data-c="${ct}">${ct}</button>`).join('');
     tabsEl.onclick=e=>{const b=e.target.closest('button');if(!b)return;
       tabsEl.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
       const cat=b.dataset.c;
-      document.querySelectorAll('#workGrid .card').forEach((cd,i)=>cd.classList.toggle('wh',cat!=='*'&&pack.works[i]&&pack.works[i].tags[0]!==cat));};
+      document.querySelectorAll('#workGrid .card').forEach((cd,i)=>cd.classList.toggle('wh',cat!=='*'&&works[i]&&works[i].tags[0]!==cat));};
   }else tabsEl.innerHTML='';
   const hs=g('heroSlides');
   if(window.__slT){clearInterval(window.__slT);window.__slT=null;}
@@ -1257,7 +1280,7 @@ const caseDlg=document.getElementById('caseDlg');
 let caseIdx=0;
 function openCase(i){
   const st=window.__case; if(!st)return;
-  const{pack,imgStart,c}=st; const w=pack.works[i]; if(!w)return;
+  const{pack,works,caps,imgStart,c}=st; const w=works[i]; if(!w)return;
   caseIdx=i;
   const g=id=>document.getElementById(id);
   const im=pack.imgs[(i+imgStart)%pack.imgs.length];
@@ -1267,7 +1290,7 @@ function openCase(i){
   g('csKicker').textContent=`Case ${String(i+1).padStart(2,'0')} — ${w.tags[0]||''}`;
   g('csMeta').innerHTML=`<span>역할 <b>${pack.role}</b></span><span>기간 <b>${2+((i+imgStart)%4)}개월</b></span><span>연도 <b>${2023+((i+imgStart)%3)}</b></span><span>분야 <b>${w.tags.join(' · ')}</b></span>`;
   g('csC').textContent=`기존 방식으로는 ${pack.dom} 환경의 요구를 따라가기 어려웠어요. ${w.t}\u2014그 한계를 정면으로 다룬 프로젝트입니다.`;
-  g('csA').textContent=`${pack.caps[0]}와 ${pack.caps[1]}을 축으로, 이해관계자와 기준을 먼저 합의하고 작은 검증을 반복하며 리스크를 줄였습니다.`;
+  g('csA').textContent=`${caps[0]}와 ${caps[1]}을 축으로, 이해관계자와 기준을 먼저 합의하고 작은 검증을 반복하며 리스크를 줄였습니다.`;
   g('csR').textContent=`${w.d} 이 결과는 이후 프로젝트의 기준선이 됐습니다.`;
   const nums=(w.d.match(/[+\-−]?\d+[.,]?\d*\s?[%p배:천만억]+[%p]?/g)||[]).slice(0,3);
   g('csStats').innerHTML=(nums.length?nums:['성과 검증','이해관계자 만족','재의뢰']).map((n,ix)=>
@@ -1287,8 +1310,8 @@ document.getElementById('workGrid').addEventListener('click',e=>{
 document.getElementById('blGrid')?.addEventListener('click',e=>{const b=e.target.closest('.bl');if(b)e.preventDefault();});
 document.getElementById('csClose').onclick=()=>caseDlg.close();
 caseDlg.addEventListener('click',e=>{if(e.target===caseDlg)caseDlg.close();});
-document.getElementById('csPrev').onclick=()=>{const n=window.__case.pack.works.length;openCase((caseIdx-1+n)%n);};
-document.getElementById('csNext').onclick=()=>{const n=window.__case.pack.works.length;openCase((caseIdx+1)%n);};
+document.getElementById('csPrev').onclick=()=>{const n=window.__case.works.length;openCase((caseIdx-1+n)%n);};
+document.getElementById('csNext').onclick=()=>{const n=window.__case.works.length;openCase((caseIdx+1)%n);};
 
 /* 샘플 컨트롤: 토큰의 p만 바꿔 hash 재기록 → 공유 가능한 URL 유지 */
 function setPersona(patch){
@@ -1343,8 +1366,9 @@ document.getElementById('cvClose').onclick=()=>dlg.close();
 document.getElementById('cvApply').onclick=()=>{
   const r=parseCV(document.getElementById('cvText').value||'');
   document.getElementById('cvOut').textContent=
-    `추출: 이름 ${r.name||'?'} · ${r.years||'?'}년차 · 업종 ${(PACKS[r.ind]||{}).label||r.ind} · ${r.email||'이메일 없음'}`;
-  setPersona({name:r.name||undefined,years:r.years||undefined,ind:r.ind,email:r.email||undefined});
+    `추출: 이름 ${r.name||'?'} · ${r.years||'?'}년차 · 업종 ${(PACKS[r.ind]||{}).label||r.ind} · 프로젝트 ${r.works.length}건 · 역량 ${r.caps.length}개`;
+  setPersona({name:r.name||undefined,years:r.years||undefined,ind:r.ind,email:r.email||undefined,
+    works:r.works.length?r.works:undefined,caps:r.caps.length?r.caps:undefined});
 };
 
 /* 부품 전역 동작: 버거 오버레이 · 투명 내비 스크롤 전환 · 커스텀 커서 */
